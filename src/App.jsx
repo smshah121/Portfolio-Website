@@ -340,7 +340,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="p-6 flex flex-col items-center shadow-lg hover:text-orange-600 justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg hover:text-[#E34F26] sm:text-[#E34F26] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <FaHtml5 size={60} />
       <h1 className="text-gray-500 font-bold mt-2">HTML</h1>
@@ -352,7 +352,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="p-6 flex flex-col items-center shadow-lg hover:text-blue-700 justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg hover:text-[#1572B6] sm:text-[#1572B6] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <FaCss3Alt size={60} />
       <h1 className="text-gray-500 font-bold mt-2">CSS</h1>
@@ -364,7 +364,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9 }}
-      className="p-6 flex flex-col items-center shadow-lg hover:text-yellow-400 justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg hover:text-[#F7DF1E] sm:text-[#F7DF1E] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <TbBrandJavascript size={60} />
       <h1 className="text-gray-500 font-bold mt-2">JavaScript</h1>
@@ -376,7 +376,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.1 }}
-      className="p-6 flex flex-col items-center shadow-lg hover:text-blue-700 justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg hover:text-[#3178C6] sm:text-[#3178C6] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <TbBrandTypescript size={60} />
       <h1 className="text-gray-500 font-bold mt-2">TypeScript</h1>
@@ -388,7 +388,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.3 }}
-      className="p-6 flex flex-col items-center shadow-lg hover:text-blue-500 justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg hover:text-[#61DAFB] sm:text-[#61DAFB] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <GrReactjs size={60} />
       <h1 className="text-gray-500 font-bold mt-2">ReactJS</h1>
@@ -400,7 +400,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5 }}
-      className="p-6 flex flex-col items-center shadow-lg hover:text-blue-400 justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg hover:text-[#38BDF8] sm:text-[#38BDF8] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <SiTailwindcss size={60} />
       <h1 className="text-gray-500 font-bold mt-2">Tailwind</h1>
@@ -424,7 +424,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.9 }}
-      className="p-6 flex flex-col items-center shadow-lg hover:text-blue-900 justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg hover:text-[#4169E1] sm:text-[#4169E1] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <BiLogoPostgresql size={60} />
       <h1 className="text-gray-500 font-bold mt-2">Postgres</h1>
