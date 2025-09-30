@@ -163,7 +163,7 @@ function App() {
     transition={{ duration: 0.5 }}
     className="flex flex-col gap-4 text-white md:w-1/2 lg:w-3/5"
   >
-    <h1 className="font-bold text-4xl md:text-6xl text-gray-200">Hello! I'm</h1>
+    <h1 className="mt-5 md:mt-0 font-bold text-4xl md:text-6xl text-gray-200">Hello! I'm</h1>
     <h2 className="font-bold text-5xl md:text-7xl text-[#6BA3BE] leading-tight">
       Syed Momin Ali Shah
     </h2>
