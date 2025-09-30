@@ -491,7 +491,7 @@ function App() {
         </div>
 
         {/* Text */}
-        <div className="flex items-center justify-center mt-6 md:mt-0 md:ml-8 md:flex md:justify-start md:flex-col md:items-start w-full md:w-2/3">
+        <div className="flex items-center flex-col justify-center mt-6 md:mt-0 md:ml-8 md:flex md:justify-start md:flex-col md:items-start w-full md:w-2/3">
           <h1 className="font-bold text-xl md:text-2xl pb-3 text-[#7ab6d4]">
             {project.title}
           </h1>
