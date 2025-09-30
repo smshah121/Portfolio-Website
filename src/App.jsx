@@ -212,7 +212,7 @@ function App() {
   >
     <img
       className="w-60 h-60 md:w-[400px] md:h-[400px] mb-5 rounded-full"
-      src="portfolio3.jpg"
+      src="/portfolio3.jpg"
       alt="Profile"
     />
     <h4 className="text-[#6BA3BE] text-4xl md:text-4xl font-semibold text-center">
@@ -279,7 +279,7 @@ function App() {
         <div className="lg:w-1/2 flex flex-col items-center mt-10 lg:mt-0">
           <img
             className="w-60 h-50 rounded-2xl shadow-lg mb-8 object-cover"
-            src="portfolioabout.png"
+            src="/portfolioabout.png"
             alt="About"
           />
 
@@ -444,31 +444,31 @@ function App() {
   <motion.div className="flex flex-col justify-center items-center gap-10">
     {[
       {
-        img: "lms.png",
+        img: "/lms.png",
         title: "Learning Management System",
         desc: "Built a role-based LMS with secure Authentication for Student and Instructor. Instructors can create courses, add lectures, and view enrollments. Students can enroll in courses, view lectures and secure profile features.",
         link: "https://68d906ee690c9616573101e5--singular-toffee-702de6.netlify.app/",
       },
       {
-        img: "ecommerce.png",
+        img: "/ecommerce.png",
         title: "E-Commerce",
         desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
         link: "https://dynamic-griffin-d0c7fd.netlify.app/",
       },
       {
-        img: "quote.png",
+        img: "/quote.png",
         title: "Personal Quote Management",
         desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
         link: "https://peaceful-crisp-c5d1fb.netlify.app/",
       },
       {
-        img: "weather.png",
+        img: "/weather.png",
         title: "Weather App",
         desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
         link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
       },
       {
-        img: "currency.png",
+        img: "/currency.png",
         title: "Currency Converter",
         desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
         link: "https://smshah121.github.io/currency-converter/",
@@ -534,7 +534,7 @@ function App() {
       <h1 className="text-[#274D60] font-bold text-3xl">Contact Me</h1>
 
       <img
-        src="contact.avif"
+        src="/contact.avif"
         className="w-full max-w-sm h-90 mt-8 rounded-2xl object-cover"
         alt="Gmail Logo"
       />
