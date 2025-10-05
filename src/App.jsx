@@ -447,7 +447,7 @@ function App() {
         img: "/lms.png",
         title: "Learning Management System",
         desc: "Built a role-based LMS with secure Authentication for Student and Instructor. Instructors can create courses, add lectures, and view enrollments. Students can enroll in courses, view lectures and secure profile features.",
-        link: "https://68d906ee690c9616573101e5--singular-toffee-702de6.netlify.app/",
+        link: "https://singular-toffee-702de6.netlify.app/",
       },
       {
         img: "/ecommerce.png",
