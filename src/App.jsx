@@ -17,14 +17,18 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import emailjs from "emailjs-com";
-import { FaSnapchatSquare } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
+import { FaRegEye } from "react-icons/fa";
+import { SiRedux } from "react-icons/si";
+import { TbBrandFramerMotion } from "react-icons/tb";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+
 
   useEffect(() => {
     const sections = document.querySelectorAll("div[id]");
@@ -49,6 +53,15 @@ function App() {
     { id: "project", label: "Project" },
     { id: "contact", label: "Contact" },
   ];
+
+  const TechIcons = {
+    React: <GrReactjs className="text-[#61DAFB]" title="React" />,
+    Nest: <SiNestjs className="text-[#E0234E]" title="Nest"/>,
+    Tailwind: <SiTailwindcss className="text-[#38BDF8]" title="Tailwind" />,
+    Postgres: <BiLogoPostgresql className="text-[#4169E1]" title="Postgres"/>,
+    Redux: <SiRedux  className="text-[#764ABC]"/>,
+    Motion: <TbBrandFramerMotion className="text-[#E94E44]" />
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,6 +89,7 @@ function App() {
       .then(
         (result) => {
           alert("✅ Message sent successfully!");
+          e.target.reset();
         },
         (error) => {
           alert("❌ Failed to send, try again.");
@@ -128,7 +142,10 @@ function App() {
 
         {/* Mobile Hamburger */}
         <div className="md:hidden">
-          <button onClick={() => setOpen(!open)} className="text-white text-3xl">
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-white text-3xl"
+          >
             ☰
           </button>
           {open && (
@@ -153,86 +170,114 @@ function App() {
         </div>
       </div>
       <div
-  id="hero"
-  className="flex flex-col-reverse md:flex-row justify-between bg-gradient-to-r from-[#0A192F] to-[#112240] min-h-screen items-center p-6 pt-28 md:pt-20"
->
-  {/* Left: Text */}
-  <motion.div
-    initial={{ x: -100, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    transition={{ duration: 0.5 }}
-    className="flex flex-col gap-4 text-white md:w-1/2 lg:w-3/5"
-  >
-    <h1 className="mt-5 md:mt-0 font-bold text-4xl md:text-6xl text-gray-200">Hello! I'm</h1>
-    <h2 className="font-bold text-5xl md:text-7xl text-[#6BA3BE] leading-tight">
-      Syed Momin Ali Shah
-    </h2>
-    <i className="mt-5 text-[#a3b8cf]  md:text-lg">Full Stack Developer and a third-year undergraduate student pursuing a BS in Software Engineering</i>
-
-    {/* Resume + Social Links */}
-    <div className="flex flex-col mt-4">
-      <a
-        href="/Resume Internship for Portfolio.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        download="SyedMominAliShah_Resume.pdf"
+        id="hero"
+        className="flex flex-col-reverse md:flex-row justify-between bg-gradient-to-r from-[#0A192F] to-[#112240] min-h-screen items-center p-6 pt-28 md:pt-20"
       >
-        <button className="w-40 h-10 flex justify-center items-center gap-2 rounded border font-bold bg-[#1f4c64] text-[#83A6CE] hover:bg-[#112240] hover:text-white text-sm">
-          <IoMdDownload size={18} />
-          Resume
-        </button>
-      </a>
+        {/* Left: Text */}
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col gap-4 text-white md:w-1/2 lg:w-3/5"
+        >
+          <h1 className="mt-5 md:mt-0 font-bold text-4xl md:text-6xl text-gray-200">
+            Hello! I'm
+          </h1>
+          <h2 className="font-bold text-5xl md:text-7xl text-[#6BA3BE] leading-tight">
+            Syed Momin Ali Shah
+          </h2>
+          <i className="mt-5 text-[#a3b8cf]  md:text-lg">
+            Building web applications with  React and NestJS. Currently a third-year Software Engineering student.
+          </i>
 
-      <div className="flex mt-8 space-x-4">
-        <a href="https://www.linkedin.com/in/smshah121" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin className="text-gray-100 hover:text-[#0A66C2]" size={32} />
-        </a>
-        <a href="https://github.com/smshah121" target="_blank" rel="noopener noreferrer">
-          <FaGithub className="text-gray-100 hover:text-[#181717]" size={32} />
-        </a>
-        <a href="https://www.instagram.com/__smshah__" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="text-gray-100 hover:bg-[linear-gradient(45deg,#F77737,#E4405F,#C13584,#5851DB)]" size={32} />
-        </a>
-        <a href="mailto:sm.shah2003@hotmail.com">
-          <PiMicrosoftOutlookLogo className="text-gray-100 hover:text-[#0078D4]" size={32}/>
-        </a>
-        <a href="mailto:smshah.2003@gmail.com">
-          <IoMdMail className="text-gray-100 hover:text-[#EA4335]" size={32} />
-        </a>
+          {/* Resume + Social Links */}
+          <div className="flex flex-col mt-4">
+            <a
+              href="/Resume Internship for Portfolio.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="SyedMominAliShah_Resume.pdf"
+            >
+              <button className="w-40 h-10 flex justify-center items-center gap-2 rounded border font-bold bg-[#1f4c64] text-[#83A6CE] hover:bg-[#112240] hover:text-white text-sm">
+                <IoMdDownload size={18} />
+                Resume
+              </button>
+            </a>
+
+            <div className="flex mt-8 space-x-4">
+              <a
+                href="https://www.linkedin.com/in/smshah121"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin
+                  className="text-gray-100 hover:text-[#0A66C2]"
+                  size={32}
+                />
+              </a>
+              <a
+                href="https://github.com/smshah121"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub
+                  className="text-gray-100 hover:text-[#181717]"
+                  size={32}
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/__smshah__"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram
+                  className="text-gray-100 hover:bg-[linear-gradient(45deg,#F77737,#E4405F,#C13584,#5851DB)]"
+                  size={32}
+                />
+              </a>
+              <a href="mailto:sm.shah2003@hotmail.com">
+                <PiMicrosoftOutlookLogo
+                  className="text-gray-100 hover:text-[#0078D4]"
+                  size={32}
+                />
+              </a>
+              <a href="mailto:smshah.2003@gmail.com">
+                <IoMdMail
+                  className="text-gray-100 hover:text-[#EA4335]"
+                  size={32}
+                />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Right: Image + Typewriter */}
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center md:w-1/2 lg:w-2/5 mt-8 md:mt-0"
+        >
+          <img
+            className="w-60 h-60 md:w-[400px] md:h-[400px] mb-5 rounded-full"
+            src="/portfolio3.jpg"
+            alt="Profile"
+          />
+          <h4 className="text-[#6BA3BE] text-4xl md:text-4xl font-semibold text-center">
+            <Typewriter
+              options={{
+                strings: [
+                  "Full Stack Developer",
+                  "Software Engineer",
+                  "Tech Enthusiast",
+                ],
+                loop: true,
+                autoStart: true,
+              }}
+            />
+          </h4>
+        </motion.div>
       </div>
-    </div>
-  </motion.div>
-
-  {/* Right: Image + Typewriter */}
-  <motion.div
-    initial={{ x: 100, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    transition={{ duration: 0.5 }}
-    className="flex flex-col items-center md:w-1/2 lg:w-2/5 mt-8 md:mt-0"
-  >
-    <img
-      className="w-60 h-60 md:w-[400px] md:h-[400px] mb-5 rounded-full"
-      src="/portfolio3.jpg"
-      alt="Profile"
-    />
-    <h4 className="text-[#6BA3BE] text-4xl md:text-4xl font-semibold text-center">
-      <Typewriter
-        options={{
-          strings: [
-            "Full Stack Developer",
-            "Software Engineer",
-            "Tech Enthusiast"
-          ],
-          loop: true,
-          autoStart: true,
-        }}
-      />
-    </h4>
-  </motion.div>
-</div>
-
-
-
 
       <div
         id="about"
@@ -244,7 +289,7 @@ function App() {
             About Me
           </h1>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Hi  I'm{" "}
+            Hi I'm{" "}
             <span className="font-semibold text-[#274D60]">
               Syed Momin Ali Shah
             </span>
@@ -258,7 +303,6 @@ function App() {
             Udemy like Angela Yu’s Web Development Bootcamp and 100 Days of
             Python. Since <span className="font-semibold">March 2023</span>,
             I’ve been pursuing a BS in Software Engineering at Iqra University
-            
           </p>
           <p className="text-gray-700">
             I built several frontend projects early on — including a Currency
@@ -305,10 +349,13 @@ function App() {
                 Bootcamps & Online Courses
               </h3>
               <ul className="list-disc pl-3">
-                <li className="text-gray-600 text-sm">Udemy (Web Dev, Python 100 Days) – 2022</li>
-                <li className="text-gray-600 text-sm">Last Mile Tech (Full Stack Bootcamp) - 2025</li>
+                <li className="text-gray-600 text-sm">
+                  Udemy (Web Dev, Python 100 Days) – 2022
+                </li>
+                <li className="text-gray-600 text-sm">
+                  Last Mile Tech (Full Stack Bootcamp) - 2025
+                </li>
               </ul>
-              
             </div>
 
             <div>
@@ -319,9 +366,14 @@ function App() {
                 Full Stack Projects
               </h3>
               <ul className="list-disc pl-3">
-                <li className="text-gray-600 text-sm"> Learning Management System</li>
+                <li className="text-gray-600 text-sm">
+                  {" "}
+                  Learning Management System
+                </li>
                 <li className="text-gray-600 text-sm">PriceTag E-Commerce</li>
-                <li className="text-gray-600 text-sm">QuoteNest Personal Quotes Management</li>
+                <li className="text-gray-600 text-sm">
+                  QuoteNest Personal Quotes Management
+                </li>
               </ul>
             </div>
           </div>
@@ -329,329 +381,415 @@ function App() {
       </div>
 
       <div id="skills" className="py-16 px-6 bg-gray-50 ">
-  {/* Heading */}
-  <div className="flex justify-center mb-10">
-    <h1 className="text-[#274D60] text-5xl font-bold text-center">
-      Tech Stack
-    </h1>
-  </div>
+        {/* Heading */}
+        <div className="flex justify-center mb-10">
+          <h1 className="text-[#274D60] text-5xl font-bold text-center">
+            Tech Stack
+          </h1>
+        </div>
 
-  {/* Wrapper → flex on large screens, wraps on mobile */}
-  <div className="flex flex-wrap justify-center gap-6">
-    {/* HTML */}
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#E34F26] md:text-gray-800 md:hover:text-[#E34F26]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-    >
-      <FaHtml5 size={60} />
-      <h1 className="text-gray-500 font-bold mt-2">HTML</h1>
-    </motion.div>
+        {/* Wrapper → flex on large screens, wraps on mobile */}
+        <div className="flex flex-wrap justify-center gap-6">
+          {/* HTML */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="p-6 flex flex-col items-center shadow-lg text-[#E34F26] md:text-gray-800 md:hover:text-[#E34F26]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+          >
+            <FaHtml5 size={60} />
+            <h1 className="text-gray-500 font-bold mt-2">HTML</h1>
+          </motion.div>
 
-    {/* CSS */}
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#1572B6] md:text-gray-800 md:hover:text-[#1572B6] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-    >
-      <FaCss3Alt size={60} />
-      <h1 className="text-gray-500 font-bold mt-2">CSS</h1>
-    </motion.div>
+          {/* CSS */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="p-6 flex flex-col items-center shadow-lg text-[#1572B6] md:text-gray-800 md:hover:text-[#1572B6] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+          >
+            <FaCss3Alt size={60} />
+            <h1 className="text-gray-500 font-bold mt-2">CSS</h1>
+          </motion.div>
 
-    {/* JavaScript */}
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#F7DF1E] md:text-gray-800 hover:text-[#F7DF1E] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-    >
-      <TbBrandJavascript size={60} />
-      <h1 className="text-gray-500 font-bold mt-2">JavaScript</h1>
-    </motion.div>
+          {/* JavaScript */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            className="p-6 flex flex-col items-center shadow-lg text-[#F7DF1E] md:text-gray-800 hover:text-[#F7DF1E] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+          >
+            <TbBrandJavascript size={60} />
+            <h1 className="text-gray-500 font-bold mt-2">JavaScript</h1>
+          </motion.div>
 
-    {/* TypeScript */}
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.1 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#3178C6] md:text-gray-800 hover:text-[#3178C6]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-    >
-      <TbBrandTypescript size={60} />
-      <h1 className="text-gray-500 font-bold mt-2">TypeScript</h1>
-    </motion.div>
+          {/* TypeScript */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1 }}
+            className="p-6 flex flex-col items-center shadow-lg text-[#3178C6] md:text-gray-800 hover:text-[#3178C6]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+          >
+            <TbBrandTypescript size={60} />
+            <h1 className="text-gray-500 font-bold mt-2">TypeScript</h1>
+          </motion.div>
 
-    {/* React */}
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.3 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#61DAFB] md:text-gray-800 md:hover:text-[#61DAFB] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-    >
-      <GrReactjs size={60} />
-      <h1 className="text-gray-500 font-bold mt-2">ReactJS</h1>
-    </motion.div>
+          {/* React */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3 }}
+            className="p-6 flex flex-col items-center shadow-lg text-[#61DAFB] md:text-gray-800 md:hover:text-[#61DAFB] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+          >
+            <GrReactjs size={60} />
+            <h1 className="text-gray-500 font-bold mt-2">ReactJS</h1>
+          </motion.div>
 
-    {/* Tailwind */}
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.5 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#38BDF8] md:text-gray-800 md:hover:text-[#38BDF8] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-    >
-      <SiTailwindcss size={60} />
-      <h1 className="text-gray-500 font-bold mt-2">Tailwind</h1>
-    </motion.div>
+          {/* Tailwind */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5 }}
+            className="p-6 flex flex-col items-center shadow-lg text-[#38BDF8] md:text-gray-800 md:hover:text-[#38BDF8] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+          >
+            <SiTailwindcss size={60} />
+            <h1 className="text-gray-500 font-bold mt-2">Tailwind</h1>
+          </motion.div>
 
-    {/* NestJS */}
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.7 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#E0234E] md:text-gray-800 md:hover:text-[#E0234E]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-    >
-      <SiNestjs size={60} />
-      <h1 className="text-gray-500 font-bold mt-2">NestJS</h1>
-    </motion.div>
+          {/* NestJS */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.7 }}
+            className="p-6 flex flex-col items-center shadow-lg text-[#E0234E] md:text-gray-800 md:hover:text-[#E0234E]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+          >
+            <SiNestjs size={60} />
+            <h1 className="text-gray-500 font-bold mt-2">NestJS</h1>
+          </motion.div>
 
-    {/* PostgreSQL */}
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.9 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#4169E1] md:text-gray-800 md:hover:text-[#4169E1] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-    >
-      <BiLogoPostgresql size={60} />
-      <h1 className="text-gray-500 font-bold mt-2">Postgres</h1>
-    </motion.div>
-  </div>
-</div>
-
+          {/* PostgreSQL */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.9 }}
+            className="p-6 flex flex-col items-center shadow-lg text-[#4169E1] md:text-gray-800 md:hover:text-[#4169E1] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+          >
+            <BiLogoPostgresql size={60} />
+            <h1 className="text-gray-500 font-bold mt-2">Postgres</h1>
+          </motion.div>
+        </div>
+      </div>
 
       <div
-  id="project"
-  className="min-h-screen bg-gradient-to-r from-[#0A192F] to-[#112240] py-16 px-6"
->
-  <div className="font-bold text-5xl text-[#7ab6d4] mb-12 text-center">
-    <h1>Projects</h1>
-  </div>
-
-  <motion.div className="flex flex-col justify-center items-center gap-10">
-    {[
-      {
-        img: "/lms.png",
-        title: "Learning Management System",
-        desc: "Built a role-based LMS with secure Authentication for Student and Instructor. Instructors can create courses, add lectures, and view enrollments. Students can enroll in courses, view lectures and secure profile features.",
-        link: "https://singular-toffee-702de6.netlify.app/",
-      },
-      {
-        img: "/ecommerce.png",
-        title: "E-Commerce",
-        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
-        link: "https://dynamic-griffin-d0c7fd.netlify.app/",
-      },
-      {
-        img: "/quote.png",
-        title: "Personal Quote Management",
-        desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
-        link: "https://peaceful-crisp-c5d1fb.netlify.app/",
-      },
-      {
-        img: "/weather.png",
-        title: "Weather App",
-        desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
-        link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
-      },
-      {
-        img: "/currency.png",
-        title: "Currency Converter",
-        desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
-        link: "https://smshah121.github.io/currency-converter/",
-      },
-    ].map((project, index) => (
-      <motion.div
-        key={index}
-        initial={{ x: -100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-5xl bg-white/5 backdrop-blur-xl rounded-2xl flex flex-col md:flex-row items-center p-6"
+        id="project"
+        className="min-h-screen bg-gradient-to-r from-[#0A192F] to-[#112240] py-16 px-6"
       >
-        {/* Image */}
-        <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center">
-          <img
-            src={project.img}
-            className="h-40 md:h-48 w-auto object-contain rounded-lg"
-            alt={project.title}
-          />
+        <div className="font-bold text-5xl text-[#7ab6d4] mb-12 text-center">
+          <h1>Projects</h1>
         </div>
 
-        {/* Text */}
-        <div className="flex items-center flex-col justify-center mt-6 md:mt-0 md:ml-8 md:flex md:justify-start md:flex-col md:items-start w-full md:w-2/3">
-          <h1 className="font-bold text-xl md:text-2xl pb-3 text-[#7ab6d4]">
-            {project.title}
-          </h1>
-          <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-            {project.desc}
-          </p>
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4"
-          >
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              className="px-6 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white"
+        <motion.div className="flex flex-col justify-center items-center gap-10">
+          {[
+            {
+              img: "/lms.png",
+              title: "Learning Management System",
+              desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access",
+              link: "https://singular-toffee-702de6.netlify.app/",
+              source: {
+                frontend:
+                  "https://github.com/smshah121/Learning-Management-System-Frontend",
+                backend:
+                  "https://github.com/smshah121/Learning-Management-System-Backend",
+              },
+              tech: ["React", "Nest", "Postgres", "Tailwind", "Redux","Motion"]
+            },
+            {
+              img: "/ecommerce.png",
+              title: "E-Commerce",
+              desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
+              link: "https://dynamic-griffin-d0c7fd.netlify.app/",
+              source: {
+                frontend:
+                  "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
+                backend:
+                  "https://github.com/smshah121/E-Commerce-Web-App-Backend",
+              },
+              tech: ["React", "Nest", "Postgres", "Tailwind", "Redux","Motion"]
+            },
+            {
+              img: "/quote.png",
+              title: "Personal Quote Management",
+              desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
+              link: "https://peaceful-crisp-c5d1fb.netlify.app/",
+              source: {
+                frontend: "https://github.com/smshah121/quotes-frontend",
+                backend:
+                  "https://github.com/smshah121/Quotes-Management-System-Backend",
+              },
+              tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+            },
+            {
+              img: "/weather.png",
+              title: "Weather App",
+              desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
+              link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
+              source: {
+                frontend: "https://github.com/smshah121/Weather-Web-App",
+              },
+              tech: ["React", "Tailwind"]
+            },
+
+            {
+              img: "/currency.png",
+              title: "Currency Converter",
+              desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
+              link: "https://smshah121.github.io/currency-converter/",
+              source: {
+                frontend: "https://github.com/smshah121/currency-converter",
+              },
+              tech: ["React", "Tailwind"]
+            },
+          ].map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="w-full max-w-5xl bg-white/5 backdrop-blur-xl rounded-2xl flex flex-col md:flex-row items-center p-6"
             >
-              View Project
-            </motion.button>
-          </a>
-        </div>
-      </motion.div>
-    ))}
-  </motion.div>
+              {/* Image */}
+              <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center">
+                <img
+                  src={project.img}
+                  className="h-40 md:h-48 w-auto object-contain rounded-lg"
+                  alt={project.title}
+                />
+              </div>
+
+              {/* Text */}
+              <div className="flex items-center flex-col justify-center mt-6 md:mt-0 md:ml-8 md:flex md:justify-start md:flex-col md:items-start w-full md:w-2/3">
+                <h1 className="font-bold text-xl md:text-2xl pb-3 text-[#7ab6d4]">
+                  {project.title}
+                </h1>
+                <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                  {project.desc}
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-3">
+  {project.tech.map((tech) => (
+    <div key={tech} className="text-2xl">
+      {TechIcons[tech] || <span className="text-gray-400">{tech}</span>}
+    </div>
+  ))}
 </div>
+                <div className="flex flex-wrap gap-3 mt-4">
+                  {/* Live Demo */}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      className="flex px-6 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white mb-5"
+                    >
+                      <FaRegEye size={22} className="mr-2" />
+                      Live Demo
+                    </motion.button>
+                  </a>
 
+                  {/* Source Code Buttons */}
+                  <div className="relative inline-block">
+  <motion.button
+    whileHover={{ scale: 1.1 }}
+    onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
+    className="flex  px-6 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white"
+  >
+    <a
+                href="https://github.com/smshah121"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub
+                  className="text-gray-400 hover:text-[#181717] mr-2"
+                  size={20}
+                />
+              </a>
+    Source Code ▼
+  </motion.button>
 
+  {dropdownOpen === index && (
+    <div className="absolute mt-2 bg-[#1e293b] text-white rounded-lg shadow-lg z-50 w-40">
+      {project.source?.frontend && (
+        <a
+          href={project.source.frontend}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block px-4 py-2 hover:bg-[#334155]"
+        >
+          Frontend
+        </a>
+      )}
+      {project.source?.backend && (
+        <a
+          href={project.source.backend}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block px-4 py-2 hover:bg-[#334155]"
+        >
+          Backend
+        </a>
+      )}
+    </div>
+  )}
+</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
 
       <div id="contact" className="py-16 px-6 bg-gray-50">
-  {/* Heading */}
-  <div className="flex justify-center mb-10">
-    <h1 className="text-[#274D60] font-bold text-4xl text-center">
-      Let's Work Together !
-    </h1>
-  </div>
+        {/* Heading */}
+        <div className="flex justify-center mb-10">
+          <h1 className="text-[#274D60] font-bold text-4xl text-center">
+            Let's Work Together !
+          </h1>
+        </div>
 
-  {/* Wrapper */}
-  <div className="flex flex-col md:flex-row justify-between gap-10 max-w-6xl mx-auto">
-    {/* Left Side - Contact Info */}
-    <div className="flex flex-col md:w-1/2">
-      <h1 className="text-[#274D60] font-bold text-3xl">Contact Me</h1>
+        {/* Wrapper */}
+        <div className="flex flex-col md:flex-row justify-between gap-10 max-w-6xl mx-auto">
+          {/* Left Side - Contact Info */}
+          <div className="flex flex-col md:w-1/2">
+            <h1 className="text-[#274D60] font-bold text-3xl">Contact Me</h1>
 
-      <img
-        src="/contact.avif"
-        className="w-full max-w-sm h-90 mt-8 rounded-2xl object-cover"
-        alt="Gmail Logo"
-      />
-
-      <div className="flex items-center p-2 mt-4">
-        <IoIosMail size={34} className="text-[#274D60]" />
-        <h4 className="ml-2 text-gray-700 break-all font-semibold text-xl">
-          sm.shah2003@hotmail.com
-        </h4>
-      </div>
-
-      <div className="flex items-center p-2">
-        <FaPhoneAlt size={32} className="text-[#274D60]" />
-        <h4 className="ml-2 text-gray-700 font-semibold text-xl">+92 319 2508750</h4>
-      </div>
-
-      <div className="flex items-center p-2">
-        <FaLocationDot size={32} className="text-[#274D60]" />
-        <h4 className="ml-2 text-gray-700 font-semibold text-xl">Karachi, Pakistan</h4>
-      </div>
-    </div>
-
-    {/* Right Side - Contact Form */}
-    <div className="flex flex-col md:w-1/2">
-      <h1 className="text-[#274D60] font-bold text-3xl">Get in touch</h1>
-      <p className="mt-2 text-gray-700">
-        Feel free to reach out if you'd like to collaborate – you're just
-        a few clicks away!
-      </p>
-
-      <div className="w-full shadow-2xl mt-4 rounded-2xl p-6">
-        <form onSubmit={sendEmail}>
-          {/* Name */}
-          <div className="flex flex-col mb-4">
-            <label
-              className="text-[#274D60] font-bold mb-2"
-              htmlFor="name"
-            >
-              Name
-            </label>
-            <input
-              className="w-full shadow rounded-2xl p-3"
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
+            <img
+              src="/contact.avif"
+              className="w-full max-w-sm h-90 mt-8 rounded-2xl object-cover"
+              alt="Gmail Logo"
             />
+
+            <div className="flex items-center p-2 mt-4">
+              <IoIosMail size={34} className="text-[#274D60]" />
+              <h4 className="ml-2 text-gray-700 break-all font-semibold text-xl">
+                sm.shah2003@hotmail.com
+              </h4>
+            </div>
+
+            <div className="flex items-center p-2">
+              <FaPhoneAlt size={32} className="text-[#274D60]" />
+              <h4 className="ml-2 text-gray-700 font-semibold text-xl">
+                +92 319 2508750
+              </h4>
+            </div>
+
+            <div className="flex items-center p-2">
+              <FaLocationDot size={32} className="text-[#274D60]" />
+              <h4 className="ml-2 text-gray-700 font-semibold text-xl">
+                Karachi, Pakistan
+              </h4>
+            </div>
           </div>
 
-          {/* Email */}
-          <div className="flex flex-col mb-4">
-            <label
-              className="text-[#274D60] font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className="w-full shadow rounded-2xl p-3"
-              type="email"
-              name="Email"
-              placeholder="Your Email"
-              required
-            />
-          </div>
+          {/* Right Side - Contact Form */}
+          <div className="flex flex-col md:w-1/2">
+            <h1 className="text-[#274D60] font-bold text-3xl">Get in touch</h1>
+            <p className="mt-2 text-gray-700">
+              Feel free to reach out if you'd like to collaborate – you're just
+              a few clicks away!
+            </p>
 
-          {/* Subject */}
-          <div className="flex flex-col mb-4">
-            <label
-              className="text-[#274D60] font-bold mb-2"
-              htmlFor="title"
-            >
-              Subject
-            </label>
-            <input
-              className="w-full shadow rounded-2xl p-3"
-              type="text"
-              name="title"
-              placeholder="Subject"
-              required
-            />
-          </div>
+            <div className="w-full shadow-2xl mt-4 rounded-2xl p-6">
+              <form onSubmit={sendEmail}>
+                {/* Name */}
+                <div className="flex flex-col mb-4">
+                  <label
+                    className="text-[#274D60] font-bold mb-2"
+                    htmlFor="name"
+                  >
+                    Name
+                  </label>
+                  <input
+                    className="w-full shadow rounded-2xl p-3"
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
 
-          {/* Message */}
-          <div className="flex flex-col mb-4">
-            <label
-              className="text-[#274D60] font-bold mb-2"
-              htmlFor="message"
-            >
-              Message
-            </label>
-            <textarea
-              className="w-full h-40 shadow rounded-2xl p-3"
-              name="message"
-              placeholder="Your Message"
-              required
-            />
-          </div>
+                {/* Email */}
+                <div className="flex flex-col mb-4">
+                  <label
+                    className="text-[#274D60] font-bold mb-2"
+                    htmlFor="email"
+                  >
+                    Email
+                  </label>
+                  <input
+                    className="w-full shadow rounded-2xl p-3"
+                    type="email"
+                    name="Email"
+                    placeholder="Your Email"
+                    required
+                  />
+                </div>
 
-          {/* Button */}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-[#0A192F] to-[#112240] font-bold text-gray-300 hover:bg-[#274D60] hover:text-[#6BA3BE] px-8 py-2 rounded-2xl"
-            >
-              Send Message
-            </button>
+                {/* Subject */}
+                <div className="flex flex-col mb-4">
+                  <label
+                    className="text-[#274D60] font-bold mb-2"
+                    htmlFor="title"
+                  >
+                    Subject
+                  </label>
+                  <input
+                    className="w-full shadow rounded-2xl p-3"
+                    type="text"
+                    name="title"
+                    placeholder="Subject"
+                    required
+                  />
+                </div>
+
+                {/* Message */}
+                <div className="flex flex-col mb-4">
+                  <label
+                    className="text-[#274D60] font-bold mb-2"
+                    htmlFor="message"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    className="w-full h-40 shadow rounded-2xl p-3"
+                    name="message"
+                    placeholder="Your Message"
+                    required
+                  />
+                </div>
+
+                {/* Button */}
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-gradient-to-r from-[#0A192F] to-[#112240] font-bold text-gray-300 hover:bg-[#274D60] hover:text-[#6BA3BE] px-8 py-2 rounded-2xl"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
       <div className="h-30 bg-gradient-to-r from-[#0A192F] to-[#112240] flex flex-col">
         <div className="flex justify-center p-5">
