@@ -267,7 +267,7 @@ function App() {
             <Typewriter
               options={{
                 strings: [
-                  "Full Stack Developer",
+                  "Web Developer",
                   "Software Engineer",
                   "Tech Enthusiast",
                 ],
@@ -589,7 +589,11 @@ function App() {
     </div>
   ))}
 </div>
-                <div className="flex flex-wrap gap-3 mt-4">
+
+<div>
+
+
+                <div className="flex  flex-wrap gap-3 mt-4">
                   {/* Live Demo */}
                   <a
                     href={project.link}
@@ -598,7 +602,7 @@ function App() {
                   >
                     <motion.button
                       whileHover={{ scale: 1.1 }}
-                      className="flex px-6 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white mb-5"
+                      className="flex px-4 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white mb-5"
                     >
                       <FaRegEye size={22} className="mr-2" />
                       Live Demo
@@ -610,7 +614,7 @@ function App() {
   <motion.button
     whileHover={{ scale: 1.1 }}
     onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-    className="flex  px-6 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white"
+    className="flex  px-4 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white"
   >
     <a
                 href="https://github.com/smshah121"
@@ -618,7 +622,7 @@ function App() {
                 rel="noopener noreferrer"
               >
                 <FaGithub
-                  className="text-gray-400 hover:text-[#181717] mr-2"
+                  className="text-gray-300 hover:text-[#181717] mr-2"
                   size={20}
                 />
               </a>
@@ -651,6 +655,8 @@ function App() {
   )}
 </div>
                 </div>
+</div>
+
               </div>
             </motion.div>
           ))}
