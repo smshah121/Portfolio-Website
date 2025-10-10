@@ -22,6 +22,7 @@ import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 import { FaRegEye } from "react-icons/fa";
 import { SiRedux } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
+import { SiAxios } from "react-icons/si";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -60,7 +61,8 @@ function App() {
     Tailwind: <SiTailwindcss className="text-[#38BDF8]" title="Tailwind" />,
     Postgres: <BiLogoPostgresql className="text-[#4169E1]" title="Postgres"/>,
     Redux: <SiRedux  className="text-[#764ABC]"/>,
-    Motion: <TbBrandFramerMotion className="text-[#E94E44]" />
+    Motion: <TbBrandFramerMotion className="text-[#E94E44]" />,
+    Axios: <SiAxios className="text-gray-900" />
   }
 
   useEffect(() => {
@@ -192,7 +194,8 @@ function App() {
 
           {/* Resume + Social Links */}
           <div className="flex flex-col mt-4">
-            <a
+            <div className="flex gap-4">
+              <a
               href="/Resume Internship for Portfolio.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -203,6 +206,11 @@ function App() {
                 Resume
               </button>
             </a>
+            <a href="#project">
+              <button className="w-40 h-10 flex justify-center items-center gap-2 rounded border font-bold bg-[#1f4c64] text-[#83A6CE] hover:bg-[#112240] hover:text-white text-sm">View Projects</button>
+            </a>
+            </div>
+            
 
             <div className="flex mt-8 space-x-4">
               <a
@@ -301,13 +309,13 @@ function App() {
             My coding journey began in{" "}
             <span className="font-semibold">2022</span> with online courses of
             Udemy like Angela Yu’s Web Development Bootcamp and 100 Days of
-            Python. Since <span className="font-semibold">March 2023</span>,
-            I’ve been pursuing a BS in Software Engineering at Iqra University
+            Python.where I built a strong foundation in programming and problem-solving. Since <span className="font-semibold">March 2023</span>,
+            I’ve been pursuing a BS in Software Engineering at Iqra University.
           </p>
           <p className="text-gray-700">
             I built several frontend projects early on — including a Currency
             Converter, Weather App, and Tic Tac Toe game — using vanilla
-            JavaScript and DOM manipulation
+            JavaScript and DOM manipulation.
           </p>
           <br />
           <p className="text-gray-700 leading-relaxed">
@@ -545,7 +553,7 @@ function App() {
               source: {
                 frontend: "https://github.com/smshah121/Weather-Web-App",
               },
-              tech: ["React", "Tailwind"]
+              tech: ["React", "Tailwind","Axios"]
             },
 
             {
@@ -556,7 +564,7 @@ function App() {
               source: {
                 frontend: "https://github.com/smshah121/currency-converter",
               },
-              tech: ["React", "Tailwind"]
+              tech: ["React", "Tailwind","Axios"]
             },
           ].map((project, index) => (
             <motion.div
@@ -683,27 +691,30 @@ function App() {
               className="w-full max-w-sm h-90 mt-8 rounded-2xl object-cover"
               alt="Gmail Logo"
             />
-
-            <div className="flex items-center p-2 mt-4">
-              <IoIosMail size={34} className="text-[#274D60]" />
+            <div className="p-5">
+              <div className="flex items-center p-2 mt-4">
+              <IoIosMail size={34} className="text-red-500" />
               <h4 className="ml-2 text-gray-700 break-all font-semibold text-xl">
                 sm.shah2003@hotmail.com
               </h4>
             </div>
 
             <div className="flex items-center p-2">
-              <FaPhoneAlt size={32} className="text-[#274D60]" />
+              <FaPhoneAlt size={32} className="text-blue-800" />
               <h4 className="ml-2 text-gray-700 font-semibold text-xl">
                 +92 319 2508750
               </h4>
             </div>
 
             <div className="flex items-center p-2">
-              <FaLocationDot size={32} className="text-[#274D60]" />
+              <FaLocationDot size={32} className="text-red-700" />
               <h4 className="ml-2 text-gray-700 font-semibold text-xl">
                 Karachi, Pakistan
               </h4>
             </div>
+
+            </div>
+            
           </div>
 
           {/* Right Side - Contact Form */}
