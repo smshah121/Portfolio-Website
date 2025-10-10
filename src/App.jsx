@@ -244,7 +244,7 @@ function App() {
             About Me
           </h1>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Hi 👋 I'm{" "}
+            Hi  I'm{" "}
             <span className="font-semibold text-[#274D60]">
               Syed Momin Ali Shah
             </span>
@@ -304,9 +304,11 @@ function App() {
               <h3 className="text-xl font-semibold text-[#274D60]">
                 Bootcamps & Online Courses
               </h3>
-              <p className="text-gray-600 text-sm">
-                Udemy (Angela Yu, Python 100 Days) – 2022
-              </p>
+              <ul className="list-disc pl-3">
+                <li className="text-gray-600 text-sm">Udemy (Web Dev, Python 100 Days) – 2022</li>
+                <li className="text-gray-600 text-sm">Last Mile Tech (Full Stack Bootcamp) - 2025</li>
+              </ul>
+              
             </div>
 
             <div>
@@ -316,9 +318,11 @@ function App() {
               <h3 className="text-xl font-semibold text-[#274D60]">
                 Full Stack Projects
               </h3>
-              <p className="text-gray-600 text-sm">
-                Quote App, LMS, E-Commerce, Portfolio
-              </p>
+              <ul className="list-disc pl-3">
+                <li className="text-gray-600 text-sm"> Learning Management System</li>
+                <li className="text-gray-600 text-sm">PriceTag E-Commerce</li>
+                <li className="text-gray-600 text-sm">QuoteNest Personal Quotes Management</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -340,7 +344,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#E34F26] md:text-black md:hover:text-[#E34F26]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg text-[#E34F26] md:text-gray-800 md:hover:text-[#E34F26]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <FaHtml5 size={60} />
       <h1 className="text-gray-500 font-bold mt-2">HTML</h1>
@@ -352,7 +356,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#1572B6] md:text-black md:hover:text-[#1572B6] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg text-[#1572B6] md:text-gray-800 md:hover:text-[#1572B6] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <FaCss3Alt size={60} />
       <h1 className="text-gray-500 font-bold mt-2">CSS</h1>
@@ -364,7 +368,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#F7DF1E] md:text-black hover:text-[#F7DF1E] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg text-[#F7DF1E] md:text-gray-800 hover:text-[#F7DF1E] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <TbBrandJavascript size={60} />
       <h1 className="text-gray-500 font-bold mt-2">JavaScript</h1>
@@ -376,7 +380,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.1 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#3178C6] md:text-black hover:text-[#3178C6]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg text-[#3178C6] md:text-gray-800 hover:text-[#3178C6]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <TbBrandTypescript size={60} />
       <h1 className="text-gray-500 font-bold mt-2">TypeScript</h1>
@@ -388,7 +392,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.3 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#61DAFB] md:text-black md:hover:text-[#61DAFB] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg text-[#61DAFB] md:text-gray-800 md:hover:text-[#61DAFB] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <GrReactjs size={60} />
       <h1 className="text-gray-500 font-bold mt-2">ReactJS</h1>
@@ -400,7 +404,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#38BDF8] md:text-black md:hover:text-[#38BDF8] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg text-[#38BDF8] md:text-gray-800 md:hover:text-[#38BDF8] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <SiTailwindcss size={60} />
       <h1 className="text-gray-500 font-bold mt-2">Tailwind</h1>
@@ -412,7 +416,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.7 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#E0234E] md:text-black md:hover:text-[#E0234E]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg text-[#E0234E] md:text-gray-800 md:hover:text-[#E0234E]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <SiNestjs size={60} />
       <h1 className="text-gray-500 font-bold mt-2">NestJS</h1>
@@ -424,7 +428,7 @@ function App() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.9 }}
-      className="p-6 flex flex-col items-center shadow-lg text-[#4169E1] md:text-black md:hover:text-[#4169E1] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
+      className="p-6 flex flex-col items-center shadow-lg text-[#4169E1] md:text-gray-800 md:hover:text-[#4169E1] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
     >
       <BiLogoPostgresql size={60} />
       <h1 className="text-gray-500 font-bold mt-2">Postgres</h1>
@@ -540,20 +544,20 @@ function App() {
       />
 
       <div className="flex items-center p-2 mt-4">
-        <IoIosMail size={24} className="text-[#274D60]" />
-        <h4 className="ml-2 text-gray-700 break-all">
+        <IoIosMail size={34} className="text-[#274D60]" />
+        <h4 className="ml-2 text-gray-700 break-all font-semibold text-xl">
           sm.shah2003@hotmail.com
         </h4>
       </div>
 
       <div className="flex items-center p-2">
-        <FaPhoneAlt size={24} className="text-[#274D60]" />
-        <h4 className="ml-2 text-gray-700">+92 319 2508750</h4>
+        <FaPhoneAlt size={32} className="text-[#274D60]" />
+        <h4 className="ml-2 text-gray-700 font-semibold text-xl">+92 319 2508750</h4>
       </div>
 
       <div className="flex items-center p-2">
-        <FaLocationDot size={24} className="text-[#274D60]" />
-        <h4 className="ml-2 text-gray-700">Karachi, Pakistan</h4>
+        <FaLocationDot size={32} className="text-[#274D60]" />
+        <h4 className="ml-2 text-gray-700 font-semibold text-xl">Karachi, Pakistan</h4>
       </div>
     </div>
 
