@@ -328,17 +328,18 @@ function App() {
           />
 
           {/* Timeline */}
-          <div className="relative border-l-2 border-[#274D60] pl-6">
+          <div className="relative border-l-2 w-80 border-[#274D60] pl-6">
             <div className="mb-8">
               <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
                 🎓
               </div>
               <h3 className="text-xl font-semibold text-[#274D60]">
-                BS Software Engineering
+                Education
               </h3>
-              <p className="text-gray-600 text-sm">
-                Iqra University (2023 – Present)
-              </p>
+              <ul className="list-disc pl-3">
+                <li className="text-gray-600 text-sm w-90">Iqra University (BS Software Engineering) 2023-Present</li>
+                <li className="text-gray-600 text-sm w-80">New Aligarh Degree College (Pre-Eng) 2020-22</li>
+              </ul>
             </div>
 
             <div className="mb-8">
@@ -593,7 +594,7 @@ function App() {
 <div>
 
 
-                <div className="flex  flex-wrap gap-3 mt-4">
+                <div className="flex  flex-wrap md:gap-3 mt-4">
                   {/* Live Demo */}
                   <a
                     href={project.link}
@@ -602,7 +603,7 @@ function App() {
                   >
                     <motion.button
                       whileHover={{ scale: 1.1 }}
-                      className="flex px-4 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white mb-5"
+                      className="flex px-3 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white mb-5"
                     >
                       <FaRegEye size={22} className="mr-2" />
                       Live Demo
@@ -614,7 +615,7 @@ function App() {
   <motion.button
     whileHover={{ scale: 1.1 }}
     onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-    className="flex  px-4 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white"
+    className="flex  px-3 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white"
   >
     <a
                 href="https://github.com/smshah121"
