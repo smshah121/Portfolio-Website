@@ -346,7 +346,7 @@ function App() {
               </h3>
               <ul className="list-disc pl-3">
                 <li className="w-70 text-gray-600 text-sm md:w-90">Iqra University (BS Software Engineering) 2023-Present</li>
-                <li className="w-60 text-gray-600 text-sm md:w-80">New Aligarh Degree College (Pre-Eng) 2020-22</li>
+                <li className="w-67 text-gray-600 text-sm md:w-80">New Aligarh Degree College (Pre-Eng) 2020-22</li>
               </ul>
             </div>
 
