@@ -188,12 +188,12 @@ function App() {
           <h2 className="font-bold text-3xl md:text-7xl text-[#736bbe] leading-tight">
             Syed Momin Ali Shah
           </h2>
-          <i className="mt-5 text-[#afabd6]  md:text-lg">
+          <i className="mt-5 text-[#afabd6] text-sm md:text-md">
             Building web applications with  React and NestJS. Currently a third-year Software Engineering student.
           </i>
 
           {/* Resume + Social Links */}
-          <div className="flex flex-col mt-4">
+          <div className="flex items-center md:items-start flex-col mt-4">
             <div className="flex gap-4">
               <a
   href="/Resume Internship for Portfolio.pdf"
