@@ -202,7 +202,7 @@ function App() {
   download="SyedMominAliShah_Resume.pdf"
 >
   <button
-    className="w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#E0AAFF] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-sm"
+    className="w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-sm"
   >
     <IoMdDownload size={18} />
     Resume
@@ -211,7 +211,7 @@ function App() {
 
 <a href="#project">
   <button
-    className="w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#E0AAFF] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-sm"
+    className="w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-sm"
   >
     View Projects
   </button>
@@ -660,7 +660,7 @@ function App() {
                   >
                     <motion.button
                       whileHover={{ scale: 1.1 }}
-                      className="flex px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#E0AAFF] hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300  font-bold  mb-5"
+                      className="flex px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300  font-bold  mb-5"
                     >
                       <FaRegEye size={22} className="mr-2" />
                       Live Demo
@@ -672,7 +672,7 @@ function App() {
   <motion.button
     whileHover={{ scale: 1.1 }}
     onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-    className="flex  px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#E0AAFF] font-bold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300"
+    className="flex  px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-bold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300"
   >
     <a
                 href="https://github.com/smshah121"
@@ -680,7 +680,7 @@ function App() {
                 rel="noopener noreferrer"
               >
                 <FaGithub
-                  className="text-gray-300 hover:text-[#181717] mr-2"
+                  className="text-gray-200 hover:text-[#181717] mr-2"
                   size={20}
                 />
               </a>
