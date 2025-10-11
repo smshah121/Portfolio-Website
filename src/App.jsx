@@ -368,7 +368,7 @@ function App() {
         <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
           💻
         </div>
-        <div className="bg-cyan-50">
+        <div className="bg-cyan-50 flex flex-col items-start md:items-end">
           <h3 className="text-xl font-semibold text-[#274D60]">
           Bootcamps & Online Courses
         </h3>
