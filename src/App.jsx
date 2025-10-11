@@ -106,7 +106,7 @@ function App() {
         className={`fixed top-0 w-full flex justify-between items-center py-6 px-6 transition-all duration-300 z-50 ${
           scrolled
             ? "bg-transparent backdrop-blur-md"
-            : "bg-gradient-to-r from-[#0A192F] to-[#112240]"
+            : "bg-gradient-to-r from-[#0e0a2f] to-[#0e113a]"
         }`}
       >
         {/* Logo */}
@@ -132,8 +132,8 @@ function App() {
                 href={`#${item.id}`}
                 className={`transition ${
                   activeSection === item.id
-                    ? "text-[#6BA3BE] font-bold"
-                    : "text-gray-300 hover:text-[#6BA3BE]"
+                    ? "text-[#736bbe] font-bold"
+                    : "text-gray-300 hover:text-[#736bbe]"
                 }`}
               >
                 {item.label}
@@ -173,7 +173,7 @@ function App() {
       </div>
       <div
         id="hero"
-        className="flex flex-col-reverse md:flex-row justify-between bg-gradient-to-r from-[#0A192F] to-[#112240] min-h-screen items-center p-6 pt-28 md:pt-20"
+        className="flex flex-col-reverse md:flex-row justify-between bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen items-center p-6 pt-28 md:pt-20"
       >
         {/* Left: Text */}
         <motion.div
@@ -185,10 +185,10 @@ function App() {
           <h1 className="mt-5 md:mt-0 font-bold text-4xl md:text-6xl text-gray-200">
             Hello! I'm
           </h1>
-          <h2 className="font-bold text-5xl md:text-7xl text-[#6BA3BE] leading-tight">
+          <h2 className="font-bold text-5xl md:text-7xl text-[#736bbe] leading-tight">
             Syed Momin Ali Shah
           </h2>
-          <i className="mt-5 text-[#a3b8cf]  md:text-lg">
+          <i className="mt-5 text-[#afabd6]  md:text-lg">
             Building web applications with  React and NestJS. Currently a third-year Software Engineering student.
           </i>
 
@@ -196,19 +196,27 @@ function App() {
           <div className="flex flex-col mt-4">
             <div className="flex gap-4">
               <a
-              href="/Resume Internship for Portfolio.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download="SyedMominAliShah_Resume.pdf"
-            >
-              <button className="w-40 h-10 flex justify-center items-center gap-2 rounded border font-bold bg-[#1f4c64] text-[#83A6CE] hover:bg-[#112240] hover:text-white text-sm">
-                <IoMdDownload size={18} />
-                Resume
-              </button>
-            </a>
-            <a href="#project">
-              <button className="w-40 h-10 flex justify-center items-center gap-2 rounded border font-bold bg-[#1f4c64] text-[#83A6CE] hover:bg-[#112240] hover:text-white text-sm">View Projects</button>
-            </a>
+  href="/Resume Internship for Portfolio.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  download="SyedMominAliShah_Resume.pdf"
+>
+  <button
+    className="w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#E0AAFF] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-sm"
+  >
+    <IoMdDownload size={18} />
+    Resume
+  </button>
+</a>
+
+<a href="#project">
+  <button
+    className="w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#E0AAFF] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-sm"
+  >
+    View Projects
+  </button>
+</a>
+
             </div>
             
 
@@ -271,7 +279,7 @@ function App() {
             src="/portfolio3.jpg"
             alt="Profile"
           />
-          <h4 className="text-[#6BA3BE] text-4xl md:text-4xl font-semibold text-center">
+          <h4 className="text-[#736bbe] text-4xl md:text-4xl font-semibold text-center">
             <Typewriter
               options={{
                 strings: [
@@ -288,106 +296,147 @@ function App() {
       </div>
 
       <div
-        id="about"
-        className="flex flex-col lg:flex-row justify-between p-10 bg-gray-50"
-      >
-        {/* Left Side - About Me */}
-        <div className="flex flex-col justify-center lg:w-1/2">
-          <h1 className="text-[#274D60] text-5xl font-bold mb-6 ml-2">
-            About Me
-          </h1>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Hi I'm{" "}
-            <span className="font-semibold text-[#274D60]">
-              Syed Momin Ali Shah
-            </span>
-            , a passionate{" "}
-            <span className="font-semibold">Full Stack Developer</span> who
-            loves building clean, scalable, and user-friendly applications.
-          </p>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            My coding journey began in{" "}
-            <span className="font-semibold">2022</span> with online courses of
-            Udemy like Angela Yu’s Web Development Bootcamp and 100 Days of
-            Python.where I built a strong foundation in programming and problem-solving. Since <span className="font-semibold">March 2023</span>,
-            I’ve been pursuing a BS in Software Engineering at Iqra University.
-          </p>
-          <p className="text-gray-700">
-            I built several frontend projects early on — including a Currency
-            Converter, Weather App, and Tic Tac Toe game — using vanilla
-            JavaScript and DOM manipulation.
-          </p>
-          <br />
-          <p className="text-gray-700 leading-relaxed">
-            Later, I joined a university bootcamp where I mastered{" "}
-            <span className="font-semibold">Backend Development</span> with
-            NestJS and PostgreSQL. Today, I work as a{" "}
-            <span className="font-semibold">Full Stack Developer</span> and have
-            built complete real-world apps.
-          </p>
+  id="about"
+  className="flex flex-col lg:flex-row justify-between p-10 bg-gray-50"
+>
+  {/* Left Side - About Me */}
+  <div className="flex flex-col justify-center lg:w-1/2 pr-6">
+    <h1 className="text-[#274D60] text-5xl font-bold mb-6">About Me</h1>
+
+    <p className="text-gray-700 leading-relaxed mb-4">
+      Hi I'm{" "}
+      <span className="font-semibold text-[#274D60]">
+        Syed Momin Ali Shah
+      </span>
+      , a passionate{" "}
+      <span className="font-semibold">Full Stack Developer</span> who loves
+      building clean, scalable, and user-friendly applications.
+    </p>
+
+    <p className="text-gray-700 leading-relaxed mb-4">
+      My coding journey began in{" "}
+      <span className="font-semibold">2022</span> with online courses of Udemy
+      like Angela Yu’s Web Development Bootcamp and 100 Days of Python — where I
+      built a strong foundation in programming and problem-solving. Since{" "}
+      <span className="font-semibold">March 2023</span>, I’ve been pursuing a BS
+      in Software Engineering at Iqra University.
+    </p>
+
+    <p className="text-gray-700 mb-4">
+      I built several frontend projects early on — including a Currency
+      Converter, Weather App, and Tic Tac Toe game — using vanilla JavaScript
+      and DOM manipulation.
+    </p>
+
+    <p className="text-gray-700 leading-relaxed">
+      Later, I joined a university bootcamp where I mastered{" "}
+      <span className="font-semibold">Backend Development</span> with NestJS and
+      PostgreSQL. Today, I work as a{" "}
+      <span className="font-semibold">Full Stack Developer</span> and have built
+      complete real-world apps.
+    </p>
+  </div>
+
+  {/* Right Side - Timeline (Alternate Left-Right Style) */}
+  <div className="lg:w-1/2 flex flex-col items-center mt-10 lg:mt-0 relative">
+    <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-[#4C1D95]/60 transform -translate-x-1/2"></div>
+
+    {/* Education - Right */}
+    <div className="w-full mb-12 flex justify-end">
+      <div className="relative w-1/2 pl-6">
+        <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
+          🎓
         </div>
-
-        {/* Right Side - Image + Timeline */}
-        <div className="lg:w-1/2 flex flex-col items-center mt-10 lg:mt-0">
-          <img
-            className="w-60 h-50 rounded-2xl shadow-lg mb-8 object-cover"
-            src="/portfolioabout.png"
-            alt="About"
-          />
-
-          {/* Timeline */}
-          <div className="relative border-l-2 w-80 border-[#274D60] pl-6">
-            <div className="mb-8">
-              <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-                🎓
-              </div>
-              <h3 className="text-xl font-semibold text-[#274D60]">
-                Education
-              </h3>
-              <ul className="list-disc pl-3">
-                <li className="w-70 text-gray-600 text-sm md:w-90">Iqra University (BS Software Engineering) 2023-Present</li>
-                <li className="w-67 text-gray-600 text-sm md:w-80">New Aligarh Degree College (Pre-Eng) 2020-22</li>
-              </ul>
-            </div>
-
-            <div className="mb-8">
-              <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-                💻
-              </div>
-              <h3 className="text-xl font-semibold text-[#274D60]">
-                Bootcamps & Online Courses
-              </h3>
-              <ul className="list-disc pl-3">
-                <li className="text-gray-600 text-sm">
-                  Udemy (Web Dev, Python 100 Days) – 2022
-                </li>
-                <li className="text-gray-600 text-sm">
-                  Last Mile Tech (Full Stack Bootcamp) - 2025
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-                🚀
-              </div>
-              <h3 className="text-xl font-semibold text-[#274D60]">
-                Full Stack Projects
-              </h3>
-              <ul className="list-disc pl-3">
-                <li className="text-gray-600 text-sm">
-                  {" "}
-                  Learning Management System
-                </li>
-                <li className="text-gray-600 text-sm">PriceTag E-Commerce</li>
-                <li className="text-gray-600 text-sm">
-                  QuoteNest Personal Quotes Management
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div className="bg-purple-50">
+          <h3 className="text-xl font-semibold text-[#274D60]">Education</h3>
+        <ul className="list-disc pl-4">
+          <li className="text-gray-600 text-sm">
+            Iqra University (BS Software Engineering) 2023–Present
+          </li>
+          <li className="text-gray-600 text-sm">
+            New Aligarh Degree College (Pre-Eng) 2020–22
+          </li>
+        </ul>
         </div>
+        
       </div>
+    </div>
+
+    {/* Bootcamps - Left */}
+    <div className="w-full mb-12 flex justify-start">
+      <div className="relative w-1/2 pr-6 text-right">
+        <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
+          💻
+        </div>
+        <div className="bg-cyan-50">
+          <h3 className="text-xl font-semibold text-[#274D60]">
+          Bootcamps & Online Courses
+        </h3>
+        <ul className="list-disc pr-4 list-inside">
+          <li className="text-gray-600 text-sm">
+            Udemy (Web Dev, Python 100 Days) – 2022
+          </li>
+          <li className="text-gray-600 text-sm">
+            Last Mile Tech (Full Stack Bootcamp) – 2025
+          </li>
+        </ul>
+
+        </div>
+        
+      </div>
+    </div>
+
+    {/* Full Stack Projects - Right */}
+    <div className="w-full mb-12 flex justify-end">
+      <div className="relative w-1/2 pl-6">
+        <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
+          🚀
+        </div>
+        <div className="bg-gray-100">
+          <h3 className="text-xl font-semibold text-[#274D60]">
+          Full Stack Projects
+        </h3>
+        <ul className="list-disc pl-4">
+          <li className="text-gray-600 text-sm">Learning Management System</li>
+          <li className="text-gray-600 text-sm">PriceTag E-Commerce</li>
+          <li className="text-gray-600 text-sm">
+            QuoteNest Personal Quotes Management
+          </li>
+        </ul>
+        </div>
+        
+      </div>
+    </div>
+    <div className="w-full mb-12 flex justify-start">
+      <div className="relative w-1/2 pr-6 text-right">
+        <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
+          💻
+        </div>
+        <div className="bg-amber-50">
+          <h3 className="text-xl font-semibold text-[#274D60]">
+          Frontend Projects
+        </h3>
+        <ul className="list-disc pr-4 list-inside">
+          <li className="text-gray-600 text-sm mr-9.5">
+            Weather App
+          </li>
+          <li className="text-gray-600 text-sm">
+          Currency Converter
+          </li>
+          <li className="text-gray-600 text-sm mr-5.5">
+            TicTacToe Game
+          </li>
+
+        </ul>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
       <div id="skills" className="py-16 px-6 bg-gray-50 ">
         {/* Heading */}
@@ -499,9 +548,9 @@ function App() {
 
       <div
         id="project"
-        className="min-h-screen bg-gradient-to-r from-[#0A192F] to-[#112240] py-16 px-6"
+        className="min-h-screen bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] py-16 px-6"
       >
-        <div className="font-bold text-5xl text-[#7ab6d4] mb-12 text-center">
+        <div className="font-bold text-5xl text-[#736bbe] mb-12 text-center">
           <h1>Projects</h1>
         </div>
 
@@ -585,10 +634,10 @@ function App() {
 
               {/* Text */}
               <div className="flex flex-col  mt-6 md:mt-0 md:ml-8  w-full md:w-2/3">
-                <h1 className="font-bold text-xl md:text-2xl pb-3 text-[#7ab6d4]">
+                <h1 className="font-bold text-xl md:text-2xl pb-3 text-[#736bbe]">
                   {project.title}
                 </h1>
-                <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                <p className="text-[#afabd6] text-sm md:text-base leading-relaxed">
                   {project.desc}
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-3">
@@ -611,7 +660,7 @@ function App() {
                   >
                     <motion.button
                       whileHover={{ scale: 1.1 }}
-                      className="flex px-3 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white mb-5"
+                      className="flex px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#E0AAFF] hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300  font-bold  mb-5"
                     >
                       <FaRegEye size={22} className="mr-2" />
                       Live Demo
@@ -623,7 +672,7 @@ function App() {
   <motion.button
     whileHover={{ scale: 1.1 }}
     onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-    className="flex  px-3 py-2 rounded-3xl bg-[#2a335f] text-[#6aa1bd] font-bold hover:bg-[#112240] hover:text-white"
+    className="flex  px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#E0AAFF] font-bold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300"
   >
     <a
                 href="https://github.com/smshah121"
@@ -809,7 +858,7 @@ function App() {
         </div>
       </div>
 
-      <div className="h-30 bg-gradient-to-r from-[#0A192F] to-[#112240] flex flex-col">
+      <div className="h-30 bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] flex flex-col">
         <div className="flex justify-center p-5">
           <a
             href="https://www.linkedin.com/in/smshah121"
