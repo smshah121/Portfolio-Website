@@ -412,7 +412,7 @@ function App() {
         <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
           💻
         </div>
-        <div className="bg-amber-50">
+        <div className="bg-amber-50 flex flex-col items-start md:items-end">
           <h3 className="text-xl font-semibold text-[#274D60]">
           Frontend Projects
         </h3>
@@ -420,7 +420,7 @@ function App() {
           <li className="text-xs text-gray-600 md:text-sm mr-9.5">
             Weather App
           </li>
-          <li className="text-xs text-gray-600 md:text-sm">
+          <li className="text-xs text-gray-600 md:text-sm ">
           Currency Converter
           </li>
           <li className="text-xs text-gray-600 md:text-sm mr-5.5">
