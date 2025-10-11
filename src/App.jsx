@@ -417,13 +417,13 @@ function App() {
           Frontend Projects
         </h3>
         <ul className="list-disc pr-4 list-inside">
-          <li className="text-gray-600 text-sm mr-9.5">
+          <li className="text-xs text-gray-600 md:text-sm mr-9.5">
             Weather App
           </li>
-          <li className="text-gray-600 text-sm">
+          <li className="text-xs text-gray-600 md:text-sm">
           Currency Converter
           </li>
-          <li className="text-gray-600 text-sm mr-5.5">
+          <li className="text-xs text-gray-600 md:text-sm mr-5.5">
             TicTacToe Game
           </li>
 
