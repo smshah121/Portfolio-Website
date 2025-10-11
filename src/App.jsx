@@ -62,7 +62,7 @@ function App() {
     Postgres: <BiLogoPostgresql className="text-[#4169E1]" title="Postgres"/>,
     Redux: <SiRedux  className="text-[#764ABC]"/>,
     Motion: <TbBrandFramerMotion className="text-[#E94E44]" />,
-    Axios: <SiAxios className="text-gray-900" />
+    Axios: <SiAxios className="text-gray-400" />
   }
 
   useEffect(() => {
@@ -662,7 +662,7 @@ function App() {
                       whileHover={{ scale: 1.1 }}
                       className="flex px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300  font-bold  mb-5"
                     >
-                      <FaRegEye size={22} className="mr-2" />
+                      <FaRegEye size={22} className="text-gray-300 mr-2" />
                       Live Demo
                     </motion.button>
                   </a>
