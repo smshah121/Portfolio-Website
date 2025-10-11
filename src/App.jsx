@@ -185,7 +185,7 @@ function App() {
           <h1 className="mt-5 md:mt-0 font-bold text-4xl md:text-6xl text-gray-200">
             Hello! I'm
           </h1>
-          <h2 className="font-bold text-5xl md:text-7xl text-[#736bbe] leading-tight">
+          <h2 className="font-bold text-xl md:text-7xl text-[#736bbe] leading-tight">
             Syed Momin Ali Shah
           </h2>
           <i className="mt-5 text-[#afabd6]  md:text-lg">
