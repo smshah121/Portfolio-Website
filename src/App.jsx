@@ -159,8 +159,8 @@ function App() {
                     onClick={() => setOpen(false)} // close menu on click
                     className={`transition ${
                       activeSection === item.id
-                        ? "text-[#6BA3BE] font-bold"
-                        : "text-gray-300 hover:text-[#6BA3BE]"
+                        ? "text-[#736bbe] font-bold"
+                        : "text-gray-300 hover:text-[#736bbe]"
                     }`}
                   >
                     {item.label}
