@@ -281,7 +281,7 @@ function App() {
 >
   {/* Left Side - About Me */}
   <div className="flex flex-col justify-center lg:w-1/2 pr-6">
-    <h1 className="text-[#274D60] text-2xl md:text-5xl font-bold mb-6">About Me</h1>
+    <h1 className="text-[#274D60] ml-5 md:ml-0 text-2xl md:text-5xl font-bold mb-6">About Me</h1>
 
     <p className="text-gray-700 leading-relaxed mb-4 text-xs md:text-lg">
       Hi I'm{" "}
