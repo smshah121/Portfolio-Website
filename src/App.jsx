@@ -173,15 +173,15 @@ function App() {
       </div>
      <div
   id="hero"
-  className="flex flex-col-reverse md:flex-row justify-between bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen items-center px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
+  className="flex flex-col-reverse md:flex-row md:flex-wrap justify-center md:justify-between bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen items-center px-4 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
 >
         {/* Left: Text */}
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center md:items-start gap-4 text-white md:w-1/2 lg:w-3/5"
-        >
+  initial={{ x: -100, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  transition={{ duration: 0.5 }}
+  className="flex flex-col items-center md:items-start gap-4 text-white w-full px-4 sm:px-6 md:w-1/2 lg:w-3/5 text-center md:text-left"
+>
           <h1 className="mt-5 md:mt-0 font-bold text-3xl md:text-6xl text-gray-200">
             Hello! I'm
           </h1>
