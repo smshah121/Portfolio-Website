@@ -330,7 +330,7 @@ function App() {
         <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
           🎓
         </div>
-        <div className="bg-purple-50">
+        <div className="bg-purple-50 p-2">
           <h3 className="text-sm md:text-xl font-semibold text-[#274D60]">Education</h3>
         <ul className="list-disc pl-4">
           <li className="text-gray-600 text-xs md:text-sm">
@@ -351,7 +351,7 @@ function App() {
         <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
           💻
         </div>
-        <div className="bg-cyan-50 flex flex-col items-start md:items-end">
+        <div className="bg-cyan-50 p-2 flex flex-col items-start md:items-end">
           <h3 className="text-sm md:text-xl font-semibold text-[#274D60]">
           Bootcamps & Online Courses
         </h3>
@@ -375,7 +375,7 @@ function App() {
         <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
           🚀
         </div>
-        <div className="bg-gray-100">
+        <div className="bg-gray-100 p-2">
           <h3 className="text-sm md:text-xl font-semibold text-[#274D60]">
           Full Stack Projects
         </h3>
@@ -395,7 +395,7 @@ function App() {
         <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
           💻
         </div>
-        <div className="bg-amber-50 flex flex-col items-start md:items-end ">
+        <div className="bg-amber-50 p-2 flex flex-col items-start md:items-end ">
           <h3 className="text-xs md:text-xl font-semibold text-[#274D60]">
           Frontend Projects
         </h3>
@@ -423,7 +423,7 @@ function App() {
 
       <div
   id="skills"
-  className="py-20 px-6 sm:px-10 bg-gradient-to-br from-[#f7f9fb] to-[#e9edf5] text-center"
+  className="py-20 px-6 sm:px-10 bg-gray-50 text-center"
 >
   {/* Heading */}
   <div className="mb-12">
