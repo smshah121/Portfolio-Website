@@ -424,7 +424,7 @@ function App() {
 >
   {/* Heading */}
   <div className="mb-12">
-    <h1 className="text-4xl sm:text-5xl font-extrabold text-[#274D60] mb-3">
+    <h1 className="text-2xl sm:text-5xl font-extrabold text-[#274D60] mb-3">
       Tech Stack
     </h1>
     <div className="w-24 h-1 bg-gradient-to-r from-[#736bbe] to-[#38BDF8] mx-auto rounded-full"></div>
@@ -451,7 +451,7 @@ function App() {
         className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
       >
         <div style={{ color: skill.color }}>{skill.icon}</div>
-        <h1 className="text-gray-700 font-semibold text-lg sm:text-xl">
+        <h1 className="text-gray-700 font-semibold text-sm sm:text-xl">
           {skill.name}
         </h1>
       </motion.div>
