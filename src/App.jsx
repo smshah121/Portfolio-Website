@@ -171,10 +171,10 @@ function App() {
           )}
         </div>
       </div>
-      <div
-        id="hero"
-        className="flex flex-col-reverse md:flex-row justify-between bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen items-center p-6 pt-28 md:pt-20"
-      >
+     <div
+  id="hero"
+  className="flex flex-col-reverse md:flex-row justify-between bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen items-center px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
+>
         {/* Left: Text */}
         <motion.div
           initial={{ x: -100, opacity: 0 }}
@@ -188,7 +188,7 @@ function App() {
           <h2 className="font-bold text-3xl md:text-7xl text-[#736bbe] leading-tight">
             Syed Momin Ali Shah
           </h2>
-          <i className="mt-5 text-[#afabd6] text-xs md:text-md">
+          <i className="mt-5 text-[#afabd6] text-xs md:text-lg">
             Building web applications with  React and NestJS. Currently a third-year Software Engineering student.
           </i>
 
