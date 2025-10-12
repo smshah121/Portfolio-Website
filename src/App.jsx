@@ -281,38 +281,38 @@ function App() {
 >
   {/* Left Side - About Me */}
   <div className="flex flex-col justify-center lg:w-1/2 pr-6">
-    <h1 className="text-[#274D60] text-5xl font-bold mb-6">About Me</h1>
+    <h1 className="text-[#274D60] text-2xl md:text-5xl font-bold mb-6">About Me</h1>
 
-    <p className="text-gray-700 leading-relaxed mb-4">
+    <p className="text-gray-700 leading-relaxed mb-4 text-xs md:text-lg">
       Hi I'm{" "}
-      <span className="font-semibold text-[#274D60]">
+      <span className="font-semibold text-[#274D60] text-xs md:text-lg">
         Syed Momin Ali Shah
       </span>
       , a passionate{" "}
-      <span className="font-semibold">Full Stack Developer</span> who loves
+      <span className="font-semibold text-xs md:text-lg">Full Stack Developer</span> who loves
       building clean, scalable, and user-friendly applications.
     </p>
 
-    <p className="text-gray-700 leading-relaxed mb-4">
+    <p className="text-gray-700 text-xs md:text-lg leading-relaxed mb-4">
       My coding journey began in{" "}
-      <span className="font-semibold">2022</span> with online courses of Udemy
+      <span className="font-semibold text-xs md:text-lg">2022</span> with online courses of Udemy
       like Angela Yu’s Web Development Bootcamp and 100 Days of Python — where I
       built a strong foundation in programming and problem-solving. Since{" "}
-      <span className="font-semibold">March 2023</span>, I’ve been pursuing a BS
+      <span className="font-semibold text-xs md:text-lg">March 2023</span>, I’ve been pursuing a BS
       in Software Engineering at Iqra University.
     </p>
 
-    <p className="text-gray-700 mb-4">
+    <p className="text-gray-700 mb-4 text-xs md:text-lg">
       I built several frontend projects early on — including a Currency
       Converter, Weather App, and Tic Tac Toe game — using vanilla JavaScript
       and DOM manipulation.
     </p>
 
-    <p className="text-gray-700 leading-relaxed">
+    <p className="text-gray-700 leading-relaxed text-xs md:text-lg">
       Later, I joined a university bootcamp where I mastered{" "}
-      <span className="font-semibold">Backend Development</span> with NestJS and
+      <span className="font-semibold text-xs md:text-lg">Backend Development</span> with NestJS and
       PostgreSQL. Today, I work as a{" "}
-      <span className="font-semibold">Full Stack Developer</span> and have built
+      <span className="font-semibold text-xs md:text-lg">Full Stack Developer</span> and have built
       complete real-world apps.
     </p>
   </div>
