@@ -464,7 +464,7 @@ function App() {
         id="project"
         className="min-h-screen bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] py-16 px-6"
       >
-        <div className="font-bold text-5xl text-[#736bbe] mb-12 text-center">
+        <div className="font-bold text-2xl md:text-5xl text-[#736bbe] mb-12 text-center">
           <h1>Projects</h1>
         </div>
 
@@ -548,10 +548,10 @@ function App() {
 
               {/* Text */}
               <div className="flex flex-col  mt-6 md:mt-0 md:ml-8  w-full md:w-2/3">
-                <h1 className="font-bold text-xl md:text-2xl pb-3 text-[#736bbe]">
+                <h1 className="font-bold text-lg md:text-2xl pb-3 text-[#736bbe]">
                   {project.title}
                 </h1>
-                <p className="text-[#afabd6] text-sm md:text-base leading-relaxed">
+                <p className="text-[#afabd6] text-xs md:text-base leading-relaxed">
                   {project.desc}
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-3">
