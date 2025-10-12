@@ -188,7 +188,7 @@ function App() {
           <h2 className="font-bold text-3xl md:text-7xl text-[#736bbe] leading-tight">
             Syed Momin Ali Shah
           </h2>
-          <i className="mt-5 text-[#afabd6] text-sm md:text-md">
+          <i className="mt-5 text-[#afabd6] text-xs md:text-md">
             Building web applications with  React and NestJS. Currently a third-year Software Engineering student.
           </i>
 
