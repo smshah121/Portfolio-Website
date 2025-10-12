@@ -206,31 +206,41 @@ function App() {
       />
     </h4>
 
-    <p className="mt-5 text-[#afabd6] text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
+    <p className="mt-5 text-[#afabd6] text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl">
       I build modern and scalable web applications using <span className="text-[#8078ce] font-semibold">React</span> and <span className="text-[#8078ce] font-semibold">NestJS</span>.  
       Currently, I’m a third-year <span className="text-[#8078ce] font-semibold">Software Engineering</span> student, passionate about crafting clean, efficient, and user-friendly interfaces.
     </p>
 
     {/* Buttons */}
-    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 w-full">
-      <a
-        href="/Resume Internship for Portfolio.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        download="SyedMominAliShah_Resume.pdf"
+    <div className="flex items-center md:items-start flex-col mt-4">
+  {/* Buttons Wrapper */}
+  <div className="flex gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start">
+    {/* Resume Button */}
+    <a
+      href="/Resume Internship for Portfolio.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      download="SyedMominAliShah_Resume.pdf"
+    >
+      <button
+        className="w-28 sm:w-36 md:w-40 h-8 sm:h-9 md:h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-xs sm:text-sm"
       >
-        <button className="w-full sm:w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#b9a9ff] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_20px_#C084FC] transition-all duration-300 text-sm">
-          <IoMdDownload size={18} />
-          Resume
-        </button>
-      </a>
+        <IoMdDownload size={14} className="sm:size-[16px] md:size-[18px]" />
+        Resume
+      </button>
+    </a>
 
-      <a href="#project">
-        <button className="w-full sm:w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#b9a9ff] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_20px_#C084FC] transition-all duration-300 text-sm">
-          View Projects
-        </button>
-      </a>
-    </div>
+    {/* View Projects Button */}
+    <a href="#project">
+      <button
+        className="w-28 sm:w-36 md:w-40 h-8 sm:h-9 md:h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-xs sm:text-sm"
+      >
+        View Projects
+      </button>
+    </a>
+  </div>
+</div>
+
 
     {/* Social Links */}
     <div className="flex justify-center mt-8 space-x-5">
