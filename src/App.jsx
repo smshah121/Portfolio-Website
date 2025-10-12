@@ -464,7 +464,7 @@ function App() {
         id="project"
         className="min-h-screen bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] py-16 px-6"
       >
-        <div className="font-bold text-2xl md:text-5xl text-[#736bbe] mb-12 text-center">
+        <div className="font-bold text-3xl md:text-5xl text-[#736bbe] mb-12 text-center">
           <h1>Projects</h1>
         </div>
 
@@ -638,7 +638,7 @@ function App() {
       <div id="contact" className="py-16 px-6 bg-gray-50">
         {/* Heading */}
         <div className="flex justify-center mb-10">
-          <h1 className="text-[#274D60] font-bold text-4xl text-center">
+          <h1 className="text-[#274D60] font-bold text-2xl  md:text-4xl text-center">
             Let's Work Together !
           </h1>
         </div>
@@ -647,7 +647,7 @@ function App() {
         <div className="flex flex-col md:flex-row justify-between gap-10 max-w-6xl mx-auto">
           {/* Left Side - Contact Info */}
           <div className="flex flex-col md:w-1/2">
-            <h1 className="text-[#274D60] font-bold text-3xl">Contact Me</h1>
+            <h1 className="text-[#274D60] font-bold text-2xl md:text-3xl">Contact Me</h1>
 
             <img
               src="/contact.avif"
@@ -682,7 +682,7 @@ function App() {
 
           {/* Right Side - Contact Form */}
           <div className="flex flex-col md:w-1/2">
-            <h1 className="text-[#274D60] font-bold text-3xl">Get in touch</h1>
+            <h1 className="text-[#274D60] font-bold text-2xl md:text-3xl">Get in touch</h1>
             <p className="mt-2 text-gray-700">
               Feel free to reach out if you'd like to collaborate – you're just
               a few clicks away!
