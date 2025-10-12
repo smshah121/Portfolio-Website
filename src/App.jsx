@@ -173,127 +173,97 @@ function App() {
       </div>
      <div
   id="hero"
-  className="flex flex-col-reverse md:flex-row md:flex-wrap justify-center md:justify-between bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen items-center px-4 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
+  className="flex flex-col justify-center items-center text-center bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
 >
-        {/* Left: Text */}
-        <motion.div
-  initial={{ x: -100, opacity: 0 }}
-  animate={{ x: 0, opacity: 1 }}
-  transition={{ duration: 0.5 }}
-  className="flex flex-col items-center md:items-start gap-4 text-white w-full px-4 sm:px-6 md:w-1/2 lg:w-3/5 text-center md:text-left"
->
-          <h1 className="mt-5 md:mt-0 font-bold text-3xl md:text-6xl text-gray-200">
-            Hello! I'm
-          </h1>
-          <h2 className="font-bold text-3xl md:text-7xl text-[#736bbe] leading-tight">
-            Syed Momin Ali Shah
-          </h2>
-          <i className="mt-5 text-[#afabd6] text-xs md:text-lg">
-            Building web applications with  React and NestJS. Currently a third-year Software Engineering student.
-          </i>
-
-          {/* Resume + Social Links */}
-          <div className="flex items-center md:items-start flex-col mt-4">
-            <div className="flex gap-4">
-              <a
-  href="/Resume Internship for Portfolio.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  download="SyedMominAliShah_Resume.pdf"
->
-  <button
-    className="w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-sm"
+  {/* Animated Intro Text */}
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="flex flex-col items-center gap-4 text-white max-w-3xl"
   >
-    <IoMdDownload size={18} />
-    Resume
-  </button>
-</a>
+    <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl text-gray-200">
+      Hello! I'm
+    </h1>
+    <h2 className="font-extrabold text-4xl sm:text-6xl md:text-7xl text-[#8B7BE6] drop-shadow-[0_0_10px_#736bbeaa]">
+      Syed Momin Ali Shah
+    </h2>
 
-<a href="#project">
-  <button
-    className="w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-sm"
-  >
-    View Projects
-  </button>
-</a>
+    <h4 className="text-[#C1BEE6] text-lg sm:text-xl md:text-2xl font-medium mt-2">
+      <Typewriter
+        options={{
+          strings: [
+            "Web Developer",
+            "Software Engineer",
+            "Tech Enthusiast",
+            "React & NestJS Developer",
+          ],
+          autoStart: true,
+          loop: true,
+          delay: 60,
+          deleteSpeed: 40,
+        }}
+      />
+    </h4>
 
-            </div>
-            
+    <p className="mt-5 text-[#afabd6] text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
+      I build modern and scalable web applications using <span className="text-[#8078ce] font-semibold">React</span> and <span className="text-[#8078ce] font-semibold">NestJS</span>.  
+      Currently, I’m a third-year <span className="text-[#8078ce] font-semibold">Software Engineering</span> student, passionate about crafting clean, efficient, and user-friendly interfaces.
+    </p>
 
-            <div className="flex mt-8 space-x-4">
-              <a
-                href="https://www.linkedin.com/in/smshah121"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedin
-                  className="text-gray-100 hover:text-[#0A66C2]"
-                  size={32}
-                />
-              </a>
-              <a
-                href="https://github.com/smshah121"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub
-                  className="text-gray-100 hover:text-[#181717]"
-                  size={32}
-                />
-              </a>
-              <a
-                href="https://www.instagram.com/__smshah__"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram
-                  className="text-gray-100 hover:bg-[linear-gradient(45deg,#F77737,#E4405F,#C13584,#5851DB)]"
-                  size={32}
-                />
-              </a>
-              <a href="mailto:sm.shah2003@hotmail.com">
-                <PiMicrosoftOutlookLogo
-                  className="text-gray-100 hover:text-[#0078D4]"
-                  size={32}
-                />
-              </a>
-              <a href="mailto:smshah.2003@gmail.com">
-                <IoMdMail
-                  className="text-gray-100 hover:text-[#EA4335]"
-                  size={32}
-                />
-              </a>
-            </div>
-          </div>
-        </motion.div>
+    {/* Buttons */}
+    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 w-full">
+      <a
+        href="/Resume Internship for Portfolio.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        download="SyedMominAliShah_Resume.pdf"
+      >
+        <button className="w-full sm:w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#b9a9ff] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_20px_#C084FC] transition-all duration-300 text-sm">
+          <IoMdDownload size={18} />
+          Resume
+        </button>
+      </a>
 
-        {/* Right: Image + Typewriter */}
-        <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center md:w-1/2 lg:w-2/5 mt-8 md:mt-0"
-        >
-          <img
-            className="w-60 h-60 md:w-[400px] md:h-[400px] mb-5 rounded-full"
-            src="/portfolio3.jpg"
-            alt="Profile"
-          />
-          <h4 className="text-[#736bbe] text-3xl md:text-4xl font-semibold text-center">
-            <Typewriter
-              options={{
-                strings: [
-                  "Web Developer",
-                  "Software Engineer",
-                  "Tech Enthusiast",
-                ],
-                loop: true,
-                autoStart: true,
-              }}
-            />
-          </h4>
-        </motion.div>
-      </div>
+      <a href="#project">
+        <button className="w-full sm:w-40 h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#b9a9ff] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_20px_#C084FC] transition-all duration-300 text-sm">
+          View Projects
+        </button>
+      </a>
+    </div>
+
+    {/* Social Links */}
+    <div className="flex justify-center mt-8 space-x-5">
+      <a
+        href="https://www.linkedin.com/in/smshah121"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaLinkedin className="text-gray-100 hover:text-[#0A66C2] transition-all duration-300" size={32} />
+      </a>
+      <a
+        href="https://github.com/smshah121"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaGithub className="text-gray-100 hover:text-[#181717] transition-all duration-300" size={32} />
+      </a>
+      <a
+        href="https://www.instagram.com/__smshah__"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaInstagram className="text-gray-100 hover:text-pink-500 transition-all duration-300" size={32} />
+      </a>
+      <a href="mailto:sm.shah2003@hotmail.com">
+        <PiMicrosoftOutlookLogo className="text-gray-100 hover:text-[#0078D4] transition-all duration-300" size={32} />
+      </a>
+      <a href="mailto:smshah.2003@gmail.com">
+        <IoMdMail className="text-gray-100 hover:text-[#EA4335] transition-all duration-300" size={32} />
+      </a>
+    </div>
+  </motion.div>
+</div>
 
       <div
   id="about"
