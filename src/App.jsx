@@ -408,113 +408,47 @@ function App() {
 
 
 
-      <div id="skills" className="py-16 px-6 bg-gray-50 ">
-        {/* Heading */}
-        <div className="flex justify-center mb-10">
-          <h1 className="text-[#274D60] text-5xl font-bold text-center">
-            Tech Stack
-          </h1>
-        </div>
+      <div
+  id="skills"
+  className="py-20 px-6 sm:px-10 bg-gradient-to-br from-[#f7f9fb] to-[#e9edf5] text-center"
+>
+  {/* Heading */}
+  <div className="mb-12">
+    <h1 className="text-4xl sm:text-5xl font-extrabold text-[#274D60] mb-3">
+      Tech Stack
+    </h1>
+    <div className="w-24 h-1 bg-gradient-to-r from-[#736bbe] to-[#38BDF8] mx-auto rounded-full"></div>
+  </div>
 
-        {/* Wrapper → flex on large screens, wraps on mobile */}
-        <div className="flex flex-wrap justify-center gap-6">
-          {/* HTML */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="p-6 flex flex-col items-center shadow-lg text-[#E34F26] md:text-gray-800 md:hover:text-[#E34F26]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-          >
-            <FaHtml5 size={60} />
-            <h1 className="text-gray-500 font-bold mt-2">HTML</h1>
-          </motion.div>
+  {/* Grid Wrapper */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
+    {[
+      { name: "HTML", icon: <FaHtml5 size={55} />, color: "#E34F26" },
+      { name: "CSS", icon: <FaCss3Alt size={55} />, color: "#1572B6" },
+      { name: "JavaScript", icon: <TbBrandJavascript size={55} />, color: "#F7DF1E" },
+      { name: "TypeScript", icon: <TbBrandTypescript size={55} />, color: "#3178C6" },
+      { name: "ReactJS", icon: <GrReactjs size={55} />, color: "#61DAFB" },
+      { name: "Tailwind", icon: <SiTailwindcss size={55} />, color: "#38BDF8" },
+      { name: "NestJS", icon: <SiNestjs size={55} />, color: "#E0234E" },
+      { name: "PostgreSQL", icon: <BiLogoPostgresql size={55} />, color: "#4169E1" },
+    ].map((skill, index) => (
+      <motion.div
+        key={index}
+        whileHover={{ scale: 1.05, y: -3 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 + index * 0.05 }}
+        className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
+      >
+        <div style={{ color: skill.color }}>{skill.icon}</div>
+        <h1 className="text-gray-700 font-semibold text-lg sm:text-xl">
+          {skill.name}
+        </h1>
+      </motion.div>
+    ))}
+  </div>
+</div>
 
-          {/* CSS */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="p-6 flex flex-col items-center shadow-lg text-[#1572B6] md:text-gray-800 md:hover:text-[#1572B6] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-          >
-            <FaCss3Alt size={60} />
-            <h1 className="text-gray-500 font-bold mt-2">CSS</h1>
-          </motion.div>
-
-          {/* JavaScript */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="p-6 flex flex-col items-center shadow-lg text-[#F7DF1E] md:text-gray-800 hover:text-[#F7DF1E] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-          >
-            <TbBrandJavascript size={60} />
-            <h1 className="text-gray-500 font-bold mt-2">JavaScript</h1>
-          </motion.div>
-
-          {/* TypeScript */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1 }}
-            className="p-6 flex flex-col items-center shadow-lg text-[#3178C6] md:text-gray-800 hover:text-[#3178C6]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-          >
-            <TbBrandTypescript size={60} />
-            <h1 className="text-gray-500 font-bold mt-2">TypeScript</h1>
-          </motion.div>
-
-          {/* React */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.3 }}
-            className="p-6 flex flex-col items-center shadow-lg text-[#61DAFB] md:text-gray-800 md:hover:text-[#61DAFB] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-          >
-            <GrReactjs size={60} />
-            <h1 className="text-gray-500 font-bold mt-2">ReactJS</h1>
-          </motion.div>
-
-          {/* Tailwind */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5 }}
-            className="p-6 flex flex-col items-center shadow-lg text-[#38BDF8] md:text-gray-800 md:hover:text-[#38BDF8] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-          >
-            <SiTailwindcss size={60} />
-            <h1 className="text-gray-500 font-bold mt-2">Tailwind</h1>
-          </motion.div>
-
-          {/* NestJS */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.7 }}
-            className="p-6 flex flex-col items-center shadow-lg text-[#E0234E] md:text-gray-800 md:hover:text-[#E0234E]  justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-          >
-            <SiNestjs size={60} />
-            <h1 className="text-gray-500 font-bold mt-2">NestJS</h1>
-          </motion.div>
-
-          {/* PostgreSQL */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.9 }}
-            className="p-6 flex flex-col items-center shadow-lg text-[#4169E1] md:text-gray-800 md:hover:text-[#4169E1] justify-center hover:shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] h-[160px] rounded-2xl"
-          >
-            <BiLogoPostgresql size={60} />
-            <h1 className="text-gray-500 font-bold mt-2">Postgres</h1>
-          </motion.div>
-        </div>
-      </div>
 
       <div
         id="project"
