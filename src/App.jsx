@@ -322,101 +322,84 @@ function App() {
 
   {/* Right Side - Timeline (Alternate Left-Right Style) */}
   <div className="lg:w-1/2 flex flex-col items-center mt-10 lg:mt-0 relative">
-    <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-[#274D60]/60 transform -translate-x-1/2"></div>
+  {/* Vertical Line */}
+  <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-[#274D60]/60 transform -translate-x-1/2"></div>
 
-    {/* Education - Right */}
-    <div className="w-full mb-12 flex justify-end">
-      <div className="relative w-1/2 pl-6">
-        <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-          🎓
-        </div>
-        <div className="bg-purple-50 p-2">
-          <h3 className="text-sm md:text-xl font-semibold text-[#274D60]">Education</h3>
-        <ul className="list-disc pl-4">
-          <li className="text-gray-600 text-xs md:text-sm">
-            Iqra University (BS Software Engineering) 2023–Present
-          </li>
-          <li className="text-gray-600 text-xs md:text-sm">
-            New Aligarh Degree College (Pre-Eng) 2020–22
-          </li>
-        </ul>
-        </div>
-        
+  {/* 1️⃣ Education */}
+  <div className="w-full mb-12 flex md:justify-end justify-center">
+    <div className="relative md:w-1/2 w-[85%] md:pl-6">
+      <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
+        🎓
       </div>
-    </div>
-
-    {/* Bootcamps - Left */}
-    <div className="w-full mb-12 flex justify-start">
-      <div className="relative w-1/2 pr-6 text-right">
-        <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-          💻
-        </div>
-        <div className="bg-cyan-50 p-2 flex flex-col items-start md:items-end">
-          <h3 className="text-sm md:text-xl font-semibold text-[#274D60]">
-          Bootcamps & Online Courses
+      <div className="bg-purple-50 p-4 rounded-xl shadow-md">
+        <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
+          Education
         </h3>
-        <ul className="list-disc pr-4 list-inside">
-          <li className="text-gray-600 text-xs md:text-sm">
-            Udemy (Web Dev, Python 100 Days) – 2022
-          </li>
-          <li className="text-gray-600 text-xs md:text-sm">
-            Last Mile Tech (Full Stack Bootcamp) – 2025
-          </li>
+        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-base">
+          <li>Iqra University (BS Software Engineering) – 2023–Present</li>
+          <li>New Aligarh Degree College (Pre-Eng) – 2020–22</li>
         </ul>
-
-        </div>
-        
-      </div>
-    </div>
-
-    {/* Full Stack Projects - Right */}
-    <div className="w-full mb-12 flex justify-end">
-      <div className="relative w-1/2 pl-6">
-        <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-          🚀
-        </div>
-        <div className="bg-gray-100 p-2">
-          <h3 className="text-sm md:text-xl font-semibold text-[#274D60]">
-          Full Stack Projects
-        </h3>
-        <ul className="list-disc pl-4">
-          <li className="text-gray-600 text-xs md:text-sm">Learning Management System</li>
-          <li className="text-gray-600 text-xs md:text-sm">PriceTag E-Commerce</li>
-          <li className="text-gray-600 text-xs md:text-sm">
-            QuoteNest Personal Quotes Management
-          </li>
-        </ul>
-        </div>
-        
-      </div>
-    </div>
-    <div className="w-90 md:w-full mb-12 flex justify-start">
-      <div className="relative w-1/2 pr-6 text-right">
-        <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-          💻
-        </div>
-        <div className="bg-amber-50 p-2 flex flex-col items-start md:items-end ">
-          <h3 className="text-xs md:text-xl font-semibold text-[#274D60]">
-          Frontend Projects
-        </h3>
-        <ul className="list-disc pr-4 list-inside">
-          <li className="text-xs text-gray-600 md:text-sm mr-9.5">
-            Weather App
-          </li>
-          <li className="text-xs text-gray-600 md:text-sm ">
-          Currency Converter
-          </li>
-          <li className="text-xs text-gray-600 md:text-sm mr-5.5">
-            TicTacToe Game
-          </li>
-
-        </ul>
-
-        </div>
-        
       </div>
     </div>
   </div>
+
+  {/* 2️⃣ Bootcamps & Online Courses */}
+  <div className="w-full mb-12 flex md:justify-start justify-center">
+    <div className="relative md:w-1/2 w-[85%] md:pr-6">
+      <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
+        💻
+      </div>
+      <div className="bg-cyan-50 p-4 rounded-xl shadow-md flex flex-col items-start">
+        <h3 className="text-base md:text-lg font-semibold text-[#274D60] mb-2 text-left md:text-right">
+          Bootcamps & Online Courses
+        </h3>
+        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-base">
+          <li>Udemy (Web Dev, Python 100 Days) – 2022</li>
+          <li>Last Mile Tech (Full Stack Bootcamp) – 2025</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {/* 3️⃣ Full Stack Projects */}
+  <div className="w-full mb-12 flex md:justify-end justify-center">
+    <div className="relative md:w-1/2 w-[85%] md:pl-6">
+      <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
+        🚀
+      </div>
+      <div className="bg-gray-100 p-4 rounded-xl shadow-md">
+        <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
+          Full Stack Projects
+        </h3>
+        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-base">
+          <li>Learning Management System</li>
+          <li>PriceTag E-Commerce</li>
+          <li>QuoteNest Personal Quotes Management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {/* 4️⃣ Frontend Projects */}
+  <div className="w-full mb-12 flex md:justify-start justify-center">
+    <div className="relative md:w-1/2 w-[85%] md:pr-6">
+      <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
+        💡
+      </div>
+      <div className="bg-amber-50 p-4 rounded-xl flex flex-col items-start shadow-md">
+        <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2 text-left md:text-right">
+          Frontend Projects
+        </h3>
+        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-base">
+          <li>Weather App</li>
+          <li>Currency Converter</li>
+          <li>Tic Tac Toe Game</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 
