@@ -560,7 +560,7 @@ function App() {
                   >
                     <motion.button
                       whileHover={{ scale: 1.1 }}
-                      className="flex px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300  font-bold  mb-5"
+                      className="flex px-3 py-2 rounded-3xl border text-sm md:text-base border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300  font-bold  mb-5"
                     >
                       <FaRegEye size={22} className="text-gray-300 mr-2" />
                       Live Demo
@@ -572,7 +572,7 @@ function App() {
   <motion.button
     whileHover={{ scale: 1.1 }}
     onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-    className="flex  px-3 py-2 rounded-3xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-bold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300"
+    className="flex  px-3 py-2 rounded-3xl text-sm md:text-base border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-bold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300"
   >
     <a
                 href="https://github.com/smshah121"
