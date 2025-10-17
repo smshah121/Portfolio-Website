@@ -643,21 +643,21 @@ function App() {
             <div className="p-5">
               <div className="flex items-center p-2 mt-4">
               <IoIosMail size={34} className="text-red-500" />
-              <h4 className="ml-2 text-gray-700 break-all font-semibold md:text-xl">
+              <h4 className="ml-2 text-xs text-gray-700 break-all font-semibold md:text-xl">
                 • sm.shah2003@hotmail.com
               </h4>
             </div>
 
             <div className="flex items-center p-2">
               <FaPhoneAlt size={32} className="text-blue-800" />
-              <h4 className="ml-2 text-gray-700 font-semibold md:text-xl">
+              <h4 className="ml-2 text-xs text-gray-700 font-semibold md:text-xl">
                 • +92 319 2508750
               </h4>
             </div>
 
             <div className="flex items-center p-2">
               <FaLocationDot size={32} className="text-red-700" />
-              <h4 className="ml-2 text-gray-700 font-semibold md:text-xl">
+              <h4 className="ml-2 text-xs text-gray-700 font-semibold md:text-xl">
                 • Karachi, Pakistan
               </h4>
             </div>
@@ -669,7 +669,7 @@ function App() {
           {/* Right Side - Contact Form */}
           <div className="flex flex-col md:w-1/2">
             <h1 className="text-[#274D60] font-bold text-2xl md:text-3xl">Get in touch</h1>
-            <p className="mt-2 text-gray-700">
+            <p className="mt-2 text-xs md:text-lg md:font-semibold text-gray-700">
               Feel free to reach out if you'd like to collaborate – you're just
               a few clicks away!
             </p>
