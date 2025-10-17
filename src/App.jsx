@@ -457,7 +457,7 @@ function App() {
         <motion.div className="flex flex-col justify-center items-center gap-10">
           {[
             {
-              img: "/lms.png",
+              img: "/lms2.png",
               title: "Learning Management System",
               desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access",
               link: "https://singular-toffee-702de6.netlify.app/",
@@ -470,7 +470,7 @@ function App() {
               tech: ["React", "Nest", "Postgres", "Tailwind", "Redux","Motion"]
             },
             {
-              img: "/ecommerce.png",
+              img: "/pricetag.png",
               title: "E-Commerce",
               desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
               link: "https://dynamic-griffin-d0c7fd.netlify.app/",
@@ -483,7 +483,7 @@ function App() {
               tech: ["React", "Nest", "Postgres", "Tailwind", "Redux","Motion"]
             },
             {
-              img: "/quote.png",
+              img: "/quotes2.png",
               title: "Personal Quote Management",
               desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
               link: "https://peaceful-crisp-c5d1fb.netlify.app/",
@@ -495,7 +495,7 @@ function App() {
               tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
             },
             {
-              img: "/weather.png",
+              img: "/weatherapp.png",
               title: "Weather App",
               desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
               link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
@@ -506,7 +506,7 @@ function App() {
             },
 
             {
-              img: "/currency.png",
+              img: "/currconv.png",
               title: "Currency Converter",
               desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
               link: "https://smshah121.github.io/currency-converter/",
