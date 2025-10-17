@@ -182,7 +182,7 @@ function App() {
     transition={{ duration: 0.8, ease: "easeOut" }}
     className="flex flex-col items-center gap-4 text-white max-w-3xl"
   >
-    <h1 className="font-bold text-3xl sm:text-5xl md:text-6xl text-gray-200">
+    <h1 className="font-bold text-2xl sm:text-5xl md:text-6xl text-gray-200">
       Hello! I'm
     </h1>
     <h2 className="font-extrabold text-2xl sm:text-4xl md:text-7xl text-[#8B7BE6] drop-shadow-[0_0_10px_#736bbeaa]">
