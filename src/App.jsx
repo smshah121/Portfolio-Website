@@ -23,6 +23,10 @@ import { FaRegEye } from "react-icons/fa";
 import { SiRedux } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import { SiAxios } from "react-icons/si";
+import { FaLaptopCode } from "react-icons/fa6";
+import { FaCode } from "react-icons/fa";
+import { FaGraduationCap } from "react-icons/fa";
+import { CiGlobe } from "react-icons/ci";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -329,7 +333,7 @@ function App() {
   <div className="w-full mb-12 flex md:justify-end justify-center">
     <div className="relative md:w-1/2 w-[85%] md:pl-6">
       <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-        🎓
+        <FaGraduationCap className="text-gray-100" />
       </div>
       <div className="bg-purple-50 p-4 rounded-xl shadow-md">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
@@ -347,7 +351,7 @@ function App() {
   <div className="w-full mb-12 flex md:justify-start justify-center">
     <div className="relative md:w-1/2 w-[85%] md:pr-6">
       <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-        💻
+        <FaLaptopCode className="text-gray-100" />
       </div>
       <div className="bg-cyan-50 p-4 rounded-xl shadow-md flex flex-col items-start">
         <h3 className="text-base md:text-lg font-semibold text-[#274D60] mb-2 text-left md:text-right">
@@ -365,7 +369,8 @@ function App() {
   <div className="w-full mb-12 flex md:justify-end justify-center">
     <div className="relative md:w-1/2 w-[85%] md:pl-6">
       <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-        🚀
+        <CiGlobe className="text-gray-100" />
+
       </div>
       <div className="bg-gray-100 p-4 rounded-xl shadow-md">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
@@ -384,7 +389,7 @@ function App() {
   <div className="w-full mb-12 flex md:justify-start justify-center">
     <div className="relative md:w-1/2 w-[85%] md:pr-6">
       <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-        💡
+        <FaCode className="text-gray-100"/>
       </div>
       <div className="bg-amber-50 p-4 rounded-xl flex flex-col items-start shadow-md">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2 text-left md:text-right">
@@ -765,21 +770,21 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaLinkedin className="mr-3 text-white" size={32} />
+            <FaLinkedin className="mr-3 text-gray-100" size={32} />
           </a>
           <a
             href="https://github.com/smshah121"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub className="mr-3 text-white" size={32} />
+            <FaGithub className="mr-3 text-gray-100" size={32} />
           </a>
           <a
             href="https://www.instagram.com/__smshah__"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaInstagram className="text-white" size={32} />
+            <FaInstagram className="text-gray-100" size={32} />
           </a>
         </div>
         <div className="flex justify-center">
