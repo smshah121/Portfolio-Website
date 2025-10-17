@@ -679,13 +679,13 @@ function App() {
                 {/* Name */}
                 <div className="flex flex-col mb-4">
                   <label
-                    className="text-[#274D60] font-bold mb-2"
+                    className="text-[#274D60] text-sm md:text-base font-bold mb-2"
                     htmlFor="name"
                   >
                     Name
                   </label>
                   <input
-                    className="w-full shadow rounded-2xl p-3"
+                    className="w-full shadow text-sm  md:text-base rounded-2xl p-3"
                     type="text"
                     name="name"
                     placeholder="Your Name"
@@ -696,13 +696,13 @@ function App() {
                 {/* Email */}
                 <div className="flex flex-col mb-4">
                   <label
-                    className="text-[#274D60] font-bold mb-2"
+                    className="text-[#274D60] text-sm  md:text-base font-bold mb-2"
                     htmlFor="email"
                   >
                     Email
                   </label>
                   <input
-                    className="w-full shadow rounded-2xl p-3"
+                    className="w-full text-sm  md:text-base  shadow rounded-2xl p-3"
                     type="email"
                     name="Email"
                     placeholder="Your Email"
@@ -713,13 +713,13 @@ function App() {
                 {/* Subject */}
                 <div className="flex flex-col mb-4">
                   <label
-                    className="text-[#274D60] font-bold mb-2"
+                    className="text-[#274D60] text-sm  md:text-base  font-bold mb-2"
                     htmlFor="title"
                   >
                     Subject
                   </label>
                   <input
-                    className="w-full shadow rounded-2xl p-3"
+                    className="w-full shadow  text-sm  md:text-base rounded-2xl p-3"
                     type="text"
                     name="title"
                     placeholder="Subject"
@@ -730,13 +730,13 @@ function App() {
                 {/* Message */}
                 <div className="flex flex-col mb-4">
                   <label
-                    className="text-[#274D60] font-bold mb-2"
+                    className="text-[#274D60] text-sm  md:text-base  font-bold mb-2"
                     htmlFor="message"
                   >
                     Message
                   </label>
                   <textarea
-                    className="w-full h-40 shadow rounded-2xl p-3"
+                    className="w-full h-40 shadow text-sm  md:text-base  rounded-2xl p-3"
                     name="message"
                     placeholder="Your Message"
                     required
