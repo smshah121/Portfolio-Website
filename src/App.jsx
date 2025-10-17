@@ -747,7 +747,7 @@ function App() {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="bg-gradient-to-r from-[#0A192F] to-[#112240] font-bold text-gray-300 hover:bg-[#274D60] hover:text-[#6BA3BE] px-8 py-2 rounded-2xl"
+                    className="bg-gradient-to-r from-[#0A192F] to-[#112240] text-sm md:text-base font-bold text-gray-300 hover:bg-[#274D60] hover:text-[#6BA3BE] px-8 py-2 rounded-2xl"
                   >
                     Send Message
                   </button>
@@ -783,7 +783,7 @@ function App() {
           </a>
         </div>
         <div className="flex justify-center">
-          <h2 className="text-gray-300 font-bold">
+          <h2 className="text-gray-300 text-sm  md:text-base font-bold">
             © Syed Momin Ali Shah. All rights reserved.
           </h2>
         </div>
