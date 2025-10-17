@@ -189,7 +189,7 @@ function App() {
       Syed Momin Ali Shah
     </h2>
 
-    <h4 className="text-[#C1BEE6] text-lg sm:text-xl md:text-2xl font-medium mt-2">
+    <h4 className="text-[#C1BEE6] text-lg sm:text-xl md:text-3xl font-medium mt-2">
       <Typewriter
         options={{
           strings: [
