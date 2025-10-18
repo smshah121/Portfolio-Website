@@ -280,45 +280,57 @@ function App() {
   className="flex flex-col lg:flex-row justify-between p-10 bg-gray-50"
 >
   {/* Left Side - About Me */}
-  <div className="flex flex-col justify-center lg:w-1/2 pr-6">
+ <div className="flex flex-col justify-center lg:w-1/2 pr-6">
   <div className="flex justify-center items-center md:items-start md:justify-start">
-    <h1 className="text-[#274D60] text-2xl md:text-5xl font-bold mb-6">About Me</h1>
+    <h1 className="text-[#274D60] text-2xl md:text-5xl font-bold mb-8">
+      About Me
+    </h1>
   </div>
-    
 
-    <p className="text-gray-700 leading-relaxed mb-4 text-xs md:text-lg">
-      Hi I'm{" "}
-      <span className="font-semibold text-[#274D60] text-xs md:text-lg">
-        Syed Momin Ali Shah
-      </span>
-      , a passionate{" "}
-      <span className="font-semibold text-xs md:text-lg">Full Stack Developer</span> who loves
+  {/* About Me Box */}
+  <div className="bg-gray-100 shadow-lg rounded-2xl p-6 md:p-8 border border-[#274D60]/10 hover:shadow-2xl transition-all duration-300">
+    <p className="text-gray-700 leading-relaxed mb-3 text-xs md:text-lg">
+      Hi, I'm{" "}
+      <span className="font-semibold text-[#274D60]">Syed Momin Ali Shah</span>,
+      a passionate{" "}
+      <span className="font-semibold">Full Stack Developer</span> who loves
       building clean, scalable, and user-friendly applications.
     </p>
 
-    <p className="text-gray-700 text-xs md:text-lg leading-relaxed mb-4">
+    <p className="text-gray-700 text-xs md:text-lg leading-relaxed mb-3">
       My coding journey began in{" "}
-      <span className="font-semibold text-xs md:text-lg">2022</span> with online courses of Udemy
-      like Angela Yu’s Web Development Bootcamp and 100 Days of Python — where I
-      built a strong foundation in programming and problem-solving. Since{" "}
-      <span className="font-semibold text-xs md:text-lg">March 2023</span>, I’ve been pursuing a BS
-      in Software Engineering at Iqra University.
+      <span className="font-semibold">2022</span> with online courses like
+      Angela Yu’s Web Development Bootcamp and 100 Days of Python — where I built
+      a strong foundation in programming and problem-solving.
     </p>
 
-    <p className="text-gray-700 mb-4 text-xs md:text-lg">
-      I built several frontend projects early on — including a Currency
-      Converter, Weather App, and Tic Tac Toe game — using vanilla JavaScript
-      and DOM manipulation.
+    <p className="text-gray-700 text-xs md:text-lg leading-relaxed mb-3">
+      Since <span className="font-semibold">March 2023</span>, I’ve been pursuing
+      a BS in Software Engineering at Iqra University. I’ve studied core subjects
+      like OOP, DSA, DBMS, and Operating Systems, gaining hands-on experience in
+      Java, SQL, and C.
+    </p>
+
+    <p className="text-gray-700 mb-3 text-xs md:text-lg">
+      I started with small frontend projects like a Currency Converter, Weather
+      App, and Tic Tac Toe game using Vanilla JavaScript and DOM manipulation.
+    </p>
+
+    <p className="text-gray-700 leading-relaxed text-xs md:text-lg mb-3">
+      Later, I joined a university bootcamp where I mastered{" "}
+      <span className="font-semibold">Backend Development</span> with NestJS and
+      PostgreSQL. Today, I work as a{" "}
+      <span className="font-semibold">Full Stack Developer</span> and have built
+      real-world applications such as Personal Quote Management, E-Commerce, and
+      Learning Management Systems.
     </p>
 
     <p className="text-gray-700 leading-relaxed text-xs md:text-lg">
-      Later, I joined a university bootcamp where I mastered{" "}
-      <span className="font-semibold text-xs md:text-lg">Backend Development</span> with NestJS and
-      PostgreSQL. Today, I work as a{" "}
-      <span className="font-semibold text-xs md:text-lg">Full Stack Developer</span> and have built
-      complete real-world apps.
+      I focus on writing clean, maintainable code and creating user-friendly, scalable applications. I'm always excited to take on new challenges and turn ideas into working software!
     </p>
   </div>
+</div>
+
 
   {/* Right Side - Timeline (Alternate Left-Right Style) */}
   <div className="lg:w-1/2 flex flex-col items-center mt-10 lg:mt-0 relative">
