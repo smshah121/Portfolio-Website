@@ -112,28 +112,20 @@ function App() {
     <div>
       <div
         id="navbar"
-        className={`fixed top-0 w-full flex justify-between items-center py-6 px-6 transition-all duration-300 z-50 ${
+        className={`fixed top-0 w-full flex justify-center items-center py-6 px-6 transition-all duration-300 z-50 ${
           scrolled
-            ? "bg-transparent backdrop-blur-md"
+            ? "w-85 h-10 rounded-3xl"
             : "bg-gradient-to-r from-[#0e0a2f] to-[#0e113a]"
         }`}
       >
-        {/* Logo */}
-        <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl font-bold text-gray-300"
-        >
-          Portfolio
-        </motion.div>
+        
 
         {/* Desktop Nav */}
         <motion.ul
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="hidden md:flex gap-5 mr-3 font-semibold text-md"
+          className="hidden md:flex justify-around bg-white/5 backdrop-blur-xl w-100 h-10 rounded-3xl p-2 font-semibold text-md"
         >
           {NavItems.map((item) => (
             <li key={item.id}>
@@ -204,8 +196,7 @@ function App() {
           strings: [
             "Web Developer",
             "Software Engineer",
-            "Tech Enthusiast",
-            "React & NestJS Developer",
+            "Tech Enthusiast"
           ],
           autoStart: true,
           loop: true,
@@ -216,7 +207,7 @@ function App() {
     </h4>
 
     <p className="mt-5 text-[#afabd6] text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl">
-      I build modern and scalable web applications using <span className="text-[#8078ce] font-semibold">React</span> and <span className="text-[#8078ce] font-semibold">NestJS</span>.  
+      I build modern and scalable web applications using <span className="text-[#8078ce] font-semibold">ReactJS</span> and <span className="text-[#8078ce] font-semibold">NestJS</span>.  
       Currently, I’m a third-year <span className="text-[#8078ce] font-semibold">Software Engineering</span> student, passionate about crafting clean, efficient, and user-friendly interfaces.
     </p>
 
@@ -340,7 +331,12 @@ function App() {
       <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
         <FaGraduationCap className="text-gray-100" />
       </div>
-      <div className="bg-purple-50 p-4 rounded-xl shadow-md">
+      <motion.div
+      whileHover={{ scale: 1.05, y: -3 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
           Education
         </h3>
@@ -348,7 +344,7 @@ function App() {
           <li>Iqra University (BS Software Engineering) – 2023–Present</li>
           <li>New Aligarh Degree College (Pre-Eng) – 2020–22</li>
         </ul>
-      </div>
+      </motion.div>
     </div>
   </div>
 
@@ -358,7 +354,12 @@ function App() {
       <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
         <FaLaptopCode className="text-gray-100" />
       </div>
-      <div className="bg-cyan-50 p-4 rounded-xl shadow-md flex flex-col items-start">
+      <motion.div 
+      whileHover={{ scale: 1.05, y: -3 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl flex flex-col items-start">
         <h3 className="text-base md:text-lg font-semibold text-[#274D60] mb-2 text-left md:text-right">
           Bootcamps & Online Courses
         </h3>
@@ -366,7 +367,7 @@ function App() {
           <li>Udemy (Web Dev, Python 100 Days) – 2022</li>
           <li>Last Mile Tech (Full Stack Bootcamp) – 2025</li>
         </ul>
-      </div>
+      </motion.div>
     </div>
   </div>
 
@@ -377,7 +378,12 @@ function App() {
         <CiGlobe className="text-gray-100" />
 
       </div>
-      <div className="bg-gray-100 p-4 rounded-xl shadow-md">
+      <motion.div 
+      whileHover={{ scale: 1.05, y: -3 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
           Full Stack Projects
         </h3>
@@ -386,7 +392,7 @@ function App() {
           <li>PriceTag E-Commerce</li>
           <li>QuoteNest Personal Quotes Management</li>
         </ul>
-      </div>
+      </motion.div>
     </div>
   </div>
 
@@ -396,7 +402,12 @@ function App() {
       <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
         <FaCode className="text-gray-100"/>
       </div>
-      <div className="bg-amber-50 p-4 rounded-xl flex flex-col items-start shadow-md">
+      <motion.div 
+      whileHover={{ scale: 1.05, y: -3 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-gray-100 p-4 rounded-xl flex flex-col items-start shadow-md hover:shadow-2xl">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2 text-left md:text-right">
           Frontend Projects
         </h3>
@@ -405,7 +416,7 @@ function App() {
           <li>Currency Converter</li>
           <li>Tic Tac Toe Game</li>
         </ul>
-      </div>
+      </motion.div>
     </div>
   </div>
 </div>
