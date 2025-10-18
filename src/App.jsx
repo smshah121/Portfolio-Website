@@ -27,6 +27,11 @@ import { FaLaptopCode } from "react-icons/fa6";
 import { FaCode } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa";
 import { CiGlobe } from "react-icons/ci";
+import { SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
+import { FaGitAlt } from "react-icons/fa";
+import { FaNodeJs } from "react-icons/fa";
+
+
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -413,7 +418,7 @@ function App() {
   id="skills"
   className="py-20 px-6 sm:px-10 bg-gray-50 text-center"
 >
-  {/* Heading */}
+  {/* Main Heading */}
   <div className="mb-12">
     <h1 className="text-2xl sm:text-5xl font-extrabold text-[#274D60] mb-3">
       Tech Stack
@@ -421,34 +426,97 @@ function App() {
     <div className="w-24 h-1 bg-gradient-to-r from-[#736bbe] to-[#38BDF8] mx-auto rounded-full"></div>
   </div>
 
-  {/* Grid Wrapper */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
-    {[
-      { name: "HTML", icon: <FaHtml5 size={55} />, color: "#E34F26" },
-      { name: "CSS", icon: <FaCss3Alt size={55} />, color: "#1572B6" },
-      { name: "JavaScript", icon: <TbBrandJavascript size={55} />, color: "#F7DF1E" },
-      { name: "TypeScript", icon: <TbBrandTypescript size={55} />, color: "#3178C6" },
-      { name: "ReactJS", icon: <GrReactjs size={55} />, color: "#61DAFB" },
-      { name: "Tailwind", icon: <SiTailwindcss size={55} />, color: "#38BDF8" },
-      { name: "NestJS", icon: <SiNestjs size={55} />, color: "#E0234E" },
-      { name: "PostgreSQL", icon: <BiLogoPostgresql size={55} />, color: "#4169E1" },
-    ].map((skill, index) => (
-      <motion.div
-        key={index}
-        whileHover={{ scale: 1.05, y: -3 }}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 + index * 0.05 }}
-        className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
-      >
-        <div style={{ color: skill.color }}>{skill.icon}</div>
-        <h1 className="text-gray-700 font-semibold text-sm sm:text-xl">
-          {skill.name}
-        </h1>
-      </motion.div>
-    ))}
+  {/* FRONTEND */}
+  <div className="mb-16">
+    <h2 className="text-2xl sm:text-4xl font-extrabold text-[#274D60] mb-8">
+      Frontend
+    </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
+      {[
+        { name: "HTML", icon: <FaHtml5 size={55} />, color: "#E34F26" },
+        { name: "CSS", icon: <FaCss3Alt size={55} />, color: "#1572B6" },
+        { name: "JavaScript", icon: <TbBrandJavascript size={55} />, color: "#F7DF1E" },
+        { name: "ReactJS", icon: <GrReactjs size={55} />, color: "#61DAFB" },
+        { name: "Tailwind CSS", icon: <SiTailwindcss size={55} />, color: "#38BDF8" },
+        {name: "Framer Motion" ,icon: <TbBrandFramerMotion size={55} />, color: "#E94E44"},
+        {name: "Redux Toolkit" ,icon:  <SiRedux  size={55} />, color: "#764ABC"},
+        {name: "Axios" ,icon: <SiAxios size={55} className="text-gray-400"/>},
+
+        
+      ].map((skill, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.05, y: -3 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 + index * 0.05 }}
+          className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
+        >
+          <div style={{ color: skill.color }}>{skill.icon}</div>
+          <h1 className="text-gray-700 font-semibold text-sm sm:text-xl">{skill.name}</h1>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+
+  {/* BACKEND */}
+  <div className="mb-16">
+    <h2 className="text-2xl sm:text-4xl font-extrabold text-[#274D60] mb-8">
+      Backend & Database
+    </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
+      {[
+        { name: "NestJS", icon: <SiNestjs size={55} />, color: "#E0234E" },
+        { name: "TypeScript", icon: <TbBrandTypescript size={55} />, color: "#3178C6" },,
+        { name: "Node.js", icon: <FaNodeJs size={55} />, color: "#339933" },
+        { name: "PostgreSQL", icon: <BiLogoPostgresql size={55} />, color: "#4169E1" },
+
+      ].map((backend, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.05, y: -3 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 + index * 0.05 }}
+          className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
+        >
+          <div style={{ color: backend.color }}>{backend.icon}</div>
+          <h1 className="text-gray-700 font-semibold text-sm sm:text-xl">{backend.name}</h1>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+
+  
+  {/* TOOLS */}
+  <div>
+    <h2 className="text-2xl sm:text-4xl font-extrabold text-[#274D60] mb-8">
+      Tools
+    </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
+      {[
+        { name: "Netlify", icon: <SiNetlify size={55} />, color: "#00C7B7" },
+        { name: "Render", icon: <SiRender size={55} />, color: "#46E3B7" },
+       
+        { name: "Git", icon: <FaGitAlt size={55} />, color: "#F1502F" },
+        { name: "Cloudinary", icon: <SiCloudinary size={55} />, color: "#3448C5" },
+      ].map((tool, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.05, y: -3 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 + index * 0.05 }}
+          className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
+        >
+          <div style={{ color: tool.color }}>{tool.icon}</div>
+          <h1 className="text-gray-700 font-semibold text-sm sm:text-xl">{tool.name}</h1>
+        </motion.div>
+      ))}
+    </div>
   </div>
 </div>
+
 
 
       <div
