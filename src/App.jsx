@@ -174,7 +174,7 @@ function App() {
       </div>
      <div
   id="hero"
-  className="flex flex-col justify-center items-center text-center bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
+  className="flex flex-col justify-end md:justify-center items-center text-center bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
 >
   {/* Animated Intro Text */}
   <motion.div
