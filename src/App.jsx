@@ -112,7 +112,7 @@ function App() {
     <div>
       <div
         id="navbar"
-        className={`fixed top-0 w-full flex justify-center items-center py-6 px-6 transition-all duration-300 z-50 ${
+        className={`fixed top-0 w-full flex justify-end md:justify-center items-center py-6 px-6 transition-all duration-300 z-50 ${
           scrolled
             ? "w-85 h-10 rounded-3xl"
             : "bg-gradient-to-r from-[#0e0a2f] to-[#0e113a]"
@@ -174,7 +174,7 @@ function App() {
       </div>
      <div
   id="hero"
-  className="flex flex-col justify-end md:justify-center items-center text-center bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
+  className="flex flex-col justify-center items-center text-center bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
 >
   {/* Animated Intro Text */}
   <motion.div
