@@ -30,7 +30,7 @@ import { CiGlobe } from "react-icons/ci";
 import { SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
 import { FaNodeJs } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
+
 
 
 
