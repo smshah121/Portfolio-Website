@@ -288,7 +288,12 @@ function App() {
   </div>
 
   {/* About Me Box */}
-  <div className="bg-gray-100 shadow-lg rounded-2xl p-6 md:p-8 border border-[#274D60]/10 hover:shadow-2xl transition-all duration-300">
+  <motion.div 
+  whileHover={{ scale: 1.05, y: -3 }}
+      initial={{ opacity: 0, x: -40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+  className="bg-gray-100 shadow-lg rounded-2xl p-6 md:p-8 border border-[#274D60]/10 hover:shadow-2xl transition-all duration-300">
     <p className="text-gray-700 leading-relaxed mb-3 text-xs md:text-lg">
       Hi, I'm{" "}
       <span className="font-semibold text-[#274D60]">Syed Momin Ali Shah</span>,
@@ -328,7 +333,7 @@ function App() {
     <p className="text-gray-700 leading-relaxed text-xs md:text-lg">
       I focus on writing clean, maintainable code and creating user-friendly, scalable applications. I'm always excited to take on new challenges and turn ideas into working software!
     </p>
-  </div>
+  </motion.div>
 </div>
 
 
@@ -345,8 +350,8 @@ function App() {
       </div>
       <motion.div
       whileHover={{ scale: 1.05, y: -3 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x:40  }}
+      whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
       className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
@@ -368,8 +373,8 @@ function App() {
       </div>
       <motion.div 
       whileHover={{ scale: 1.05, y: -3 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: -40 }}
+      whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
       className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl flex flex-col items-start">
         <h3 className="text-base md:text-lg font-semibold text-[#274D60] mb-2 text-left md:text-right">
@@ -392,8 +397,8 @@ function App() {
       </div>
       <motion.div 
       whileHover={{ scale: 1.05, y: -3 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: 40 }}
+      whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
       className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
@@ -416,8 +421,8 @@ function App() {
       </div>
       <motion.div 
       whileHover={{ scale: 1.05, y: -3 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: -40 }}
+      whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
       className="bg-gray-100 p-4 rounded-xl flex flex-col items-start shadow-md hover:shadow-2xl">
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2 text-left md:text-right">
