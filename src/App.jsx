@@ -33,8 +33,6 @@ import { FaNodeJs } from "react-icons/fa";
 
 
 
-
-
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -283,10 +281,8 @@ function App() {
 >
   {/* Left Side - About Me */}
  <div className="flex flex-col justify-center lg:w-1/2 pr-6">
-  <div className="flex justify-center items-center md:items-start md:justify-start">
-    <h1 className="text-[#274D60] text-2xl md:text-5xl font-bold mb-8">
-      About Me
-    </h1>
+  <div className="">
+    
   </div>
 
   {/* About Me Box */}
@@ -295,7 +291,10 @@ function App() {
       initial={{ opacity: 0, x: -40 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
-  className="bg-gray-100 shadow-lg rounded-2xl p-6 md:p-8 border border-[#274D60]/10 hover:shadow-2xl transition-all duration-300">
+  className="bg-gray-100 flex flex-col justify-center items-center md:items-start md:justify-start shadow-lg rounded-2xl p-6 md:p-8 border border-[#274D60]/10 hover:shadow-2xl transition-all duration-300">
+    <h1 className="text-[#274D60] text-2xl md:text-5xl font-bold mb-8">
+      About Me
+    </h1>
     <p className="text-gray-700 leading-relaxed mb-3 text-xs md:text-lg">
       Hi, I'm{" "}
       <span className="font-semibold text-[#274D60]">Syed Momin Ali Shah</span>,
@@ -624,6 +623,7 @@ function App() {
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
+              whileHover={{ scale: 1.05, y: -3 }}
               className="w-full max-w-5xl bg-white/5 backdrop-blur-xl mb-2 md:mb-0 rounded-2xl flex flex-col md:flex-row items-center p-6"
             >
               {/* Image */}
@@ -748,7 +748,6 @@ function App() {
     repeat: Infinity, // loops forever
     ease: "easeInOut",
   }}
-  
 />
             <div className="p-5">
               <div className="flex items-center p-2 mt-4">
