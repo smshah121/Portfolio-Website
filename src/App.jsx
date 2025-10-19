@@ -30,6 +30,8 @@ import { CiGlobe } from "react-icons/ci";
 import { SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
 import { FaNodeJs } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+
 
 
 
@@ -746,6 +748,7 @@ function App() {
     repeat: Infinity, // loops forever
     ease: "easeInOut",
   }}
+  
 />
             <div className="p-5">
               <div className="flex items-center p-2 mt-4">
