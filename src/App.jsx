@@ -736,11 +736,17 @@ function App() {
           <div className="flex flex-col md:w-1/2">
             <h1 className="text-[#274D60] font-bold text-2xl md:text-3xl">Contact Me</h1>
 
-            <img
-              src="/contact.avif"
-              className="w-full max-w-sm h-90 mt-8 rounded-2xl object-cover"
-              alt="Gmail Logo"
-            />
+            <motion.img
+  src="/contact.avif"
+  alt="Gmail Logo"
+  className="w-full max-w-sm h-90 mt-8 rounded-2xl object-cover"
+  animate={{ y: [0, -20, 0] }}  // moves up then down smoothly
+  transition={{
+    duration: 2, // total time for one full cycle
+    repeat: Infinity, // loops forever
+    ease: "easeInOut",
+  }}
+/>
             <div className="p-5">
               <div className="flex items-center p-2 mt-4">
               <IoIosMail size={34} className="text-red-500" />
