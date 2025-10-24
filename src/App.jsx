@@ -38,6 +38,7 @@ function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [visible, setVisible] = useState(true);
 
 
   useEffect(() => {
@@ -74,17 +75,39 @@ function App() {
     Axios: <SiAxios className="text-gray-400" />
   }
 
-  useEffect(() => {
-    const handleScroll = () => {
+   useEffect(() => {
+    let activityTimer;
+
+    const handleActivity = () => {
+      // When user scrolls or moves mouse — show navbar
+      setVisible(true);
+
+      // Update scroll state (for background/rounded shape)
       if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
+
+      // Clear any existing timer
+      clearTimeout(activityTimer);
+
+      // Hide navbar after 2 seconds of no activity
+      activityTimer = setTimeout(() => {
+        setVisible(false);
+      }, 2000);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Add both scroll and mousemove listeners
+    window.addEventListener("scroll", handleActivity);
+    window.addEventListener("mousemove", handleActivity);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("scroll", handleActivity);
+      window.removeEventListener("mousemove", handleActivity);
+      clearTimeout(activityTimer);
+    };
   }, []);
 
   const sendEmail = (e) => {
@@ -111,13 +134,12 @@ function App() {
   return (
     <div>
       <div
-        id="navbar"
-        className={`fixed top-0 w-full flex justify-end md:justify-center items-center py-6 px-6 transition-all duration-300 z-50 ${
-          scrolled
-            ? "w-85 h-10 rounded-3xl"
-            : "bg-gradient-to-r from-[#0e0a2f] to-[#0e113a]"
-        }`}
-      >
+      id="navbar"
+      className={`fixed top-0 w-full flex justify-end md:justify-center items-center py-6 px-6 transition-all duration-500 ease-in-out z-50
+        ${scrolled ? "w-85 h-10 rounded-3xl" : "bg-gradient-to-r from-[#0e0a2f] to-[#0e113a]"}
+        ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}
+      `}
+    >
         
 
         {/* Desktop Nav */}
@@ -256,7 +278,7 @@ function App() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <FaGithub className="text-gray-100 hover:text-[#181717] transition-all duration-300" size={32} />
+        <FaGithub className="text-gray-100 hover:text-[#181717] hover:bg-white rounded-3xl transition-all duration-300" size={32} />
       </a>
       <a
         href="https://www.instagram.com/__smshah__"
@@ -287,7 +309,7 @@ function App() {
 
   {/* About Me Box */}
   <motion.div 
-  whileHover={{ scale: 1.05, y: -3 }}
+  
       initial={{ opacity: 0, x: -40 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
@@ -624,7 +646,7 @@ function App() {
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               whileHover={{ scale: 1.05, y: -3 }}
-              className="w-full max-w-5xl bg-white/5 backdrop-blur-xl mb-2 md:mb-0 rounded-2xl flex flex-col md:flex-row items-center p-6"
+              className="w-full max-w-5xl bg-white/5 backdrop-blur-xl mb-2 md:mb-0 border rounded-2xl flex flex-col md:flex-row items-center p-6"
             >
               {/* Image */}
               <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center">
@@ -783,7 +805,7 @@ function App() {
               a few clicks away!
             </p>
 
-            <div className="w-full shadow-2xl mt-4 rounded-2xl p-6">
+            <div className="w-full shadow-2xl h-130 mt-4 rounded-2xl p-6">
               <form onSubmit={sendEmail}>
                 {/* Name */}
                 <div className="flex flex-col mb-4">
@@ -845,7 +867,7 @@ function App() {
                     Message
                   </label>
                   <textarea
-                    className="w-full h-40 shadow text-sm  md:text-base  rounded-2xl p-3"
+                    className="w-full h-25 shadow text-sm  md:text-base  rounded-2xl p-3"
                     name="message"
                     placeholder="Your Message"
                     required
@@ -856,7 +878,7 @@ function App() {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="bg-gradient-to-r from-[#0A192F] to-[#112240] text-sm md:text-base font-bold text-gray-300 hover:bg-[#274D60] hover:text-[#6BA3BE] px-8 py-2 rounded-2xl"
+                    className="bg-gradient-to-r from-[#0A192F] to-[#112240] text-sm md:text-base font-bold text-gray-300 hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-xl transition-all duration-300 px-8 py-2 rounded-2xl"
                   >
                     Send Message
                   </button>
@@ -874,21 +896,21 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaLinkedin className="mr-3 text-gray-100" size={32} />
+            <FaLinkedin className="mr-3 text-gray-100 hover:text-[#0A66C2] transition-all duration-300" size={32} />
           </a>
           <a
             href="https://github.com/smshah121"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub className="mr-3 text-gray-100" size={32} />
+            <FaGithub className="mr-3 text-gray-100 hover:text-[#181717] hover:bg-white rounded-3xl transition-all duration-30" size={32} />
           </a>
           <a
             href="https://www.instagram.com/__smshah__"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaInstagram className="text-gray-100" size={32} />
+            <FaInstagram className="text-gray-100 hover:text-pink-500 transition-all duration-300" size={32} />
           </a>
         </div>
         <div className="flex justify-center">
