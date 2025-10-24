@@ -646,7 +646,7 @@ function App() {
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               whileHover={{ scale: 1.05, y: -3 }}
-              className="w-full max-w-5xl bg-white/5 backdrop-blur-xl mb-2 md:mb-0 border rounded-2xl flex flex-col md:flex-row items-center p-6"
+              className="w-full max-w-5xl bg-white/5 backdrop-blur-xl mb-2 md:mb-0 rounded-2xl flex flex-col md:flex-row items-center p-6"
             >
               {/* Image */}
               <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center">
