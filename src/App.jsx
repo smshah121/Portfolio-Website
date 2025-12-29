@@ -319,7 +319,7 @@ function App() {
       transition={{ duration: 0.4 }}
   className="bg-gray-100 flex flex-col justify-center items-center md:items-start md:justify-start shadow-lg rounded-2xl p-6 md:p-8 border border-[#274D60]/10 hover:shadow-2xl transition-all duration-300">
     <h1 className="text-[#274D60] text-2xl md:text-5xl font-bold mb-5">
-      About Me
+      Who I'm?
     </h1>
     <p className="text-gray-700 leading-relaxed mb-3 text-xs md:text-lg">
       Hi, I'm{" "}
