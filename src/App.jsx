@@ -136,7 +136,7 @@ function App() {
       <div
       id="navbar"
       className={`fixed top-0 w-full flex justify-end md:justify-center items-center py-6 px-6 transition-all duration-500 ease-in-out z-50
-        ${scrolled ? "w-85 h-10 rounded-3xl" : "bg-gradient-to-r from-[#0e0a2f] to-[#0e113a]"}
+        ${scrolled ? "w-85 h-10 rounded-3xl" : "bg-gradient-to-r from-[#090622] to-[#07081a]"}
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}
       `}
     >
@@ -196,7 +196,7 @@ function App() {
       </div>
      <div
   id="hero"
-  className="flex flex-col justify-center items-center text-center bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] min-h-screen px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
+  className="flex flex-col justify-center items-center text-center bg-gradient-to-r from-[#090622] to-[#07081a] min-h-screen px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
 >
   {/* Animated Intro Text */}
   <motion.div
@@ -205,12 +205,16 @@ function App() {
     transition={{ duration: 0.8, ease: "easeOut" }}
     className="flex flex-col items-center gap-4 text-white max-w-3xl"
   >
-    <h1 className="font-bold text-2xl sm:text-5xl md:text-6xl text-gray-200">
-      Hello! I'm
-    </h1>
-    <h2 className="font-extrabold text-2xl sm:text-4xl md:text-7xl text-[#8B7BE6] drop-shadow-[0_0_10px_#736bbeaa]">
-      Syed Momin Ali Shah
-    </h2>
+    <h1 className="font-bold text-2xl sm:text-5xl md:text-6xl text-[#e6e4ff]">
+  Hello! I'm
+</h1>
+
+<h2 className="font-extrabold text-2xl sm:text-4xl md:text-7xl
+  text-[#7e68ff]
+  drop-shadow-[0_0_14px_rgba(126,104,255,0.45)]">
+  Syed Momin Ali Shah
+</h2>
+
 
     <h4 className="text-[#C1BEE6] text-lg sm:text-xl md:text-3xl font-medium mt-2">
       <Typewriter
@@ -228,7 +232,7 @@ function App() {
       />
     </h4>
 
-    <p className="mt-5 text-[#afabd6] text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl">
+    <p className="mt-5 text-[#c9c6f5] text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl">
       I build modern and scalable web applications using <span className="text-[#8078ce] font-semibold">ReactJS</span> and <span className="text-[#8078ce] font-semibold">NestJS</span>.  
       Currently, I’m a third-year <span className="text-[#8078ce] font-semibold">Software Engineering</span> student, passionate about crafting clean, efficient, and user-friendly interfaces.
     </p>
@@ -271,7 +275,7 @@ function App() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <FaLinkedin className="text-gray-100 hover:text-[#0A66C2] transition-all duration-300" size={32} />
+        <FaLinkedin  className="text-gray-100 hover:bg-white  hover:text-[#0A66C2] transition-all duration-300" size={32} />
       </a>
       <a
         href="https://github.com/smshah121"
@@ -572,10 +576,12 @@ function App() {
 
       <div
         id="project"
-        className="min-h-screen bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] py-16 px-6"
+        className="min-h-screen bg-gradient-to-br from-[#0b0726] via-[#08051f] to-[#050314] py-16 px-6"
       >
-        <div className="font-bold text-3xl md:text-5xl text-[#736bbe] mb-12 text-center">
-          <h1>Projects</h1>
+        <div className="font-bold text-3xl md:text-5xl mb-12 text-center">
+          <h1 className="text-[#7e68ff] drop-shadow-[0_0_12px_#736bbeaa]">
+  Projects
+</h1>
         </div>
 
         <motion.div className="flex flex-col justify-center items-center gap-10">
@@ -646,7 +652,7 @@ function App() {
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               whileHover={{ scale: 1.05, y: -3 }}
-              className="w-full max-w-5xl bg-white/5 backdrop-blur-xl mb-2 md:mb-0 rounded-2xl flex flex-col md:flex-row items-center p-6"
+              className="w-full max-w-5xl bg-white/8 border border-white/10 mb-2 md:mb-0 rounded-2xl flex flex-col md:flex-row items-center p-6"
             >
               {/* Image */}
               <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center">
@@ -659,10 +665,10 @@ function App() {
 
               {/* Text */}
               <div className="flex flex-col  mt-6 md:mt-0 md:ml-8  w-full md:w-2/3">
-                <h1 className="font-bold text-lg md:text-2xl pb-3 text-[#736bbe]">
+                <h1 className="font-bold text-lg md:text-2xl pb-3 text-[#7e68ff]">
                   {project.title}
                 </h1>
-                <p className="text-[#afabd6] text-xs md:text-base leading-relaxed">
+                <p className="text-[#c7c3f2] text-xs md:text-base leading-relaxed">
                   {project.desc}
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-3">
@@ -685,7 +691,15 @@ function App() {
                   >
                     <motion.button
                       whileHover={{ scale: 1.1 }}
-                      className="flex px-3 py-2 rounded-3xl border text-sm md:text-base border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300  font-bold  mb-5"
+                      className="flex px-3 py-2 rounded-3xl
+border border-[#7e68ff]/40
+bg-[#7e68ff]/10
+text-[#b9b2ff] font-bold
+hover:bg-[#7e68ff]/20
+hover:border-[#7e68ff]/70
+hover:shadow-[0_0_18px_rgba(126,104,255,0.6)]
+transition-all duration-300"
+
                     >
                       <FaRegEye size={22} className="text-gray-300 mr-2" />
                       Live Demo
@@ -697,7 +711,15 @@ function App() {
   <motion.button
     whileHover={{ scale: 1.1 }}
     onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-    className="flex  px-3 py-2 rounded-3xl text-sm md:text-base border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-bold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300"
+    className="flex px-3 py-2 rounded-3xl
+border border-[#7e68ff]/40
+bg-[#7e68ff]/10
+text-[#b9b2ff] font-bold
+hover:bg-[#7e68ff]/20
+hover:border-[#7e68ff]/70
+hover:shadow-[0_0_18px_rgba(126,104,255,0.6)]
+transition-all duration-300"
+
   >
     <a
                 href="https://github.com/smshah121"
@@ -889,7 +911,7 @@ function App() {
         </div>
       </div>
 
-      <div className="h-30 bg-gradient-to-r from-[#0e0a2f] to-[#0e113a] flex flex-col">
+      <div className="h-30 bg-gradient-to-r from-[#090622] to-[#07081a] flex flex-col">
         <div className="flex justify-center p-5">
           <a
             href="https://www.linkedin.com/in/smshah121"
