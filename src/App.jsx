@@ -249,7 +249,7 @@ function App() {
       download="SyedMominAliShah_Resume.pdf"
     >
       <button
-        className="w-28 sm:w-36 md:w-40 h-8 sm:h-9 md:h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-xs sm:text-sm"
+        className="w-28 sm:w-36 md:w-40 h-8 sm:h-9 md:h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:text-gray-200 hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-xs sm:text-sm"
       >
         <IoMdDownload size={14} className="sm:size-[16px] md:size-[18px]" />
         Resume
@@ -259,7 +259,7 @@ function App() {
     {/* View Projects Button */}
     <a href="#project">
       <button
-        className="w-28 sm:w-36 md:w-40 h-8 sm:h-9 md:h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-xs sm:text-sm"
+        className="w-28 sm:w-36 md:w-40 h-8 sm:h-9 md:h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] hover:text-gray-200 transition-all duration-300 text-xs sm:text-sm"
       >
         View Projects
       </button>
