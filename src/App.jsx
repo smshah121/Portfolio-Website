@@ -384,7 +384,7 @@ function App() {
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
           Education
         </h3>
-        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-base">
+        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-sm">
           <li>Iqra University (BS Software Engineering) – 2023–Present</li>
           <li>New Aligarh Degree College (Pre-Eng) – 2020–22</li>
         </ul>
@@ -407,7 +407,7 @@ function App() {
         <h3 className="text-base md:text-lg font-semibold text-[#274D60] mb-2 text-left md:text-right">
           Bootcamps & Online Courses
         </h3>
-        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-base">
+        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-sm">
           <li>Udemy (Web Dev, Python 100 Days) – 2022</li>
           <li>Last Mile Tech (Full Stack Bootcamp) – 2025</li>
         </ul>
@@ -431,7 +431,7 @@ function App() {
         <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
           Full Stack Projects
         </h3>
-        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-base">
+        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-sm">
           <li>Learning Management System</li>
           <li>PriceTag E-Commerce</li>
           <li>QuoteNest Personal Quotes Management</li>
