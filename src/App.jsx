@@ -275,7 +275,7 @@ function App() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <FaLinkedin  className="text-gray-100 hover:bg-white  hover:text-[#0A66C2] transition-all duration-300" size={32} />
+        <FaLinkedin  className="text-gray-100  hover:text-[#0A66C2] transition-all duration-300" size={32} />
       </a>
       <a
         href="https://github.com/smshah121"
