@@ -574,199 +574,184 @@ function App() {
 
 
 
-      <div
-        id="project"
-        className="min-h-screen bg-gradient-to-br from-[#0b0726] via-[#08051f] to-[#050314] py-16 px-6"
+     <div
+  id="project"
+  className="min-h-screen bg-gradient-to-br from-[#0b0726] via-[#08051f] to-[#050314] py-16 px-6"
+>
+  <div className="font-bold text-3xl md:text-5xl mb-12 text-center">
+    <h1 className="text-[#7e68ff] drop-shadow-[0_0_12px_#736bbeaa]">
+      Projects
+    </h1>
+  </div>
+
+  <motion.div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+    {[
+      {
+        img: "/lms2.png",
+        title: "Learning Management System",
+        desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access",
+        link: "https://singular-toffee-702de6.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
+          backend: "https://github.com/smshah121/Learning-Management-System-Backend",
+        },
+        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+      },
+      {
+        img: "/pricetag.png",
+        title: "E-Commerce",
+        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
+        link: "https://dynamic-griffin-d0c7fd.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
+          backend: "https://github.com/smshah121/E-Commerce-Web-App-Backend",
+        },
+        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+      },
+      {
+        img: "/pixora.png",
+        title: "Pixora",
+        desc: "Built a media collection platform where users can save photos, videos, and GIFs, organize them into custom collections, and view their saved items anytime. User data is kept private and secure through JWT authentication and password hashing, with Google OAuth 2.0 integration for seamless login and protected routes ensuring only authorized users can access their content.",
+        link: "https://pixora-media.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/pixora-frontend",
+          backend: "https://github.com/smshah121/pixora-backend",
+        },
+        tech: ["React", "Tailwind", "Postgres", "Nest", "Redux"]
+      },
+      {
+        img: "/quotes2.png",
+        title: "Personal Quote Management",
+        desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
+        link: "https://peaceful-crisp-c5d1fb.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/quotes-frontend",
+          backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
+        },
+        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+      },
+      {
+        img: "/weatherapp.png",
+        title: "Weather App",
+        desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
+        link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/Weather-Web-App",
+        },
+        tech: ["React", "Tailwind", "Axios"]
+      },
+      {
+        img: "/currconv.png",
+        title: "Currency Converter",
+        desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
+        link: "https://smshah121.github.io/currency-converter/",
+        source: {
+          frontend: "https://github.com/smshah121/currency-converter",
+        },
+        tech: ["React", "Tailwind", "Axios"]
+      },
+      
+    ].map((project, index) => (
+      <motion.div
+        key={index}
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        whileHover={{ scale: 1.05, y: -3 }}
+        className="w-[400px] h-[420px] bg-white/8 border border-white/10 rounded-2xl flex flex-col p-6"
       >
-        <div className="font-bold text-3xl md:text-5xl mb-12 text-center">
-          <h1 className="text-[#7e68ff] drop-shadow-[0_0_12px_#736bbeaa]">
-  Projects
-</h1>
+        {/* Image */}
+        <div className="flex justify-center h-[130px] flex-shrink-0">
+          <img
+            src={project.img}
+            className="h-full w-auto object-contain rounded-lg"
+            alt={project.title}
+          />
         </div>
 
-        <motion.div className="flex flex-col justify-center items-center gap-10">
-          {[
-            {
-              img: "/lms2.png",
-              title: "Learning Management System",
-              desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access",
-              link: "https://singular-toffee-702de6.netlify.app/",
-              source: {
-                frontend:
-                  "https://github.com/smshah121/Learning-Management-System-Frontend",
-                backend:
-                  "https://github.com/smshah121/Learning-Management-System-Backend",
-              },
-              tech: ["React", "Nest", "Postgres", "Tailwind", "Redux","Motion"]
-            },
-            {
-              img: "/pricetag.png",
-              title: "E-Commerce",
-              desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
-              link: "https://dynamic-griffin-d0c7fd.netlify.app/",
-              source: {
-                frontend:
-                  "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
-                backend:
-                  "https://github.com/smshah121/E-Commerce-Web-App-Backend",
-              },
-              tech: ["React", "Nest", "Postgres", "Tailwind", "Redux","Motion"]
-            },
-            {
-              img: "/quotes2.png",
-              title: "Personal Quote Management",
-              desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
-              link: "https://peaceful-crisp-c5d1fb.netlify.app/",
-              source: {
-                frontend: "https://github.com/smshah121/quotes-frontend",
-                backend:
-                  "https://github.com/smshah121/Quotes-Management-System-Backend",
-              },
-              tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
-            },
-            {
-              img: "/weatherapp.png",
-              title: "Weather App",
-              desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
-              link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
-              source: {
-                frontend: "https://github.com/smshah121/Weather-Web-App",
-              },
-              tech: ["React", "Tailwind","Axios"]
-            },
+        {/* Title */}
+        <div className="h-[50px] flex-shrink-0 flex items-center mt-3">
+          <h1 className="font-bold text-base text-[#7e68ff] line-clamp-1">
+            {project.title}
+          </h1>
+        </div>
 
-            {
-              img: "/currconv.png",
-              title: "Currency Converter",
-              desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
-              link: "https://smshah121.github.io/currency-converter/",
-              source: {
-                frontend: "https://github.com/smshah121/currency-converter",
-              },
-              tech: ["React", "Tailwind","Axios"]
-            },
-          ].map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              whileHover={{ scale: 1.05, y: -3 }}
-              className="w-full max-w-5xl bg-white/8 border border-white/10 mb-2 md:mb-0 rounded-2xl flex flex-col md:flex-row items-center p-6"
-            >
-              {/* Image */}
-              <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center">
-                <img
-                  src={project.img}
-                  className="h-40 md:h-48 w-auto object-contain rounded-lg"
-                  alt={project.title}
-                />
-              </div>
+        {/* Description */}
+        <div className="h-[100px] flex-shrink-0 overflow-hidden">
+          <p className="text-[#c7c3f2] text-xs leading-relaxed line-clamp-4">
+            {project.desc}
+          </p>
+        </div>
 
-              {/* Text */}
-              <div className="flex flex-col  mt-6 md:mt-0 md:ml-8  w-full md:w-2/3">
-                <h1 className="font-bold text-lg md:text-2xl pb-3 text-[#7e68ff]">
-                  {project.title}
-                </h1>
-                <p className="text-[#c7c3f2] text-xs md:text-base leading-relaxed">
-                  {project.desc}
-                </p>
-                <div className="flex flex-wrap items-center gap-3 mt-3">
-  {project.tech.map((tech) => (
-    <div key={tech} className="text-2xl">
-      {TechIcons[tech] || <span className="text-gray-400">{tech}</span>}
-    </div>
-  ))}
-</div>
-
-<div>
-
-
-                <div className="flex  flex-wrap md:gap-3 mt-4">
-                  {/* Live Demo */}
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      className="flex px-3 py-2 rounded-3xl
-border border-[#7e68ff]/40
-bg-[#7e68ff]/10
-text-[#b9b2ff] font-bold
-hover:bg-[#7e68ff]/20
-hover:border-[#7e68ff]/70
-hover:shadow-[0_0_18px_rgba(126,104,255,0.6)]
-transition-all duration-300"
-
-                    >
-                      <FaRegEye size={22} className="text-gray-300 mr-2" />
-                      Live Demo
-                    </motion.button>
-                  </a>
-
-                  {/* Source Code Buttons */}
-                  <div className="relative inline-block">
-  <motion.button
-    whileHover={{ scale: 1.1 }}
-    onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-    className="flex px-3 py-2 rounded-3xl
-border border-[#7e68ff]/40
-bg-[#7e68ff]/10
-text-[#b9b2ff] font-bold
-hover:bg-[#7e68ff]/20
-hover:border-[#7e68ff]/70
-hover:shadow-[0_0_18px_rgba(126,104,255,0.6)]
-transition-all duration-300"
-
-  >
-    <a
-                href="https://github.com/smshah121"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub
-                  className="text-gray-200 hover:text-[#181717] mr-2"
-                  size={20}
-                />
-              </a>
-    Source Code ▼
-  </motion.button>
-
-  {dropdownOpen === index && (
-    <div className="absolute mt-2 bg-[#1e293b] text-white rounded-lg text-xs shadow-lg z-50 w-40">
-      {project.source?.frontend && (
-        <a
-          href={project.source.frontend}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block px-4 py-2 hover:bg-[#334155]"
-        >
-          Frontend
-        </a>
-      )}
-      {project.source?.backend && (
-        <a
-          href={project.source.backend}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block px-4 py-2 hover:bg-[#334155]"
-        >
-          Backend
-        </a>
-      )}
-    </div>
-  )}
-</div>
-                </div>
-</div>
-
-              </div>
-            </motion.div>
+        {/* Tech Icons */}
+        <div className="flex flex-wrap items-center gap-2 h-[35px] flex-shrink-0 overflow-hidden mt-2">
+          {project.tech.map((tech) => (
+            <div key={tech} className="text-xl">
+              {TechIcons[tech] || <span className="text-gray-400">{tech}</span>}
+            </div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-wrap gap-3 mt-auto pt-3">
+          {/* Live Demo */}
+          <a href={project.link} target="_blank" rel="noopener noreferrer">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              className="flex items-center px-3 py-2 rounded-3xl
+border border-[#7e68ff]/40
+bg-[#7e68ff]/10
+text-[#b9b2ff] font-bold text-xs
+hover:bg-[#7e68ff]/20
+hover:border-[#7e68ff]/70
+hover:shadow-[0_0_18px_rgba(126,104,255,0.6)]
+transition-all duration-300"
+            >
+              <FaRegEye size={16} className="text-gray-300 mr-2" />
+              Live Demo
+            </motion.button>
+          </a>
+
+          {/* Source Code Buttons */}
+          <div className="relative inline-block">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
+              className="flex items-center px-3 py-2 rounded-3xl
+border border-[#7e68ff]/40
+bg-[#7e68ff]/10
+text-[#b9b2ff] font-bold text-xs
+hover:bg-[#7e68ff]/20
+hover:border-[#7e68ff]/70
+hover:shadow-[0_0_18px_rgba(126,104,255,0.6)]
+transition-all duration-300"
+            >
+              <a href="https://github.com/smshah121" target="_blank" rel="noopener noreferrer">
+                <FaGithub className="text-gray-200 hover:text-[#181717] mr-2" size={16} />
+              </a>
+              Source Code ▼
+            </motion.button>
+
+            {dropdownOpen === index && (
+              <div className="absolute mt-2 bg-[#1e293b] text-white rounded-lg text-xs shadow-lg z-50 w-40">
+                {project.source?.frontend && (
+                  <a href={project.source.frontend} target="_blank" rel="noopener noreferrer" className="block px-4 py-2 hover:bg-[#334155]">
+                    Frontend
+                  </a>
+                )}
+                {project.source?.backend && (
+                  <a href={project.source.backend} target="_blank" rel="noopener noreferrer" className="block px-4 py-2 hover:bg-[#334155]">
+                    Backend
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    ))}
+  </motion.div>
+</div>
 
       <div id="contact" className="py-16 px-6 bg-gray-50">
         {/* Heading */}
