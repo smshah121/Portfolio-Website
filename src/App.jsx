@@ -658,7 +658,7 @@ function App() {
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         whileHover={{ scale: 1.05, y: -3 }}
-        className="w-[400px] h-[420px] bg-white/8 border border-white/10 rounded-2xl flex flex-col p-6"
+        className="w-[400px] h-[450px] bg-white/8 border border-white/10 rounded-2xl flex flex-col p-6"
       >
         {/* Image */}
         <div className="flex justify-center h-[130px] flex-shrink-0">
@@ -677,8 +677,8 @@ function App() {
         </div>
 
         {/* Description */}
-        <div className="h-[100px] flex-shrink-0 overflow-hidden">
-          <p className="text-[#c7c3f2] text-xs leading-relaxed line-clamp-4">
+        <div className="h-[115px] flex-shrink-0 overflow-hidden">
+          <p className="text-[#c7c3f2] text-xs leading-relaxed line-clamp-6">
             {project.desc}
           </p>
         </div>
