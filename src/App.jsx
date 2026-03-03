@@ -40,6 +40,76 @@ function App() {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [visible, setVisible] = useState(true);
 
+  const MyProjects = [
+    
+      {
+        img: "/lms2.png",
+        title: "Learning Management System",
+        desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access",
+        link: "https://singular-toffee-702de6.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
+          backend: "https://github.com/smshah121/Learning-Management-System-Backend",
+        },
+        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+      },
+      {
+        img: "/pricetag.png",
+        title: "E-Commerce",
+        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
+        link: "https://dynamic-griffin-d0c7fd.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
+          backend: "https://github.com/smshah121/E-Commerce-Web-App-Backend",
+        },
+        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+      },
+      {
+        img: "/pixora.png",
+        title: "Pixora",
+        desc: "Built a media collection platform where users can save photos, videos, and GIFs, organize them into custom collections, and view their saved items anytime. User data is kept private and secure through JWT authentication and password hashing, with Google OAuth 2.0 integration for seamless login and protected routes ensuring only authorized users can access their content.",
+        link: "https://pixora-media.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/pixora-frontend",
+          backend: "https://github.com/smshah121/pixora-backend",
+        },
+        tech: ["React", "Tailwind", "Postgres", "Nest", "Redux"]
+      },
+      {
+        img: "/quotes2.png",
+        title: "Personal Quote Management",
+        desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
+        link: "https://peaceful-crisp-c5d1fb.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/quotes-frontend",
+          backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
+        },
+        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+      },
+      {
+        img: "/weatherapp.png",
+        title: "Weather App",
+        desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
+        link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
+        source: {
+          frontend: "https://github.com/smshah121/Weather-Web-App",
+        },
+        tech: ["React", "Tailwind", "Axios"]
+      },
+      {
+        img: "/currconv.png",
+        title: "Currency Converter",
+        desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
+        link: "https://smshah121.github.io/currency-converter/",
+        source: {
+          frontend: "https://github.com/smshah121/currency-converter",
+        },
+        tech: ["React", "Tailwind", "Axios"]
+      },
+      
+    
+  ]
+
 
   useEffect(() => {
     const sections = document.querySelectorAll("div[id]");
@@ -65,6 +135,16 @@ function App() {
     { id: "contact", label: "Contact" },
   ];
 
+  const BackendTech = [
+    
+        { name: "NestJS", icon: <SiNestjs size={55} />, color: "#E0234E" },
+        { name: "TypeScript", icon: <TbBrandTypescript size={55} />, color: "#3178C6" },,
+        { name: "Node.js", icon: <FaNodeJs size={55} />, color: "#339933" },
+        { name: "PostgreSQL", icon: <BiLogoPostgresql size={55} />, color: "#4169E1" },
+
+      
+  ]
+
   const TechIcons = {
     React: <GrReactjs className="text-[#61DAFB]" title="React" />,
     Nest: <SiNestjs className="text-[#E0234E]" title="Nest"/>,
@@ -74,6 +154,25 @@ function App() {
     Motion: <TbBrandFramerMotion className="text-[#E94E44]" />,
     Axios: <SiAxios className="text-gray-400" />
   }
+
+  const FrontendTech= [
+        { name: "HTML", icon: <FaHtml5 size={55} />, color: "#E34F26" },
+        { name: "CSS", icon: <FaCss3Alt size={55} />, color: "#1572B6" },
+        { name: "JavaScript", icon: <TbBrandJavascript size={55} />, color: "#F7DF1E" },
+        { name: "ReactJS", icon: <GrReactjs size={55} />, color: "#61DAFB" },
+        { name: "Tailwind CSS", icon: <SiTailwindcss size={55} />, color: "#38BDF8" },
+        {name: "Framer Motion" ,icon: <TbBrandFramerMotion size={55} />, color: "#E94E44"},
+        {name: "Redux Toolkit" ,icon:  <SiRedux  size={55} />, color: "#764ABC"},
+        {name: "Axios" ,icon: <SiAxios size={55} className="text-gray-400"/>},
+  ]
+
+
+  const Tools = [
+        { name: "Netlify", icon: <SiNetlify size={55} />, color: "#00C7B7" },
+        { name: "Render", icon: <SiRender size={55} />, color: "#46E3B7" },    
+        { name: "Git", icon: <FaGitAlt size={55} />, color: "#F1502F" },
+        { name: "Cloudinary", icon: <SiCloudinary size={55} />, color: "#3448C5" },
+  ]
 
    useEffect(() => {
     let activityTimer;
@@ -233,8 +332,9 @@ function App() {
     </h4>
 
     <p className="mt-5 text-[#c9c6f5] text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl">
+      Final-Year <span className="text-[#8078ce] font-semibold">Software Engineering</span> student, and <span className="text-[#8078ce] font-semibold">Full Stack Developer. </span> 
       I build modern and scalable web applications using <span className="text-[#8078ce] font-semibold">ReactJS</span> and <span className="text-[#8078ce] font-semibold">NestJS</span>.  
-      Currently, I’m a third-year <span className="text-[#8078ce] font-semibold">Software Engineering</span> student, passionate about crafting clean, efficient, and user-friendly interfaces.
+       passionate about crafting clean, efficient, and user-friendly interfaces.
     </p>
 
     {/* Buttons */}
@@ -243,7 +343,7 @@ function App() {
   <div className="flex gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start">
     {/* Resume Button */}
     <a
-      href="/Resume Internship for Portfolio.pdf"
+      href="/27.pdf"
       target="_blank"
       rel="noopener noreferrer"
       download="SyedMominAliShah_Resume.pdf"
@@ -435,6 +535,7 @@ function App() {
           <li>Learning Management System</li>
           <li>PriceTag E-Commerce</li>
           <li>QuoteNest Personal Quotes Management</li>
+          <li>Pixora Media App</li>
         </ul>
       </motion.div>
     </div>
@@ -487,18 +588,11 @@ function App() {
       Frontend
     </h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
-      {[
-        { name: "HTML", icon: <FaHtml5 size={55} />, color: "#E34F26" },
-        { name: "CSS", icon: <FaCss3Alt size={55} />, color: "#1572B6" },
-        { name: "JavaScript", icon: <TbBrandJavascript size={55} />, color: "#F7DF1E" },
-        { name: "ReactJS", icon: <GrReactjs size={55} />, color: "#61DAFB" },
-        { name: "Tailwind CSS", icon: <SiTailwindcss size={55} />, color: "#38BDF8" },
-        {name: "Framer Motion" ,icon: <TbBrandFramerMotion size={55} />, color: "#E94E44"},
-        {name: "Redux Toolkit" ,icon:  <SiRedux  size={55} />, color: "#764ABC"},
-        {name: "Axios" ,icon: <SiAxios size={55} className="text-gray-400"/>},
+      {
+        
 
         
-      ].map((skill, index) => (
+      FrontendTech.map((skill, index) => (
         <motion.div
           key={index}
           whileHover={{ scale: 1.05, y: -3 }}
@@ -520,13 +614,8 @@ function App() {
       Backend & Database
     </h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
-      {[
-        { name: "NestJS", icon: <SiNestjs size={55} />, color: "#E0234E" },
-        { name: "TypeScript", icon: <TbBrandTypescript size={55} />, color: "#3178C6" },,
-        { name: "Node.js", icon: <FaNodeJs size={55} />, color: "#339933" },
-        { name: "PostgreSQL", icon: <BiLogoPostgresql size={55} />, color: "#4169E1" },
-
-      ].map((backend, index) => (
+      {
+      BackendTech.map((backend, index) => (
         <motion.div
           key={index}
           whileHover={{ scale: 1.05, y: -3 }}
@@ -549,13 +638,9 @@ function App() {
       Tools
     </h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
-      {[
-        { name: "Netlify", icon: <SiNetlify size={55} />, color: "#00C7B7" },
-        { name: "Render", icon: <SiRender size={55} />, color: "#46E3B7" },
-       
-        { name: "Git", icon: <FaGitAlt size={55} />, color: "#F1502F" },
-        { name: "Cloudinary", icon: <SiCloudinary size={55} />, color: "#3448C5" },
-      ].map((tool, index) => (
+      {
+        
+      Tools.map((tool, index) => (
         <motion.div
           key={index}
           whileHover={{ scale: 1.05, y: -3 }}
@@ -585,73 +670,7 @@ function App() {
   </div>
 
   <motion.div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
-    {[
-      {
-        img: "/lms2.png",
-        title: "Learning Management System",
-        desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access",
-        link: "https://singular-toffee-702de6.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
-          backend: "https://github.com/smshah121/Learning-Management-System-Backend",
-        },
-        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
-      },
-      {
-        img: "/pricetag.png",
-        title: "E-Commerce",
-        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
-        link: "https://dynamic-griffin-d0c7fd.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
-          backend: "https://github.com/smshah121/E-Commerce-Web-App-Backend",
-        },
-        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
-      },
-      {
-        img: "/pixora.png",
-        title: "Pixora",
-        desc: "Built a media collection platform where users can save photos, videos, and GIFs, organize them into custom collections, and view their saved items anytime. User data is kept private and secure through JWT authentication and password hashing, with Google OAuth 2.0 integration for seamless login and protected routes ensuring only authorized users can access their content.",
-        link: "https://pixora-media.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/pixora-frontend",
-          backend: "https://github.com/smshah121/pixora-backend",
-        },
-        tech: ["React", "Tailwind", "Postgres", "Nest", "Redux"]
-      },
-      {
-        img: "/quotes2.png",
-        title: "Personal Quote Management",
-        desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
-        link: "https://peaceful-crisp-c5d1fb.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/quotes-frontend",
-          backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
-        },
-        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
-      },
-      {
-        img: "/weatherapp.png",
-        title: "Weather App",
-        desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
-        link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/Weather-Web-App",
-        },
-        tech: ["React", "Tailwind", "Axios"]
-      },
-      {
-        img: "/currconv.png",
-        title: "Currency Converter",
-        desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
-        link: "https://smshah121.github.io/currency-converter/",
-        source: {
-          frontend: "https://github.com/smshah121/currency-converter",
-        },
-        tech: ["React", "Tailwind", "Axios"]
-      },
-      
-    ].map((project, index) => (
+    {MyProjects.map((project, index) => (
       <motion.div
         key={index}
         initial={{ x: -100, opacity: 0 }}
@@ -789,7 +808,7 @@ transition-all duration-300"
             <div className="flex items-center p-2">
               <FaPhoneAlt size={32} className="text-blue-800" />
               <h4 className="ml-2 text-xs text-gray-700 font-semibold md:text-xl">
-                • +92 319 2508750
+                • +92 304 2151667
               </h4>
             </div>
 
