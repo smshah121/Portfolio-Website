@@ -56,7 +56,7 @@ function App() {
       {
         img: "/pricetag.png",
         title: "E-Commerce",
-        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers; enabled customers to browse and search products, add to cart, place orders, view order history, and manage profiles; and provided admins with product CRUD, image/PDF uploads, customer purchase tracking, and order status management, integrated with Stripe payment processing.",
+        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers; enabled customers to browse and search products, add to cart, place orders, view order history, and manage profiles; and provided admins with product CRUD, image/PDF uploads, and order status management, integrated with Stripe payment processing.",
         link: "https://dynamic-griffin-d0c7fd.netlify.app/",
         source: {
           frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
