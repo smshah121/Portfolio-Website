@@ -325,7 +325,7 @@ function App() {
   <div className="flex gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start">
     {/* Resume Button */}
     <a
-      href="/27.pdf"
+      href="/Resume10.pdf"
       target="_blank"
       rel="noopener noreferrer"
       download="SyedMominAliShah_Resume.pdf"
