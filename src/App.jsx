@@ -56,7 +56,7 @@ function App() {
       {
         img: "/pricetag.png",
         title: "E-Commerce",
-        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers. Customer can Browse & search products, add to cart, place orders, view order history, manage profile. Admin can Manage products (CRUD), upload images/PDFs, view customer purchases, update order statuses.",
+        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers; enabled customers to browse and search products, add to cart, place orders, view order history, and manage profiles; and provided admins with product CRUD, image/PDF uploads, customer purchase tracking, and order status management, integrated with Stripe payment processing.",
         link: "https://dynamic-griffin-d0c7fd.netlify.app/",
         source: {
           frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
@@ -78,7 +78,7 @@ function App() {
       {
         img: "/quotes2.png",
         title: "Personal Quote Management",
-        desc: "Developed a full-stack app for add, delete, update and copy quotes with secure user auth, CRUD operations, and user specific data.",
+        desc: "Developed a full-stack application for adding, deleting, updating, and copying quotes with secure user authentication, Google OAuth2 login, CRUD operations, user-specific data management, profile management, and password update functionality.",
         link: "https://peaceful-crisp-c5d1fb.netlify.app/",
         source: {
           frontend: "https://github.com/smshah121/quotes-frontend",
