@@ -86,26 +86,6 @@ function App() {
         },
         tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
       },
-      {
-        img: "/weatherapp.png",
-        title: "Weather App",
-        desc: "Responsive app using React and OpenWeatherMap API with Axios, showing temperature, humidity, and wind for any city.",
-        link: "https://thunderous-stroopwafel-fd414f.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/Weather-Web-App",
-        },
-        tech: ["React", "Tailwind", "Axios"]
-      },
-      {
-        img: "/currconv.png",
-        title: "Currency Converter",
-        desc: "Integrated real-time currency API to convert currencies and display flags dynamically with clean UI.",
-        link: "https://smshah121.github.io/currency-converter/",
-        source: {
-          frontend: "https://github.com/smshah121/currency-converter",
-        },
-        tech: ["React", "Tailwind", "Axios"]
-      },
       
     
   ]
