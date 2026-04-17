@@ -87,6 +87,8 @@ function App() {
         tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
       },
       
+      
+      
     
   ]
 
@@ -649,7 +651,7 @@ function App() {
     </h1>
   </div>
 
-  <motion.div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+  <motion.div className="flex flex-wrap  gap-8 max-w-7xl mx-auto">
     {MyProjects.map((project, index) => (
       <motion.div
         key={index}
