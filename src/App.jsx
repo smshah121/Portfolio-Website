@@ -783,7 +783,7 @@ transition-all duration-300"
               <div className="flex items-center p-2 mt-4">
               <IoIosMail size={34} className="text-red-500" />
               <h4 className="ml-2 text-xs text-gray-700 break-all font-semibold md:text-xl">
-                • sm.shah2003@hotmail.com
+                • smshah.2003@gmail.com
               </h4>
             </div>
 
