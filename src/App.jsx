@@ -413,7 +413,7 @@ function App() {
 
     <p className="text-gray-700 text-xs md:text-lg leading-relaxed mb-3">
       My coding journey began in{" "}
-      <span className="font-semibold">2022</span> with online courses like
+      <span className="font-semibold">2022</span> with Udemy courses like
       Angela Yu’s Web Development Bootcamp and 100 Days of Python — where I built
       a strong foundation in programming and problem-solving.
     </p>
