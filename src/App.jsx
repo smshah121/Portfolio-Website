@@ -333,7 +333,7 @@ function App() {
       </section>
 
       {/* TECH STACK SECTION */}
-      <section id="skills" className={`py-24 border-y ${darkMode ? "bg-slate-900/20 border-white/5" : "bg-slate-100/50 border-slate-200"}`}>
+      <section id="skills" className={`py-20 border-y ${darkMode ? "bg-slate-900/20 border-white/5" : "bg-slate-100/50 border-slate-200"}`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
           <h1 className={`text-2xl md:text-4xl font-extrabold mb-16 tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Tech Stack</h1>
 
@@ -362,7 +362,7 @@ function App() {
       </section>
 
       {/* PROJECTS SECTION - PREMIUM CASING */}
-      <section id="project" className="py-28 max-w-7xl mx-auto px-6 md:px-12">
+      <section id="project" className="py-20 max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <h1 className={`text-2xl md:text-4xl font-extrabold tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Projects</h1>
         </div>
@@ -447,7 +447,7 @@ function App() {
       </section>
 
       {/* CONTACT SECTION - HIGHLY PREMIUM TRANSITION FIELDS */}
-      <section id="contact" className={`py-28 border-t ${darkMode ? "bg-slate-900/10 border-white/5" : "bg-slate-100/40 border-slate-200"}`}>
+      <section id="contact" className={`py-24 border-t ${darkMode ? "bg-slate-900/10 border-white/5" : "bg-slate-100/40 border-slate-200"}`}>
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             
