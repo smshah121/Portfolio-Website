@@ -72,7 +72,7 @@ function App() {
       img: "/fraud.png",
       title: "AI-Powered Credit Card Fraud Detection System",
       desc: "Developed an AI-powered Credit Card Fraud Detection System using React.js, NestJS, Python, and PostgreSQL, where users can submit transaction details through a modern web interface, the NestJS backend performs feature engineering and data processing, and a Machine Learning model analyzes transaction patterns to detect fraudulent activities in real time. The system provides fraud predictions with confidence scores, stores transaction history in a PostgreSQL database, and includes reporting and analytics features to help monitor and prevent financial fraud effectively.",
-      link: "https://quotenest-quotes.netlify.app/",
+      link: "",
       source: {
         frontend: "https://github.com/smshah121/fraud-detection-frontend",
         backend: "https://github.com/smshah121/fraud-detection-backend",
