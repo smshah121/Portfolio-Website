@@ -255,7 +255,7 @@ function App() {
           <div className={`text-base sm:text-xl md:text-2xl font-semibold mt-4 h-8 flex items-center justify-center w-full ${
             darkMode ? "text-slate-300" : "text-slate-700"
           }`}>
-            <Typewriter options={{ strings: ["Web Developer", "Software Engineer", "Tech Enthusiast"], autoStart: true, loop: true, delay: 60, deleteSpeed: 40 }} />
+            <Typewriter options={{ strings: ["Full Stack Developer", "Software Engineer", "Tech Enthusiast"], autoStart: true, loop: true, delay: 60, deleteSpeed: 40 }} />
           </div>
 
           <p className={`mt-3 text-sm sm:text-base md:text-md max-w-xl leading-relaxed mx-auto px-2 ${
