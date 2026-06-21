@@ -1,100 +1,105 @@
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3Alt } from "react-icons/fa";
-import { TbBrandJavascript } from "react-icons/tb";
-import { TbBrandTypescript } from "react-icons/tb";
+import { FaHtml5, FaCss3Alt, FaLinkedin, FaGithub, FaInstagram, FaPhoneAlt, FaGraduationCap,  FaGitAlt, FaNodeJs } from "react-icons/fa";
+import { TbBrandJavascript, TbBrandTypescript, TbBrandFramerMotion } from "react-icons/tb";
 import { GrReactjs } from "react-icons/gr";
-import { SiNestjs } from "react-icons/si";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { SiTailwindcss } from "react-icons/si";
-import { IoIosMail } from "react-icons/io";
-import { FaPhoneAlt } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { IoMdDownload } from "react-icons/io";
-import { FaInstagram } from "react-icons/fa";
+import { SiNestjs, SiPostgresql, SiTailwindcss, SiRedux, SiAxios, SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
+import { IoIosMail, IoMdDownload, IoMdMail } from "react-icons/io";
+import { FaLocationDot, FaRegEye, FaLaptopCode as FaLaptop, FaSun, FaMoon } from "react-icons/fa6";
+import { PiMicrosoftOutlookLogo } from "react-icons/pi";
+import { CiGlobe } from "react-icons/ci";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import emailjs from "emailjs-com";
-import { IoMdMail } from "react-icons/io";
-import { PiMicrosoftOutlookLogo } from "react-icons/pi";
-import { FaRegEye } from "react-icons/fa";
-import { SiRedux } from "react-icons/si";
-import { TbBrandFramerMotion } from "react-icons/tb";
-import { SiAxios } from "react-icons/si";
-import { FaLaptopCode } from "react-icons/fa6";
-import { FaCode } from "react-icons/fa";
-import { FaGraduationCap } from "react-icons/fa";
-import { CiGlobe } from "react-icons/ci";
-import { SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
-import { FaGitAlt } from "react-icons/fa";
-import { FaNodeJs } from "react-icons/fa";
-
-
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
-  const [visible, setVisible] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme) return savedTheme === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
   const MyProjects = [
-    
-      {
-        img: "/lms2.png",
-        title: "Learning Management System",
-        desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access",
-        link: "https://singular-toffee-702de6.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
-          backend: "https://github.com/smshah121/Learning-Management-System-Backend",
-        },
-        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+    {
+      img: "/lms2.png",
+      title: "Learning Management System",
+      desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access.",
+      link: "https://learning-management-system-app1.netlify.app/",
+      source: {
+        frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
+        backend: "https://github.com/smshah121/Learning-Management-System-Backend",
       },
-      {
-        img: "/pricetag.png",
-        title: "E-Commerce",
-        desc: "Developed a full-stack role-based e-commerce platform with secure authentication for Admin and Customers; enabled customers to browse and search products, add to cart, place orders, view order history, manage profiles, and make payments via Stripe; and provided admins with product CRUD, image/PDF uploads, and order status management.",
-        link: "https://dynamic-griffin-d0c7fd.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
-          backend: "https://github.com/smshah121/E-Commerce-Web-App-Backend",
-        },
-        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+    },
+    {
+      img: "/pricetag.png",
+      title: "E-Commerce Platform",
+      desc: "A full-stack role-based e-commerce ecosystem with secure authentication. Customers browse products, manage carts, view order history, and execute payments seamlessly via Stripe. Admins handle product catalogs, image uploads, and order flows.",
+      link: "https://pricetag-tech.netlify.app/",
+      source: {
+        frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
+        backend: "https://github.com/smshah121/E-Commerce-Web-App-Backend",
       },
-      {
-        img: "/pixora.png",
-        title: "Pixora",
-        desc: "Built a media collection platform where users can save photos, videos, and GIFs, organize them into custom collections, and view their saved items anytime. User data is kept private and secure through JWT authentication and password hashing, with Google OAuth 2.0 integration for seamless login and protected routes ensuring only authorized users can access their content.",
-        link: "https://pixora-media.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/pixora-frontend",
-          backend: "https://github.com/smshah121/pixora-backend",
-        },
-        tech: ["React", "Tailwind", "Postgres", "Nest", "Redux"]
+      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+    },
+    {
+      img: "/degree.png",
+      title: "Degree Attestation System",
+      desc: "This project is a next-generation web application designed to automate and secure the academic document verification pipeline. By integrating AI-driven OCR text analysis with Blockchain immutability, the system eliminates manual verification delays and prevents credential fraud. Students can securely upload transcripts, process processing fees via Stripe, and anchor their authenticated hashes onto a decentralized ledger for instant, tamper-proof third-party verification.",
+      link: "",
+      source: {
+        frontend: "https://github.com/smshah121/degree-attestation-system-frontend",
+        backend: "https://github.com/smshah121/degree-attestation-system-backend",
+        SmartContract: "https://github.com/smshah121/degree-attestation-smart_contract",
       },
-      {
-        img: "/quotes2.png",
-        title: "Personal Quote Management",
-        desc: "Developed a full-stack application for adding, deleting, updating, and copying quotes with secure user authentication, Google OAuth2 login, CRUD operations, user-specific data management, profile management, and password update functionality.",
-        link: "https://peaceful-crisp-c5d1fb.netlify.app/",
-        source: {
-          frontend: "https://github.com/smshah121/quotes-frontend",
-          backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
-        },
-        tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+    },
+    {
+      img: "/pixora.png",
+      title: "Pixora Media Collection",
+      desc: "Built a media collection platform where users can save photos, videos, and GIFs, organize them into custom collections, and view their saved items anytime. User data is kept private and secure through JWT authentication and password hashing, with Google OAuth 2.0 integration for seamless login and protected routes ensuring only authorized users can access their content.",
+      link: "https://pixora-media.netlify.app/",
+      source: {
+        frontend: "https://github.com/smshah121/pixora-frontend",
+        backend: "https://github.com/smshah121/pixora-backend",
       },
-      
-      
-      
-    
-  ]
-
+      tech: ["React", "Tailwind", "Postgres", "Nest", "Redux"]
+    },
+    {
+      img: "/fraud.png",
+      title: "AI-Powered Credit Card Fraud Detection System",
+      desc: "Developed an AI-powered Credit Card Fraud Detection System using React.js, NestJS, Python, and PostgreSQL, where users can submit transaction details through a modern web interface, the NestJS backend performs feature engineering and data processing, and a Machine Learning model analyzes transaction patterns to detect fraudulent activities in real time. The system provides fraud predictions with confidence scores, stores transaction history in a PostgreSQL database, and includes reporting and analytics features to help monitor and prevent financial fraud effectively.",
+      link: "https://quotenest-quotes.netlify.app/",
+      source: {
+        frontend: "https://github.com/smshah121/fraud-detection-frontend",
+        backend: "https://github.com/smshah121/fraud-detection-backend",
+        MLCode: "https://github.com/smshah121/fraud-detection-ml-api"
+      },
+      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+    }
+    ,
+    {
+      img: "/quotes2.png",
+      title: "Personal Quote Management",
+      desc: "Full-stack cloud application featuring seamless handling of text-based assets with deep CRUD capabilities. Leverages Google OAuth2 login mechanisms, secure private routing tables, and real-time state profiles.",
+      link: "https://quotenest-quotes.netlify.app/",
+      source: {
+        frontend: "https://github.com/smshah121/quotes-frontend",
+        backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
+      },
+      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+    }
+  ];
 
   useEffect(() => {
-    const sections = document.querySelectorAll("div[id]");
+    localStorage.setItem("portfolio-theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -103,830 +108,420 @@ function App() {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
     sections.forEach((sec) => observer.observe(sec));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const NavItems = [
     { id: "hero", label: "Home" },
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
-    { id: "project", label: "Project" },
+    { id: "project", label: "Projects" },
     { id: "contact", label: "Contact" },
   ];
 
   const BackendTech = [
-    
-        { name: "NestJS", icon: <SiNestjs size={55} />, color: "#E0234E" },
-        { name: "TypeScript", icon: <TbBrandTypescript size={55} />, color: "#3178C6" },,
-        { name: "Node.js", icon: <FaNodeJs size={55} />, color: "#339933" },
-        { name: "PostgreSQL", icon: <BiLogoPostgresql size={55} />, color: "#4169E1" },
+    { name: "NestJS", icon: <SiNestjs size={32} />, color: "#E0234E" },
+    { name: "TypeScript", icon: <TbBrandTypescript size={32} />, color: "#3178C6" },
+    { name: "Node.js", icon: <FaNodeJs size={32} />, color: "#339933" },
+    { name: "PostgreSQL", icon: <SiPostgresql size={32} />, color: "#4169E1" }
+  ];
 
-      
-  ]
+  const FrontendTech = [
+    { name: "HTML5", icon: <FaHtml5 size={32} />, color: "#E34F26" },
+    { name: "CSS3", icon: <FaCss3Alt size={32} />, color: "#1572B6" },
+    { name: "JavaScript", icon: <TbBrandJavascript size={32} />, color: "#F7DF1E" },
+    { name: "ReactJS", icon: <GrReactjs size={32} />, color: "#61DAFB" },
+    { name: "Tailwind CSS", icon: <SiTailwindcss size={32} />, color: "#38BDF8" },
+    { name: "Framer Motion", icon: <TbBrandFramerMotion size={32} />, color: "#E94E44" },
+    { name: "Redux Toolkit", icon: <SiRedux size={32} />, color: "#764ABC" },
+    { name: "Axios", icon: <SiAxios size={32} />, color: "#A5B4FC" }
+  ];
+
+  const Tools = [
+    { name: "Netlify", icon: <SiNetlify size={32} />, color: "#00C7B7" },
+    { name: "Render", icon: <SiRender size={32} />, color: "#46E3B7" },
+    { name: "Git", icon: <FaGitAlt size={32} />, color: "#F1502F" },
+    { name: "Cloudinary", icon: <SiCloudinary size={32} />, color: "#3448C5" }
+  ];
 
   const TechIcons = {
     React: <GrReactjs className="text-[#61DAFB]" title="React" />,
-    Nest: <SiNestjs className="text-[#E0234E]" title="Nest"/>,
+    Nest: <SiNestjs className="text-[#E0234E]" title="Nest" />,
     Tailwind: <SiTailwindcss className="text-[#38BDF8]" title="Tailwind" />,
-    Postgres: <BiLogoPostgresql className="text-[#4169E1]" title="Postgres"/>,
-    Redux: <SiRedux  className="text-[#764ABC]"/>,
-    Motion: <TbBrandFramerMotion className="text-[#E94E44]" />,
-    Axios: <SiAxios className="text-gray-400" />
-  }
-
-  const FrontendTech= [
-        { name: "HTML", icon: <FaHtml5 size={55} />, color: "#E34F26" },
-        { name: "CSS", icon: <FaCss3Alt size={55} />, color: "#1572B6" },
-        { name: "JavaScript", icon: <TbBrandJavascript size={55} />, color: "#F7DF1E" },
-        { name: "ReactJS", icon: <GrReactjs size={55} />, color: "#61DAFB" },
-        { name: "Tailwind CSS", icon: <SiTailwindcss size={55} />, color: "#38BDF8" },
-        {name: "Framer Motion" ,icon: <TbBrandFramerMotion size={55} />, color: "#E94E44"},
-        {name: "Redux Toolkit" ,icon:  <SiRedux  size={55} />, color: "#764ABC"},
-        {name: "Axios" ,icon: <SiAxios size={55} className="text-gray-400"/>},
-  ]
-
-
-  const Tools = [
-        { name: "Netlify", icon: <SiNetlify size={55} />, color: "#00C7B7" },
-        { name: "Render", icon: <SiRender size={55} />, color: "#46E3B7" },    
-        { name: "Git", icon: <FaGitAlt size={55} />, color: "#F1502F" },
-        { name: "Cloudinary", icon: <SiCloudinary size={55} />, color: "#3448C5" },
-  ]
-
-   useEffect(() => {
-    let activityTimer;
-
-    const handleActivity = () => {
-      // When user scrolls or moves mouse — show navbar
-      setVisible(true);
-
-      // Update scroll state (for background/rounded shape)
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-
-      // Clear any existing timer
-      clearTimeout(activityTimer);
-
-      // Hide navbar after 2 seconds of no activity
-      activityTimer = setTimeout(() => {
-        setVisible(false);
-      }, 2000);
-    };
-
-    // Add both scroll and mousemove listeners
-    window.addEventListener("scroll", handleActivity);
-    window.addEventListener("mousemove", handleActivity);
-
-    // Cleanup
-    return () => {
-      window.removeEventListener("scroll", handleActivity);
-      window.removeEventListener("mousemove", handleActivity);
-      clearTimeout(activityTimer);
-    };
-  }, []);
+    Postgres: <SiPostgresql className="text-[#4169E1]" title="Postgres" />,
+    Redux: <SiRedux className="text-[#764ABC]" title="Redux" />,
+    Motion: <TbBrandFramerMotion className="text-[#E94E44]" title="Framer Motion" />,
+    Axios: <SiAxios className="text-indigo-400" title="Axios" />
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_6ew2jco",
-        "template_8nw4mdt",
-        e.target,
-        "-lQ92GZ3aOZyq22up"
-      )
-      .then(
-        (result) => {
-          alert("✅ Message sent successfully!");
-          e.target.reset();
-        },
-        (error) => {
-          alert("❌ Failed to send, try again.");
-        }
-      );
+    emailjs.sendForm("service_6ew2jco", "template_8nw4mdt", e.target, "-lQ92GZ3aOZyq22up")
+      .then(() => {
+        alert("✅ Message sent successfully!");
+        e.target.reset();
+      }, () => {
+        alert("❌ Failed to send, please try again.");
+      });
   };
 
   return (
-    <div>
-      <div
-      id="navbar"
-      className={`fixed top-0 w-full flex justify-end md:justify-center items-center py-6 px-6 transition-all duration-500 ease-in-out z-50
-        ${scrolled ? "w-85 h-10 rounded-3xl" : "bg-gradient-to-r from-[#090622] to-[#07081a]"}
-        ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}
-      `}
-    >
-        
+    <div className={`min-h-screen font-sans antialiased overflow-x-hidden selection:bg-indigo-500/30 selection:text-indigo-200 transition-colors duration-300 ${
+      darkMode ? "bg-slate-950 text-slate-100" : "bg-slate-50 text-slate-900"
+    }`}>
+      
+      {/* Floating Centered Navigation Header Bar */}
+      <header className="fixed top-0 left-0 w-full flex justify-center py-4 px-6 z-50 pointer-events-none">
+        <div className={`flex items-center gap-4 px-3 py-1.5 rounded-full border pointer-events-auto transition-all duration-300 shadow-xl ${
+          scrolled 
+            ? darkMode ? "bg-slate-900/80 border-white/10 backdrop-blur-md" : "bg-white/80 border-slate-200 backdrop-blur-md"
+            : darkMode ? "bg-slate-900/40 border-white/5 backdrop-blur-sm" : "bg-white/40 border-slate-200/60 backdrop-blur-sm"
+        }`}>
+          <ul className="hidden md:flex items-center gap-1">
+            {NavItems.map((item) => (
+              <li key={item.id}>
+                <a href={`#${item.id}`} className={`px-4.5 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-200 ${
+                  activeSection === item.id 
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/25" 
+                    : darkMode ? "text-slate-400 hover:text-slate-100" : "text-slate-500 hover:text-slate-900"
+                }`}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        {/* Desktop Nav */}
-        <motion.ul
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="hidden md:flex justify-around bg-white/5 backdrop-blur-xl w-100 h-10 rounded-3xl p-2 font-semibold text-md"
-        >
-          {NavItems.map((item) => (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className={`transition ${
-                  activeSection === item.id
-                    ? "text-[#736bbe] font-bold"
-                    : "text-gray-300 hover:text-[#736bbe]"
-                }`}
-              >
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden px-3 py-1 text-sm font-bold tracking-widest uppercase focus:outline-none transition-colors text-indigo-500">
+            {mobileMenuOpen ? "CLOSE" : "MENU"}
+          </button>
+
+          <div className={`w-[1px] h-5 ${darkMode ? "bg-white/10" : "bg-slate-200"}`} />
+
+          <button onClick={() => setDarkMode(!darkMode)} className={`p-2 rounded-full transition-all border ${
+            darkMode ? "bg-slate-800 border-white/5 text-amber-400 hover:bg-slate-700" : "bg-slate-100 border-slate-200 text-indigo-600 hover:bg-slate-200"
+          }`}>
+            {darkMode ? <FaSun size={14} /> : <FaMoon size={14} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Menu Drawer Layout Panel */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className={`fixed inset-x-0 top-20 mx-6 p-6 rounded-2xl border backdrop-blur-xl z-40 flex flex-col gap-4 shadow-2xl ${
+            darkMode ? "bg-slate-900/95 border-white/10" : "bg-white/95 border-slate-200"
+          }`}>
+            {NavItems.map((item) => (
+              <a key={item.id} href={`#${item.id}`} onClick={() => setMobileMenuOpen(false)} className={`text-base font-bold tracking-wide uppercase pb-1 border-b ${
+                activeSection === item.id 
+                  ? "text-indigo-500 border-indigo-500" 
+                  : darkMode ? "text-slate-300 border-white/5" : "text-slate-600 border-slate-100"
+              }`}>
                 {item.label}
               </a>
-            </li>
-          ))}
-        </motion.ul>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        {/* Mobile Hamburger */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setOpen(!open)}
-            className="text-white text-3xl"
-          >
-            ☰
-          </button>
-          {open && (
-            <ul className="absolute right-6 top-16 bg-[#0A192F] text-white rounded-lg shadow-lg p-4 flex flex-col gap-3">
-              {NavItems.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    onClick={() => setOpen(false)} // close menu on click
-                    className={`transition ${
-                      activeSection === item.id
-                        ? "text-[#736bbe] font-bold"
-                        : "text-gray-300 hover:text-[#736bbe]"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-     <div
-  id="hero"
-  className="flex flex-col justify-center items-center text-center bg-gradient-to-r from-[#090622] to-[#07081a] min-h-screen px-6 sm:px-8 md:px-12 pt-28 md:pt-20 overflow-x-hidden"
->
-  {/* Animated Intro Text */}
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    className="flex flex-col items-center gap-4 text-white max-w-3xl"
-  >
-    <h1 className="font-bold text-2xl sm:text-5xl md:text-6xl text-[#e6e4ff]">
-  Hello! I'm
-</h1>
-
-<h2 className="font-extrabold text-2xl sm:text-4xl md:text-7xl
-  text-[#7e68ff]
-  drop-shadow-[0_0_14px_rgba(126,104,255,0.45)]">
-  Syed Momin Ali Shah
-</h2>
-
-
-    <h4 className="text-[#C1BEE6] text-lg sm:text-xl md:text-3xl font-medium mt-2">
-      <Typewriter
-        options={{
-          strings: [
-            "Web Developer",
-            "Software Engineer",
-            "Tech Enthusiast"
-          ],
-          autoStart: true,
-          loop: true,
-          delay: 60,
-          deleteSpeed: 40,
-        }}
-      />
-    </h4>
-
-    <p className="mt-5 text-[#c9c6f5] text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl">
-      Final-Year <span className="text-[#8078ce] font-semibold">Software Engineering</span> student, and <span className="text-[#8078ce] font-semibold">Full Stack Developer. </span> 
-      I build modern and scalable web applications using <span className="text-[#8078ce] font-semibold">ReactJS</span> and <span className="text-[#8078ce] font-semibold">NestJS</span>.  
-       passionate about crafting clean, efficient, and user-friendly interfaces.
-    </p>
-
-    {/* Buttons */}
-    <div className="flex items-center md:items-start flex-col mt-4">
-  {/* Buttons Wrapper */}
-  <div className="flex gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start">
-    {/* Resume Button */}
-    <a
-      href="/Resume10.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      download="SyedMominAliShah_Resume.pdf"
-    >
-      <button
-        className="w-28 sm:w-36 md:w-40 h-8 sm:h-9 md:h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:text-gray-200 hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] transition-all duration-300 text-xs sm:text-sm"
-      >
-        <IoMdDownload size={14} className="sm:size-[16px] md:size-[18px]" />
-        Resume
-      </button>
-    </a>
-
-    {/* View Projects Button */}
-    <a href="#project">
-      <button
-        className="w-28 sm:w-36 md:w-40 h-8 sm:h-9 md:h-10 flex justify-center items-center gap-2 rounded-xl border border-[#C084FC]/40 bg-[#C084FC]/10 backdrop-blur-md text-[#8078ce] font-semibold hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-[0_0_15px_#C084FC] hover:text-gray-200 transition-all duration-300 text-xs sm:text-sm"
-      >
-        View Projects
-      </button>
-    </a>
-  </div>
-</div>
-
-
-    {/* Social Links */}
-    <div className="flex justify-center mt-8 space-x-5">
-      <a
-        href="https://www.linkedin.com/in/smshah121"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaLinkedin  className="text-gray-100  hover:text-[#0A66C2] transition-all duration-300" size={32} />
-      </a>
-      <a
-        href="https://github.com/smshah121"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaGithub className="text-gray-100 hover:text-[#181717] hover:bg-white rounded-3xl transition-all duration-300" size={32} />
-      </a>
-      <a
-        href="https://www.instagram.com/__smshah__"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaInstagram className="text-gray-100 hover:text-pink-500 transition-all duration-300" size={32} />
-      </a>
-      <a href="mailto:sm.shah2003@hotmail.com">
-        <PiMicrosoftOutlookLogo className="text-gray-100 hover:text-[#0078D4] transition-all duration-300" size={32} />
-      </a>
-      <a href="mailto:smshah.2003@gmail.com">
-        <IoMdMail className="text-gray-100 hover:text-[#EA4335] transition-all duration-300" size={32} />
-      </a>
-    </div>
-  </motion.div>
-</div>
-
-      <div
-  id="about"
-  className="flex flex-col lg:flex-row justify-between p-10 bg-gray-50"
->
-  {/* Left Side - About Me */}
- <div className="flex flex-col justify-center lg:w-1/2 pr-6">
-  <div className="">
-    
-  </div>
-
-  {/* About Me Box */}
-  <motion.div 
-  
-      initial={{ opacity: 0, x: -40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4 }}
-  className="bg-gray-100 flex flex-col justify-center items-center md:items-start md:justify-start shadow-lg rounded-2xl p-6 md:p-8 border border-[#274D60]/10 hover:shadow-2xl transition-all duration-300">
-    <h1 className="text-[#274D60] text-2xl md:text-5xl font-bold mb-5">
-      Who I'm?
-    </h1>
-    <p className="text-gray-700 leading-relaxed mb-3 text-xs md:text-lg">
-      Hi, I'm{" "}
-      <span className="font-semibold text-[#274D60]">Syed Momin Ali Shah</span>,
-      a passionate{" "}
-      <span className="font-semibold">Full Stack Developer</span> who loves
-      building clean, scalable, and user-friendly applications.
-    </p>
-
-    <p className="text-gray-700 text-xs md:text-lg leading-relaxed mb-3">
-      My coding journey began in{" "}
-      <span className="font-semibold">2022</span> with Udemy courses like
-      Angela Yu’s Web Development Bootcamp and 100 Days of Python — where I built
-      a strong foundation in programming and problem-solving.
-    </p>
-
-    <p className="text-gray-700 text-xs md:text-lg leading-relaxed mb-3">
-      Since <span className="font-semibold">March 2023</span>, I’ve been pursuing
-      a BS in Software Engineering at Iqra University. I’ve studied core subjects
-      like OOP, DSA, DBMS, and Operating Systems, gaining hands-on experience in
-      Java, SQL, and C.
-    </p>
-
-    <p className="text-gray-700 mb-3 text-xs md:text-lg">
-      I started with small frontend projects like a Currency Converter, Weather
-      App, and Tic Tac Toe game using Vanilla JavaScript and DOM manipulation.
-    </p>
-
-    <p className="text-gray-700 leading-relaxed text-xs md:text-lg mb-3">
-      Later, I joined a university bootcamp where I mastered{" "}
-      <span className="font-semibold">Backend Development</span> with NestJS and
-      PostgreSQL. Today, I work as a{" "}
-      <span className="font-semibold">Full Stack Developer</span> and have built
-      real-world applications such as Personal Quote Management, E-Commerce, and
-      Learning Management Systems.
-    </p>
-
-    <p className="text-gray-700 leading-relaxed text-xs md:text-lg">
-      I focus on writing clean, maintainable code and creating user-friendly, scalable applications. I'm always excited to take on new challenges and turn ideas into working software!
-    </p>
-  </motion.div>
-</div>
-
-
-  {/* Right Side - Timeline (Alternate Left-Right Style) */}
-  <div className="lg:w-1/2 flex flex-col items-center mt-10 lg:mt-0 relative">
-  {/* Vertical Line */}
-  <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-[#274D60]/60 transform -translate-x-1/2"></div>
-
-  {/* 1️⃣ Education */}
-  <div className="w-full mb-12 flex md:justify-end justify-center">
-    <div className="relative md:w-1/2 w-[85%] md:pl-6">
-      <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-        <FaGraduationCap className="text-gray-100" />
-      </div>
-      <motion.div
-      whileHover={{ scale: 1.05, y: -3 }}
-      initial={{ opacity: 0, x:40  }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4 }}
-      className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl">
-        <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
-          Education
-        </h3>
-        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-sm">
-          <li>Iqra University (BS Software Engineering) – 2023–Present</li>
-          <li>New Aligarh Degree College (Pre-Eng) – 2020–22</li>
-        </ul>
-      </motion.div>
-    </div>
-  </div>
-
-  {/* 2️⃣ Bootcamps & Online Courses */}
-  <div className="w-full mb-12 flex md:justify-start justify-center">
-    <div className="relative md:w-1/2 w-[85%] md:pr-6">
-      <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-        <FaLaptopCode className="text-gray-100" />
-      </div>
-      <motion.div 
-      whileHover={{ scale: 1.05, y: -3 }}
-      initial={{ opacity: 0, x: -40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4 }}
-      className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl flex flex-col items-start">
-        <h3 className="text-base md:text-lg font-semibold text-[#274D60] mb-2 text-left md:text-right">
-          Bootcamps & Online Courses
-        </h3>
-        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-sm">
-          <li>Udemy (Web Dev, Python 100 Days) – 2022</li>
-          <li>Last Mile Tech (Full Stack Bootcamp) – 2025</li>
-        </ul>
-      </motion.div>
-    </div>
-  </div>
-
-  {/* 3️⃣ Full Stack Projects */}
-  <div className="w-full mb-12 flex md:justify-end justify-center">
-    <div className="relative md:w-1/2 w-[85%] md:pl-6">
-      <div className="absolute -left-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-        <CiGlobe className="text-gray-100" />
-
-      </div>
-      <motion.div 
-      whileHover={{ scale: 1.05, y: -3 }}
-      initial={{ opacity: 0, x: 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4 }}
-      className="bg-gray-100 p-4 rounded-xl shadow-md hover:shadow-2xl">
-        <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2">
-          Full Stack Projects
-        </h3>
-        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-sm">
-          <li>Learning Management System</li>
-          <li>PriceTag E-Commerce</li>
-          <li>QuoteNest Personal Quotes Management</li>
-          <li>Pixora Media App</li>
-        </ul>
-      </motion.div>
-    </div>
-  </div>
-
-  {/* 4️⃣ Frontend Projects */}
-  <div className="w-full mb-12 flex md:justify-start justify-center">
-    <div className="relative md:w-1/2 w-[85%] md:pr-6">
-      <div className="absolute -right-4 w-8 h-8 bg-[#274D60] text-white flex items-center justify-center rounded-full">
-        <FaCode className="text-gray-100"/>
-      </div>
-      <motion.div 
-      whileHover={{ scale: 1.05, y: -3 }}
-      initial={{ opacity: 0, x: -40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4 }}
-      className="bg-gray-100 p-4 rounded-xl flex flex-col items-start shadow-md hover:shadow-2xl">
-        <h3 className="text-base md:text-xl font-semibold text-[#274D60] mb-2 text-left md:text-right">
-          Frontend Projects
-        </h3>
-        <ul className="list-disc list-inside text-left text-gray-700 text-sm md:text-base">
-          <li>Weather App</li>
-          <li>Currency Converter</li>
-          <li>Tic Tac Toe Game</li>
-        </ul>
-      </motion.div>
-    </div>
-  </div>
-</div>
-
-</div>
-
-
-
-      <div
-  id="skills"
-  className="py-20 px-6 sm:px-10 bg-gray-50 text-center"
->
-  {/* Main Heading */}
-  <div className="mb-12">
-    <h1 className="text-2xl sm:text-5xl font-extrabold text-[#274D60] mb-3">
-      Tech Stack
-    </h1>
-    <div className="w-24 h-1 bg-gradient-to-r from-[#736bbe] to-[#38BDF8] mx-auto rounded-full"></div>
-  </div>
-
-  {/* FRONTEND */}
-  <div className="mb-16">
-    <h2 className="text-2xl sm:text-4xl font-extrabold text-[#274D60] mb-8">
-      Frontend
-    </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
-      {
-        
-
-        
-      FrontendTech.map((skill, index) => (
-        <motion.div
-          key={index}
-          whileHover={{ scale: 1.05, y: -3 }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 + index * 0.05 }}
-          className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
-        >
-          <div style={{ color: skill.color }}>{skill.icon}</div>
-          <h1 className="text-gray-700 font-semibold text-sm sm:text-xl">{skill.name}</h1>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-
-  {/* BACKEND */}
-  <div className="mb-16">
-    <h2 className="text-2xl sm:text-4xl font-extrabold text-[#274D60] mb-8">
-      Backend & Database
-    </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
-      {
-      BackendTech.map((backend, index) => (
-        <motion.div
-          key={index}
-          whileHover={{ scale: 1.05, y: -3 }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 + index * 0.05 }}
-          className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
-        >
-          <div style={{ color: backend.color }}>{backend.icon}</div>
-          <h1 className="text-gray-700 font-semibold text-sm sm:text-xl">{backend.name}</h1>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-
-  
-  {/* TOOLS */}
-  <div>
-    <h2 className="text-2xl sm:text-4xl font-extrabold text-[#274D60] mb-8">
-      Tools
-    </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
-      {
-        
-      Tools.map((tool, index) => (
-        <motion.div
-          key={index}
-          whileHover={{ scale: 1.05, y: -3 }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 + index * 0.05 }}
-          className="w-[240px] sm:w-[270px] md:w-[300px] h-[150px] flex items-center justify-center gap-5 rounded-xl backdrop-blur-lg bg-white/30 shadow-md hover:shadow-[0_0_25px_rgba(115,107,190,0.3)] transition-all duration-300 border border-white/40"
-        >
-          <div style={{ color: tool.color }}>{tool.icon}</div>
-          <h1 className="text-gray-700 font-semibold text-sm sm:text-xl">{tool.name}</h1>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</div>
-
-
-
-     <div
-  id="project"
-  className="min-h-screen bg-gradient-to-br from-[#0b0726] via-[#08051f] to-[#050314] py-16 px-6"
->
-  <div className="font-bold text-3xl md:text-5xl mb-12 text-center">
-    <h1 className="text-[#7e68ff] drop-shadow-[0_0_12px_#736bbeaa]">
-      Projects
-    </h1>
-  </div>
-
-  <motion.div className="flex flex-wrap  gap-8 max-w-7xl mx-auto">
-    {MyProjects.map((project, index) => (
-      <motion.div
-        key={index}
-        initial={{ x: -100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        whileHover={{ scale: 1.05, y: -3 }}
-        className="w-[400px] h-[450px] bg-white/8 border border-white/10 rounded-2xl flex flex-col p-6"
-      >
-        {/* Image */}
-        <div className="flex justify-center h-[130px] flex-shrink-0">
-          <img
-            src={project.img}
-            className="h-full w-auto object-contain rounded-lg"
-            alt={project.title}
-          />
-        </div>
-
-        {/* Title */}
-        <div className="h-[50px] flex-shrink-0 flex items-center mt-3">
-          <h1 className="font-bold text-base text-[#7e68ff] line-clamp-1">
-            {project.title}
+      {/* HERO SECTION - COMPACT PREVENTING VERTICAL SCROLL OVERFLOW */}
+      <section id="hero" className={`relative flex flex-col justify-center items-center text-center h-screen w-full px-4 overflow-hidden pt-24 pb-6 ${
+        darkMode ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950/40 via-slate-950 to-slate-950" : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100/50 via-slate-50 to-slate-50"
+      }`}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
+          <span className={`text-xs font-mono tracking-widest mb-4 uppercase px-4 py-1 rounded-full border transition-all ${
+            darkMode ? "text-indigo-400 bg-indigo-500/10 border-indigo-500/20" : "text-indigo-600 bg-indigo-500/5 border-indigo-500/20"
+          }`}>
+            Available for Opportunities
+          </span>
+          
+          <h1 className={`font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-none w-full max-w-none mx-auto whitespace-nowrap ${
+            darkMode ? "text-white" : "text-slate-900"
+          }`}>
+            Syed Momin <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]">Ali Shah</span>
           </h1>
-        </div>
 
-        {/* Description */}
-        <div className="h-[115px] flex-shrink-0 overflow-hidden">
-          <p className="text-[#c7c3f2] text-xs leading-relaxed line-clamp-6">
-            {project.desc}
+          <div className={`text-base sm:text-xl md:text-2xl font-semibold mt-4 h-8 flex items-center justify-center w-full ${
+            darkMode ? "text-slate-300" : "text-slate-700"
+          }`}>
+            <Typewriter options={{ strings: ["Web Developer", "Software Engineer", "Tech Enthusiast"], autoStart: true, loop: true, delay: 60, deleteSpeed: 40 }} />
+          </div>
+
+          <p className={`mt-3 text-sm sm:text-base md:text-md max-w-xl leading-relaxed mx-auto px-2 ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}>
+            Final-Year <span className="text-indigo-500 font-semibold">Software Engineering</span> student and <span className="text-indigo-500 font-semibold">Full Stack Developer</span> specialized in building performance-optimized cloud architectures with <span className="text-indigo-500 font-semibold">ReactJS</span> and <span className="text-indigo-500 font-semibold">NestJS</span>.
           </p>
-        </div>
 
-        {/* Tech Icons */}
-        <div className="flex flex-wrap items-center gap-2 h-[35px] flex-shrink-0 overflow-hidden mt-2">
-          {project.tech.map((tech) => (
-            <div key={tech} className="text-xl">
-              {TechIcons[tech] || <span className="text-gray-400">{tech}</span>}
+          <div className="flex gap-4 mt-6 flex-wrap justify-center items-center">
+            <a href="/Resume10.pdf" target="_blank" rel="noopener noreferrer" download="SyedMominAliShah_Resume.pdf" className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-md shadow-indigo-600/20 transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm">
+              <IoMdDownload size={16} /> Download CV
+            </a>
+            <a href="#project" className={`px-5 py-2.5 rounded-xl border font-medium transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm ${
+              darkMode ? "bg-white/5 hover:bg-white/10 border-white/10 text-slate-200" : "bg-slate-900/5 hover:bg-slate-900/10 border-slate-900/10 text-slate-800"
+            }`}>
+              View Projects
+            </a>
+          </div>
+
+          <div className={`flex justify-center mt-8 gap-5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
+            <a href="https://www.linkedin.com/in/smshah121" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors transform hover:scale-110 duration-200"><FaLinkedin size={22} /></a>
+            <a href="https://github.com/smshah121" target="_blank" rel="noopener noreferrer" className={`transition-colors transform hover:scale-110 duration-200 ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={22} /></a>
+            <a href="https://www.instagram.com/__smshah__" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors transform hover:scale-110 duration-200"><FaInstagram size={22} /></a>
+            <a href="mailto:sm.shah2003@hotmail.com" className="hover:text-blue-500 transition-colors transform hover:scale-110 duration-200"><PiMicrosoftOutlookLogo size={22} /></a>
+            <a href="mailto:smshah.2003@gmail.com" className="hover:text-red-500 transition-colors transform hover:scale-110 duration-200"><IoMdMail size={22} /></a>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ABOUT SECTION - SELECTIVE & PROFESSIONAL REFORMATTING */}
+      <section id="about" className="py-28 px-6 md:px-12 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className={`p-8 rounded-2xl border shadow-xl ${
+            darkMode ? "bg-slate-900/30 border-white/5" : "bg-white border-slate-200/60"
+          }`}>
+            <h3 className={`text-2xl md:text-3xl font-bold mb-4 tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Executive Summary</h3>
+            <div className={`space-y-4 text-sm md:text-base leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
+              <p>I am a highly driven <span className="font-semibold text-indigo-500">Full Stack Developer</span> finishing my final year in Software Engineering at Iqra University. My core expertise lies in designing modular client-server architectures, optimizing transactional layers, and configuring structured databases.</p>
+              <p>Leveraging deep operational familiarity with both component runtime life cycles in React and secure server design patterns in NestJS, I engineer enterprise web properties that maintain structural efficiency, absolute state management, and robust endpoints.</p>
+            </div>
+          </motion.div>
+
+          <div className={`relative pl-6 border-l-2 space-y-8 ${darkMode ? "border-indigo-500/20" : "border-indigo-500/30"}`}>
+            {[
+  { 
+    title: "Academic Background", 
+    desc: "Iqra University — Final-Year Candidate, BS Software Engineering (2023–Present)", 
+    icon: <FaGraduationCap /> 
+  },
+  { 
+    title: "Technical Specializations", 
+    desc: "Advanced Full Stack architecture specializing in NestJS for scalable backend development.\n Robust database management using PostgreSQL alongside TypeScript optimization.\n Component-driven frontend interfaces engineered with ReactJS, Redux Toolkit, and Tailwind CSS.", 
+    icon: <FaLaptop /> 
+  },
+ { 
+  title: "System Implementations", 
+  desc: "Built several Full-Stack Web Apps, including a Learning Management System with secure role-based logins, the PriceTag E-Commerce store with Stripe payment integration, QuoteNest featuring Google login, and Pixora—a private media platform with secure galleries and data routes.", 
+  icon: <CiGlobe /> 
+},
+].map((node, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }} className="relative group">
+                <div className={`absolute -left-10 top-0 w-8 h-8 rounded-full border flex items-center justify-center text-indigo-500 transition-all ${
+                  darkMode ? "bg-slate-900 border-white/10 group-hover:border-indigo-400" : "bg-white border-slate-200 group-hover:border-indigo-600"
+                }`}>
+                  {node.icon}
+                </div>
+                <h4 className={`text-md font-bold mb-1 transition-colors ${darkMode ? "text-white group-hover:text-indigo-400" : "text-slate-900 group-hover:text-indigo-600"}`}>{node.title}</h4>
+                <p className={`text-xs md:text-sm leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-600"}`}>{node.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* TECH STACK SECTION */}
+      <section id="skills" className={`py-24 border-y ${darkMode ? "bg-slate-900/20 border-white/5" : "bg-slate-100/50 border-slate-200"}`}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
+          <h1 className={`text-2xl md:text-4xl font-extrabold mb-16 tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Tech Stack</h1>
+
+          {[
+            { cat: "Frontend Engineering", stack: FrontendTech },
+            { cat: "Backend & Database Clusters", stack: BackendTech },
+            { cat: "Developer Operations & Tools", stack: Tools }
+          ].map((block, bIdx) => (
+            <div key={bIdx} className="mb-12 last:mb-0 text-left">
+              <h4 className={`text-xs tracking-widest font-mono font-bold uppercase mb-4 border-b pb-2 ${darkMode ? "text-slate-400 border-white/5" : "text-slate-500 border-slate-200"}`}>{block.cat}</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                {block.stack.map((tech, idx) => (
+                  <motion.div key={idx} whileHover={{ y: -3, backgroundColor: darkMode ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.01)" }} className={`flex items-center gap-3.5 border p-3.5 rounded-xl shadow-sm transition-all ${
+                    darkMode ? "bg-slate-900/40 border-white/5" : "bg-white border-slate-200/60"
+                  }`}>
+                    <div style={{ color: tech.color }} className="opacity-90">
+                      {tech.icon}
+                    </div>
+                    <span className={`font-semibold text-xs md:text-sm ${darkMode ? "text-slate-200" : "text-slate-800"}`}>{tech.name}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Buttons */}
-        <div className="flex flex-wrap gap-3 mt-auto pt-3">
-          {/* Live Demo */}
-          <a href={project.link} target="_blank" rel="noopener noreferrer">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              className="flex items-center px-3 py-2 rounded-3xl
-border border-[#7e68ff]/40
-bg-[#7e68ff]/10
-text-[#b9b2ff] font-bold text-xs
-hover:bg-[#7e68ff]/20
-hover:border-[#7e68ff]/70
-hover:shadow-[0_0_18px_rgba(126,104,255,0.6)]
-transition-all duration-300"
-            >
-              <FaRegEye size={16} className="text-gray-300 mr-2" />
-              Live Demo
-            </motion.button>
-          </a>
+      {/* PROJECTS SECTION - PREMIUM CASING */}
+      <section id="project" className="py-28 max-w-7xl mx-auto px-6 md:px-12">
+        <div className="text-center mb-16">
+          <h1 className={`text-2xl md:text-4xl font-extrabold tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Case Studies</h1>
+        </div>
 
-          {/* Source Code Buttons */}
-          <div className="relative inline-block">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-              className="flex items-center px-3 py-2 rounded-3xl
-border border-[#7e68ff]/40
-bg-[#7e68ff]/10
-text-[#b9b2ff] font-bold text-xs
-hover:bg-[#7e68ff]/20
-hover:border-[#7e68ff]/70
-hover:shadow-[0_0_18px_rgba(126,104,255,0.6)]
-transition-all duration-300"
-            >
-              <a href="https://github.com/smshah121" target="_blank" rel="noopener noreferrer">
-                <FaGithub className="text-gray-200 hover:text-[#181717] mr-2" size={16} />
-              </a>
-              Source Code ▼
-            </motion.button>
-
-            {dropdownOpen === index && (
-              <div className="absolute mt-2 bg-[#1e293b] text-white rounded-lg text-xs shadow-lg z-50 w-40">
-                {project.source?.frontend && (
-                  <a href={project.source.frontend} target="_blank" rel="noopener noreferrer" className="block px-4 py-2 hover:bg-[#334155]">
-                    Frontend
-                  </a>
-                )}
-                {project.source?.backend && (
-                  <a href={project.source.backend} target="_blank" rel="noopener noreferrer" className="block px-4 py-2 hover:bg-[#334155]">
-                    Backend
-                  </a>
-                )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {MyProjects.map((project, index) => (
+            <motion.div key={index} whileHover={{ y: -6 }} className={`border rounded-2xl flex flex-col overflow-hidden transition-all shadow-md hover:shadow-xl ${
+              darkMode ? "bg-slate-900/20 border-white/5" : "bg-white border-slate-200/60"
+            }`}>
+              
+              <div className={`h-44 flex items-center justify-center p-6 border-b relative overflow-hidden ${
+                darkMode ? "bg-slate-950 border-white/5" : "bg-slate-100 border-slate-200/40"
+              }`}>
+                <img src={project.img} className="h-full w-full object-cover rounded-lg transform hover:scale-102 transition-transform duration-500" alt={project.title} />
               </div>
-            )}
-          </div>
+
+              <div className="p-6 flex flex-col flex-grow">
+                <h4 className={`font-bold text-lg mb-2 tracking-tight ${darkMode ? "text-white" : "text-slate-900"}`}>{project.title}</h4>
+                
+                <p className={`text-xs md:text-sm tracking-normal leading-relaxed font-normal text-justify mb-5 flex-grow line-clamp-5 ${
+                  darkMode ? "text-slate-400" : "text-slate-600"
+                }`}>
+                  {project.desc}
+                </p>
+                
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className={`text-[11px] font-mono font-semibold px-2 py-0.5 rounded flex items-center gap-1 ${
+                      darkMode ? "bg-slate-800 text-indigo-300" : "bg-slate-100 text-indigo-700"
+                    }`}>
+                      {TechIcons[tech] || null} {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className={`flex gap-3 items-center mt-auto border-t pt-4 ${darkMode ? "border-white/5" : "border-slate-100"}`}>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 text-xs font-bold shadow-md shadow-indigo-600/10 transition-all">
+                    <FaRegEye size={13} /> Live Demo
+                  </a>
+                  
+                  <div className="relative flex-grow">
+                    <button onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)} className={`w-full flex items-center justify-between px-3 py-2 rounded-lg border text-xs font-bold transition-all ${
+                      darkMode ? "bg-slate-800 hover:bg-slate-700 text-slate-200 border-white/5" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
+                    }`}>
+                      <span className="flex items-center gap-1.5"><FaGithub size={13}/> Source Code</span>
+                      <span>▼</span>
+                    </button>
+
+                    {dropdownOpen === index && (
+                      <div className={`absolute left-0 bottom-full mb-2 w-full border rounded-lg shadow-2xl z-30 overflow-hidden ${
+                        darkMode ? "bg-slate-800 border-white/10" : "bg-white border-slate-200"
+                      }`}>
+                        {project.source?.frontend && (
+                          <a href={project.source.frontend} target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs font-semibold ${
+                            darkMode ? "text-slate-300 hover:bg-slate-700 hover:text-white border-b border-white/5" : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600 border-b border-slate-100"
+                          }`}>Frontend</a>
+                        )}
+                        {project.source?.backend && (
+                          <a href={project.source.backend} target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs font-semibold ${
+                            darkMode ? "text-slate-300 hover:bg-slate-700 hover:text-white" : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600"
+                          }`}>Backend</a>
+                        )}
+                        {project.source?.SmartContract && (
+                          <a href={project.source.SmartContract} target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs font-semibold ${
+                            darkMode ? "text-slate-300 hover:bg-slate-700 hover:text-white" : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600"
+                          }`}>Smart Contract</a>
+                        )}
+                        {project.source?.MLCode && (
+                          <a href={project.source.MLCode} target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs font-semibold ${
+                            darkMode ? "text-slate-300 hover:bg-slate-700 hover:text-white" : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600"
+                          }`}>Machine Learning</a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </motion.div>
-    ))}
-  </motion.div>
-</div>
+      </section>
 
-      <div id="contact" className="py-16 px-6 bg-gray-50">
-        {/* Heading */}
-        <div className="flex justify-center mb-10">
-          <h1 className="text-[#274D60] font-bold text-2xl  md:text-4xl text-center">
-            Let's Work Together !
-          </h1>
-        </div>
-
-        {/* Wrapper */}
-        <div className="flex flex-col md:flex-row justify-between gap-10 max-w-6xl mx-auto">
-          {/* Left Side - Contact Info */}
-          <div className="flex flex-col md:w-1/2">
-            <h1 className="text-[#274D60] font-bold text-2xl md:text-3xl">Contact Me</h1>
-
-            <motion.img
-  src="/contact.avif"
-  alt="Gmail Logo"
-  className="w-full max-w-sm h-90 mt-8 rounded-2xl object-cover"
-  animate={{ y: [0, -20, 0] }}  // moves up then down smoothly
-  transition={{
-    duration: 2, // total time for one full cycle
-    repeat: Infinity, // loops forever
-    ease: "easeInOut",
-  }}
-/>
-            <div className="p-5">
-              <div className="flex items-center p-2 mt-4">
-              <IoIosMail size={34} className="text-red-500" />
-              <h4 className="ml-2 text-xs text-gray-700 break-all font-semibold md:text-xl">
-                • smshah.2003@gmail.com
-              </h4>
-            </div>
-
-            <div className="flex items-center p-2">
-              <FaPhoneAlt size={32} className="text-blue-800" />
-              <h4 className="ml-2 text-xs text-gray-700 font-semibold md:text-xl">
-                • +92 304 2151667
-              </h4>
-            </div>
-
-            <div className="flex items-center p-2">
-              <FaLocationDot size={32} className="text-red-700" />
-              <h4 className="ml-2 text-xs text-gray-700 font-semibold md:text-xl">
-                • Karachi, Pakistan
-              </h4>
-            </div>
-
-            </div>
+      {/* CONTACT SECTION - HIGHLY PREMIUM TRANSITION FIELDS */}
+      <section id="contact" className={`py-28 border-t ${darkMode ? "bg-slate-900/10 border-white/5" : "bg-slate-100/40 border-slate-200"}`}>
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             
-          </div>
+            <div>
+              <h3 className={`text-2xl md:text-4xl font-extrabold mb-4 tracking-tight ${darkMode ? "text-white" : "text-slate-900"}`}>Let&apos;s Connect</h3>
+              <p className={`text-xs md:text-sm leading-relaxed mb-8 ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
+                Initiate a data handshake. Fill out the scope telemetry configuration to establish synchronous interaction.
+              </p>
 
-          {/* Right Side - Contact Form */}
-          <div className="flex flex-col md:w-1/2">
-            <h1 className="text-[#274D60] font-bold text-2xl md:text-3xl">Get in touch</h1>
-            <p className="mt-2 text-xs md:text-lg md:font-semibold text-gray-700">
-              Feel free to reach out if you'd like to collaborate – you're just
-              a few clicks away!
-            </p>
-
-            <div className="w-full shadow-2xl h-130 mt-4 rounded-2xl p-6">
-              <form onSubmit={sendEmail}>
-                {/* Name */}
-                <div className="flex flex-col mb-4">
-                  <label
-                    className="text-[#274D60] text-sm md:text-base font-bold mb-2"
-                    htmlFor="name"
-                  >
-                    Name
-                  </label>
-                  <input
-                    className="w-full shadow text-sm  md:text-base rounded-2xl p-3"
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                  />
+              <div className="space-y-3.5">
+                <div className={`flex items-center gap-4 p-3 border rounded-xl shadow-sm transition-colors ${darkMode ? "bg-slate-900/30 border-white/5 hover:border-indigo-500/30" : "bg-white border-slate-200 hover:border-indigo-500/30"}`}>
+                  <IoIosMail size={20} className="text-red-500" />
+                  <span className={`text-xs md:text-sm font-semibold tracking-wide ${darkMode ? "text-slate-300" : "text-slate-700"}`}>smshah.2003@gmail.com</span>
                 </div>
-
-                {/* Email */}
-                <div className="flex flex-col mb-4">
-                  <label
-                    className="text-[#274D60] text-sm  md:text-base font-bold mb-2"
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                  <input
-                    className="w-full text-sm  md:text-base  shadow rounded-2xl p-3"
-                    type="email"
-                    name="Email"
-                    placeholder="Your Email"
-                    required
-                  />
+                <div className={`flex items-center gap-4 p-3 border rounded-xl shadow-sm transition-colors ${darkMode ? "bg-slate-900/30 border-white/5 hover:border-indigo-500/30" : "bg-white border-slate-200 hover:border-indigo-500/30"}`}>
+                  <FaPhoneAlt size={14} className="text-blue-600 ml-0.5" />
+                  <span className={`text-xs md:text-sm font-semibold tracking-wide ${darkMode ? "text-slate-300" : "text-slate-700"}`}>+92 304 2151667</span>
                 </div>
-
-                {/* Subject */}
-                <div className="flex flex-col mb-4">
-                  <label
-                    className="text-[#274D60] text-sm  md:text-base  font-bold mb-2"
-                    htmlFor="title"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    className="w-full shadow  text-sm  md:text-base rounded-2xl p-3"
-                    type="text"
-                    name="title"
-                    placeholder="Subject"
-                    required
-                  />
+                <div className={`flex items-center gap-4 p-3 border rounded-xl shadow-sm transition-colors ${darkMode ? "bg-slate-900/30 border-white/5 hover:border-indigo-500/30" : "bg-white border-slate-200 hover:border-indigo-500/30"}`}>
+                  <FaLocationDot size={16} className="text-emerald-500 ml-0.5" />
+                  <span className={`text-xs md:text-sm font-semibold tracking-wide ${darkMode ? "text-slate-300" : "text-slate-700"}`}>Karachi, Pakistan</span>
                 </div>
-
-                {/* Message */}
-                <div className="flex flex-col mb-4">
-                  <label
-                    className="text-[#274D60] text-sm  md:text-base  font-bold mb-2"
-                    htmlFor="message"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    className="w-full h-25 shadow text-sm  md:text-base  rounded-2xl p-3"
-                    name="message"
-                    placeholder="Your Message"
-                    required
-                  />
-                </div>
-
-                {/* Button */}
-                <div className="flex justify-center">
-                  <button
-                    type="submit"
-                    className="bg-gradient-to-r from-[#0A192F] to-[#112240] text-sm md:text-base font-bold text-gray-300 hover:bg-[#C084FC]/20 hover:border-[#C084FC]/70 hover:shadow-xl transition-all duration-300 px-8 py-2 rounded-2xl"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
+              </div>
             </div>
+
+            {/* HIGH END FORM ELEMENTS CONTAINER */}
+            <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`border rounded-2xl p-6 md:p-8 shadow-xl border-t-4 border-t-indigo-600 ${
+              darkMode ? "bg-slate-900/40 border-white/5" : "bg-white border-slate-200"
+            }`}>
+              <form onSubmit={sendEmail} className="space-y-4">
+                <div>
+                  <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Name</label>
+                  <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
+                    darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
+                  }`} type="text" name="name" placeholder="John Doe" required />
+                </div>
+                <div>
+                  <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Email</label>
+                  <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
+                    darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
+                  }`} type="email" name="Email" placeholder="john@example.com" required />
+                </div>
+                <div>
+                  <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Subject</label>
+                  <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
+                    darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
+                  }`} type="text" name="title" placeholder="Project Scope Pipeline" required />
+                </div>
+                <div>
+                  <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Message</label>
+                  <textarea className={`w-full h-24 border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none ${
+                    darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
+                  }`} name="message" placeholder="Provide system descriptors..." required />
+                </div>
+                <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md shadow-indigo-600/10 text-xs tracking-wider uppercase">
+                  Transmit Payload
+                </button>
+              </form>
+            </motion.div>
+
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="h-30 bg-gradient-to-r from-[#090622] to-[#07081a] flex flex-col">
-        <div className="flex justify-center p-5">
-          <a
-            href="https://www.linkedin.com/in/smshah121"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin className="mr-3 text-gray-100 hover:text-[#0A66C2] transition-all duration-300" size={32} />
-          </a>
-          <a
-            href="https://github.com/smshah121"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub className="mr-3 text-gray-100 hover:text-[#181717] hover:bg-white rounded-3xl transition-all duration-30" size={32} />
-          </a>
-          <a
-            href="https://www.instagram.com/__smshah__"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram className="text-gray-100 hover:text-pink-500 transition-all duration-300" size={32} />
-          </a>
+      {/* FOOTER SHELL */}
+      <footer className={`border-t py-12 text-center text-xs tracking-wide ${darkMode ? "bg-slate-950 border-white/5 text-slate-500" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
+        <div className="flex justify-center gap-6 mb-4">
+          <a href="https://www.linkedin.com/in/smshah121" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors"><FaLinkedin size={20} /></a>
+          <a href="https://github.com/smshah121" target="_blank" rel="noopener noreferrer" className={`transition-colors ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={20} /></a>
+          <a href="https://www.instagram.com/__smshah__" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors"><FaInstagram size={20} /></a>
         </div>
-        <div className="flex justify-center">
-          <h2 className="text-gray-300 text-sm  md:text-base font-bold">
-            © Syed Momin Ali Shah. All rights reserved.
-          </h2>
-        </div>
-      </div>
+        <p className="font-semibold text-xs select-none">&copy; Syed Momin Ali Shah. All rights reserved.</p>
+      </footer>
+
     </div>
   );
 }
