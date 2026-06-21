@@ -364,7 +364,7 @@ function App() {
       {/* PROJECTS SECTION - PREMIUM CASING */}
       <section id="project" className="py-28 max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <h1 className={`text-2xl md:text-4xl font-extrabold tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Case Studies</h1>
+          <h1 className={`text-2xl md:text-4xl font-extrabold tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Projects</h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
