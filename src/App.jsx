@@ -91,6 +91,16 @@ function App() {
         backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
       },
       tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+    },
+    {
+      img: "/tictactoe.png",
+      title: "AI-Powered Tic-Tac-Toe Game",
+      desc: "An AI-powered Tic Tac Toe game built using React, featuring an intelligent opponent implemented with the Minimax algorithm. The application allows users to play against an unbeatable AI that evaluates all possible game states using a game tree search approach to determine optimal moves in real time. The system simulates human-like decision making by recursively analyzing future outcomes and selecting the best possible move based on maximizing AI advantage while minimizing the opponent’s score. Built with a clean and responsive React UI, the project demonstrates core concepts of artificial intelligence, game theory, recursion, and state management, making it a strong example of applying classical AI algorithms in modern web development.",
+      link: "https://tictac-toe-ai.netlify.app/",
+      source: {
+        frontend: "https://github.com/smshah121/tic-tac-toe-ai",
+      },
+      tech: ["React", "Tailwind"]
     }
   ];
 
@@ -294,8 +304,9 @@ function App() {
           }`}>
             <h3 className={`text-2xl md:text-3xl font-bold mb-4 tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Executive Summary</h3>
             <div className={`space-y-4 text-sm md:text-base leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-              <p>I am a highly driven <span className="font-semibold text-indigo-500">Full Stack Developer</span> finishing my final year in Software Engineering at Iqra University. My core expertise lies in designing modular client-server architectures, optimizing transactional layers, and configuring structured databases.</p>
-              <p>Leveraging deep operational familiarity with both component runtime life cycles in React and secure server design patterns in NestJS, I engineer enterprise web properties that maintain structural efficiency, absolute state management, and robust endpoints.</p>
+              <p className="text-sm text-slate-400">I am a <span className="font-semibold text-indigo-500">Full Stack Developer</span> and a final-year <span className="font-semibold text-indigo-500">Software Engineering</span>  student at Iqra University. I specialize in building scalable, production-oriented web applications with a strong emphasis on clean architecture, maintainable code structure, and efficient client–server communication. My development approach focuses on creating modular systems that are easy to extend, debug, and optimize for real-world use cases.</p>
+              <p className="text-sm text-slate-400">My core experience includes backend development using NestJS, where I design and implement well-structured RESTful APIs, secure authentication and authorization flows, and layered architecture patterns that separate business logic from infrastructure concerns. I also work extensively with PostgreSQL, where I design relational schemas, manage database relationships, and optimize queries to ensure data integrity and performance in scalable applications.</p>
+              <p className="text-sm text-slate-400">On the frontend side, I specialize in ReactJS and Redux Toolkit, building responsive and component-driven user interfaces that ensure smooth user experiences. I focus on efficient state management, reusable UI components, and seamless integration with backend services. My frontend development practice emphasizes performance, consistency, and maintainability across complex application workflows.</p>
             </div>
           </motion.div>
 
@@ -303,17 +314,17 @@ function App() {
             {[
   { 
     title: "Academic Background", 
-    desc: "Iqra University — Final-Year Candidate, BS Software Engineering (2023–Present)", 
+    desc: "Iqra University — Final-Year Student, BS Software Engineering (2023–Present). Currently completing a Bachelor’s degree in Software Engineering with a focus on practical software development, system design, and modern web technologies. Actively applying academic knowledge to real-world projects alongside coursework.", 
     icon: <FaGraduationCap /> 
   },
   { 
     title: "Technical Specializations", 
-    desc: "Advanced Full Stack architecture specializing in NestJS for scalable backend development.\n Robust database management using PostgreSQL alongside TypeScript optimization.\n Component-driven frontend interfaces engineered with ReactJS, Redux Toolkit, and Tailwind CSS.", 
+    desc: "Advanced Full Stack development with a focus on building scalable backend systems using NestJS with PostgreSQL for relational database design and management, along with TypeScript for type-safe application development. On the frontend, proficient in ReactJS with Redux Toolkit for state management and Tailwind CSS for building responsive and modern UI interfaces.", 
     icon: <FaLaptop /> 
   },
  { 
   title: "System Implementations", 
-  desc: "Built several Full-Stack Web Apps, including a Learning Management System with secure role-based logins, the PriceTag E-Commerce store with Stripe payment integration, QuoteNest featuring Google login, and Pixora—a private media platform with secure galleries and data routes.", 
+  desc: "Developed multiple Full-Stack web applications demonstrating end-to-end system design and implementation skills. These include a Learning Management System with secure role-based authentication and authorization, a PriceTag E-Commerce platform with Stripe payment integration, QuoteNest featuring Google OAuth login for authentication, and Pixora, a private media-sharing platform with secure galleries and protected data routes.", 
   icon: <CiGlobe /> 
 },
 ].map((node, i) => (
