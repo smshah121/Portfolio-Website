@@ -82,9 +82,9 @@ function App() {
     }
     ,
     {
-      img: "/quotes2.png",
-      title: "Personal Quote Management",
-      desc: "Full-stack cloud application featuring seamless handling of text-based assets with deep CRUD capabilities. Leverages Google OAuth2 login mechanisms, secure private routing tables, and real-time state profiles.",
+      img: "/quotes.png",
+      title: "QuoteNest",
+      desc: "Full-Stack Quote Management System featuring seamless handling of text-based assets with deep CRUD capabilities. Leverages Google OAuth2 login mechanisms, secure private routing tables, and real-time state profiles.",
       link: "https://quotenest-quotes.netlify.app/",
       source: {
         frontend: "https://github.com/smshah121/quotes-frontend",
