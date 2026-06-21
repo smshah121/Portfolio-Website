@@ -297,34 +297,43 @@ function App() {
 
       {/* ABOUT SECTION - SELECTIVE & PROFESSIONAL REFORMATTING */}
       <section id="about" className="py-28 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className={`p-8 rounded-2xl border shadow-xl ${
-            darkMode ? "bg-slate-900/30 border-white/5" : "bg-white border-slate-200/60"
-          }`}>
+          <motion.div
+  initial={{ opacity: 0, x: -30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className={`h-full p-8 rounded-2xl border shadow-xl flex flex-col justify-center ${
+    darkMode ? "bg-slate-900/30 border-white/5" : "bg-white border-slate-200/60"
+  }`}
+>
             <h3 className={`text-2xl md:text-3xl font-bold mb-4 tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Executive Summary</h3>
             <div className={`space-y-4 text-sm md:text-base leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-              <p className="text-sm text-slate-400">I am a <span className="font-semibold text-indigo-500">Full Stack Developer</span> and a final-year <span className="font-semibold text-indigo-500">Software Engineering</span>  student at Iqra University. I specialize in building scalable, production-oriented web applications with a strong emphasis on clean architecture, maintainable code structure, and efficient client–server communication. My development approach focuses on creating modular systems that are easy to extend, debug, and optimize for real-world use cases.</p>
-              <p className="text-sm text-slate-400">My core experience includes backend development using NestJS, where I design and implement well-structured RESTful APIs, secure authentication and authorization flows, and layered architecture patterns that separate business logic from infrastructure concerns. I also work extensively with PostgreSQL, where I design relational schemas, manage database relationships, and optimize queries to ensure data integrity and performance in scalable applications.</p>
-              <p className="text-sm text-slate-400">On the frontend side, I specialize in ReactJS and Redux Toolkit, building responsive and component-driven user interfaces that ensure smooth user experiences. I focus on efficient state management, reusable UI components, and seamless integration with backend services. My frontend development practice emphasizes performance, consistency, and maintainability across complex application workflows.</p>
+              <p className="text-sm text-slate-400">I am a <span className="font-semibold text-indigo-500">Full Stack Developer</span> and a final-year <span className="font-semibold text-indigo-500">Software Engineering</span> student at Iqra University. I build scalable web applications with a focus on clean architecture, maintainable code, and efficient client–server communication.</p>
+              <p className="text-sm text-slate-400">My experience includes backend development with NestJS, where I design RESTful APIs, implement authentication and authorization, and follow layered architecture practices. I work with PostgreSQL for relational database design, relationship management, and query optimization.</p>
+              <p className="text-sm text-slate-400">On the frontend, I use ReactJS and Redux Toolkit to build responsive, component-based user interfaces with efficient state management and smooth integration with backend services.</p>
             </div>
+
           </motion.div>
 
-          <div className={`relative pl-6 border-l-2 space-y-8 ${darkMode ? "border-indigo-500/20" : "border-indigo-500/30"}`}>
+          <div className={`h-full relative pl-6 border-l-2 space-y-8 ${
+  darkMode ? "border-indigo-500/20" : "border-indigo-500/30"
+}`}>
             {[
   { 
     title: "Academic Background", 
-    desc: "Iqra University — Final-Year Student, BS Software Engineering (2023–Present). Currently completing a Bachelor’s degree in Software Engineering with a focus on practical software development, system design, and modern web technologies. Actively applying academic knowledge to real-world projects alongside coursework.", 
+    desc: "Iqra University — Final-Year Student, BS Software Engineering (2023–Present), currently completing a degree focused on software development, system design, and modern web technologies, with continuous application of academic learning in real-world projects.", 
     icon: <FaGraduationCap /> 
   },
   { 
     title: "Technical Specializations", 
-    desc: "Advanced Full Stack development with a focus on building scalable backend systems using NestJS with PostgreSQL for relational database design and management, along with TypeScript for type-safe application development. On the frontend, proficient in ReactJS with Redux Toolkit for state management and Tailwind CSS for building responsive and modern UI interfaces.", 
+    desc: "Full Stack Developer with experience in NestJS, PostgreSQL, and TypeScript for backend development, and ReactJS with Redux Toolkit and Tailwind CSS for building responsive, component-based frontend applications with efficient state management.", 
     icon: <FaLaptop /> 
   },
  { 
   title: "System Implementations", 
-  desc: "Developed multiple Full-Stack web applications demonstrating end-to-end system design and implementation skills. These include a Learning Management System with secure role-based authentication and authorization, a PriceTag E-Commerce platform with Stripe payment integration, QuoteNest featuring Google OAuth login for authentication, and Pixora, a private media-sharing platform with secure galleries and protected data routes.", 
+  desc: "Developed multiple full-stack applications including a Learning Management System with role-based authentication, a Stripe-integrated e-commerce platform, QuoteNest with Google OAuth login, and Pixora, a secure media-sharing platform with protected routes and galleries.", 
   icon: <CiGlobe /> 
 },
 ].map((node, i) => (
