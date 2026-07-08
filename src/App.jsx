@@ -10,6 +10,24 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import emailjs from "emailjs-com";
+import {
+  SiJsonwebtokens,
+  SiGoogle
+} from "react-icons/si";
+import {
+  SiScikitlearn,
+  SiPython,
+  SiFastapi
+} from "react-icons/si";
+
+import {
+  SiEthereum,
+  SiSolidity
+} from "react-icons/si";
+
+import {
+  SiStripe
+} from "react-icons/si";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,6 +42,30 @@ function App() {
 
   const MyProjects = [
     {
+      img: "/degree.png",
+      title: "Degree Attestation System",
+      desc: "Automated academic degree attestation using AI-powered OCR, blockchain verification and SHA-256 hashing. Students upload transcripts, pay processing fees via Stripe, and receive blockchain-backed certificates that can be verified through QR-code scanning or transaction hash lookup.",
+      link: "",
+      source: {
+        frontend: "https://github.com/smshah121/degree-attestation-system-frontend",
+        backend: "https://github.com/smshah121/degree-attestation-system-backend",
+        SmartContract: "https://github.com/smshah121/degree-attestation-smart_contract",
+      },
+      tech: ["React","Tailwind","Redux", "Nest","Postgres", "JWT","GoogleOAuth", "Stripe","Ethereum","Solidity"   ]
+    },
+    {
+      img: "/fraud.png",
+      title: "AI-Powered Credit Card Fraud Detection System",
+      desc: "Developed a full-stack fraud detection system using React, NestJS and FastAPI. Transaction data is transformed into ML-ready feature vectors and evaluated by a Logistic Regression model trained on the Kaggle Credit Card Fraud dataset (284K+ transactions). Displays fraud prediction, confidence score and stores transaction history.",
+      link: "",
+      source: {
+        frontend: "https://github.com/smshah121/fraud-detection-frontend",
+        backend: "https://github.com/smshah121/fraud-detection-backend",
+        MLCode: "https://github.com/smshah121/fraud-detection-ml-api"
+      },
+      tech: ["React","Tailwind","Redux", "Nest", "Postgres","Python","FastAPI",  ]
+    },
+    {
       img: "/lms2.png",
       title: "Learning Management System",
       desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access.",
@@ -32,7 +74,7 @@ function App() {
         frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
         backend: "https://github.com/smshah121/Learning-Management-System-Backend",
       },
-      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+      tech: ["React","Tailwind","Motion", "Redux", "Nest","JWT", "Postgres"  ]
     },
     {
       img: "/pricetag.png",
@@ -43,54 +85,32 @@ function App() {
         frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
         backend: "https://github.com/smshah121/E-Commerce-Web-App-Backend",
       },
-      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux", "Motion"]
+      tech: ["React","Tailwind","Redux", "Motion", "Nest", "Postgres","JWT","Stripe",  ]
     },
-    {
-      img: "/degree.png",
-      title: "Degree Attestation System",
-      desc: "This project is a next-generation web application designed to automate and secure the academic document verification pipeline. By integrating AI-driven OCR text analysis with Blockchain immutability, the system eliminates manual verification delays and prevents credential fraud. Students can securely upload transcripts, process processing fees via Stripe, and anchor their authenticated hashes onto a decentralized ledger for instant, tamper-proof third-party verification.",
-      link: "",
-      source: {
-        frontend: "https://github.com/smshah121/degree-attestation-system-frontend",
-        backend: "https://github.com/smshah121/degree-attestation-system-backend",
-        SmartContract: "https://github.com/smshah121/degree-attestation-smart_contract",
-      },
-      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
-    },
+    
     {
       img: "/pixora.png",
       title: "Pixora Media Collection",
-      desc: "Built a media collection platform where users can save photos, videos, and GIFs, organize them into custom collections, and view their saved items anytime. User data is kept private and secure through JWT authentication and password hashing, with Google OAuth 2.0 integration for seamless login and protected routes ensuring only authorized users can access their content.",
+      desc: "Media management platform where users organize photos, videos and GIFs into private collections using JWT authentication, Google OAuth 2.0 login and role-protected routes.",
       link: "https://pixora-media.netlify.app/",
       source: {
         frontend: "https://github.com/smshah121/pixora-frontend",
         backend: "https://github.com/smshah121/pixora-backend",
       },
-      tech: ["React", "Tailwind", "Postgres", "Nest", "Redux"]
+      tech: ["React", "Tailwind","Redux","Nest","JWT", "Postgres","GoogleOAuth",  ]
     },
-    {
-      img: "/fraud.png",
-      title: "AI-Powered Credit Card Fraud Detection System",
-      desc: "Developed an AI-powered Credit Card Fraud Detection System using React.js, NestJS, Python, and PostgreSQL, where users can submit transaction details through a modern web interface, the NestJS backend performs feature engineering and data processing, and a Machine Learning model analyzes transaction patterns to detect fraudulent activities in real time. The system provides fraud predictions with confidence scores, stores transaction history in a PostgreSQL database, and includes reporting and analytics features to help monitor and prevent financial fraud effectively.",
-      link: "",
-      source: {
-        frontend: "https://github.com/smshah121/fraud-detection-frontend",
-        backend: "https://github.com/smshah121/fraud-detection-backend",
-        MLCode: "https://github.com/smshah121/fraud-detection-ml-api"
-      },
-      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
-    }
-    ,
+    
+    
     {
       img: "/quotes.png",
       title: "QuoteNest",
-      desc: "Full-Stack Quote Management System featuring seamless handling of text-based assets with deep CRUD capabilities. Leverages Google OAuth2 login mechanisms, secure private routing tables, and real-time state profiles.",
+      desc: "Quote management application supporting CRUD operations, Google OAuth 2.0 authentication, protected routes and personalized user dashboards.",
       link: "https://quotenest-quotes.netlify.app/",
       source: {
         frontend: "https://github.com/smshah121/quotes-frontend",
         backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
       },
-      tech: ["React", "Nest", "Postgres", "Tailwind", "Redux"]
+      tech: ["React","Tailwind","Redux",  "Nest", "Postgres","JWT","GoogleOAuth", ]
     },
     {
       img: "/tictactoe.png",
@@ -172,7 +192,16 @@ function App() {
     Postgres: <SiPostgresql className="text-[#4169E1]" title="Postgres" />,
     Redux: <SiRedux className="text-[#764ABC]" title="Redux" />,
     Motion: <TbBrandFramerMotion className="text-[#E94E44]" title="Framer Motion" />,
-    Axios: <SiAxios className="text-indigo-400" title="Axios" />
+    Axios: <SiAxios className="text-indigo-400" title="Axios" />,
+    JWT: <SiJsonwebtokens className="text-[#000]" title="JWT" />,
+    GoogleOAuth: <SiGoogle className="text-[#4285F4]" title="Google OAuth" />,
+    Stripe: <SiStripe className="text-[#635BFF]" title="Stripe" />,
+    Ethereum: <SiEthereum className="text-[#627EEA]" title="Ethereum" />,
+    Solidity: <SiSolidity className="text-[#363636]" title="Solidity" />,
+    Python: <SiPython className="text-[#3776AB]" title="Python" />,
+    ScikitLearn: <SiScikitlearn className="text-[#F7931E]" title="Scikit-Learn" />,
+    FastAPI: <SiFastapi className="text-[#009688]" title="FastAPI" />
+
   };
 
   const sendEmail = (e) => {
@@ -474,7 +503,7 @@ function App() {
             <div>
               <h3 className={`text-2xl md:text-4xl font-extrabold mb-4 tracking-tight ${darkMode ? "text-white" : "text-slate-900"}`}>Let&apos;s Connect</h3>
               <p className={`text-xs md:text-sm leading-relaxed mb-8 ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                Initiate a data handshake. Fill out the scope telemetry configuration to establish synchronous interaction.
+                 Feel free to reach out for internship opportunities, collaborations or software engineering roles.
               </p>
 
               <div className="space-y-3.5">
@@ -523,7 +552,7 @@ function App() {
                   }`} name="message" placeholder="Provide system descriptors..." required />
                 </div>
                 <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md shadow-indigo-600/10 text-xs tracking-wider uppercase">
-                  Transmit Payload
+                  Send Message
                 </button>
               </form>
             </motion.div>
