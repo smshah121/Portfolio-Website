@@ -4,6 +4,7 @@ import { GrReactjs } from "react-icons/gr";
 import { SiNestjs, SiPostgresql, SiTailwindcss, SiRedux, SiAxios, SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
 import { IoIosMail, IoMdDownload, IoMdMail } from "react-icons/io";
 import { FaLocationDot, FaRegEye, FaLaptopCode as FaLaptop, FaSun, FaMoon } from "react-icons/fa6";
+import {  FaCode, FaRocket, FaLaptopCode } from "react-icons/fa";
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 import { CiGlobe } from "react-icons/ci";
 import { useEffect, useState } from "react";
@@ -39,6 +40,54 @@ function App() {
     if (savedTheme) return savedTheme === "dark";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
+
+
+  const timeline = [
+  {
+    title: "Education",
+    icon: <FaGraduationCap />,
+    content: (
+      <>
+        <h5 className="font-semibold">BS Software Engineering</h5>
+        <p className="text-sm opacity-80">Iqra University</p>
+        <p className="text-xs opacity-60">2023 — Present</p>
+      </>
+    ),
+  },
+
+  {
+    title: "Core Technologies",
+    icon: <FaLaptopCode />,
+    technologies: [
+      { name: "React", icon: <GrReactjs /> },
+      { name: "NestJS", icon: <SiNestjs /> },
+      { name: "TypeScript", icon: <TbBrandTypescript /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "Redux", icon: <SiRedux /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "JavaScript", icon: <TbBrandJavascript /> },
+      { name: "Motion", icon: <TbBrandFramerMotion /> },
+    ],
+  },
+
+  {
+    title: "Featured Project",
+    icon: <FaRocket />,
+    content: (
+      <>
+        <h5 className="font-semibold">
+          Blockchain Degree Attestation System
+        </h5>
+
+        <p className="text-sm opacity-80 mt-2">
+          OCR Verification • Ethereum Smart Contracts • SHA-256 • QR Codes •
+          PDF Certificates • Stripe • Cloudinary
+        </p>
+      </>
+    ),
+  },
+];
 
   const MyProjects = [
     {
@@ -346,37 +395,66 @@ function App() {
 
           </motion.div>
 
-          <div className={`h-full relative pl-6 border-l-2 space-y-8 ${
-  darkMode ? "border-indigo-500/20" : "border-indigo-500/30"
-}`}>
-            {[
-  { 
-    title: "Academic Background", 
-    desc: "Iqra University — Final-Year Student, BS Software Engineering (2023–Present), currently completing a degree focused on software development, system design, and modern web technologies, with continuous application of academic learning in real-world projects.", 
-    icon: <FaGraduationCap /> 
-  },
-  { 
-    title: "Technical Specializations", 
-    desc: "Full Stack Developer with experience in NestJS, PostgreSQL, and TypeScript for backend development, and ReactJS with Redux Toolkit and Tailwind CSS for building responsive, component-based frontend applications with efficient state management.", 
-    icon: <FaLaptop /> 
-  },
- { 
-  title: "System Implementations", 
-  desc: "Developed multiple full-stack applications including a Learning Management System with role-based authentication, a Stripe-integrated e-commerce platform, QuoteNest with Google OAuth login, and Pixora, a secure media-sharing platform with protected routes and galleries.", 
-  icon: <CiGlobe /> 
-},
-].map((node, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }} className="relative group">
-                <div className={`absolute -left-10 top-0 w-8 h-8 rounded-full border flex items-center justify-center text-indigo-500 transition-all ${
-                  darkMode ? "bg-slate-900 border-white/10 group-hover:border-indigo-400" : "bg-white border-slate-200 group-hover:border-indigo-600"
-                }`}>
-                  {node.icon}
-                </div>
-                <h4 className={`text-md font-bold mb-1 transition-colors ${darkMode ? "text-white group-hover:text-indigo-400" : "text-slate-900 group-hover:text-indigo-600"}`}>{node.title}</h4>
-                <p className={`text-xs md:text-sm leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-600"}`}>{node.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+         <div
+  className={`relative pl-8 border-l-2 flex flex-col gap-10 ${
+    darkMode ? "border-indigo-500/20" : "border-indigo-500/30"
+  }`}
+>
+  {timeline.map((node, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0, x: 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: i * 0.1 }}
+      className="relative min-h-[130px]"
+    >
+      <div
+        className={`absolute -left-[42px] top-0.5 w-9 h-9 rounded-full flex items-center justify-center border ${
+          darkMode
+            ? "bg-slate-900 border-slate-700 text-indigo-400"
+            : "bg-white border-slate-300 text-indigo-600"
+        }`}
+      >
+        {node.icon}
+      </div>
+
+      <h4
+        className={`font-bold mb-3 ${
+          darkMode ? "text-white" : "text-slate-900"
+        }`}
+      >
+        {node.title}
+      </h4>
+
+      {node.technologies ? (
+        <div className="flex flex-wrap gap-2">
+          {node.technologies.map((tech) => (
+            <span
+              key={tech.name}
+              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs border ${
+                darkMode
+                  ? "bg-slate-800 border-slate-700 text-slate-300"
+                  : "bg-slate-100 border-slate-200 text-slate-700"
+              }`}
+            >
+              {tech.icon}
+              {tech.name}
+            </span>
+          ))}
+        </div>
+      ) : (
+        <div
+          className={`text-sm leading-relaxed ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}
+        >
+          {node.content}
+        </div>
+      )}
+    </motion.div>
+  ))}
+</div>
 
         </div>
       </section>
