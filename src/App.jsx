@@ -45,7 +45,7 @@ function App() {
       img: "/degree.png",
       title: "Degree Attestation System",
       desc: "Automated academic degree attestation using AI-powered OCR, blockchain verification and SHA-256 hashing. Students upload transcripts, pay processing fees via Stripe, and receive blockchain-backed certificates that can be verified through QR-code scanning or transaction hash lookup.",
-      link: "",
+      link: "https://degree-attestation.netlify.app/",
       source: {
         frontend: "https://github.com/smshah121/degree-attestation-system-frontend",
         backend: "https://github.com/smshah121/degree-attestation-system-backend",
