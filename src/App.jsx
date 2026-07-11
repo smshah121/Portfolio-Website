@@ -77,12 +77,12 @@ function App() {
     content: (
       <>
         <h5 className="font-semibold">
-          Blockchain Degree Attestation System
+          AI-Driven Blockchain-Based Degree Attestation System
         </h5>
 
         <p className="text-sm opacity-80 mt-2">
           OCR Verification • Ethereum Smart Contracts • SHA-256 • QR Codes •
-          PDF Certificates • Stripe • Cloudinary
+          PDF Certificates • Stripe • Cloudinary • Google OAuth • RBAC
         </p>
       </>
     ),
@@ -644,7 +644,7 @@ function App() {
               </h4>
 
               {/* Description - Masked & Compact with Line-clamp */}
-              <p className={`text-sm leading-relaxed tracking-tight text-justify mb-5 line-clamp-3 transition-colors ${
+              <p className={`text-xs tracking-tight text-justify mb-4 line-clamp-4 transition-colors ${
                 darkMode ? "text-slate-400 group-hover:text-slate-300" : "text-slate-600 group-hover:text-slate-700"
               }`}>
                 {project.desc}
@@ -655,7 +655,7 @@ function App() {
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className={`text-[11px] font-medium px-2.5 py-1 rounded-lg border transition-all duration-300 ${
+                    className={`text-[10px] font-medium px-2 py-1 rounded-lg border transition-all duration-300 ${
                       darkMode
                         ? "bg-slate-900/80 border-slate-800 text-slate-300 group-hover:border-slate-700"
                         : "bg-slate-50 border-slate-200/60 text-slate-600 group-hover:border-slate-300"
