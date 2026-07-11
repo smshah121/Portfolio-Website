@@ -278,6 +278,9 @@ function App() {
 
   };
 
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs.sendForm("service_6ew2jco", "template_8nw4mdt", e.target, "-lQ92GZ3aOZyq22up")
@@ -599,9 +602,11 @@ function App() {
     </section>
 
       {/* PROJECTS SECTION - PREMIUM CASING */}
-     <section id="project" className="py-24 max-w-7xl mx-auto px-6 md:px-12 relative overflow-hidden">
-      {/* Background Section Ambient Glow */}
-      <div className={`absolute top-1/2 right-0 w-96 h-96 rounded-full filter blur-[150px] opacity-15 pointer-events-none ${darkMode ? "bg-purple-600" : "bg-purple-200"}`} />
+    <section id="project" className="py-24 max-w-7xl mx-auto px-6 md:px-12 relative overflow-hidden will-change-transform">
+      {/* Background Glow - Hidden completely on mobile to prevent VRAM overflow */}
+      <div className={`absolute top-1/2 right-0 w-96 h-96 rounded-full opacity-15 pointer-events-none hidden md:block filter blur-[150px] ${
+        darkMode ? "bg-purple-600" : "bg-purple-200"
+      }`} />
 
       <div className="text-center mb-16">
         <span className="text-xs font-mono uppercase tracking-widest text-indigo-500 font-semibold block mb-2">My Work</span>
@@ -614,37 +619,40 @@ function App() {
         {MyProjects.map((project, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
+            // Dynamic animation rules: Drop vertical layout offsets entirely on mobile
+            initial={{ opacity: 0, y: isMobile ? 0 : 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true, margin: isMobile ? "-20px" : "-50px" }}
+            transition={{ duration: 0.4, delay: isMobile ? 0 : index * 0.1 }}
             className={`group border rounded-2xl flex flex-col overflow-hidden transition-all duration-300 relative ${
               darkMode 
                 ? "bg-gradient-to-b from-slate-900/60 to-slate-900/20 border-white/[0.05] hover:border-white/10 shadow-xl shadow-black/20" 
                 : "bg-white border-slate-200/80 shadow-md shadow-slate-100/80 hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300"
             }`}
           >
-            {/* Image Wrapper with Hover Zoom */}
+            {/* Image Wrapper */}
             <div className={`h-48 relative overflow-hidden border-b transition-colors duration-300 ${
               darkMode ? "bg-slate-950 border-white/[0.05]" : "bg-slate-50 border-slate-100"
             }`}>
               <img
                 src={project.img}
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-105"
                 alt={project.title}
               />
-              {/* Subtle visual shade gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 mix-blend-multiply" />
             </div>
 
             {/* Project Details */}
+            {/* Optimized for left alignment since justified paragraphs cost high layouts processing overhead on phone engines */}
             <div className="p-6 flex flex-col flex-grow relative">
-              <h4 className={`font-bold text-xl mb-2.5 tracking-tight transition-colors ${darkMode ? "text-slate-100 group-hover:text-white" : "text-slate-900 group-hover:text-indigo-950"}`}>
+              <h4 className={`font-bold text-xl mb-2.5 tracking-tight transition-colors ${
+                darkMode ? "text-slate-100 group-hover:text-white" : "text-slate-900 group-hover:text-indigo-950"
+              }`}>
                 {project.title}
               </h4>
 
-              {/* Description - Masked & Compact with Line-clamp */}
-              <p className={`text-xs tracking-tight text-justify mb-4 line-clamp-4 transition-colors ${
+              <p className={`text-xs tracking-tight text-left mb-4 line-clamp-4 transition-colors ${
                 darkMode ? "text-slate-400 group-hover:text-slate-300" : "text-slate-600 group-hover:text-slate-700"
               }`}>
                 {project.desc}
@@ -696,26 +704,28 @@ function App() {
                     </span>
                     <motion.span
                       animate={{ rotate: dropdownOpen === index ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.15 }}
                     >
                       <FaChevronDown size={10} className="opacity-70" />
                     </motion.span>
                   </button>
 
-                  {/* Micro-animated Dropper List via Framer Motion AnimatePresence */}
+                  {/* Micro-animated Dropdown Menu */}
+                  {/* Backdrop blur removed for mobile instances to protect GPU frames */}
                   <AnimatePresence>
                     {dropdownOpen === index && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                        transition={{ duration: 0.15, ease: "easeOut" }}
-                        className={`absolute left-0 bottom-full mb-2 w-full border rounded-xl shadow-2xl z-30 overflow-hidden backdrop-blur-lg ${
-                          darkMode ? "bg-slate-950/95 border-white/10" : "bg-white/95 border-slate-200 shadow-slate-300/40"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 6 }}
+                        transition={{ duration: 0.12 }}
+                        className={`absolute left-0 bottom-full mb-2 w-full border rounded-xl shadow-2xl z-30 overflow-hidden ${
+                          darkMode 
+                            ? "bg-slate-950 border-white/10 md:backdrop-blur-lg md:bg-slate-950/95" 
+                            : "bg-white border-slate-200 shadow-slate-300/40 md:backdrop-blur-lg md:bg-white/95"
                         }`}
                       >
                         {Object.entries(project.source || {}).map(([key, url]) => {
-                          // Standardize format labeling (e.g. SmartContract -> Smart Contract)
                           const readableLabel = key.replace(/([A-Z])/g, ' $1').trim();
                           return (
                             url && (
@@ -724,7 +734,7 @@ function App() {
                                 href={url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`block px-4 py-2.5 text-xs font-semibold first:rounded-t-xl last:rounded-b-xl border-b last:border-none transition-colors ${
+                                className={`block px-4 py-2.5 text-xs font-semibold border-b last:border-none transition-colors ${
                                   darkMode
                                     ? "text-slate-300 hover:bg-white/[0.04] hover:text-white border-white/[0.05]"
                                     : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600 border-slate-100"
