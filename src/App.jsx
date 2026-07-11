@@ -4,7 +4,7 @@ import { GrReactjs } from "react-icons/gr";
 import { SiNestjs, SiPostgresql, SiTailwindcss, SiRedux, SiAxios, SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
 import { IoIosMail, IoMdDownload, IoMdMail } from "react-icons/io";
 import { FaLocationDot, FaRegEye, FaLaptopCode as FaLaptop, FaSun, FaMoon } from "react-icons/fa6";
-import {  FaCode, FaRocket, FaLaptopCode } from "react-icons/fa";
+import {  FaCode, FaRocket, FaLaptopCode, FaChevronDown } from "react-icons/fa";
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 import { CiGlobe } from "react-icons/ci";
 import { useEffect, useState } from "react";
@@ -173,6 +173,31 @@ function App() {
     }
   ];
 
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: "spring", stiffness: 260, damping: 20 } 
+    }
+  };
+
+  // Safe Hex-to-RGB conversion helper to safely power the drop-shadow hover rings
+  const hexToRgb = (hex) => {
+    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    const fullHex = hex?.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b) || "#6366f1";
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(fullHex);
+    return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : "99, 102, 241";
+  };
   useEffect(() => {
     localStorage.setItem("portfolio-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
@@ -401,177 +426,326 @@ function App() {
   }`}
 >
   {timeline.map((node, i) => (
-    <motion.div
-      key={i}
-      initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: i * 0.1 }}
-      className="relative min-h-[130px]"
-    >
+  <motion.div
+    key={i}
+    initial={{ opacity: 0, x: 30 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.5, delay: i * 0.15 }}
+    className="relative min-h-[140px] pl-4 group"
+  >
+    {/* Animated Node Circle & Glow Effect */}
+    <div className="absolute -left-[51px] top-0.5 z-10 flex items-center justify-center">
+      {/* Dynamic Pulse Ring */}
+      <span className="absolute inline-flex h-9 w-9 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-20 group-hover:animate-ping transition-opacity duration-300" />
+      
       <div
-        className={`absolute -left-[42px] top-0.5 w-9 h-9 rounded-full flex items-center justify-center border ${
+        className={`w-8 h-8 rounded-full flex items-center justify-center border shadow-sm transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 ${
           darkMode
-            ? "bg-slate-900 border-slate-700 text-indigo-400"
-            : "bg-white border-slate-300 text-indigo-600"
+            ? "bg-slate-950 border-slate-700 text-indigo-400 group-hover:border-indigo-400 group-hover:shadow-indigo-500/20"
+            : "bg-white border-slate-200 text-indigo-600 group-hover:border-indigo-500 group-hover:shadow-indigo-500/10"
         }`}
       >
-        {node.icon}
+        <span className="text-sm transition-transform duration-300 group-hover:scale-110">
+          {node.icon}
+        </span>
       </div>
+    </div>
 
-      <h4
-        className={`font-bold mb-3 ${
-          darkMode ? "text-white" : "text-slate-900"
+    {/* Title with Subtle Hover Color Shift */}
+    <h4
+      className={`font-bold text-base md:text-lg mb-3 tracking-tight transition-colors duration-300 ${
+        darkMode ? "text-slate-100 group-hover:text-indigo-400" : "text-slate-900 group-hover:text-indigo-600"
+      }`}
+    >
+      {node.title}
+    </h4>
+
+    {/* Content / Highly Interactive Badges */}
+    {node.technologies ? (
+      <div className="flex flex-wrap gap-2.5">
+        {node.technologies.map((tech) => (
+          <motion.span
+            key={tech.name}
+            whileHover={{ 
+              scale: 1.08, 
+              y: -2,
+              shadow: darkMode ? "0 4px 12px rgba(99, 102, 241, 0.2)" : "0 4px 12px rgba(99, 102, 241, 0.15)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium border cursor-pointer select-none transition-colors duration-200 ${
+              darkMode
+                ? "bg-slate-900/60 border-slate-800 text-slate-300 hover:bg-slate-800 hover:border-indigo-500/50 hover:text-white"
+                : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-indigo-500/40 hover:text-indigo-950"
+            }`}
+          >
+            <span className="text-sm opacity-90 transition-transform duration-200 group-hover:scale-110">
+              {tech.icon}
+            </span>
+            {tech.name}
+          </motion.span>
+        ))}
+      </div>
+    ) : (
+      <div
+        className={`text-sm md:text-base leading-relaxed max-w-2xl transition-colors duration-300 ${
+          darkMode ? "text-slate-400 group-hover:text-slate-300" : "text-slate-600 group-hover:text-slate-700"
         }`}
       >
-        {node.title}
-      </h4>
-
-      {node.technologies ? (
-        <div className="flex flex-wrap gap-2">
-          {node.technologies.map((tech) => (
-            <span
-              key={tech.name}
-              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs border ${
-                darkMode
-                  ? "bg-slate-800 border-slate-700 text-slate-300"
-                  : "bg-slate-100 border-slate-200 text-slate-700"
-              }`}
-            >
-              {tech.icon}
-              {tech.name}
-            </span>
-          ))}
-        </div>
-      ) : (
-        <div
-          className={`text-sm leading-relaxed ${
-            darkMode ? "text-slate-400" : "text-slate-600"
-          }`}
-        >
-          {node.content}
-        </div>
-      )}
-    </motion.div>
-  ))}
+        {node.content}
+      </div>
+    )}
+  </motion.div>
+))}
 </div>
 
         </div>
       </section>
 
       {/* TECH STACK SECTION */}
-      <section id="skills" className={`py-20 border-y ${darkMode ? "bg-slate-900/20 border-white/5" : "bg-slate-100/50 border-slate-200"}`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
-          <h1 className={`text-2xl md:text-4xl font-extrabold mb-16 tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Tech Stack</h1>
+     <section 
+      id="skills" 
+      className={`py-24 border-y relative overflow-hidden transition-colors duration-300 ${
+        darkMode ? "bg-slate-950/40 border-white/[0.05]" : "bg-slate-50 border-slate-200/60"
+      }`}
+    >
+      {/* Structural Ambient Background Lighting */}
+      <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] rounded-full filter blur-[140px] opacity-[0.06] pointer-events-none ${darkMode ? "bg-indigo-500" : "bg-indigo-400"}`} />
 
-          {[
-            { cat: "Frontend Engineering", stack: FrontendTech },
-            { cat: "Backend & Database Clusters", stack: BackendTech },
-            { cat: "Developer Operations & Tools", stack: Tools }
-          ].map((block, bIdx) => (
-            <div key={bIdx} className="mb-12 last:mb-0 text-left">
-              <h4 className={`text-xs tracking-widest font-mono font-bold uppercase mb-4 border-b pb-2 ${darkMode ? "text-slate-400 border-white/5" : "text-slate-500 border-slate-200"}`}>{block.cat}</h4>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {block.stack.map((tech, idx) => (
-                  <motion.div key={idx} whileHover={{ y: -3, backgroundColor: darkMode ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.01)" }} className={`flex items-center gap-3.5 border p-3.5 rounded-xl shadow-sm transition-all ${
-                    darkMode ? "bg-slate-900/40 border-white/5" : "bg-white border-slate-200/60"
-                  }`}>
-                    <div style={{ color: tech.color }} className="opacity-90">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Modern Clean Header Design */}
+        <div className="text-center mb-20">
+          <span className="text-xs font-mono uppercase tracking-widest text-indigo-500 font-bold block mb-2.5">Core Compiling</span>
+          <h2 className={`text-3xl md:text-5xl font-black tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
+            Tech Stack
+          </h2>
+        </div>
+
+        {[
+          { cat: "Frontend Engineering", stack: FrontendTech },
+          { cat: "Backend & Database Clusters", stack: BackendTech },
+          { cat: "Developer Operations & Tools", stack: Tools }
+        ].map((block, bIdx) => (
+          <div key={bIdx} className="mb-14 last:mb-0">
+            
+            {/* Elegant Section Dividing Category Tag */}
+            <div className="flex items-center gap-4 mb-6">
+              <h4 className={`text-xs tracking-wider font-mono font-bold uppercase whitespace-nowrap ${
+                darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
+              }`}>
+                {block.cat}
+              </h4>
+              <div className={`w-full h-[1px] ${darkMode ? "bg-white/[0.06]" : "bg-slate-200"}`} />
+            </div>
+            
+            {/* Staggered Grid Container */}
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+            >
+              {block.stack.map((tech, idx) => {
+                const rgbValue = hexToRgb(tech.color);
+                
+                return (
+                  <motion.div 
+                    key={idx}
+                    variants={itemVariants}
+                    whileHover={{ 
+                      y: -4, 
+                      scale: 1.01,
+                      borderColor: `rgba(${rgbValue}, 0.4)`,
+                      boxShadow: darkMode ? `0 10px 25px -5px rgba(${rgbValue}, 0.15)` : `0 10px 20px -5px rgba(${rgbValue}, 0.1)`
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`flex items-center gap-3.5 border p-4 rounded-xl backdrop-blur-sm transition-all duration-300 relative group cursor-default ${
+                      darkMode 
+                        ? "bg-slate-900/40 border-white/[0.04] hover:bg-slate-900/80" 
+                        : "bg-white border-slate-200/70 hover:bg-slate-50/50"
+                    }`}
+                  >
+                    {/* Adaptive, internal brand color overlay on card hover */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-[0.02] transition-opacity duration-300 rounded-xl pointer-events-none" 
+                      style={{ backgroundColor: tech.color }} 
+                    />
+                    
+                    {/* Animated Brand Icon */}
+                    <div 
+                      style={{ color: tech.color }} 
+                      className="text-xl md:text-2xl opacity-75 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-[4deg]"
+                    >
                       {tech.icon}
                     </div>
-                    <span className={`font-semibold text-xs md:text-sm ${darkMode ? "text-slate-200" : "text-slate-800"}`}>{tech.name}</span>
+                    
+                    {/* Tech Text label */}
+                    <span className={`font-semibold text-xs md:text-sm tracking-tight transition-colors duration-300 ${
+                      darkMode ? "text-slate-300 group-hover:text-white" : "text-slate-700 group-hover:text-slate-950"
+                    }`}>
+                      {tech.name}
+                    </span>
                   </motion.div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+                );
+              })}
+            </motion.div>
+
+          </div>
+        ))}
+      </div>
+    </section>
 
       {/* PROJECTS SECTION - PREMIUM CASING */}
-      <section id="project" className="py-20 max-w-7xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-16">
-          <h1 className={`text-2xl md:text-4xl font-extrabold tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Projects</h1>
-        </div>
+     <section id="project" className="py-24 max-w-7xl mx-auto px-6 md:px-12 relative overflow-hidden">
+      {/* Background Section Ambient Glow */}
+      <div className={`absolute top-1/2 right-0 w-96 h-96 rounded-full filter blur-[150px] opacity-15 pointer-events-none ${darkMode ? "bg-purple-600" : "bg-purple-200"}`} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {MyProjects.map((project, index) => (
-            <motion.div key={index} whileHover={{ y: -6 }} className={`border rounded-2xl flex flex-col overflow-hidden transition-all shadow-md hover:shadow-xl ${
-              darkMode ? "bg-slate-900/20 border-white/5" : "bg-white border-slate-200/60"
+      <div className="text-center mb-16">
+        <span className="text-xs font-mono uppercase tracking-widest text-indigo-500 font-semibold block mb-2">My Work</span>
+        <h2 className={`text-3xl md:text-5xl font-black tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
+          Featured Projects
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {MyProjects.map((project, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className={`group border rounded-2xl flex flex-col overflow-hidden transition-all duration-300 relative ${
+              darkMode 
+                ? "bg-gradient-to-b from-slate-900/60 to-slate-900/20 border-white/[0.05] hover:border-white/10 shadow-xl shadow-black/20" 
+                : "bg-white border-slate-200/80 shadow-md shadow-slate-100/80 hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300"
+            }`}
+          >
+            {/* Image Wrapper with Hover Zoom */}
+            <div className={`h-48 relative overflow-hidden border-b transition-colors duration-300 ${
+              darkMode ? "bg-slate-950 border-white/[0.05]" : "bg-slate-50 border-slate-100"
             }`}>
-              
-              <div className={`h-44 flex items-center justify-center p-6 border-b relative overflow-hidden ${
-                darkMode ? "bg-slate-950 border-white/5" : "bg-slate-100 border-slate-200/40"
+              <img
+                src={project.img}
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                alt={project.title}
+              />
+              {/* Subtle visual shade gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 mix-blend-multiply" />
+            </div>
+
+            {/* Project Details */}
+            <div className="p-6 flex flex-col flex-grow relative">
+              <h4 className={`font-bold text-xl mb-2.5 tracking-tight transition-colors ${darkMode ? "text-slate-100 group-hover:text-white" : "text-slate-900 group-hover:text-indigo-950"}`}>
+                {project.title}
+              </h4>
+
+              {/* Description - Masked & Compact with Line-clamp */}
+              <p className={`text-sm leading-relaxed tracking-tight text-justify mb-5 line-clamp-3 transition-colors ${
+                darkMode ? "text-slate-400 group-hover:text-slate-300" : "text-slate-600 group-hover:text-slate-700"
               }`}>
-                <img src={project.img} className="h-full w-full object-cover rounded-lg transform hover:scale-102 transition-transform duration-500" alt={project.title} />
-              </div>
+                {project.desc}
+              </p>
 
-              <div className="p-6 flex flex-col flex-grow">
-                <h4 className={`font-bold text-lg mb-2 tracking-tight ${darkMode ? "text-white" : "text-slate-900"}`}>{project.title}</h4>
-                
-                <p className={`text-xs md:text-sm tracking-normal leading-relaxed font-normal text-justify mb-5 flex-grow line-clamp-5 ${
-                  darkMode ? "text-slate-400" : "text-slate-600"
-                }`}>
-                  {project.desc}
-                </p>
-                
-                <div className="flex flex-wrap gap-1.5 mb-6">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className={`text-[11px] font-mono font-semibold px-2 py-0.5 rounded flex items-center gap-1 ${
-                      darkMode ? "bg-slate-800 text-indigo-300" : "bg-slate-100 text-indigo-700"
-                    }`}>
-                      {TechIcons[tech] || null} {tech}
+              {/* Minimal Tech Pill Row */}
+              <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className={`text-[11px] font-medium px-2.5 py-1 rounded-lg border transition-all duration-300 ${
+                      darkMode
+                        ? "bg-slate-900/80 border-slate-800 text-slate-300 group-hover:border-slate-700"
+                        : "bg-slate-50 border-slate-200/60 text-slate-600 group-hover:border-slate-300"
+                    }`}
+                  >
+                    <span className="inline-flex items-center gap-1">
+                      {TechIcons[tech] && <span className="opacity-80">{TechIcons[tech]}</span>}
+                      {tech}
                     </span>
-                  ))}
-                </div>
-
-                <div className={`flex gap-3 items-center mt-auto border-t pt-4 ${darkMode ? "border-white/5" : "border-slate-100"}`}>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 text-xs font-bold shadow-md shadow-indigo-600/10 transition-all">
-                    <FaRegEye size={13} /> Live Demo
-                  </a>
-                  
-                  <div className="relative flex-grow">
-                    <button onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)} className={`w-full flex items-center justify-between px-3 py-2 rounded-lg border text-xs font-bold transition-all ${
-                      darkMode ? "bg-slate-800 hover:bg-slate-700 text-slate-200 border-white/5" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
-                    }`}>
-                      <span className="flex items-center gap-1.5"><FaGithub size={13}/> Source Code</span>
-                      <span>▼</span>
-                    </button>
-
-                    {dropdownOpen === index && (
-                      <div className={`absolute left-0 bottom-full mb-2 w-full border rounded-lg shadow-2xl z-30 overflow-hidden ${
-                        darkMode ? "bg-slate-800 border-white/10" : "bg-white border-slate-200"
-                      }`}>
-                        {project.source?.frontend && (
-                          <a href={project.source.frontend} target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs font-semibold ${
-                            darkMode ? "text-slate-300 hover:bg-slate-700 hover:text-white border-b border-white/5" : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600 border-b border-slate-100"
-                          }`}>Frontend</a>
-                        )}
-                        {project.source?.backend && (
-                          <a href={project.source.backend} target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs font-semibold ${
-                            darkMode ? "text-slate-300 hover:bg-slate-700 hover:text-white" : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600"
-                          }`}>Backend</a>
-                        )}
-                        {project.source?.SmartContract && (
-                          <a href={project.source.SmartContract} target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs font-semibold ${
-                            darkMode ? "text-slate-300 hover:bg-slate-700 hover:text-white" : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600"
-                          }`}>Smart Contract</a>
-                        )}
-                        {project.source?.MLCode && (
-                          <a href={project.source.MLCode} target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs font-semibold ${
-                            darkMode ? "text-slate-300 hover:bg-slate-700 hover:text-white" : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600"
-                          }`}>Machine Learning</a>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
+                  </span>
+                ))}
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+
+              {/* Action Buttons Footer Row */}
+              <div className={`flex gap-3 items-center border-t pt-4 ${darkMode ? "border-white/[0.05]" : "border-slate-100"}`}>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-500 text-xs font-bold transition-all shadow-md shadow-indigo-600/10 active:scale-95"
+                >
+                  <FaRegEye size={14} />
+                  <span>Live Demo</span>
+                </a>
+
+                {/* Dropdown Container */}
+                <div className="relative flex-grow">
+                  <button
+                    onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
+                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-xs font-bold transition-all duration-200 ${
+                      darkMode
+                        ? "bg-slate-900/60 hover:bg-slate-800 text-slate-300 border-white/[0.05] hover:border-white/10"
+                        : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200/80"
+                    }`}
+                  >
+                    <span className="flex items-center gap-2">
+                      <FaGithub size={14} /> Code Base
+                    </span>
+                    <motion.span
+                      animate={{ rotate: dropdownOpen === index ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <FaChevronDown size={10} className="opacity-70" />
+                    </motion.span>
+                  </button>
+
+                  {/* Micro-animated Dropper List via Framer Motion AnimatePresence */}
+                  <AnimatePresence>
+                    {dropdownOpen === index && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                        transition={{ duration: 0.15, ease: "easeOut" }}
+                        className={`absolute left-0 bottom-full mb-2 w-full border rounded-xl shadow-2xl z-30 overflow-hidden backdrop-blur-lg ${
+                          darkMode ? "bg-slate-950/95 border-white/10" : "bg-white/95 border-slate-200 shadow-slate-300/40"
+                        }`}
+                      >
+                        {Object.entries(project.source || {}).map(([key, url]) => {
+                          // Standardize format labeling (e.g. SmartContract -> Smart Contract)
+                          const readableLabel = key.replace(/([A-Z])/g, ' $1').trim();
+                          return (
+                            url && (
+                              <a
+                                key={key}
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`block px-4 py-2.5 text-xs font-semibold first:rounded-t-xl last:rounded-b-xl border-b last:border-none transition-colors ${
+                                  darkMode
+                                    ? "text-slate-300 hover:bg-white/[0.04] hover:text-white border-white/[0.05]"
+                                    : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600 border-slate-100"
+                                }`}
+                              >
+                                {readableLabel.charAt(0).toUpperCase() + readableLabel.slice(1)}
+                              </a>
+                            )
+                          );
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
 
       {/* CONTACT SECTION - HIGHLY PREMIUM TRANSITION FIELDS */}
       <section id="contact" className={`py-24 border-t ${darkMode ? "bg-slate-900/10 border-white/5" : "bg-slate-100/40 border-slate-200"}`}>
