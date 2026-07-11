@@ -519,8 +519,8 @@ function App() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Modern Clean Header Design */}
-        <div className="text-center mb-20">
-          <span className="text-xs font-mono uppercase tracking-widest text-indigo-500 font-bold block mb-2.5">Core Compiling</span>
+        <div className="text-center mb-10">
+          
           <h2 className={`text-3xl md:text-5xl font-black tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
             Tech Stack
           </h2>
@@ -609,7 +609,7 @@ function App() {
       }`} />
 
       <div className="text-center mb-16">
-        <span className="text-xs font-mono uppercase tracking-widest text-indigo-500 font-semibold block mb-2">My Work</span>
+    
         <h2 className={`text-3xl md:text-5xl font-black tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
           Featured Projects
         </h2>
