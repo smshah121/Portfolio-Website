@@ -11,6 +11,10 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import emailjs from "emailjs-com";
+import { GrHeroku } from "react-icons/gr";
+import { VscAzure } from "react-icons/vsc";
+// import { SiNeon } from "react-icons/si";
+import { IoLogoVercel } from "react-icons/io5";
 import {
   SiJsonwebtokens,
   SiGoogle
@@ -256,8 +260,24 @@ function App() {
     { name: "Netlify", icon: <SiNetlify size={32} />, color: "#00C7B7" },
     { name: "Render", icon: <SiRender size={32} />, color: "#46E3B7" },
     { name: "Git", icon: <FaGitAlt size={32} />, color: "#F1502F" },
-    { name: "Cloudinary", icon: <SiCloudinary size={32} />, color: "#3448C5" }
+    { name: "Cloudinary", icon: <SiCloudinary size={32} />, color: "#3448C5" },
+    { name: "Heroku", icon: <GrHeroku size={32} />, color: "#430098" },
+    { name: "Azure", icon: <VscAzure size={32} />, color: "#0078D4" },
+
+    { name: "Vercel", icon: <IoLogoVercel size={32} />, color: "#000000" },
+    {
+    name: "Neon",
+    icon: (
+      <img
+        src="/neon-logomark-light-color.png"
+        alt="Neon"
+        className="w-8 h-8 object-contain"
+      />
+    ),
+    color: "#00E699",
+  },
   ];
+  
 
   const TechIcons = {
     React: <GrReactjs className="text-[#61DAFB]" title="React" />,
