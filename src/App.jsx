@@ -106,7 +106,7 @@ function App() {
       img: "/fraud.png",
       title: "AI-Powered Credit Card Fraud Detection System",
       desc: "Developed a full-stack fraud detection system using React, NestJS and FastAPI. Transaction data is transformed into ML-ready feature vectors and evaluated by a Logistic Regression model trained on the Kaggle Credit Card Fraud dataset (284K+ transactions). Displays fraud prediction, confidence score and stores transaction history.",
-      link: "",
+      link: "https://ai-fraud-detections.netlify.app/",
       source: {
         frontend: "https://github.com/smshah121/fraud-detection-frontend",
         backend: "https://github.com/smshah121/fraud-detection-backend",
