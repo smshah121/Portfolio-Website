@@ -299,7 +299,7 @@ function App() {
   };
 
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  // const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -639,11 +639,7 @@ function App() {
         {MyProjects.map((project, index) => (
           <motion.div
             key={index}
-            // Dynamic animation rules: Drop vertical layout offsets entirely on mobile
-            initial={{ opacity: 0, y: isMobile ? 0 : 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: isMobile ? "-20px" : "-50px" }}
-            transition={{ duration: 0.4, delay: isMobile ? 0 : index * 0.1 }}
+           
             className={`group border rounded-2xl flex flex-col overflow-hidden transition-all duration-300 relative ${
               darkMode 
                 ? "bg-gradient-to-b from-slate-900/60 to-slate-900/20 border-white/[0.05] hover:border-white/10 shadow-xl shadow-black/20" 
