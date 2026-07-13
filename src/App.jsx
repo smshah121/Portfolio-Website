@@ -418,7 +418,7 @@ function App() {
             <div className={`space-y-4 text-sm md:text-base leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
               <p className="text-sm text-slate-400">I am a <span className="font-semibold text-indigo-500">Full Stack Developer</span> and a final-year <span className="font-semibold text-indigo-500">Software Engineering</span> student at Iqra University. I build scalable web applications with a focus on clean architecture, maintainable code, and efficient client–server communication.</p>
               <p className="text-sm text-slate-400">My experience includes backend development with NestJS, where I design RESTful APIs, implement authentication and authorization, and follow layered architecture practices. I work with PostgreSQL for relational database design, relationship management, and query optimization.</p>
-              <p className="text-sm text-slate-400">On the frontend, I use ReactJS and Redux Toolkit to build responsive, component-based user interfaces with efficient state management and smooth integration with backend services.</p>
+              <p className="text-sm text-slate-400">On the frontend, I use ReactJS, Tailwind CSS and Redux Toolkit to build responsive, component-based user interfaces with efficient state management and smooth integration with backend services.</p>
             </div>
 
           </motion.div>
