@@ -45,6 +45,35 @@ function App() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
+  const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    x: -35,
+    y: 8,
+    scale: 0.98,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 
   const timeline = [
   {
@@ -178,13 +207,7 @@ function App() {
   ];
 
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.05 }
-    }
-  };
+
 
   const itemVariants = {
     hidden: { opacity: 0, y: 15 },
@@ -635,21 +658,30 @@ function App() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div
+  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{
+    amount: 0.15,
+    once: false,
+  }}
+>
         {MyProjects.map((project, index) => (
-          <motion.div
-            key={index}
-            // Dynamic animation rules: Drop vertical layout offsets entirely on mobile
-            initial={{ opacity: 0, y: isMobile ? 0 : 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: isMobile ? "-20px" : "-50px" }}
-            transition={{ duration: 0.4, delay: isMobile ? 0 : index * 0.1 }}
-            className={`group border rounded-2xl flex flex-col overflow-hidden transition-all duration-300 relative ${
-              darkMode 
-                ? "bg-gradient-to-b from-slate-900/60 to-slate-900/20 border-white/[0.05] hover:border-white/10 shadow-xl shadow-black/20" 
-                : "bg-white border-slate-200/80 shadow-md shadow-slate-100/80 hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300"
-            }`}
-          >
+        <motion.div
+  key={index}
+  variants={cardVariants}
+  whileHover={{
+    y: -5,
+    transition: { duration: 0.2 },
+  }}
+  className={`group border rounded-2xl flex flex-col overflow-hidden transition-all duration-300 relative ${
+    darkMode
+      ? "bg-gradient-to-b from-slate-900/60 to-slate-900/20 border-white/[0.05] hover:border-white/10 shadow-xl shadow-black/20"
+      : "bg-white border-slate-200/80 shadow-md shadow-slate-100/80 hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300"
+  }`}
+>
             {/* Image Wrapper */}
             <div className={`h-48 relative overflow-hidden border-b transition-colors duration-300 ${
               darkMode ? "bg-slate-950 border-white/[0.05]" : "bg-slate-50 border-slate-100"
@@ -774,7 +806,7 @@ function App() {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
 
       {/* CONTACT SECTION - HIGHLY PREMIUM TRANSITION FIELDS */}
