@@ -401,7 +401,7 @@ function App() {
           </p>
 
           <div className="flex gap-4 mt-6 flex-wrap justify-center items-center">
-            <a href="/Syed_Momin_Ali_Shah.pdf" target="_blank" rel="noopener noreferrer" download="SyedMominAliShah_Resume.pdf" className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-md shadow-indigo-600/20 transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm">
+            <a href="/Resume Template (13).pdf" target="_blank" rel="noopener noreferrer" download="SyedMominAliShah_Resume.pdf" className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-md shadow-indigo-600/20 transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm">
               <IoMdDownload size={16} /> Download CV
             </a>
             <a href="#project" className={`px-5 py-2.5 rounded-xl border font-medium transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm ${
