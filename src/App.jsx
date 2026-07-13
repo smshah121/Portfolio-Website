@@ -81,12 +81,12 @@ function App() {
     content: (
       <>
         <h5 className="font-semibold">
-          AI-Driven Blockchain-Based Degree Attestation System
+          Autonomous Degree Attestation System
         </h5>
 
         <p className="text-sm opacity-80 mt-2">
-          OCR Verification • Ethereum Smart Contracts • SHA-256 • QR Codes •
-          PDF Certificates • Stripe • Cloudinary • Google OAuth • RBAC
+          OCR Verification • Ethereum Smart Contracts • SHA-256 • QR Codes • Immutable
+          • PDF Certificates • Stripe • Cloudinary • Google OAuth • RBAC
         </p>
       </>
     ),
@@ -96,7 +96,7 @@ function App() {
   const MyProjects = [
     {
       img: "/degree.png",
-      title: "Degree Attestation System",
+      title: "Autonomous Degree Attestation System",
       desc: "Automated academic degree attestation using AI-powered OCR, blockchain verification and SHA-256 hashing. Students upload transcripts, pay processing fees via Stripe, and receive blockchain-backed certificates that can be verified through QR-code scanning or transaction hash lookup.",
       link: "https://degree-attestation.netlify.app/",
       source: {
@@ -168,7 +168,7 @@ function App() {
     {
       img: "/tictactoe.png",
       title: "AI-Powered Tic-Tac-Toe Game",
-      desc: "An AI-powered Tic Tac Toe game built using React, featuring an intelligent opponent implemented with the Minimax algorithm. The application allows users to play against an unbeatable AI that evaluates all possible game states using a game tree search approach to determine optimal moves in real time. The system simulates human-like decision making by recursively analyzing future outcomes and selecting the best possible move based on maximizing AI advantage while minimizing the opponent’s score. Built with a clean and responsive React UI, the project demonstrates core concepts of artificial intelligence, game theory, recursion, and state management, making it a strong example of applying classical AI algorithms in modern web development.",
+      desc: "Developed an AI-powered Tic Tac Toe game in React featuring an unbeatable opponent using the Minimax algorithm. The AI evaluates all possible game states in real time to select the optimal move, demonstrating concepts of game theory, recursion, and state management.",
       link: "https://tictac-toe-ai.netlify.app/",
       source: {
         frontend: "https://github.com/smshah121/tic-tac-toe-ai",
@@ -631,7 +631,7 @@ function App() {
       <div className="text-center mb-16">
     
         <h2 className={`text-3xl md:text-5xl font-black tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
-          Featured Projects
+          Projects
         </h2>
       </div>
 
