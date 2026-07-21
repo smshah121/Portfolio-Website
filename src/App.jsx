@@ -397,7 +397,7 @@ function App() {
           <p className={`mt-3 text-sm sm:text-base md:text-md max-w-xl leading-relaxed mx-auto px-2 ${
             darkMode ? "text-slate-400" : "text-slate-600"
           }`}>
-            Final-Year <span className="text-indigo-500 font-semibold">Software Engineering</span> student and <span className="text-indigo-500 font-semibold">Full Stack Developer</span> specialized in building performance-optimized cloud architectures with <span className="text-indigo-500 font-semibold">ReactJS</span> and <span className="text-indigo-500 font-semibold">NestJS</span>.
+            Final-Year <span className="text-indigo-500 font-semibold">Software Engineering</span> student and <span className="text-indigo-500 font-semibold">Full Stack Developer</span> specializing in building scalable, production-ready web applications with <span className="text-indigo-500 font-semibold">React, NestJS</span> and <span className="text-indigo-500 font-semibold">PostgreSQL</span>.
           </p>
 
           <div className="flex gap-4 mt-6 flex-wrap justify-center items-center">
