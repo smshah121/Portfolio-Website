@@ -112,6 +112,17 @@ function App() {
       tech: ["React", "Tailwind", "Redux", "Motion", "Nest", "Postgres", "JWT", "Stripe"]
     },
     {
+      img: "/lms2.png",
+      title: "Learning Management System",
+      desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access.",
+      link: "https://learning-management-system-app1.netlify.app/",
+      source: {
+        frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
+        backend: "https://github.com/smshah121/Learning-Management-System-Backend",
+      },
+      tech: ["React", "Tailwind", "Motion", "Redux", "Nest", "JWT", "Postgres"]
+    },
+    {
       img: "/fraud.png",
       title: "AI-Powered Credit Card Fraud Detection System",
       desc: "Developed a full-stack fraud detection system using React, NestJS and FastAPI. Transaction data is transformed into ML-ready feature vectors and evaluated by a Logistic Regression model trained on the Kaggle Credit Card Fraud dataset (284K+ transactions). Displays fraud prediction, confidence score and stores transaction history.",
@@ -123,17 +134,7 @@ function App() {
       },
       tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "Python", "FastAPI"]
     },
-    {
-      img: "/lms2.png",
-      title: "Learning Management System",
-      desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access.",
-      link: "https://learning-management-system-app1.netlify.app/",
-      source: {
-        frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
-        backend: "https://github.com/smshah121/Learning-Management-System-Backend",
-      },
-      tech: ["React", "Tailwind", "Motion", "Redux", "Nest", "JWT", "Postgres"]
-    },
+    
     {
       img: "/pixora.png",
       title: "Pixora Media Collection",
