@@ -24,8 +24,9 @@ import {
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -259,11 +260,13 @@ function App() {
               start: "bottom bottom",
               end: "bottom top",
               pin: true,
-              pinSpacing: false,
+              pinSpacing: true,
               scrub: 1
             }
           });
         }
+
+        
 
         const innerItems = section.querySelectorAll(".gsap-reveal");
         if (innerItems.length > 0) {
@@ -290,6 +293,13 @@ function App() {
 
     return () => ctx.revert();
   }, []);
+
+
+  useEffect(() => {
+  const onLoad = () => ScrollTrigger.refresh();
+  window.addEventListener("load", onLoad);
+  return () => window.removeEventListener("load", onLoad);
+}, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -322,6 +332,17 @@ function App() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+
+  const scrollToSection = (id) => {
+  const target = document.querySelector(`#${id}`);
+  if (!target) return;
+  gsap.to(window, {
+    duration: 1,
+    scrollTo: { y: target, offsetY: 80 }, // 80 = your header height, adjust if needed
+    ease: "power2.inOut",
+  });
+};
 
   const NavItems = [
     { id: "hero", label: "Home" },
@@ -360,14 +381,14 @@ function App() {
           <ul className="hidden md:flex items-center gap-1">
             {NavItems.map((item) => (
               <li key={item.id}>
-                <a href={`#${item.id}`} className={`px-4.5 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-200 ${
-                  activeSection === item.id 
-                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/25" 
-                    : darkMode ? "text-slate-400 hover:text-slate-100" : "text-slate-500 hover:text-slate-900"
-                }`}>
-                  {item.label}
-                </a>
-              </li>
+  <button onClick={() => scrollToSection(item.id)} className={`px-4.5 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-200 ${
+    activeSection === item.id 
+      ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/25" 
+      : darkMode ? "text-slate-400 hover:text-slate-100" : "text-slate-500 hover:text-slate-900"
+  }`}>
+    {item.label}
+  </button>
+</li>
             ))}
           </ul>
 
@@ -390,13 +411,13 @@ function App() {
         darkMode ? "bg-slate-900/95 border-white/10" : "bg-white/95 border-slate-200"
       }`}>
         {NavItems.map((item) => (
-          <a key={item.id} href={`#${item.id}`} onClick={() => setMobileMenuOpen(false)} className={`text-base font-bold tracking-wide uppercase pb-1 border-b ${
-            activeSection === item.id 
-              ? "text-indigo-500 border-indigo-500" 
-              : darkMode ? "text-slate-300 border-white/5" : "text-slate-600 border-slate-100"
-          }`}>
-            {item.label}
-          </a>
+          <button key={item.id} onClick={() => { scrollToSection(item.id); setMobileMenuOpen(false); }} className={`text-base font-bold tracking-wide uppercase pb-1 border-b text-left ${
+  activeSection === item.id 
+    ? "text-indigo-500 border-indigo-500" 
+    : darkMode ? "text-slate-300 border-white/5" : "text-slate-600 border-slate-100"
+}`}>
+  {item.label}
+</button>
         ))}
       </div>
 
@@ -433,11 +454,11 @@ function App() {
             <a href="/Resume Template (20).pdf" target="_blank" rel="noopener noreferrer" download="SyedMominAliShah_Resume.pdf" className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-md shadow-indigo-600/20 transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm">
               <IoMdDownload size={16} /> Download CV
             </a>
-            <a href="#project" className={`px-5 py-2.5 rounded-xl border font-medium transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm ${
+           <button onClick={() => scrollToSection("project")} className={`px-5 py-2.5 rounded-xl border font-medium transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm ${
               darkMode ? "bg-white/5 hover:bg-white/10 border-white/10 text-slate-200" : "bg-slate-900/5 hover:bg-slate-900/10 border-slate-900/10 text-slate-800"
             }`}>
               View Projects
-            </a>
+            </button>
           </div>
 
           <div className={`gsap-reveal flex justify-center mt-8 gap-5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
