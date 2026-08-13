@@ -259,8 +259,7 @@ function App() {
               trigger: section,
               start: "bottom bottom",
               end: "bottom top",
-              pin: true,
-              pinSpacing: true,
+            
               scrub: 1
             }
           });
