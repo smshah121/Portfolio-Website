@@ -259,7 +259,6 @@ function App() {
               trigger: section,
               start: "bottom bottom",
               end: "bottom top",
-            
               scrub: 1
             }
           });
@@ -461,11 +460,11 @@ function App() {
           </div>
 
           <div className={`gsap-reveal flex justify-center mt-8 gap-5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-            <a href="https://www.linkedin.com/in/smshah121" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors transform hover:scale-110 duration-200"><FaLinkedin size={22} /></a>
-            <a href="https://github.com/smshah121" target="_blank" rel="noopener noreferrer" className={`transition-colors transform hover:scale-110 duration-200 ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={22} /></a>
-            <a href="https://www.instagram.com/__smshah__" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors transform hover:scale-110 duration-200"><FaInstagram size={22} /></a>
-            <a href="mailto:sm.shah2003@hotmail.com" className="hover:text-blue-500 transition-colors transform hover:scale-110 duration-200"><PiMicrosoftOutlookLogo size={22} /></a>
-            <a href="mailto:smshah.2003@gmail.com" className="hover:text-red-500 transition-colors transform hover:scale-110 duration-200"><IoMdMail size={22} /></a>
+            <a href="https://www.linkedin.com/in/smshah121" aria-label="Linkedin Profile" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors transform hover:scale-110 duration-200"><FaLinkedin size={22} /></a>
+            <a href="https://github.com/smshah121" aria-label="Github Profile" target="_blank" rel="noopener noreferrer" className={`transition-colors transform hover:scale-110 duration-200 ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={22} /></a>
+            <a href="https://www.instagram.com/__smshah__" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors transform hover:scale-110 duration-200"><FaInstagram size={22} /></a>
+            <a href="mailto:sm.shah2003@hotmail.com" aria-label="Email via Outloook" className="hover:text-blue-500 transition-colors transform hover:scale-110 duration-200"><PiMicrosoftOutlookLogo size={22} /></a>
+            <a href="mailto:smshah.2003@gmail.com" aria-label="Email via Gmail" className="hover:text-red-500 transition-colors transform hover:scale-110 duration-200"><IoMdMail size={22} /></a>
           </div>
         </div>
       </section>
@@ -793,9 +792,9 @@ function App() {
       {/* FOOTER */}
       <footer className={`border-t py-12 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950 border-white/5 text-slate-500" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
         <div className="flex justify-center gap-6 mb-4">
-          <a href="https://www.linkedin.com/in/smshah121" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors"><FaLinkedin size={20} /></a>
-          <a href="https://github.com/smshah121" target="_blank" rel="noopener noreferrer" className={`transition-colors ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={20} /></a>
-          <a href="https://www.instagram.com/__smshah__" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors"><FaInstagram size={20} /></a>
+          <a href="https://www.linkedin.com/in/smshah121" aria-label="Linkedin Profile" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors"><FaLinkedin size={20} /></a>
+          <a href="https://github.com/smshah121" aria-label="Github Profile" target="_blank" rel="noopener noreferrer" className={`transition-colors ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={20} /></a>
+          <a href="https://www.instagram.com/__smshah__" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors"><FaInstagram size={20} /></a>
         </div>
         <p className="font-semibold text-xs select-none">&copy; Syed Momin Ali Shah. All rights reserved.</p>
       </footer>
