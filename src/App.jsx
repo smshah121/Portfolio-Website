@@ -61,14 +61,15 @@ function App() {
       icon: <FaLaptopCode />,
       technologies: [
         { name: "React", icon: <GrReactjs /> },
-        { name: "NestJS", icon: <SiNestjs /> },
-        { name: "TypeScript", icon: <TbBrandTypescript /> },
-        { name: "PostgreSQL", icon: <SiPostgresql /> },
-        { name: "Redux", icon: <SiRedux /> },
         { name: "Tailwind", icon: <SiTailwindcss /> },
-        { name: "Node.js", icon: <FaNodeJs /> },
-        { name: "JavaScript", icon: <TbBrandJavascript /> },
         { name: "Motion", icon: <TbBrandFramerMotion /> },
+        { name: "Redux", icon: <SiRedux /> },
+        { name: "NestJS", icon: <SiNestjs /> },
+        { name: "PostgreSQL", icon: <SiPostgresql /> },
+        {name: "JWT", icon: <SiJsonwebtokens/>},
+        {name: "GoogleOAuth", icon: <SiGoogle/>},
+      
+
       ],
     },
     {
