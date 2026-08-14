@@ -132,7 +132,7 @@ function App() {
       source: {
         frontend: "https://github.com/smshah121/fraud-detection-frontend",
         backend: "https://github.com/smshah121/fraud-detection-backend",
-        MLCode: "https://github.com/smshah121/fraud-detection-ml-api"
+        ML: "https://github.com/smshah121/fraud-detection-ml-api"
       },
       tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "Python", "FastAPI"]
     },
