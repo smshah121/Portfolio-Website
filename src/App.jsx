@@ -791,7 +791,7 @@ function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className={`border-t py-12 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950 border-white/5 text-slate-500" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
+      <footer className={`border-t py-6 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950 border-white/5 text-slate-500" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
         <div className="flex justify-center gap-6 mb-4">
           <a href="https://www.linkedin.com/in/smshah121" aria-label="Linkedin Profile" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors"><FaLinkedin size={20} /></a>
           <a href="https://github.com/smshah121" aria-label="Github Profile" target="_blank" rel="noopener noreferrer" className={`transition-colors ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={20} /></a>
