@@ -28,10 +28,16 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+
+
+
+
+
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [githubStats, setGithubStats] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("portfolio-theme");
@@ -39,10 +45,103 @@ function App() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
+ const fetchGithubStats = () => {
+  Promise.all([
+    fetch("https://api.github.com/users/smshah121").then((res) => res.json()),
+    fetch("https://github-contributions-api.jogruber.de/v4/smshah121?y=all").then((res) => res.json()),
+  ])
+    .then(([userData, contribData]) => {
+      const totalContributions = Object.values(contribData.total || {}).reduce(
+        (sum, yearTotal) => sum + yearTotal,
+        0
+      );
+
+      setGithubStats({
+        repos: userData.public_repos,
+        commits: totalContributions,
+        followers: userData.followers,
+      });
+    })
+    .catch(() => setGithubStats(null));
+};
+
+  useEffect(() => {
+  fetchGithubStats();
+}, []);
+
   const cursorDotRef = useRef(null);
   const cursorRingRef = useRef(null);
   const mainContainerRef = useRef(null);
   const mobileMenuRef = useRef(null);
+
+  const sectionRef = useRef(null);
+  const fullstackCountRef = useRef(null);
+  const frontendCountRef = useRef(null);
+
+  // Define your target counts here
+  const stats = {
+    fullstack: 6, // adjust to your actual count
+    frontend: 10,  // adjust to your actual count
+  };
+
+  const technologies = [
+    { name: "React", icon: <GrReactjs /> },
+    { name: "Tailwind", icon: <SiTailwindcss /> },
+    { name: "Motion", icon: <TbBrandFramerMotion /> },
+    { name: "Redux", icon: <SiRedux /> },
+    { name: "NestJS", icon: <SiNestjs /> },
+     {name: "TypeScript", icon: <TbBrandTypescript/>},
+    { name: "PostgreSQL", icon: <SiPostgresql /> },
+    { name: "JWT", icon: <SiJsonwebtokens /> },
+    { name: "Google OAuth", icon: <SiGoogle /> },
+  ];
+
+ useEffect(() => {
+  const ctx = gsap.context(() => {
+    // Animated Stat Counters
+    const fsTarget = { val: 0 };
+
+    gsap.to(fsTarget, {
+      val: stats.fullstack,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: fullstackCountRef.current,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+      onUpdate: () => {
+        if (fullstackCountRef.current) {
+          fullstackCountRef.current.innerText =
+            Math.floor(fsTarget.val) + "+";
+        }
+      },
+    });
+
+    const feTarget = { val: 0 };
+
+    gsap.to(feTarget, {
+      val: stats.frontend,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: frontendCountRef.current,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+      onUpdate: () => {
+        if (frontendCountRef.current) {
+          frontendCountRef.current.innerText =
+            Math.floor(feTarget.val) + "+";
+        }
+      },
+    });
+  }, sectionRef);
+
+  return () => ctx.revert();
+}, [stats.fullstack, stats.frontend]);
+
+  
 
   const timeline = [
     {
@@ -65,6 +164,7 @@ function App() {
         { name: "Motion", icon: <TbBrandFramerMotion /> },
         { name: "Redux", icon: <SiRedux /> },
         { name: "NestJS", icon: <SiNestjs /> },
+        {name: "Typecript", icon: <TbBrandTypescript/>},
         { name: "PostgreSQL", icon: <SiPostgresql /> },
         {name: "JWT", icon: <SiJsonwebtokens/>},
         {name: "GoogleOAuth", icon: <SiGoogle/>},
@@ -471,67 +571,213 @@ function App() {
       </section>
 
       {/* SECTION 2: ABOUT */}
-      <section id="about" className={`panel-section py-28 px-6 md:px-12 max-w-7xl mx-auto min-h-screen flex items-center ${darkMode ? "bg-slate-950" : "bg-slate-50"}`}>
-        <div className="grid lg:grid-cols-2 gap-12 items-stretch w-full">
-          <div className={`gsap-reveal h-full p-8 rounded-2xl border shadow-xl flex flex-col justify-center ${
-            darkMode ? "bg-slate-900/30 border-white/5" : "bg-white border-slate-200/60"
-          }`}>
-            <h3 className={`text-2xl md:text-3xl font-bold mb-4 tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>Executive Summary</h3>
-            <div className={`space-y-4 text-sm md:text-base leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-              <p className="text-sm text-slate-400">I am a <span className="font-semibold text-indigo-500">Full Stack Developer</span> and a final-year <span className="font-semibold text-indigo-500">Software Engineering</span> student at Iqra University. I build scalable web applications with a focus on clean architecture, maintainable code, and efficient client–server communication.</p>
-              <p className="text-sm text-slate-400">My experience includes backend development with NestJS, where I design RESTful APIs, implement authentication and authorization, and follow layered architecture practices. I work with PostgreSQL for relational database design, relationship management, and query optimization.</p>
-              <p className="text-sm text-slate-400">On the frontend, I use ReactJS, Tailwind CSS and Redux Toolkit to build responsive, component-based user interfaces with efficient state management and smooth integration with backend services.</p>
+   <section
+      id="about"
+      ref={sectionRef}
+      className={`panel-section relative py-32 px-6 md:px-12 max-w-7xl mx-auto min-h-screen flex flex-col justify-center transition-colors duration-500 ${
+        darkMode ? "bg-slate-950 text-slate-100" : "bg-slate-50 text-slate-900"
+      }`}
+    >
+      {/* Aesthetic Section Header */}
+      <div className="gsap-reveal mb-16">
+        <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
+          Who I Am ?
+        </span>
+        <h2 className="font-['Black_Ops_One'] text-4xl sm:text-6xl md:text-7xl uppercase tracking-wider  bg-clip-text text-indigo-600 ">
+          <span className={darkMode ? "text-gray-100" : "text-slate-900"}>About</span> Me
+        </h2>
+      </div>
+
+      {/* 60% / 40% Split Content with Equal Height Stretching */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch w-full">
+        
+        {/* Left Column: 60% Width */}
+        <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+          {/* Summary Box */}
+          <div
+            className={`gsap-reveal p-8 md:p-10 rounded-3xl border backdrop-blur-xl transition-all duration-300 ${
+              darkMode
+                ? "bg-slate-900/40 border-slate-800/80 shadow-2xl shadow-indigo-950/20"
+                : "bg-white/80 border-slate-200 shadow-xl shadow-slate-200/50"
+            }`}
+          >
+            <h3 className="text-xl font-semibold mb-6 flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
+              Executive Summary
+            </h3>
+
+            <div
+              className={`space-y-4 text-base md:text-lg leading-relaxed font-normal ${
+                darkMode ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
+              <p>
+                I’m a Full-Stack Developer and final-year Software Engineering student at Iqra University, passionate about building scalable and maintainable web applications.
+              </p>
+              <p>
+                My primary focus is full-stack development, working with React.js, TypeScript, NestJS, and PostgreSQL to build responsive interfaces, robust APIs, and reliable backend systems.
+              </p>
+              <p>
+                I also explore AI/ML and blockchain technologies, integrating them into projects to solve practical problems and expand what I can build as a Software Engineer.
+              </p>
             </div>
           </div>
 
-          <div className={`relative pl-8 border-l-2 flex flex-col gap-10 ${
-            darkMode ? "border-indigo-500/20" : "border-indigo-500/30"
-          }`}>
-            {timeline.map((node, i) => (
-              <div key={i} className="gsap-reveal relative min-h-[140px] pl-4 group">
-                <div className="absolute -left-[51px] top-0.5 z-10 flex items-center justify-center">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center border shadow-sm transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 ${
-                    darkMode
-                      ? "bg-slate-950 border-slate-700 text-indigo-400 group-hover:border-indigo-400 group-hover:shadow-indigo-500/20"
-                      : "bg-white border-slate-200 text-indigo-600 group-hover:border-indigo-500 group-hover:shadow-indigo-500/10"
-                  }`}>
-                    <span className="text-sm transition-transform duration-300 group-hover:scale-110">
-                      {node.icon}
-                    </span>
+          {/* Education & Featured Project Cards */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div
+              className={`gsap-reveal p-6 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${
+                darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
+              }`}
+            >
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl mb-4">
+                <FaGraduationCap />
+              </div>
+              <h4 className="font-bold text-base">BS Software Engineering</h4>
+              <p className="text-sm text-slate-400 mt-1">Iqra University</p>
+              <span className="inline-block mt-3 text-xs px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 font-medium">
+                2023 — Present
+              </span>
+            </div>
+
+          <div
+              className={`gsap-reveal p-6 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${
+                darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
+              }`}
+            >
+              <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl mb-4">
+                <FaGithub />
+              </div>
+              <h4 className="font-bold text-base mb-3">GitHub Activity</h4>
+              {githubStats ? (
+                <div className="flex gap-5">
+                  <div>
+                    <span className="block text-lg font-extrabold text-purple-500">{githubStats.repos}</span>
+                    <span className={`text-[10px] uppercase tracking-wide ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Repositories</span>
+                  </div>
+                  <div>
+                    <span className="block text-lg font-extrabold text-purple-500">{githubStats.commits}+</span>
+                    <span className={`text-[10px] uppercase tracking-wide ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Total Contribution</span>
                   </div>
                 </div>
-
-                <h4 className={`font-bold text-base md:text-lg mb-3 tracking-tight transition-colors duration-300 ${
-                  darkMode ? "text-slate-100 group-hover:text-indigo-400" : "text-slate-900 group-hover:text-indigo-600"
-                }`}>
-                  {node.title}
-                </h4>
-
-                {node.technologies ? (
-                  <div className="flex flex-wrap gap-2.5">
-                    {node.technologies.map((tech) => (
-                      <span key={tech.name} className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium border cursor-pointer select-none transition-all duration-200 transform hover:-translate-y-0.5 ${
-                        darkMode
-                          ? "bg-slate-900/60 border-slate-800 text-slate-300 hover:bg-slate-800 hover:border-indigo-500/50 hover:text-white"
-                          : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-indigo-500/40 hover:text-indigo-950"
-                      }`}>
-                        <span className="text-sm opacity-90">{tech.icon}</span>
-                        {tech.name}
-                      </span>
-                    ))}
-                  </div>
-                ) : (
-                  <div className={`text-sm md:text-base leading-relaxed max-w-2xl transition-colors duration-300 ${
-                    darkMode ? "text-slate-400 group-hover:text-slate-300" : "text-slate-600 group-hover:text-slate-700"
-                  }`}>
-                    {node.content}
-                  </div>
-                )}
-              </div>
-            ))}
+              ) : (
+                <p className={`text-xs leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
+                  Loading live GitHub data…
+                </p>
+              )}
+              <a
+                href="https://github.com/smshah121"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold text-purple-500 hover:text-purple-400 transition-colors"
+              >
+                View Profile →
+              </a>
+            </div>
           </div>
         </div>
-      </section>
+
+        {/* Right Column: 40% Width */}
+        <div className="lg:col-span-5 flex flex-col justify-between gap-6 h-full">
+
+          <div
+            className={`gsap-reveal p-8 md:p-7 rounded-3xl border flex items-center justify-between transition-all duration-300 ${
+              darkMode
+                ? "bg-slate-900/40 border-slate-800/80 shadow-xl"
+                : "bg-white border-slate-200 shadow-md"
+            }`}
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="relative flex items-center justify-center">
+                <span className="w-3 h-3 rounded-full bg-emerald-500 animate-ping absolute opacity-75" />
+                <span className="w-3 h-3 rounded-full bg-emerald-500 relative" />
+              </div>
+              <div>
+                <h4 className="text-md font-semibold tracking-tight mb-2">Available for Roles</h4>
+                <p className="text-xs text-slate-400">Full-Stack & Backend Engineering</p>
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 hover:bg-indigo-500 hover:text-white transition-all duration-200"
+            >
+              Let's Talk →
+            </a>
+          </div>
+
+          
+          {/* 1. Animated Metrics Card */}
+          <div
+            className={`gsap-reveal p-8 rounded-3xl border grid grid-cols-2 gap-6 ${
+              darkMode
+                ? "bg-slate-900/40 border-slate-800/80"
+                : "bg-white border-slate-200 shadow-sm"
+            }`}
+          >
+            <div className="flex flex-col">
+              <span
+                ref={fullstackCountRef}
+                className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]"
+              >
+                0+
+              </span>
+              <span className="text-xs md:text-sm font-medium text-slate-400 mt-2">
+                Full-Stack Systems Built
+              </span>
+            </div>
+
+            <div className="flex flex-col border-l pl-6 border-slate-800">
+              <span
+                ref={frontendCountRef}
+                className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]"
+              >
+                0+
+              </span>
+              <span className="text-xs md:text-sm font-medium text-slate-400 mt-2">
+                Frontend Interfaces Crafted
+              </span>
+            </div>
+          </div>
+
+          {/* 2. Modern Core Technologies Grid (flex-1 evenly fills middle vertical height) */}
+          <div
+            className={`gsap-reveal p-8 rounded-3xl border flex-1 flex flex-col justify-center ${
+              darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
+            }`}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-base">
+                <FaLaptopCode />
+              </div>
+              <h4 className="font-bold text-lg tracking-tight">Core Tech</h4>
+            </div>
+
+            <div className="tech-container flex flex-wrap gap-2.5">
+              {technologies.map((tech) => (
+                <div
+                  key={tech.name}
+                  className={`tech-badge group flex items-center gap-2.5 px-4 py-2.5 rounded-2xl text-xs font-semibold border transition-all duration-300 cursor-default ${
+                    darkMode
+                      ? "bg-slate-950/60 border-slate-800 text-slate-300 hover:border-indigo-500/60 hover:text-white hover:shadow-lg hover:shadow-indigo-500/10"
+                      : "bg-slate-50 border-slate-200 text-slate-700 hover:border-indigo-500 hover:bg-white hover:shadow-md"
+                  }`}
+                >
+                  <span className="text-base text-indigo-400 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                    {tech.icon}
+                  </span>
+                  <span>{tech.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 3. Available for Roles Card (Sticks flush to bottom row) */}
+          
+        </div>
+
+      </div>
+    </section>
 
       {/* SECTION 3: TECH STACK */}
       <section id="skills" className={`panel-section py-24 border-y relative overflow-hidden transition-colors duration-300 min-h-screen flex items-center ${
