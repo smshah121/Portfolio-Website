@@ -645,18 +645,18 @@ function App() {
                 darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
               }`}
             >
-              <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl mb-4">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl mb-4">
                 <FaGithub />
               </div>
               <h4 className="font-bold text-base mb-3">GitHub Activity</h4>
               {githubStats ? (
                 <div className="flex gap-5">
                   <div>
-                    <span className="block text-lg font-extrabold text-purple-500">{githubStats.repos}</span>
+                    <span className="block text-lg font-extrabold text-indigo-500">{githubStats.repos}</span>
                     <span className={`text-[10px] uppercase tracking-wide ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Repositories</span>
                   </div>
                   <div>
-                    <span className="block text-lg font-extrabold text-purple-500">{githubStats.commits}+</span>
+                    <span className="block text-lg font-extrabold text-indigo-500">{githubStats.commits}+</span>
                     <span className={`text-[10px] uppercase tracking-wide ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Total Contribution</span>
                   </div>
                 </div>
@@ -669,7 +669,7 @@ function App() {
                 href="https://github.com/smshah121"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold text-purple-500 hover:text-purple-400 transition-colors"
+                className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold text-indigo-400 hover:text-purple-400 transition-colors"
               >
                 View Profile →
               </a>
@@ -681,7 +681,7 @@ function App() {
         <div className="lg:col-span-5 flex flex-col justify-between gap-6 h-full">
 
           <div
-            className={`gsap-reveal p-8 md:p-7 rounded-3xl border flex items-center justify-between transition-all duration-300 ${
+            className={`gsap-reveal p-8 md:p-7 rounded-3xl border flex flex-col md:flex-row md:items-center md:justify-between transition-all duration-300 ${
               darkMode
                 ? "bg-slate-900/40 border-slate-800/80 shadow-xl"
                 : "bg-white border-slate-200 shadow-md"
@@ -692,18 +692,23 @@ function App() {
                 <span className="w-3 h-3 rounded-full bg-emerald-500 animate-ping absolute opacity-75" />
                 <span className="w-3 h-3 rounded-full bg-emerald-500 relative" />
               </div>
+             
               <div>
                 <h4 className="text-md font-semibold tracking-tight mb-2">Available for Roles</h4>
                 <p className="text-xs text-slate-400">Full-Stack & Backend Engineering</p>
               </div>
             </div>
+    
 
-            <a
+              <a
               href="#contact"
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 hover:bg-indigo-500 hover:text-white transition-all duration-200"
+              className="px-4 py-2 w-full md:w-auto mt-3 md:mt-0 text-center rounded-xl  text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 hover:bg-indigo-500 hover:text-white transition-all duration-200"
             >
               Let's Talk →
             </a>
+
+       
+            
           </div>
 
           
