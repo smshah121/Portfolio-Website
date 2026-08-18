@@ -607,7 +607,7 @@ useEffect(() => {
             </h3>
 
             <div
-              className={`space-y-4 text-base md:text-lg leading-relaxed font-normal ${
+              className={`space-y-4 text-base md:text-md leading-relaxed font-normal ${
                 darkMode ? "text-slate-400" : "text-slate-600"
               }`}
             >
