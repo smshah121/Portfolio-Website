@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 import { FaHtml5, FaCss3Alt, FaLinkedin, FaGithub, FaInstagram, FaPhoneAlt, FaGraduationCap, FaGitAlt, FaNodeJs } from "react-icons/fa";
 import { TbBrandJavascript, TbBrandTypescript, TbBrandFramerMotion } from "react-icons/tb";
 import { GrReactjs } from "react-icons/gr";
 import { SiNestjs, SiPostgresql, SiTailwindcss, SiRedux, SiAxios, SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
 import { IoIosMail, IoMdDownload, IoMdMail } from "react-icons/io";
-import { FaLocationDot, FaRegEye, FaLaptopCode, FaSun, FaMoon, FaRocket, FaChevronDown } from "react-icons/fa6";
+import { FaLocationDot, FaRegEye, FaLaptopCode, FaSun, FaMoon,  FaChevronDown } from "react-icons/fa6";
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 import { useEffect, useState, useRef } from "react";
 import Typewriter from "typewriter-effect";
@@ -34,6 +35,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 
 function App() {
+  const orbitRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -85,16 +87,27 @@ function App() {
   };
 
   const technologies = [
-    { name: "React", icon: <GrReactjs /> },
-    { name: "Tailwind", icon: <SiTailwindcss /> },
-    { name: "Motion", icon: <TbBrandFramerMotion /> },
-    { name: "Redux", icon: <SiRedux /> },
-    { name: "NestJS", icon: <SiNestjs /> },
-     {name: "TypeScript", icon: <TbBrandTypescript/>},
-    { name: "PostgreSQL", icon: <SiPostgresql /> },
-    { name: "JWT", icon: <SiJsonwebtokens /> },
-    { name: "Google OAuth", icon: <SiGoogle /> },
+    { icon: <GrReactjs /> },
+    {  icon: <SiTailwindcss /> },
+    {  icon: <TbBrandFramerMotion /> },
+    { icon: <SiRedux /> },
+    { icon: <SiNestjs /> },
+     { icon: <TbBrandTypescript/>},
+    { icon: <SiPostgresql /> },
+    {  icon: <SiJsonwebtokens /> },
+    {  icon: <SiGoogle /> },
   ];
+  useEffect(() => {
+  if (!orbitRef.current) return;
+
+  const icons = orbitRef.current.querySelectorAll(".orbit-icon-spin");
+  const tl = gsap.timeline({ repeat: -1 });
+
+  tl.to(orbitRef.current, { rotation: 360, duration: 40, ease: "none" }, 0);
+  tl.to(icons, { rotation: -360, duration: 40, ease: "none" }, 0);
+
+  return () => tl.kill();
+}, [technologies]);
 
 useEffect(() => {
   const ctx = gsap.context(() => {
@@ -143,51 +156,7 @@ useEffect(() => {
 
   
 
-  const timeline = [
-    {
-      title: "Education",
-      icon: <FaGraduationCap />,
-      content: (
-        <>
-          <h5 className="font-semibold">BS Software Engineering</h5>
-          <p className="text-sm opacity-80">Iqra University</p>
-          <p className="text-xs opacity-60">2023 — Present</p>
-        </>
-      ),
-    },
-    {
-      title: "Core Technologies",
-      icon: <FaLaptopCode />,
-      technologies: [
-        { name: "React", icon: <GrReactjs /> },
-        { name: "Tailwind", icon: <SiTailwindcss /> },
-        { name: "Motion", icon: <TbBrandFramerMotion /> },
-        { name: "Redux", icon: <SiRedux /> },
-        { name: "NestJS", icon: <SiNestjs /> },
-        {name: "Typecript", icon: <TbBrandTypescript/>},
-        { name: "PostgreSQL", icon: <SiPostgresql /> },
-        {name: "JWT", icon: <SiJsonwebtokens/>},
-        {name: "GoogleOAuth", icon: <SiGoogle/>},
-      
-
-      ],
-    },
-    {
-      title: "Featured Project",
-      icon: <FaRocket />,
-      content: (
-        <>
-          <h5 className="font-semibold">
-            Autonomous Degree Attestation System
-          </h5>
-          <p className="text-sm opacity-80 mt-2">
-            OCR Verification • Ethereum Smart Contracts • SHA-256 • QR Codes • Immutable
-            • PDF Certificates • Stripe • Cloudinary • Google OAuth • RBAC
-          </p>
-        </>
-      ),
-    },
-  ];
+  
 
   const MyProjects = [
     {
@@ -312,12 +281,7 @@ useEffect(() => {
     FastAPI: <SiFastapi className="text-[#009688]" title="FastAPI" />
   };
 
-  const hexToRgb = (hex) => {
-    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    const fullHex = hex?.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b) || "#6366f1";
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(fullHex);
-    return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : "99, 102, 241";
-  };
+ 
 
   useEffect(() => {
     localStorage.setItem("portfolio-theme", darkMode ? "dark" : "light");
@@ -746,37 +710,53 @@ useEffect(() => {
           </div>
 
           {/* 2. Modern Core Technologies Grid (flex-1 evenly fills middle vertical height) */}
-          <div
-            className={`gsap-reveal p-8 rounded-3xl border flex-1 flex flex-col justify-center ${
-              darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
-            }`}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-base">
-                <FaLaptopCode />
-              </div>
-              <h4 className="font-bold text-lg tracking-tight">Core Tech</h4>
-            </div>
+         <div
+  className={`gsap-reveal p-8 rounded-3xl border flex-1 flex flex-col items-center justify-center relative overflow-hidden ${
+    darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
+  }`}
+  onMouseEnter={() => gsap.globalTimeline.getChildren().forEach((t) => t.pause())}
+  onMouseLeave={() => gsap.globalTimeline.getChildren().forEach((t) => t.resume())}
+>
+  <div className="relative w-[220px] sm:w-[250px] aspect-square">
+    {/* Orbit rings */}
+    <div className={`absolute inset-0 rounded-full border-2 border-dashed ${darkMode ? "border-slate-800" : "border-slate-200"}`} />
+    <div className={`absolute inset-8 rounded-full border ${darkMode ? "border-slate-800/60" : "border-slate-100"}`} />
 
-            <div className="tech-container flex flex-wrap gap-2.5">
-              {technologies.map((tech) => (
-                <div
-                  key={tech.name}
-                  className={`tech-badge group flex items-center gap-2.5 px-4 py-2.5 rounded-2xl text-xs font-semibold border transition-all duration-300 cursor-default ${
-                    darkMode
-                      ? "bg-slate-950/60 border-slate-800 text-slate-300 hover:border-indigo-500/60 hover:text-white hover:shadow-lg hover:shadow-indigo-500/10"
-                      : "bg-slate-50 border-slate-200 text-slate-700 hover:border-indigo-500 hover:bg-white hover:shadow-md"
-                  }`}
-                >
-                  <span className="text-base text-indigo-400 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                    {tech.icon}
-                  </span>
-                  <span>{tech.name}</span>
-                </div>
-              ))}
+    {/* Center hub — Core Tech */}
+    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex flex-col items-center justify-center border z-10 ${
+      darkMode ? "bg-slate-950 border-indigo-500/30 shadow-lg shadow-indigo-950/40" : "bg-white border-indigo-200 shadow-md"
+    }`}>
+      <FaLaptopCode className="text-indigo-400 text-lg mb-1" />
+      <span className="text-[9px] font-bold uppercase tracking-wide text-indigo-400 text-center leading-tight">Core<br/>Tech</span>
+    </div>
+
+    {/* Orbiting icons */}
+    <div ref={orbitRef} className="absolute inset-0">
+      {technologies.map((tech, i) => {
+        const angle = -90 + (360 / technologies.length) * i;
+        const radius = 95;
+        return (
+          <div
+            key={tech.name}
+            className="absolute w-10 h-10 top-1/2 left-1/2 -ml-5 -mt-5"
+            style={{ transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)` }}
+          >
+            <div
+              className={`orbit-icon-spin group w-10 h-10 rounded-full flex items-center justify-center border text-base transition-all duration-300 cursor-default ${
+                darkMode
+                  ? "bg-slate-950/80 border-slate-800 text-slate-300 hover:border-indigo-500/60 hover:text-white hover:scale-110"
+                  : "bg-white border-slate-200 text-slate-600 hover:border-indigo-500 hover:text-indigo-600 hover:scale-110 shadow-sm"
+              }`}
+              title={tech.name}
+            >
+              {tech.icon}
             </div>
           </div>
-          
+        );
+      })}
+    </div>
+  </div>
+</div>
         </div>
 
       </div>
@@ -812,7 +792,7 @@ useEffect(() => {
               
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {block.stack.map((tech, idx) => {
-                  const rgbValue = hexToRgb(tech.color);
+          
                   return (
                     <div 
                       key={idx}
