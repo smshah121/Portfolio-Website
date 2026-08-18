@@ -583,7 +583,7 @@ useEffect(() => {
         <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
           Who I Am ?
         </span>
-        <h2 className="font-['Black_Ops_One'] text-4xl sm:text-6xl md:text-7xl uppercase tracking-wider  bg-clip-text text-indigo-600 ">
+        <h2 className="font-['Black_Ops_One'] text-4xl sm:text-6xl md:text-7xl uppercase tracking-wider  bg-clip-text text-indigo-500 ">
           <span className={darkMode ? "text-gray-100" : "text-slate-900"}>About</span> Me
         </h2>
       </div>
