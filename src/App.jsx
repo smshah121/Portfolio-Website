@@ -796,9 +796,9 @@ useEffect(() => {
           </div>
 
           {[
-            { cat: "Frontend Engineering", stack: FrontendTech },
-            { cat: "Backend & Database Clusters", stack: BackendTech },
-            { cat: "Developer Operations & Tools", stack: Tools }
+            { cat: "Frontend", stack: FrontendTech },
+            { cat: "Backend & Database", stack: BackendTech },
+            { cat: "Cloud Deployment & Tools", stack: Tools }
           ].map((block, bIdx) => (
             <div key={bIdx} className="mb-14 last:mb-0">
               <div className="gsap-reveal flex items-center gap-4 mb-6">
