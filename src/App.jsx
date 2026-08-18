@@ -6,7 +6,7 @@ import { SiNestjs, SiPostgresql, SiTailwindcss, SiRedux, SiAxios, SiNetlify, SiR
 import { IoIosMail, IoMdDownload, IoMdMail } from "react-icons/io";
 import { FaLocationDot, FaRegEye, FaLaptopCode, FaSun, FaMoon,  FaChevronDown } from "react-icons/fa6";
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
-import { useEffect, useState, useRef } from "react";
+import { useEffect,useMemo, useState, useRef } from "react";
 import Typewriter from "typewriter-effect";
 import emailjs from "emailjs-com";
 import { GrHeroku } from "react-icons/gr";
@@ -86,8 +86,8 @@ function App() {
     frontend: 10,  // adjust to your actual count
   };
 
-  const technologies = [
-    { icon: <GrReactjs /> },
+  const technologies = useMemo(()=> [
+     { icon: <GrReactjs /> },
     {  icon: <SiTailwindcss /> },
     {  icon: <TbBrandFramerMotion /> },
     { icon: <SiRedux /> },
@@ -96,7 +96,8 @@ function App() {
     { icon: <SiPostgresql /> },
     {  icon: <SiJsonwebtokens /> },
     {  icon: <SiGoogle /> },
-  ];
+
+  ], []);
   useEffect(() => {
   if (!orbitRef.current) return;
 
