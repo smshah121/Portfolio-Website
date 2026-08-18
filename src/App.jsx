@@ -96,7 +96,7 @@ function App() {
     { name: "Google OAuth", icon: <SiGoogle /> },
   ];
 
- useEffect(() => {
+useEffect(() => {
   const ctx = gsap.context(() => {
     // Animated Stat Counters
     const fsTarget = { val: 0 };
@@ -108,7 +108,7 @@ function App() {
       scrollTrigger: {
         trigger: fullstackCountRef.current,
         start: "top 85%",
-        toggleActions: "play none none none",
+        toggleActions: "restart none none reset",
       },
       onUpdate: () => {
         if (fullstackCountRef.current) {
@@ -127,7 +127,7 @@ function App() {
       scrollTrigger: {
         trigger: frontendCountRef.current,
         start: "top 85%",
-        toggleActions: "play none none none",
+        toggleActions: "restart none none reset",
       },
       onUpdate: () => {
         if (frontendCountRef.current) {
@@ -694,7 +694,7 @@ function App() {
               </div>
              
               <div>
-                <h4 className="text-md font-semibold tracking-tight mb-2">Available for Roles</h4>
+                <h4 className="text-md font-semibold tracking-tight mb-2">Available for Role</h4>
                 <p className="text-xs text-slate-400">Full-Stack Developer</p>
               </div>
             </div>
@@ -776,8 +776,6 @@ function App() {
               ))}
             </div>
           </div>
-
-          {/* 3. Available for Roles Card (Sticks flush to bottom row) */}
           
         </div>
 
