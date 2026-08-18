@@ -695,7 +695,7 @@ function App() {
              
               <div>
                 <h4 className="text-md font-semibold tracking-tight mb-2">Available for Roles</h4>
-                <p className="text-xs text-slate-400">Full-Stack & Backend Engineering</p>
+                <p className="text-xs text-slate-400">Full-Stack Developer</p>
               </div>
             </div>
     
@@ -728,7 +728,7 @@ function App() {
                 0+
               </span>
               <span className="text-xs md:text-sm font-medium text-slate-400 mt-2">
-                Full-Stack Systems Built
+                Full-Stack Projects
               </span>
             </div>
 
@@ -740,7 +740,7 @@ function App() {
                 0+
               </span>
               <span className="text-xs md:text-sm font-medium text-slate-400 mt-2">
-                Frontend Interfaces Crafted
+                Web Interfaces
               </span>
             </div>
           </div>
