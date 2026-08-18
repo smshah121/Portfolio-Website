@@ -6,7 +6,7 @@ import { SiNestjs, SiPostgresql, SiTailwindcss, SiRedux, SiAxios, SiNetlify, SiR
 import { IoIosMail, IoMdDownload, IoMdMail } from "react-icons/io";
 import { FaLocationDot, FaRegEye, FaLaptopCode, FaSun, FaMoon,  FaChevronDown } from "react-icons/fa6";
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
-import { useEffect,useMemo, useState, useRef } from "react";
+import { useEffect,useMemo, useLayoutEffect, useState, useRef } from "react";
 import Typewriter from "typewriter-effect";
 import emailjs from "emailjs-com";
 import { GrHeroku } from "react-icons/gr";
@@ -86,29 +86,51 @@ function App() {
     frontend: 10,  // adjust to your actual count
   };
 
-  const technologies = useMemo(()=> [
-     { icon: <GrReactjs /> },
-    {  icon: <SiTailwindcss /> },
-    {  icon: <TbBrandFramerMotion /> },
+ const technologies = useMemo(
+  () => [
+    { icon: <GrReactjs /> },
+    { icon: <SiTailwindcss /> },
+    { icon: <TbBrandFramerMotion /> },
     { icon: <SiRedux /> },
     { icon: <SiNestjs /> },
-     { icon: <TbBrandTypescript/>},
+    { icon: <TbBrandTypescript /> },
     { icon: <SiPostgresql /> },
-    {  icon: <SiJsonwebtokens /> },
-    {  icon: <SiGoogle /> },
-
-  ], []);
-  useEffect(() => {
+    { icon: <SiJsonwebtokens /> },
+    { icon: <SiGoogle /> },
+  ],
+  []
+);
+  useLayoutEffect(() => {
   if (!orbitRef.current) return;
 
-  const icons = orbitRef.current.querySelectorAll(".orbit-icon-spin");
-  const tl = gsap.timeline({ repeat: -1 });
+  const ctx = gsap.context(() => {
+    const icons = orbitRef.current.querySelectorAll(".orbit-icon-spin");
 
-  tl.to(orbitRef.current, { rotation: 360, duration: 40, ease: "none" }, 0);
-  tl.to(icons, { rotation: -360, duration: 40, ease: "none" }, 0);
+    const tl = gsap.timeline({ repeat: -1 });
 
-  return () => tl.kill();
-}, [technologies]);
+    tl.to(
+      orbitRef.current,
+      {
+        rotation: 360,
+        duration: 40,
+        ease: "none",
+      },
+      0
+    );
+
+    tl.to(
+      icons,
+      {
+        rotation: -360,
+        duration: 40,
+        ease: "none",
+      },
+      0
+    );
+  }, orbitRef);
+
+  return () => ctx.revert();
+}, []);
 
 useEffect(() => {
   const ctx = gsap.context(() => {
@@ -715,8 +737,6 @@ useEffect(() => {
   className={`gsap-reveal p-8 rounded-3xl border flex-1 flex flex-col items-center justify-center relative overflow-hidden ${
     darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
   }`}
-  onMouseEnter={() => gsap.globalTimeline.getChildren().forEach((t) => t.pause())}
-  onMouseLeave={() => gsap.globalTimeline.getChildren().forEach((t) => t.resume())}
 >
   <div className="relative w-[220px] sm:w-[250px] aspect-square">
     {/* Orbit rings */}
@@ -738,17 +758,16 @@ useEffect(() => {
         const radius = 95;
         return (
           <div
-            key={tech.name}
+            key={i}
             className="absolute w-10 h-10 top-1/2 left-1/2 -ml-5 -mt-5"
             style={{ transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)` }}
           >
             <div
               className={`orbit-icon-spin group w-10 h-10 rounded-full flex items-center justify-center border text-base transition-all duration-300 cursor-default ${
                 darkMode
-                  ? "bg-slate-950/80 border-slate-800 text-slate-300 hover:border-indigo-500/60 hover:text-white hover:scale-110"
-                  : "bg-white border-slate-200 text-slate-600 hover:border-indigo-500 hover:text-indigo-600 hover:scale-110 shadow-sm"
+                  ? "bg-slate-950/80 border-slate-800 text-slate-300 hover:border-indigo-500/60 hover:text-white"
+                  : "bg-white border-slate-200 text-slate-600 hover:border-indigo-500 hover:text-indigo-600 shadow-sm"
               }`}
-              title={tech.name}
             >
               {tech.icon}
             </div>
@@ -758,6 +777,7 @@ useEffect(() => {
     </div>
   </div>
 </div>
+          
         </div>
 
       </div>
