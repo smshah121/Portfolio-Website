@@ -5,5 +5,33 @@ html {
 }
 
 
+.earth {
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(129, 140, 248, 0.35),
+      rgba(30, 41, 59, 0.95) 55%,
+      rgba(2, 6, 23, 1) 100%
+    );
+
+  box-shadow:
+    inset -30px -25px 50px rgba(0, 0, 0, 0.65),
+    inset 15px 10px 30px rgba(129, 140, 248, 0.15);
+
+  animation: earthRotate 18s linear infinite;
+}
+
+@keyframes earthRotate {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+
+
 
 

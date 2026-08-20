@@ -9,6 +9,7 @@ import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 import { useEffect,useMemo, useLayoutEffect, useState, useRef } from "react";
 import Typewriter from "typewriter-effect";
 import emailjs from "emailjs-com";
+import Globe from "react-globe.gl";
 import { GrHeroku } from "react-icons/gr";
 import { VscAzure } from "react-icons/vsc";
 import { IoLogoVercel } from "react-icons/io5";
@@ -31,8 +32,89 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 
 
+function ContactGlobe({ darkMode }) {
+  const globeRef = useRef(null);
+  const containerRef = useRef(null);
+  const [size, setSize] = useState(360);
 
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        setSize(Math.min(containerRef.current.offsetWidth, 420));
+      }
+    };
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
+  useEffect(() => {
+    if (!globeRef.current) return;
+    const controls = globeRef.current.controls();
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.5;
+    controls.enableZoom = false;
+    globeRef.current.pointOfView({ lat: 24.86, lng: 67.0, altitude: 2.1 }, 0);
+  }, []);
+
+  const markerData = [
+    { lat: 24.8607, lng: 67.0011, color: "#818cf8", label: "Karachi, Pakistan" },
+  ];
+
+  return (
+    <div
+      className={`gsap-reveal relative w-full p-10    md:p-10 flex flex-col items-center overflow-hidden ${
+        darkMode
+          ? "bg-slate-950   shadow-2xl shadow-indigo-950/30"
+          : "bg-white/80 border-slate-200 shadow-xl shadow-slate-200/50 backdrop-blur-xl"
+      }`}
+    >
+      {/* Ambient glow behind the globe */}
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full blur-[100px] pointer-events-none ${
+        darkMode ? "bg-indigo-500/20" : "bg-indigo-400/20"
+      }`} />
+
+      {/* Decorative rotating ring frame */}
+      <div className="relative" ref={containerRef} style={{ width: size, height: size }}>
+        <div className={`absolute -inset-4 rounded-full border-2 border-dashed animate-[spin_60s_linear_infinite] ${
+          darkMode ? "border-indigo-500/20" : "border-indigo-400/25"
+        }`} />
+        <div className={`absolute -inset-10 rounded-full border ${
+          darkMode ? "border-white/5" : "border-slate-200/60"
+        }`} />
+
+        <Globe
+          ref={globeRef}
+          width={size}
+          height={size}
+          backgroundColor="rgba(0,0,0,0)"
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+          bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+          pointsData={markerData}
+          pointLat="lat"
+          pointLng="lng"
+          pointColor="color"
+          pointAltitude={0.02}
+          pointRadius={0.6}
+          pointLabel="label"
+          atmosphereColor={darkMode ? "#818cf8" : "#6366f1"}
+          atmosphereAltitude={0.28}
+        />
+      </div>
+
+      {/* Location badge */}
+      <div className={`gsap-reveal relative z-10 mt-8 inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border text-xs font-semibold ${
+        darkMode ? "bg-slate-950/60 border-indigo-500/20 text-slate-200" : "bg-white border-indigo-200 text-slate-700 shadow-sm"
+      }`}>
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+        </span>
+        Based in Karachi, Pakistan · Open to Remote Work
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const orbitRef = useRef(null);
@@ -978,67 +1060,54 @@ useEffect(() => {
       </section>
 
       {/* SECTION 5: CONTACT */}
-      <section id="contact" className={`panel-section py-24 border-t min-h-screen flex items-center ${darkMode ? "bg-slate-900/10 border-white/5" : "bg-slate-100/40 border-slate-200"}`}>
-        <div className="max-w-6xl mx-auto px-6 md:px-12 w-full">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="gsap-reveal">
-              <h3 className={`text-2xl md:text-4xl font-extrabold mb-4 tracking-tight ${darkMode ? "text-white" : "text-slate-900"}`}>Let&apos;s Connect</h3>
-              <p className={`text-xs md:text-sm leading-relaxed mb-8 ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                 Feel free to reach out for internship opportunities, collaborations or software engineering roles.
-              </p>
+<section id="contact" className={`panel-section py-24 border-t min-h-screen flex items-center ${darkMode ? "bg-slate-900/10 border-white/5" : "bg-slate-100/40 border-slate-200"}`}>
+  <div className="max-w-6xl mx-auto px-6 md:px-12 w-full">
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="gsap-reveal">
+        {/* <h3 className={`text-2xl md:text-4xl font-extrabold mb-4 tracking-tight ${darkMode ? "text-white" : "text-slate-900"}`}>Let&apos;s Connect</h3>
+        <p className={`text-xs md:text-sm leading-relaxed mb-8 ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
+          Feel free to reach out for internship opportunities, collaborations or software engineering roles.
+        </p> */}
 
-              <div className="space-y-3.5">
-                <div className={`flex items-center gap-4 p-3 border rounded-xl shadow-sm transition-colors ${darkMode ? "bg-slate-900/30 border-white/5 hover:border-indigo-500/30" : "bg-white border-slate-200 hover:border-indigo-500/30"}`}>
-                  <IoIosMail size={20} className="text-red-500" />
-                  <span className={`text-xs md:text-sm font-semibold tracking-wide ${darkMode ? "text-slate-300" : "text-slate-700"}`}>smshah.2003@gmail.com</span>
-                </div>
-                <div className={`flex items-center gap-4 p-3 border rounded-xl shadow-sm transition-colors ${darkMode ? "bg-slate-900/30 border-white/5 hover:border-indigo-500/30" : "bg-white border-slate-200 hover:border-indigo-500/30"}`}>
-                  <FaPhoneAlt size={14} className="text-blue-600 ml-0.5" />
-                  <span className={`text-xs md:text-sm font-semibold tracking-wide ${darkMode ? "text-slate-300" : "text-slate-700"}`}>+92 304 2151667</span>
-                </div>
-                <div className={`flex items-center gap-4 p-3 border rounded-xl shadow-sm transition-colors ${darkMode ? "bg-slate-900/30 border-white/5 hover:border-indigo-500/30" : "bg-white border-slate-200 hover:border-indigo-500/30"}`}>
-                  <FaLocationDot size={16} className="text-emerald-500 ml-0.5" />
-                  <span className={`text-xs md:text-sm font-semibold tracking-wide ${darkMode ? "text-slate-300" : "text-slate-700"}`}>Karachi, Pakistan</span>
-                </div>
-              </div>
-            </div>
+        <ContactGlobe darkMode={darkMode} />
+      </div>
 
-            <div className={`gsap-reveal border rounded-2xl p-6 md:p-8 shadow-xl border-t-4 border-t-indigo-600 ${
-              darkMode ? "bg-slate-900/40 border-white/5" : "bg-white border-slate-200"
-            }`}>
-              <form onSubmit={sendEmail} className="space-y-4">
-                <div>
-                  <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Name</label>
-                  <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
-                    darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
-                  }`} type="text" name="name" placeholder="John Doe" required />
-                </div>
-                <div>
-                  <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Email</label>
-                  <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
-                    darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
-                  }`} type="email" name="Email" placeholder="john@example.com" required />
-                </div>
-                <div>
-                  <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Subject</label>
-                  <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
-                    darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
-                  }`} type="text" name="title" placeholder="Project Scope Pipeline" required />
-                </div>
-                <div>
-                  <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Message</label>
-                  <textarea className={`w-full h-24 border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none ${
-                    darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
-                  }`} name="message" placeholder="Provide system descriptors..." required />
-                </div>
-                <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md shadow-indigo-600/10 text-xs tracking-wider uppercase">
-                  Send Message
-                </button>
-              </form>
-            </div>
+      <div className={`gsap-reveal border rounded-2xl p-6 md:p-8 shadow-xl border-t-4 border-t-indigo-600 ${
+        darkMode ? "bg-slate-900/40 border-white/5" : "bg-white border-slate-200"
+      }`}>
+        <form onSubmit={sendEmail} className="space-y-4">
+          <div>
+            <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Name</label>
+            <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
+              darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
+            }`} type="text" name="name" placeholder="John Doe" required />
           </div>
-        </div>
-      </section>
+          <div>
+            <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Email</label>
+            <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
+              darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
+            }`} type="email" name="Email" placeholder="john@example.com" required />
+          </div>
+          <div>
+            <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Subject</label>
+            <input className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
+              darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
+            }`} type="text" name="title" placeholder="Project Scope Pipeline" required />
+          </div>
+          <div>
+            <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Message</label>
+            <textarea className={`w-full h-24 border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none ${
+              darkMode ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500" : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
+            }`} name="message" placeholder="Provide system descriptors..." required />
+          </div>
+          <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md shadow-indigo-600/10 text-xs tracking-wider uppercase">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* FOOTER */}
       <footer className={`border-t py-6 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950 border-white/5 text-slate-500" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
