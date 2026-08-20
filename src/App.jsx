@@ -63,7 +63,7 @@ function ContactGlobe({ darkMode }) {
 
   return (
     <div
-      className={`gsap-reveal relative w-full p-10    md:p-10 flex flex-col items-center overflow-hidden ${
+      className={`gsap-reveal relative  p-10    md:p-10 flex flex-col items-center overflow-hidden ${
         darkMode
           ? "bg-slate-950   shadow-2xl shadow-indigo-950/30"
           : "bg-white/80 border-slate-200 shadow-xl shadow-slate-200/50 backdrop-blur-xl"
