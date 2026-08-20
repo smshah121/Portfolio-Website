@@ -36,15 +36,12 @@ function ContactGlobe({ darkMode }) {
   const globeRef = useRef(null);
   const containerRef = useRef(null);
   
-  // Default to a mobile-safe initial size
   const [size, setSize] = useState(280);
 
   useEffect(() => {
     const updateSize = () => {
       if (containerRef.current) {
-        // Calculate safe width based on parent clientWidth
         const availableWidth = containerRef.current.clientWidth;
-        // Clamp size between 260px (ultra-small mobile) and 400px (desktop)
         const computedSize = Math.min(Math.max(availableWidth - 24, 260), 400);
         setSize(computedSize);
       }
@@ -65,38 +62,43 @@ function ContactGlobe({ darkMode }) {
   }, []);
 
   const markerData = [
-    { lat: 24.8607, lng: 67.0011, color: "#818cf8", label: "Karachi, Pakistan" },
+    {
+      lat: 24.8607,
+      lng: 67.0011,
+      color: darkMode ? "#818cf8" : "#4f46e5",
+      label: "Karachi, Pakistan",
+    },
   ];
 
   return (
     <div
       ref={containerRef}
-      className={`gsap-reveal relative w-full p-4 sm:p-8 flex flex-col items-center justify-center overflow-hidden rounded-3xl border ${
+      className={`gsap-reveal relative w-full p-4 sm:p-8 flex flex-col items-center justify-center overflow-hidden rounded-3xl border transition-colors duration-500 ${
         darkMode
-          ? "bg-slate-950/60 border-slate-950 shadow-2xl shadow-indigo-950/30"
-          : "bg-white/80 border-slate-50 shadow-xl shadow-slate-200/50 backdrop-blur-xl"
+          ? "bg-slate-950 border-slate-950 shadow-2xl shadow-indigo-950/30"
+          : "bg-slate-50 border-slate-50 shadow-xl shadow-slate-200/60 backdrop-blur-xl"
       }`}
     >
-      {/* Ambient glow constrained to responsive container */}
+      {/* Ambient glow */}
       <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-[80px] pointer-events-none ${
-          darkMode ? "bg-indigo-500/20" : "bg-indigo-400/20"
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-[80px] pointer-events-none transition-colors duration-500 ${
+          darkMode ? "bg-indigo-500/20" : "bg-sky-400/25"
         }`}
       />
 
-      {/* Decorative rotating ring frame clamped to globe dimensions */}
+      {/* Decorative rotating ring frame */}
       <div
         className="relative flex items-center justify-center max-w-full"
         style={{ width: size, height: size }}
       >
         <div
-          className={`absolute -inset-2 sm:-inset-4 rounded-full border border-dashed animate-[spin_60s_linear_infinite] ${
-            darkMode ? "border-indigo-500/30" : "border-indigo-400/35"
+          className={`absolute -inset-2 sm:-inset-4 rounded-full border border-dashed animate-[spin_60s_linear_infinite] transition-colors duration-500 ${
+            darkMode ? "border-indigo-500/30" : "border-sky-500/40"
           }`}
         />
         <div
-          className={`absolute -inset-5 sm:-inset-8 rounded-full border ${
-            darkMode ? "border-white/5" : "border-slate-200/60"
+          className={`absolute -inset-5 sm:-inset-8 rounded-full border transition-colors duration-500 ${
+            darkMode ? "border-white/5" : "border-slate-200"
           }`}
         />
 
@@ -105,26 +107,31 @@ function ContactGlobe({ darkMode }) {
           width={size}
           height={size}
           backgroundColor="rgba(0,0,0,0)"
-          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+          /* Dynamic day/night textures */
+          globeImageUrl={
+            darkMode
+              ? "//unpkg.com/three-globe/example/img/earth-night.jpg"
+              : "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+          }
           bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
           pointsData={markerData}
           pointLat="lat"
           pointLng="lng"
           pointColor="color"
-          pointAltitude={0.02}
-          pointRadius={0.6}
+          pointAltitude={0.03}
+          pointRadius={0.7}
           pointLabel="label"
-          atmosphereColor={darkMode ? "#818cf8" : "#6366f1"}
-          atmosphereAltitude={0.25}
+          atmosphereColor={darkMode ? "#818cf8" : "#38bdf8"}
+          atmosphereAltitude={darkMode ? 0.25 : 0.18}
         />
       </div>
 
-      {/* Responsive location badge */}
+      {/* Location badge */}
       <div
-        className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[11px] sm:text-xs font-semibold text-center max-w-full ${
+        className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[11px] sm:text-xs font-semibold text-center max-w-full transition-colors duration-300 ${
           darkMode
             ? "bg-slate-900/90 border-indigo-500/30 text-slate-200 shadow-md"
-            : "bg-white border-indigo-200 text-slate-700 shadow-sm"
+            : "bg-white border-slate-200 text-slate-800 shadow-md shadow-sky-100"
         }`}
       >
         <span className="relative flex h-2 w-2 shrink-0">
