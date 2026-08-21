@@ -1080,7 +1080,7 @@ useEffect(() => {
 
       {/* SECTION 3: TECH STACK */}
       <section id="skills" className={`panel-section py-24 border-y relative overflow-hidden transition-colors duration-300 min-h-screen flex items-center ${
-        darkMode ? "bg-slate-950/40 border-white/[0.05]" : "bg-slate-50 border-slate-200/60"
+        darkMode ? "bg-slate-950/20 border-white/[0.05]" : "bg-slate-50/20 border-slate-200/60"
       }`}>
         <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] rounded-full filter blur-[140px] opacity-[0.06] pointer-events-none ${darkMode ? "bg-indigo-500" : "bg-indigo-400"}`} />
 
