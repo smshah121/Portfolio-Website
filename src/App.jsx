@@ -1061,7 +1061,7 @@ useEffect(() => {
               className={`orbit-icon-spin group w-10 h-10 rounded-full flex items-center justify-center border text-base transition-all duration-300 cursor-default ${
                 darkMode
                   ? "bg-slate-950/80 border-slate-800 text-slate-300 hover:border-indigo-500/60 hover:text-white"
-                  : "bg-slate-50 border-slate-200 text-slate-600 hover:border-indigo-500 hover:text-indigo-600 shadow-sm"
+                  : "bg-white border-slate-200 text-slate-600 hover:border-indigo-500 hover:text-indigo-600 shadow-sm"
               }`}
             >
               {tech.icon}
