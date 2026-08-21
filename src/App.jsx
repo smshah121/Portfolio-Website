@@ -1306,7 +1306,7 @@ useEffect(() => {
                   }`}
                   type="text"
                   name="name"
-                  placeholder="Syed Momin"
+                  placeholder="Syed Momin Ali Shah"
                   required
                 />
               </div>
@@ -1323,7 +1323,7 @@ useEffect(() => {
                   }`}
                   type="email"
                   name="Email"
-                  placeholder="contact@domain.com"
+                  placeholder="smshah.2003@gmail.com"
                   required
                 />
               </div>
