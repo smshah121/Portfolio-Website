@@ -1276,7 +1276,7 @@ useEffect(() => {
 <section
       id="contact"
       className={`panel-section py-20 md:py-28 border-t min-h-screen flex items-center overflow-x-hidden ${
-        darkMode ? "bg-slate-900/10 border-white/5" : "bg-slate-100/40 border-slate-200"
+        darkMode ? "bg-slate-950/20 border-white/5" : "bg-slate-100/20 border-slate-200"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 w-full">
