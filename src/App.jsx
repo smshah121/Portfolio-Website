@@ -195,6 +195,10 @@ function App() {
   const mainContainerRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
+  const smokeCanvasRef = useRef(null);
+const smokeParticlesRef = useRef([]);
+const smokeAnimRef = useRef(null);
+
   const sectionRef = useRef(null);
   const fullstackCountRef = useRef(null);
   const frontendCountRef = useRef(null);
@@ -205,6 +209,135 @@ function App() {
     frontend: 10,  // adjust to your actual count
   };
 
+
+
+// Classy Organic Smoky Aurora Trail
+useEffect(() => {
+  const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  if (isTouchDevice) return;
+
+  const canvas = smokeCanvasRef.current;
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  let animFrameId;
+  const particles = [];
+  const maxParticles = 90;
+
+  const resize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  };
+  resize();
+  window.addEventListener("resize", resize);
+
+  let mouse = { x: -100, y: -100 };
+  let lastPos = { x: -100, y: -100 };
+
+  const onMouseMove = (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+
+    if (lastPos.x === -100) {
+      lastPos = { x: mouse.x, y: mouse.y };
+      return;
+    }
+
+    const dx = mouse.x - lastPos.x;
+    const dy = mouse.y - lastPos.y;
+    const dist = Math.hypot(dx, dy);
+    const steps = Math.min(Math.max(Math.floor(dist / 5), 1), 8);
+
+    // Spawn soft expanding smoke puffs along cursor trajectory
+    for (let i = 0; i < steps; i++) {
+      const t = i / steps;
+      const x = lastPos.x + dx * t;
+      const y = lastPos.y + dy * t;
+
+      particles.unshift({
+        x: x + (Math.random() - 0.5) * 6,
+        y: y + (Math.random() - 0.5) * 6,
+        baseRadius: Math.random() * 22 + 28, // High volume starting size
+        maxLife: Math.random() * 45 + 50,    // Smooth, gradual lifespan
+        age: 0,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: -0.35 - Math.random() * 0.45,     // Gentle upward thermal drift
+        expansion: Math.random() * 0.75 + 0.65, // Billowing smoke expansion
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.015,
+        hueShift: Math.random() > 0.4 ? 244 : 262, // Subtle Indigo <-> Purple nuance
+      });
+    }
+
+    lastPos = { x: mouse.x, y: mouse.y };
+
+    if (particles.length > maxParticles) {
+      particles.splice(maxParticles);
+    }
+  };
+
+  window.addEventListener("mousemove", onMouseMove);
+
+  const animate = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (particles.length > 0) {
+      ctx.save();
+      // "screen" produces refined, luminous, non-clashing smoke overlaps
+      ctx.globalCompositeOperation = "screen";
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.age += 1;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.rotSpeed;
+        p.baseRadius += p.expansion;
+
+        const progress = p.age / p.maxLife;
+        if (progress >= 1) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        // Hermite smoothstep curve: seamless fade-in, long silky fade-out
+        const alphaCurve = Math.sin(progress * Math.PI) * Math.pow(1 - progress, 0.45);
+        const peakAlpha = darkMode ? 0.22 : 0.14; // Subtle, elegant opacity
+        const currentAlpha = alphaCurve * peakAlpha;
+
+        const currentRadius = p.baseRadius;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+
+        // Multi-stop ultra-soft radial gradient for seamless mist edges
+        const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, currentRadius);
+        grad.addColorStop(0, `hsla(${p.hueShift}, 85%, 68%, ${currentAlpha * 1.1})`);
+        grad.addColorStop(0.35, `hsla(${p.hueShift}, 80%, 54%, ${currentAlpha * 0.75})`);
+        grad.addColorStop(0.7, `hsla(${p.hueShift - 10}, 70%, 35%, ${currentAlpha * 0.28})`);
+        grad.addColorStop(1, `hsla(${p.hueShift}, 60%, 20%, 0)`);
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(0, 0, currentRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      ctx.restore();
+    }
+
+    animFrameId = requestAnimationFrame(animate);
+  };
+  animate();
+
+  return () => {
+    window.removeEventListener("resize", resize);
+    window.removeEventListener("mousemove", onMouseMove);
+    cancelAnimationFrame(animFrameId);
+  };
+}, [darkMode]);
  const technologies = useMemo(
   () => [
     { icon: <GrReactjs /> },
@@ -573,9 +706,8 @@ useEffect(() => {
       darkMode ? "bg-slate-950 text-slate-100" : "bg-slate-50 text-slate-900"
     }`}>
       {/* Pointer elements */}
-      <div ref={cursorDotRef} className="fixed top-0 left-0 w-2 h-2 bg-indigo-500 rounded-full pointer-events-none z-50 hidden md:block" />
-      <div ref={cursorRingRef} className="fixed top-0 left-0 w-8 h-8 border border-indigo-500/40 rounded-full pointer-events-none z-50 hidden md:block" />
-
+     
+      <canvas ref={smokeCanvasRef} className="fixed inset-0 pointer-events-none z-40 hidden md:block" />
       {/* Floating Centered Header Navigation Bar */}
       <header className="fixed top-0 left-0 w-full flex justify-center py-4 px-6 z-50 pointer-events-none">
         <div className={`flex items-center gap-4 px-3 py-1.5 rounded-full border pointer-events-auto transition-all duration-300 shadow-xl ${
