@@ -41,6 +41,10 @@ export function ContactGlobe({ darkMode }) {
   const containerRef = useRef(null);
   const [size, setSize] = useState(280);
 
+
+  // Global Ambient Drifting Glow
+
+
   // Preload textures immediately into browser cache to eliminate lag
   useEffect(() => {
     [NIGHT_TEXTURE, DAY_TEXTURE, TOPOLOGY_TEXTURE].forEach((src) => {
@@ -83,6 +87,7 @@ export function ContactGlobe({ darkMode }) {
     },
   ];
 
+   
   return (
     <div
       ref={containerRef}
@@ -159,12 +164,46 @@ function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [githubStats, setGithubStats] = useState(null);
+  const ambientGlowRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("portfolio-theme");
     if (savedTheme) return savedTheme === "dark";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
+
+
+  useEffect(() => {
+  if (!ambientGlowRef.current) return;
+
+  const tl = gsap.timeline({ repeat: -1, yoyo: true });
+  tl.to(ambientGlowRef.current, {
+    x: "20vw",
+    y: "15vh",
+    duration: 18,
+    ease: "sine.inOut",
+  })
+    .to(ambientGlowRef.current, {
+      x: "-15vw",
+      y: "25vh",
+      duration: 20,
+      ease: "sine.inOut",
+    })
+    .to(ambientGlowRef.current, {
+      x: "10vw",
+      y: "-10vh",
+      duration: 16,
+      ease: "sine.inOut",
+    })
+    .to(ambientGlowRef.current, {
+      x: "0vw",
+      y: "0vh",
+      duration: 18,
+      ease: "sine.inOut",
+    });
+
+  return () => tl.kill();
+}, []);
 
  const fetchGithubStats = () => {
   Promise.all([
@@ -706,7 +745,12 @@ useEffect(() => {
       darkMode ? "bg-slate-950 text-slate-100" : "bg-slate-50 text-slate-900"
     }`}>
       {/* Pointer elements */}
-     
+     <div
+    ref={ambientGlowRef}
+    className={`fixed top-1/3 left-1/4 w-[600px] h-[600px] rounded-full blur-[160px] pointer-events-none z-0 transition-colors duration-500 ${
+      darkMode ? "bg-indigo-600/20" : "bg-indigo-400/25"
+    }`}
+  />
       <canvas ref={smokeCanvasRef} className="fixed inset-0 pointer-events-none z-40 hidden md:block" />
       {/* Floating Centered Header Navigation Bar */}
       <header className="fixed top-0 left-0 w-full flex justify-center py-4 px-6 z-50 pointer-events-none">
@@ -813,7 +857,7 @@ useEffect(() => {
       id="about"
       ref={sectionRef}
       className={`panel-section relative py-32 px-6 md:px-12 max-w-7xl mx-auto min-h-screen flex flex-col justify-center transition-colors duration-500 ${
-        darkMode ? "bg-slate-950 text-slate-100" : "bg-slate-50 text-slate-900"
+        darkMode ? "bg-slate-950/20 text-slate-100" : "bg-slate-50/20 text-slate-900"
       }`}
     >
       {/* Aesthetic Section Header */}
@@ -1331,7 +1375,7 @@ useEffect(() => {
     </section>
 
       {/* FOOTER */}
-      <footer className={`border-t py-6 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950 border-white/5 text-slate-500" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
+      <footer className={`border-t py-6 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950/20 border-white/5 text-slate-500" : "bg-slate-50/20 border-slate-200 text-slate-400"}`}>
         <div className="flex justify-center gap-6 mb-4">
           <a href="https://www.linkedin.com/in/smshah121" aria-label="Linkedin Profile" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors"><FaLinkedin size={20} /></a>
           <a href="https://github.com/smshah121" aria-label="Github Profile" target="_blank" rel="noopener noreferrer" className={`transition-colors ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={20} /></a>
