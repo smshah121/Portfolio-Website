@@ -32,12 +32,24 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 
 
-function ContactGlobe({ darkMode }) {
+const NIGHT_TEXTURE = "https://unpkg.com/three-globe/example/img/earth-night.jpg";
+const DAY_TEXTURE = "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg";
+const TOPOLOGY_TEXTURE = "https://unpkg.com/three-globe/example/img/earth-topology.png";
+
+export function ContactGlobe({ darkMode }) {
   const globeRef = useRef(null);
   const containerRef = useRef(null);
-  
   const [size, setSize] = useState(280);
 
+  // Preload textures immediately into browser cache to eliminate lag
+  useEffect(() => {
+    [NIGHT_TEXTURE, DAY_TEXTURE, TOPOLOGY_TEXTURE].forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  // Resize handler
   useEffect(() => {
     const updateSize = () => {
       if (containerRef.current) {
@@ -52,6 +64,7 @@ function ContactGlobe({ darkMode }) {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
+  // Re-orient camera and rotation on mount or theme change
   useEffect(() => {
     if (!globeRef.current) return;
     const controls = globeRef.current.controls();
@@ -59,7 +72,7 @@ function ContactGlobe({ darkMode }) {
     controls.autoRotateSpeed = 0.5;
     controls.enableZoom = false;
     globeRef.current.pointOfView({ lat: 24.86, lng: 67.0, altitude: 2.1 }, 0);
-  }, []);
+  }, [darkMode]);
 
   const markerData = [
     {
@@ -102,18 +115,15 @@ function ContactGlobe({ darkMode }) {
           }`}
         />
 
+        {/* key prop forces an immediate WebGL context repaint on both mobile and desktop */}
         <Globe
+          key={darkMode ? "globe-night" : "globe-day"}
           ref={globeRef}
           width={size}
           height={size}
           backgroundColor="rgba(0,0,0,0)"
-          /* Dynamic day/night textures */
-          globeImageUrl={
-            darkMode
-              ? "//unpkg.com/three-globe/example/img/earth-night.jpg"
-              : "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-          }
-          bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+          globeImageUrl={darkMode ? NIGHT_TEXTURE : DAY_TEXTURE}
+          bumpImageUrl={TOPOLOGY_TEXTURE}
           pointsData={markerData}
           pointLat="lat"
           pointLng="lng"
