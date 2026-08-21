@@ -880,7 +880,7 @@ useEffect(() => {
             className={`gsap-reveal p-8 md:p-10 rounded-3xl border backdrop-blur-xl transition-all duration-300 ${
               darkMode
                 ? "bg-slate-900/40 border-slate-800/80 shadow-2xl shadow-indigo-950/20"
-                : "bg-white/80 border-slate-200 shadow-xl shadow-slate-200/50"
+                : "bg-slate-50 border-slate-200 shadow-xl shadow-slate-200/50"
             }`}
           >
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-3">
@@ -909,7 +909,7 @@ useEffect(() => {
           <div className="grid sm:grid-cols-2 gap-6">
             <div
               className={`gsap-reveal p-6 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${
-                darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
+                darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
               }`}
             >
               <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl mb-4">
@@ -924,7 +924,7 @@ useEffect(() => {
 
           <div
               className={`gsap-reveal p-6 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${
-                darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
+                darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
               }`}
             >
               <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl mb-4">
@@ -966,7 +966,7 @@ useEffect(() => {
             className={`gsap-reveal p-8 md:p-7 rounded-3xl border flex flex-col md:flex-row md:items-center md:justify-between transition-all duration-300 ${
               darkMode
                 ? "bg-slate-900/40 border-slate-800/80 shadow-xl"
-                : "bg-white border-slate-200 shadow-md"
+                : "bg-slate-50 border-slate-200 shadow-md"
             }`}
           >
             <div className="flex items-center gap-3.5">
@@ -999,7 +999,7 @@ useEffect(() => {
             className={`gsap-reveal p-8 rounded-3xl border grid grid-cols-2 gap-6 ${
               darkMode
                 ? "bg-slate-900/40 border-slate-800/80"
-                : "bg-white border-slate-200 shadow-sm"
+                : "bg-slate-50 border-slate-200 shadow-sm"
             }`}
           >
             <div className="flex flex-col">
@@ -1030,7 +1030,7 @@ useEffect(() => {
           {/* 2. Modern Core Technologies Grid (flex-1 evenly fills middle vertical height) */}
          <div
   className={`gsap-reveal p-8 rounded-3xl border flex-1 flex flex-col items-center justify-center relative overflow-hidden ${
-    darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-white border-slate-200 shadow-sm"
+    darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
   }`}
 >
   <div className="relative w-[220px] sm:w-[250px] aspect-square">
@@ -1040,7 +1040,7 @@ useEffect(() => {
 
     {/* Center hub — Core Tech */}
     <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex flex-col items-center justify-center border z-10 ${
-      darkMode ? "bg-slate-950 border-indigo-500/30 shadow-lg shadow-indigo-950/40" : "bg-white border-indigo-200 shadow-md"
+      darkMode ? "bg-slate-950 border-indigo-500/30 shadow-lg shadow-indigo-950/40" : "bg-slate-50 border-indigo-200 shadow-md"
     }`}>
       <FaLaptopCode className="text-indigo-400 text-lg mb-1" />
       <span className="text-[9px] font-bold uppercase tracking-wide text-indigo-400 text-center leading-tight">Core<br/>Tech</span>
@@ -1061,7 +1061,7 @@ useEffect(() => {
               className={`orbit-icon-spin group w-10 h-10 rounded-full flex items-center justify-center border text-base transition-all duration-300 cursor-default ${
                 darkMode
                   ? "bg-slate-950/80 border-slate-800 text-slate-300 hover:border-indigo-500/60 hover:text-white"
-                  : "bg-white border-slate-200 text-slate-600 hover:border-indigo-500 hover:text-indigo-600 shadow-sm"
+                  : "bg-slate-50 border-slate-200 text-slate-600 hover:border-indigo-500 hover:text-indigo-600 shadow-sm"
               }`}
             >
               {tech.icon}
@@ -1115,7 +1115,7 @@ useEffect(() => {
                       className={`gsap-reveal flex items-center gap-3.5 border p-4 rounded-xl backdrop-blur-sm transition-all duration-300 relative group cursor-default transform hover:-translate-y-1 ${
                         darkMode 
                           ? "bg-slate-900/40 border-white/[0.04] hover:bg-slate-900/80" 
-                          : "bg-white border-slate-200/70 hover:bg-slate-50/50"
+                          : "bg-slate-50 border-slate-200/70 hover:bg-slate-50/50"
                       }`}
                     >
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-[0.02] transition-opacity duration-300 rounded-xl pointer-events-none" style={{ backgroundColor: tech.color }} />
@@ -1155,7 +1155,7 @@ useEffect(() => {
               className={`gsap-reveal group border rounded-2xl flex flex-col overflow-hidden transition-all duration-300 relative ${
                 darkMode 
                   ? "bg-gradient-to-b from-slate-900/60 to-slate-900/20 border-white/[0.05] hover:border-white/10 shadow-xl shadow-black/20" 
-                  : "bg-white border-slate-200/80 shadow-md shadow-slate-100/80 hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300"
+                  : "bg-slate-50 border-slate-200/80 shadow-md shadow-slate-100/80 hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300"
               }`}
             >
               {/* Image Wrapper */}
@@ -1238,7 +1238,7 @@ useEffect(() => {
                         className={`absolute left-0 bottom-full mb-2 w-full border rounded-xl shadow-2xl z-30 overflow-hidden ${
                           darkMode 
                             ? "bg-slate-950 border-white/10 md:backdrop-blur-lg md:bg-slate-950/95" 
-                            : "bg-white border-slate-200 shadow-slate-300/40 md:backdrop-blur-lg md:bg-white/95"
+                            : "bg-slate-50 border-slate-200 shadow-slate-300/40 md:backdrop-blur-lg md:bg-white/95"
                         }`}
                       >
                         {Object.entries(project.source || {}).map(([key, url]) => {
@@ -1290,7 +1290,7 @@ useEffect(() => {
           {/* Form Container */}
           <div
             className={`gsap-reveal border rounded-3xl p-6 sm:p-8 shadow-xl border-t-4 border-t-indigo-600 w-full ${
-              darkMode ? "bg-slate-900/40 border-white/5" : "bg-white border-slate-200"
+              darkMode ? "bg-slate-900/40 border-white/5" : "bg-slate-100 border-slate-200"
             }`}
           >
             <form onSubmit={sendEmail} className="space-y-4">
