@@ -93,8 +93,8 @@ export function ContactGlobe({ darkMode }) {
       ref={containerRef}
       className={`gsap-reveal relative w-full p-4 sm:p-8 flex flex-col items-center justify-center overflow-hidden rounded-3xl border transition-colors duration-500 ${
         darkMode
-          ? "bg-slate-950 border-slate-950 shadow-2xl shadow-indigo-950/30"
-          : "bg-slate-50 border-slate-50 shadow-xl shadow-slate-200/60 backdrop-blur-xl"
+          ? "bg-slate-950/20 border-slate-950 shadow-2xl shadow-indigo-950/30"
+          : "bg-slate-50/20 border-slate-50 shadow-xl shadow-slate-200/60 backdrop-blur-xl"
       }`}
     >
       {/* Ambient glow */}
@@ -145,8 +145,8 @@ export function ContactGlobe({ darkMode }) {
       <div
         className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[11px] sm:text-xs font-semibold text-center max-w-full transition-colors duration-300 ${
           darkMode
-            ? "bg-slate-900/90 border-indigo-500/30 text-slate-200 shadow-md"
-            : "bg-white border-slate-200 text-slate-800 shadow-md shadow-sky-100"
+            ? "bg-slate-950/20 border-indigo-500/30 text-slate-200 shadow-md"
+            : "bg-slate-100/20 border-slate-200 text-slate-800 shadow-md shadow-sky-100"
         }`}
       >
         <span className="relative flex h-2 w-2 shrink-0">
