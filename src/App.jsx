@@ -153,7 +153,7 @@ export function ContactGlobe({ darkMode }) {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
         </span>
-        <span className="truncate">Based in Karachi, PK · Open to Remote Work</span>
+        <span className="truncate">Based in Karachi · Open to Opportunities</span>
       </div>
     </div>
   );
@@ -1280,10 +1280,35 @@ useEffect(() => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 w-full">
+         <div className="text-center mb-12">
+    <span className="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-indigo-600">
+      Get In Touch
+    </span>
+
+    <h2
+      className={`mt-2 text-3xl md:text-4xl font-bold tracking-tight ${
+        darkMode ? "text-white" : "text-slate-900"
+      }`}
+    >
+      Let’s Build Something Great
+    </h2>
+
+    <p
+      className={`mt-3 max-w-xl mx-auto text-sm md:text-base ${
+        darkMode ? "text-slate-400" : "text-slate-500"
+      }`}
+    >
+      Have a project, idea, or opportunity in mind? Let’s connect and turn it
+      into something meaningful.
+    </p>
+  </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          
           
           {/* Globe Container */}
           <div className="w-full flex justify-center">
+            
             <ContactGlobe darkMode={darkMode} />
           </div>
 
