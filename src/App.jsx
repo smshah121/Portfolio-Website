@@ -876,7 +876,7 @@ useEffect(() => {
         <div className="lg:col-span-7 flex flex-col justify-between gap-6">
           {/* Summary Box */}
           <div
-            className={`gsap-reveal p-8 md:p-10 rounded-3xl border backdrop-blur-xl transition-all duration-300 ${
+            className={`gsap-reveal p-8 md:p-10 rounded-xl border backdrop-blur-xl transition-all duration-300 ${
               darkMode
                 ? "bg-slate-900/40 border-slate-800/80 shadow-2xl shadow-indigo-950/20"
                 : "bg-slate-50 border-slate-200 shadow-xl shadow-slate-200/50"
@@ -907,7 +907,7 @@ useEffect(() => {
           {/* Education & Featured Project Cards */}
           <div className="grid sm:grid-cols-2 gap-6">
             <div
-              className={`gsap-reveal p-6 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${
+              className={`gsap-reveal p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 ${
                 darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
               }`}
             >
@@ -922,7 +922,7 @@ useEffect(() => {
             </div>
 
           <div
-              className={`gsap-reveal p-6 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${
+              className={`gsap-reveal p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 ${
                 darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
               }`}
             >
@@ -962,7 +962,7 @@ useEffect(() => {
         <div className="lg:col-span-5 flex flex-col justify-between gap-6 h-full">
 
           <div
-            className={`gsap-reveal p-8 md:p-7 rounded-3xl border flex flex-col md:flex-row md:items-center md:justify-between transition-all duration-300 ${
+            className={`gsap-reveal p-8 md:p-7 rounded-xl border flex flex-col md:flex-row md:items-center md:justify-between transition-all duration-300 ${
               darkMode
                 ? "bg-slate-900/40 border-slate-800/80 shadow-xl"
                 : "bg-slate-50 border-slate-200 shadow-md"
@@ -995,7 +995,7 @@ useEffect(() => {
           
           {/* 1. Animated Metrics Card */}
           <div
-            className={`gsap-reveal p-8 rounded-3xl border grid grid-cols-2 gap-6 ${
+            className={`gsap-reveal p-8 rounded-xl border grid grid-cols-2 gap-6 ${
               darkMode
                 ? "bg-slate-900/40 border-slate-800/80"
                 : "bg-slate-50 border-slate-200 shadow-sm"
@@ -1028,7 +1028,7 @@ useEffect(() => {
 
           {/* 2. Modern Core Technologies Grid (flex-1 evenly fills middle vertical height) */}
          <div
-  className={`gsap-reveal p-8 rounded-3xl border flex-1 flex flex-col items-center justify-center relative overflow-hidden ${
+  className={`gsap-reveal p-8 rounded-xl border flex-1 flex flex-col items-center justify-center relative overflow-hidden ${
     darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
   }`}
 >
