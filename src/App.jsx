@@ -235,8 +235,7 @@ function App() {
   const mobileMenuRef = useRef(null);
 
   const smokeCanvasRef = useRef(null);
-const smokeParticlesRef = useRef([]);
-const smokeAnimRef = useRef(null);
+
 
   const sectionRef = useRef(null);
   const fullstackCountRef = useRef(null);
@@ -748,7 +747,7 @@ useEffect(() => {
      <div
     ref={ambientGlowRef}
     className={`fixed top-1/3 left-1/4 w-[600px] h-[600px] rounded-full blur-[160px] pointer-events-none z-0 transition-colors duration-500 ${
-      darkMode ? "bg-indigo-600/20" : "bg-indigo-400/25"
+      darkMode ? "bg-indigo-700/15" : "bg-indigo-300/25"
     }`}
   />
       <canvas ref={smokeCanvasRef} className="fixed inset-0 pointer-events-none z-40 hidden md:block" />
