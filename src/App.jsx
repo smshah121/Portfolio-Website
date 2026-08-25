@@ -482,7 +482,7 @@ useEffect(() => {
         backend: "https://github.com/smshah121/degree-attestation-system-backend",
         SmartContract: "https://github.com/smshah121/degree-attestation-smart_contract",
       },
-      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "JWT", "GoogleOAuth", "Stripe", "Ethereum", "Solidity"]
+      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "JWT", "GoogleOAuth", "Stripe", "Ethereum", "Solidity","Git", "Cloudinary", "Netlify","Heroku"]
     },
     {
       img: "/pricetag.png",
@@ -493,7 +493,7 @@ useEffect(() => {
         frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
         backend: "https://github.com/smshah121/E-Commerce-Web-App-Backend",
       },
-      tech: ["React", "Tailwind", "Redux", "Motion", "Nest", "Postgres", "JWT", "Stripe"]
+      tech: ["React", "Tailwind", "Redux", "Motion", "Nest", "Postgres", "JWT","GoogleOAuth", "Stripe","Cloudinary","Git", "Netlify","Render"]
     },
     {
       img: "/lms2.png",
@@ -504,7 +504,7 @@ useEffect(() => {
         frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
         backend: "https://github.com/smshah121/Learning-Management-System-Backend",
       },
-      tech: ["React", "Tailwind", "Motion", "Redux", "Nest", "JWT", "Postgres"]
+      tech: ["React", "Tailwind", "Motion", "Redux", "Nest", "JWT", "Postgres", "Cloudinary","Git","Netlify","Render"]
     },
     {
       img: "/fraud.png",
@@ -516,7 +516,7 @@ useEffect(() => {
         backend: "https://github.com/smshah121/fraud-detection-backend",
         mlCode: "https://github.com/smshah121/fraud-detection-ml-api"
       },
-      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "Python", "FastAPI"]
+      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "Python", "FastAPI","Git", "Netlify", "Vercel", "Azure"]
     },
     
     {
@@ -528,7 +528,7 @@ useEffect(() => {
         frontend: "https://github.com/smshah121/pixora-frontend",
         backend: "https://github.com/smshah121/pixora-backend",
       },
-      tech: ["React", "Tailwind", "Redux", "Nest", "JWT", "Postgres", "GoogleOAuth"]
+      tech: ["React", "Tailwind", "Redux", "Nest", "JWT", "Postgres", "GoogleOAuth","Git", "Netlify", "Heroku"]
     },
     {
       img: "/quotes.png",
@@ -539,7 +539,7 @@ useEffect(() => {
         frontend: "https://github.com/smshah121/quotes-frontend",
         backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
       },
-      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "JWT", "GoogleOAuth"]
+      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "JWT", "GoogleOAuth","Git", "Netlify","Render"]
     },
   ];
 
@@ -591,7 +591,14 @@ useEffect(() => {
     Solidity: <SiSolidity className="text-[#363636]" title="Solidity" />,
     Python: <SiPython className="text-[#3776AB]" title="Python" />,
     ScikitLearn: <SiScikitlearn className="text-[#F7931E]" title="Scikit-Learn" />,
-    FastAPI: <SiFastapi className="text-[#009688]" title="FastAPI" />
+    FastAPI: <SiFastapi className="text-[#009688]" title="FastAPI" />,
+    Cloudinary:<SiCloudinary className="text-[#3448C5]"  title="Cloudinary" />,
+    Render:<SiRender className="text-[#46E3B7]" title="Render"/>,
+    Netlify:<SiNetlify className="text-[#00C7B7]" title="Netlify"/>,
+    Heroku:<GrHeroku className="text-[#430098]" title="Heroku"/>,
+    Vercel:<IoLogoVercel className="text-[#000000]" title="Vercel"/>,
+    Azure:<VscAzure className="text-[#0078D4]" title="Azure"/>,
+    Git:<FaGitAlt className="text-[#F1502F]"title="Git" />
   };
 
  
