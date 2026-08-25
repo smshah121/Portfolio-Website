@@ -1306,7 +1306,7 @@ useEffect(() => {
                   }`}
                   type="text"
                   name="name"
-                  placeholder="Syed Momin Ali Shah"
+                  placeholder="John Doe"
                   required
                 />
               </div>
@@ -1322,8 +1322,8 @@ useEffect(() => {
                       : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
                   }`}
                   type="email"
-                  name="Email"
-                  placeholder="smshah.2003@gmail.com"
+                  name="email"
+                  placeholder="john@example.com"
                   required
                 />
               </div>
@@ -1340,7 +1340,7 @@ useEffect(() => {
                   }`}
                   type="text"
                   name="title"
-                  placeholder="Project Scope Pipeline"
+                  placeholder="Project Inquiry"
                   required
                 />
               </div>
@@ -1356,7 +1356,7 @@ useEffect(() => {
                       : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
                   }`}
                   name="message"
-                  placeholder="Provide system descriptors..."
+                  placeholder="Tell me about your project, idea, or requirements..."
                   required
                 />
               </div>
