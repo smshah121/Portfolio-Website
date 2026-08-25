@@ -977,7 +977,7 @@ useEffect(() => {
              
               <div>
                 <h4 className="text-md font-semibold tracking-tight mb-2">Available for Role</h4>
-                <p className="text-xs text-slate-400">Full-Stack Developer</p>
+                <p className="text-xs text-slate-400">Full-Stack Software Engineer</p>
               </div>
             </div>
     
