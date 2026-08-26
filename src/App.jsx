@@ -877,15 +877,15 @@ useEffect(() => {
       </div>
 
       {/* 60% / 40% Split Content with Equal Height Stretching */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-12 md:m-auto  gap-8 items-stretch w-full">
         
         {/* Left Column: 60% Width */}
         <div className="lg:col-span-7 flex flex-col justify-between gap-6">
           {/* Summary Box */}
           <div
-            className={`gsap-reveal p-8 md:p-10 rounded-xl border backdrop-blur-xl transition-all duration-300 ${
+            className={`gsap-reveal p-8  md:p-13 rounded-xl border backdrop-blur-xl transition-all duration-300 ${
               darkMode
-                ? "bg-slate-900/40 border-slate-800/80 shadow-2xl shadow-indigo-950/20"
+                ? "bg-slate-900/40  border-slate-800/80 shadow-2xl shadow-indigo-950/20"
                 : "bg-slate-50 border-slate-200 shadow-xl shadow-slate-200/50"
             }`}
           >
