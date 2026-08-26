@@ -1406,7 +1406,7 @@ useEffect(() => {
           <a href="https://github.com/smshah121" aria-label="Github Profile" target="_blank" rel="noopener noreferrer" className={`transition-colors ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={20} /></a>
           <a href="https://www.instagram.com/__smshah__" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors"><FaInstagram size={20} /></a>
         </div>
-        <p className="font-semibold text-xs select-none">&copy; Syed Momin Ali Shah. All rights reserved.</p>
+        <p className="font-semibold text-xs select-none">&copy;{new Date().getFullYear()} Syed Momin Ali Shah. All rights reserved.</p>
       </footer>
     </div>
   );
