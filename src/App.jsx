@@ -900,10 +900,10 @@ useEffect(() => {
               }`}
             >
               <p>
-               I'm a Full-Stack Developer and final-year Software Engineering student at Iqra University, focused on building scalable web applications and robust backend systems.
+              I’m a Full-Stack Developer and final-year Software Engineering student at Iqra University, focused on building scalable and maintainable web applications.
               </p>
               <p>
-               I work primarily with React, TypeScript, NestJS, and PostgreSQL, building responsive interfaces, REST APIs, and reliable database-driven applications
+               I work primarily with React, TypeScript, NestJS, and PostgreSQL, building responsive interfaces and reliable backend system.
               </p>
               <p>
                 I also explore AI/ML and blockchain technologies, integrating them into projects to solve practical problems and expand what I can build as a Software Engineer.
