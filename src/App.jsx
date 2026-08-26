@@ -900,10 +900,10 @@ useEffect(() => {
               }`}
             >
               <p>
-                I’m a Full-Stack Developer and final-year Software Engineering student at Iqra University, passionate about building scalable and maintainable web applications.
+               I'm a Full-Stack Developer and final-year Software Engineering student at Iqra University, focused on building scalable web applications and robust backend systems.
               </p>
               <p>
-                My primary focus is full-stack development, working with React.js, TypeScript, NestJS, and PostgreSQL to build responsive interfaces, robust APIs, and reliable backend systems.
+               I work primarily with React, TypeScript, NestJS, and PostgreSQL, building responsive interfaces, REST APIs, and reliable database-driven applications
               </p>
               <p>
                 I also explore AI/ML and blockchain technologies, integrating them into projects to solve practical problems and expand what I can build as a Software Engineer.
@@ -982,8 +982,8 @@ useEffect(() => {
               </div>
              
               <div>
-                <h4 className="text-md font-semibold tracking-tight mb-2">Available for Role</h4>
-                <p className="text-xs text-slate-400">Full-Stack Software Engineer</p>
+                <h4 className="text-md font-semibold tracking-tight mb-2">Available For</h4>
+                <p className="text-xs text-slate-400"> Internships & Freelance Projects</p>
               </div>
             </div>
     
@@ -1291,13 +1291,7 @@ useEffect(() => {
       Get In Touch
     </span>
 
-    <h2
-      className={`mt-2 text-3xl md:text-4xl font-bold tracking-tight ${
-        darkMode ? "text-white" : "text-slate-900"
-      }`}
-    >
-      Let’s Build Something Great
-    </h2>
+    
 
     <p
       className={`mt-3 max-w-xl mx-auto text-sm md:text-base ${
