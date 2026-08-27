@@ -982,7 +982,7 @@ useEffect(() => {
               </div>
              
               <div>
-                <h4 className="text-md font-semibold tracking-tight mb-2">Available For</h4>
+                <h4 className="text-md font-semibold tracking-wide mb-2">Available For</h4>
                 <p className="text-xs text-slate-400 tracking-widest"> Internship, Job & Freelancing</p>
               </div>
             </div>
@@ -1233,7 +1233,7 @@ useEffect(() => {
                       }`}
                     >
                       <span className="flex items-center gap-2">
-                        <FaGithub size={14} /> Code Base
+                        <FaGithub size={14} /> Source Code
                       </span>
                       <FaChevronDown size={10} className={`opacity-70 transition-transform duration-200 ${dropdownOpen === index ? "rotate-180" : ""}`} />
                     </button>
