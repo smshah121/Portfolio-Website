@@ -983,7 +983,7 @@ useEffect(() => {
              
               <div>
                 <h4 className="text-md font-semibold tracking-tight mb-2">Available For</h4>
-                <p className="text-xs text-slate-400"> Internships & Freelance Projects</p>
+                <p className="text-xs text-slate-400 tracking-widest"> Internship, Job & Freelancing</p>
               </div>
             </div>
     
@@ -1298,8 +1298,7 @@ useEffect(() => {
         darkMode ? "text-slate-400" : "text-slate-500"
       }`}
     >
-      Have a project, idea, or opportunity in mind? Let’s connect and turn it
-      into something meaningful.
+     Open to software engineering roles, internships, collaborations, and interesting projects. Let’s connect.
     </p>
   </div>
         
