@@ -8,6 +8,7 @@ import { FaLocationDot, FaRegEye, FaLaptopCode, FaSun, FaMoon,  FaChevronDown } 
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 import { useEffect,useMemo, useLayoutEffect, useState, useRef } from "react";
 import Typewriter from "typewriter-effect";
+import Lenis from "lenis";
 import emailjs from "emailjs-com";
 import Globe from "react-globe.gl";
 import { GrHeroku } from "react-icons/gr";
@@ -28,7 +29,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 
 
@@ -171,6 +172,58 @@ function App() {
     if (savedTheme) return savedTheme === "dark";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
+
+  useEffect(() => {
+  const lenis = new Lenis({
+    duration: 1.1,
+    smoothWheel: true,
+    syncTouch: false,
+    wheelMultiplier: 0.9,
+    touchMultiplier: 1,
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+
+  const raf = (time) => {
+    lenis.raf(time * 1000);
+  };
+
+  gsap.ticker.add(raf);
+
+  gsap.ticker.lagSmoothing(0);
+
+  return () => {
+    gsap.ticker.remove(raf);
+    lenis.destroy();
+  };
+}, []);
+const lenisRef = useRef(null);
+useEffect(() => {
+  const lenis = new Lenis({
+    duration: 1.1,
+    smoothWheel: true,
+    syncTouch: false,
+    wheelMultiplier: 0.9,
+    touchMultiplier: 1,
+  });
+
+  lenisRef.current = lenis;
+
+  lenis.on("scroll", ScrollTrigger.update);
+
+  const raf = (time) => {
+    lenis.raf(time * 1000);
+  };
+
+  gsap.ticker.add(raf);
+  gsap.ticker.lagSmoothing(0);
+
+  return () => {
+    gsap.ticker.remove(raf);
+    lenis.destroy();
+    lenisRef.current = null;
+  };
+}, []);
 
 
   useEffect(() => {
@@ -678,12 +731,20 @@ useEffect(() => {
   }, []);
 
 
-  useEffect(() => {
-  const onLoad = () => ScrollTrigger.refresh();
-  window.addEventListener("load", onLoad);
-  return () => window.removeEventListener("load", onLoad);
-}, []);
+ useEffect(() => {
+  const refresh = () => {
+    ScrollTrigger.refresh();
+  };
 
+  window.addEventListener("load", refresh);
+
+  const timeout = setTimeout(refresh, 500);
+
+  return () => {
+    window.removeEventListener("load", refresh);
+    clearTimeout(timeout);
+  };
+}, []);
   useEffect(() => {
     if (mobileMenuOpen) {
       gsap.to(mobileMenuRef.current, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out", display: "flex" });
@@ -718,12 +779,14 @@ useEffect(() => {
 
 
   const scrollToSection = (id) => {
-  const target = document.querySelector(`#${id}`);
-  if (!target) return;
-  gsap.to(window, {
-    duration: 1,
-    scrollTo: { y: target, offsetY: 80 }, // 80 = your header height, adjust if needed
-    ease: "power2.inOut",
+  const target = document.getElementById(id);
+
+  if (!target || !lenisRef.current) return;
+
+  lenisRef.current.scrollTo(target, {
+    offset: -80,
+    duration: 1.2,
+    immediate: false,
   });
 };
 
