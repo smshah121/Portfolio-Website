@@ -166,7 +166,70 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [githubStats, setGithubStats] = useState(null);
   const ambientGlowRef = useRef(null);
+  const aboutHeadingRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+
+
+  useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.fromTo(
+      ".about-letter",
+      {
+        opacity: 0,
+        y: 60,
+        scale: 0.7,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power4.out",
+
+        scrollTrigger: {
+          trigger: aboutHeadingRef.current,
+          start: "top 80%",
+          toggleActions: "restart none restart none",
+        },
+      }
+    );
+
+    
+  }, aboutHeadingRef);
+
+  return () => ctx.revert();
+}, []);
+
+
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.fromTo(
+      ".tech-letter",
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.7,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power4.out",
+
+        scrollTrigger: {
+          trigger: ".tech-letter",
+          start: "top 80%",
+          toggleActions: "restart none restart none",
+        },
+      }
+    );
+  });
+
+  return () => ctx.revert();
+}, []);
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("portfolio-theme");
     if (savedTheme) return savedTheme === "dark";
@@ -182,6 +245,8 @@ function App() {
     touchMultiplier: 1,
   });
 
+
+ 
   lenis.on("scroll", ScrollTrigger.update);
 
   const raf = (time) => {
@@ -522,7 +587,35 @@ useEffect(() => {
 
   
 
-  
+  useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.fromTo(
+      ".project-letter",
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.7,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power4.out",
+
+        scrollTrigger: {
+          trigger: ".project-letter",
+          start: "top 80%",
+          toggleActions: "restart none restart none",
+        },
+      }
+    );
+  });
+
+  return () => ctx.revert();
+}, []);
+
 
   const MyProjects = [
     {
@@ -931,14 +1024,29 @@ useEffect(() => {
     >
       {/* Aesthetic Section Header */}
       <div className="gsap-reveal mb-16">
-        <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
-          Who I Am ?
-        </span>
-        <h2 className="font-['Black_Ops_One'] text-4xl sm:text-6xl md:text-7xl uppercase tracking-wider  bg-clip-text text-indigo-500 ">
-          <span className={darkMode ? "text-gray-100" : "text-slate-900"}>About</span> Me
-        </h2>
-      </div>
+  <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
+    Who I Am ?
+  </span>
 
+  <h2
+    ref={aboutHeadingRef}
+    className="font-['Black_Ops_One'] text-4xl sm:text-6xl md:text-7xl uppercase tracking-wider bg-clip-text text-indigo-500"
+  >
+    <span className={darkMode ? "text-gray-100" : "text-slate-900"}>
+      {"About".split("").map((letter, index) => (
+        <span key={index} className="about-letter inline-block">
+          {letter}
+        </span>
+      ))}
+    </span>
+
+    {" Me".split("").map((letter, index) => (
+      <span key={index} className="about-letter inline-block">
+        {letter === " " ? "\u00A0" : letter}
+      </span>
+    ))}
+  </h2>
+</div>
       {/* 60% / 40% Split Content with Equal Height Stretching */}
       <div className="grid grid-cols-1 lg:grid-cols-12 md:m-auto  gap-8 items-stretch w-full">
         
@@ -946,7 +1054,7 @@ useEffect(() => {
         <div className="lg:col-span-7 flex flex-col justify-between gap-6">
           {/* Summary Box */}
           <div
-            className={`gsap-reveal p-8  md:p-13 rounded-xl border backdrop-blur-xl transition-all duration-300 ${
+            className={`gsap-reveal p-8 md:p-13 rounded-xl border backdrop-blur-xl transition-all duration-300 ${
               darkMode
                 ? "bg-slate-900/40  border-slate-800/80 shadow-2xl shadow-indigo-950/20"
                 : "bg-slate-50 border-slate-200 shadow-xl shadow-slate-200/50"
@@ -1155,10 +1263,18 @@ useEffect(() => {
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
           <div className="gsap-reveal text-center mb-10">
-            <h2 className={`text-3xl md:text-5xl font-black tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
-              Tech Stack
-            </h2>
-          </div>
+  <h2
+    className={`text-3xl md:text-5xl font-black tracking-tight ${
+      darkMode ? "text-white" : "text-slate-950"
+    }`}
+  >
+    {"Tech Stack".split("").map((letter, index) => (
+      <span key={index} className="tech-letter inline-block">
+        {letter === " " ? "\u00A0" : letter}
+      </span>
+    ))}
+  </h2>
+</div>
 
           {[
             { cat: "Frontend", stack: FrontendTech },
@@ -1211,11 +1327,19 @@ useEffect(() => {
           darkMode ? "bg-purple-600" : "bg-purple-200"
         }`} />
 
-        <div className="gsap-reveal text-center mb-16">
-          <h2 className={`text-3xl md:text-5xl font-black tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
-            Projects
-          </h2>
-        </div>
+       <div className="gsap-reveal text-center mb-16">
+  <h2
+    className={`text-3xl md:text-5xl font-black tracking-tight ${
+      darkMode ? "text-white" : "text-slate-950"
+    }`}
+  >
+    {"Projects".split("").map((letter, index) => (
+      <span key={index} className="project-letter inline-block">
+        {letter}
+      </span>
+    ))}
+  </h2>
+</div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {MyProjects.map((project, index) => (
