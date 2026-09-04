@@ -169,6 +169,34 @@ function App() {
   const aboutHeadingRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
 
+  useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.fromTo(
+      ".connect-letter",
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.7,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power4.out",
+
+        scrollTrigger: {
+          trigger: ".connect-letter",
+          start: "top 80%",
+          toggleActions: "restart none restart none",
+        },
+      }
+    );
+  });
+
+  return () => ctx.revert();
+}, []);
 
   useEffect(() => {
   const ctx = gsap.context(() => {
@@ -552,7 +580,7 @@ useEffect(() => {
       scrollTrigger: {
         trigger: fullstackCountRef.current,
         start: "top 85%",
-        toggleActions: "restart none none reset",
+        toggleActions: "restart none restart none",
       },
       onUpdate: () => {
         if (fullstackCountRef.current) {
@@ -571,7 +599,7 @@ useEffect(() => {
       scrollTrigger: {
         trigger: frontendCountRef.current,
         start: "top 85%",
-        toggleActions: "restart none none reset",
+        toggleActions: "restart none restart none",
       },
       onUpdate: () => {
         if (frontendCountRef.current) {
@@ -1474,18 +1502,25 @@ useEffect(() => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 w-full">
          <div className="text-center mb-12">
-    <span className="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-indigo-600">
-      Get In Touch
+   
+    <h2
+  className={`text-3xl md:text-5xl font-black tracking-tight ${
+    darkMode ? "text-white" : "text-slate-950"
+  }`}
+>
+  {"Let's Connect".split("").map((letter, index) => (
+    <span key={index} className="connect-letter inline-block">
+      {letter === " " ? "\u00A0" : letter}
     </span>
-
-    
+  ))}
+</h2>
 
     <p
-      className={`mt-3 max-w-xl mx-auto text-sm md:text-base ${
+      className={`mt-3 max-w-xl mx-auto text-sm md:text-sm ${
         darkMode ? "text-slate-400" : "text-slate-500"
       }`}
     >
-     Open to software engineering roles, internships, collaborations, and interesting projects. Let’s connect.
+     Open to software engineering roles, internships, collaborations, and freelance projects.
     </p>
   </div>
         
