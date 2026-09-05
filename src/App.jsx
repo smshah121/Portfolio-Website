@@ -997,10 +997,10 @@ useEffect(() => {
         darkMode ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950/40 via-slate-950 to-slate-950" : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100/50 via-slate-50 to-slate-50"
       }`}>
         <div className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
-          <span className={`gsap-reveal text-[8px] md:text-xs font-mono tracking-widest mb-4 uppercase px-4 py-1 rounded-full border transition-all ${
+          <span className={`gsap-reveal text-[8px] md:text-xs font-mono font-medium tracking-[0.2rem] mb-4 uppercase px-4 py-1 rounded-full border transition-all ${
             darkMode ? "text-indigo-400 bg-indigo-500/10 border-indigo-500/20" : "text-indigo-600 bg-indigo-500/5 border-indigo-500/20"
           }`}>
-            Available for Opportunities
+            Crafting Software
           </span>
           
           <h1 className={`gsap-reveal font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-none w-full max-w-none mx-auto whitespace-nowrap ${
