@@ -1250,70 +1250,122 @@ useEffect(() => {
   </div>
 </section>
       {/* SECTION 3: TECH STACK */}
-      <section id="skills" className={`panel-section py-24 border-y relative overflow-hidden transition-colors duration-300 min-h-screen flex items-center ${
-        darkMode ? "bg-slate-950/20 border-white/[0.05]" : "bg-slate-50/20 border-slate-200/60"
-      }`}>
-        <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] rounded-full filter blur-[140px] opacity-[0.06] pointer-events-none ${darkMode ? "bg-indigo-500" : "bg-indigo-400"}`} />
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
-          <div className="gsap-reveal text-center mb-10">
-  <h2
-    className={`text-3xl md:text-5xl font-black tracking-tight ${
-      darkMode ? "text-white" : "text-slate-950"
+      {/* SECTION 3: TECH STACK */}
+<section
+  id="skills"
+  className={`panel-section py-28 relative overflow-hidden transition-colors duration-500 min-h-screen flex items-center ${
+    darkMode ? "text-slate-100" : "text-slate-900"
+  }`}
+>
+  {/* Ambient Background Glow */}
+  <div
+    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full filter blur-[150px] opacity-10 pointer-events-none ${
+      darkMode ? "bg-indigo-600" : "bg-indigo-300"
     }`}
-  >
-    {"Tech Stack".split("").map((letter, index) => (
-      <span key={index} className="tech-letter inline-block">
-        {letter === " " ? "\u00A0" : letter}
-      </span>
-    ))}
-  </h2>
-</div>
+  />
 
-          {[
-            { cat: "Frontend", stack: FrontendTech },
-            { cat: "Backend & Database", stack: BackendTech },
-            { cat: "Cloud Deployment & Tools", stack: Tools }
-          ].map((block, bIdx) => (
-            <div key={bIdx} className="mb-14 last:mb-0">
-              <div className="gsap-reveal flex items-center gap-4 mb-6">
-                <h4 className={`text-xs tracking-wider font-mono font-bold uppercase whitespace-nowrap ${
-                  darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
-                }`}>
-                  {block.cat}
-                </h4>
-                <div className={`w-full h-[1px] ${darkMode ? "bg-white/[0.06]" : "bg-slate-200"}`} />
-              </div>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {block.stack.map((tech, idx) => {
-          
-                  return (
-                    <div 
-                      key={idx}
-                      className={`gsap-reveal flex items-center gap-3.5 border p-4 rounded-xl backdrop-blur-sm transition-all duration-300 relative group cursor-default transform hover:-translate-y-1 ${
-                        darkMode 
-                          ? "bg-slate-900/40 border-white/[0.04] hover:bg-slate-900/80" 
-                          : "bg-slate-50 border-slate-200/70 hover:bg-slate-50/50"
-                      }`}
-                    >
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-[0.02] transition-opacity duration-300 rounded-xl pointer-events-none" style={{ backgroundColor: tech.color }} />
-                      <div style={{ color: tech.color }} className="text-xl md:text-2xl opacity-75 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-[4deg]">
-                        {tech.icon}
-                      </div>
-                      <span className={`font-semibold text-xs md:text-sm tracking-tight transition-colors duration-300 ${
-                        darkMode ? "text-slate-300 group-hover:text-white" : "text-slate-700 group-hover:text-slate-950"
-                      }`}>
-                        {tech.name}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+  <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
+    {/* Section Header */}
+    <div className="gsap-reveal mb-20 text-center md:text-left">
+      <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
+        Capabilities & Toolkit
+      </span>
+      <h2
+        className={`text-4xl sm:text-6xl md:text-7xl font-['Black_Ops_One'] uppercase tracking-wider ${
+          darkMode ? "text-white" : "text-slate-950"
+        }`}
+      >
+        {"Tech".split("").map((letter, index) => (
+          <span key={index} className="tech-letter inline-block">
+            {letter}
+          </span>
+        ))}
+        <span className="text-indigo-500">
+          {" Stack".split("").map((letter, index) => (
+            <span key={index} className="tech-letter inline-block">
+              {letter === " " ? "\u00A0" : letter}
+            </span>
           ))}
+        </span>
+      </h2>
+    </div>
+
+    {/* Tech Categories Stack */}
+    <div className="space-y-16">
+      {[
+        { id: "01", cat: "Frontend Engineering", stack: FrontendTech },
+        { id: "02", cat: "Backend & Systems", stack: BackendTech },
+        { id: "03", cat: "Cloud, DevOps & Tools", stack: Tools }
+      ].map((block, bIdx) => (
+        <div key={bIdx} className="gsap-reveal">
+          {/* Category Header Bar */}
+          <div className="flex items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-mono font-bold text-indigo-400/80">
+                {block.id}
+              </span>
+              <span className={`h-3 w-[1px] ${darkMode ? "bg-slate-800" : "bg-slate-300"}`} />
+              <h3
+                className={`text-sm md:text-base font-semibold tracking-wide uppercase font-mono ${
+                  darkMode ? "text-slate-200" : "text-slate-800"
+                }`}
+              >
+                {block.cat}
+              </h3>
+            </div>
+            
+            <div className={`hidden sm:block flex-1 mx-6 h-[1px] ${darkMode ? "bg-slate-800/80" : "bg-slate-200"}`} />
+            
+            <span className={`text-[11px] font-mono tracking-wider uppercase ${
+              darkMode ? "text-slate-500" : "text-slate-400"
+            }`}>
+              {block.stack.length} Technologies
+            </span>
+          </div>
+
+          {/* Interactive Technology Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+            {block.stack.map((tech, idx) => (
+              <div
+                key={idx}
+                className={`group relative flex items-center gap-3.5 px-4 py-3.5 rounded-lg transition-all duration-300 cursor-default ${
+                  darkMode
+                    ? "hover:bg-slate-900/60 text-slate-300 hover:text-white"
+                    : "hover:bg-slate-100/80 text-slate-700 hover:text-slate-950"
+                }`}
+              >
+                {/* Dynamic Brand Glow on Hover */}
+                <div
+                  className="absolute -inset-0.5 rounded-lg opacity-0 group-hover:opacity-15 blur-sm transition-opacity duration-300 pointer-events-none"
+                  style={{ backgroundColor: tech.color }}
+                />
+
+                {/* Left Subtle Indicator Line */}
+                <div
+                  className="w-1 h-3.5 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"
+                  style={{ backgroundColor: tech.color }}
+                />
+
+                {/* Icon */}
+                <div
+                  style={{ color: tech.color }}
+                  className="text-2xl transition-transform duration-300 group-hover:scale-110 flex-shrink-0"
+                >
+                  {tech.icon}
+                </div>
+
+                {/* Technology Name */}
+                <span className="font-medium text-xs sm:text-sm tracking-tight truncate">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* SECTION 4: PROJECTS */}
       <section id="project" className="panel-section py-24 max-w-7xl mx-auto px-6 md:px-12 relative overflow-hidden min-h-screen">
