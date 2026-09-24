@@ -1044,246 +1044,211 @@ useEffect(() => {
       </section>
 
       {/* SECTION 2: ABOUT */}
-   <section
-      id="about"
-      ref={sectionRef}
-      className={`panel-section relative py-32 px-6 md:px-12 max-w-7xl mx-auto min-h-screen flex flex-col justify-center transition-colors duration-500 ${
-        darkMode ? "bg-slate-950/20 text-slate-100" : "bg-slate-50/20 text-slate-900"
-      }`}
-    >
-      {/* Aesthetic Section Header */}
-      <div className="gsap-reveal mb-16">
-  <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
-    Who I Am ?
-  </span>
-
-  <h2
-    ref={aboutHeadingRef}
-    className="font-['Black_Ops_One'] text-4xl sm:text-6xl md:text-7xl uppercase tracking-wider bg-clip-text text-indigo-500"
-  >
-    <span className={darkMode ? "text-gray-100" : "text-slate-900"}>
-      {"About".split("").map((letter, index) => (
-        <span key={index} className="about-letter inline-block">
-          {letter}
-        </span>
-      ))}
-    </span>
-
-    {" Me".split("").map((letter, index) => (
-      <span key={index} className="about-letter inline-block">
-        {letter === " " ? "\u00A0" : letter}
-      </span>
-    ))}
-  </h2>
-</div>
-      {/* 60% / 40% Split Content with Equal Height Stretching */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 md:m-auto  gap-8 items-stretch w-full">
-        
-        {/* Left Column: 60% Width */}
-        <div className="lg:col-span-7 flex flex-col justify-between gap-6">
-          {/* Summary Box */}
-          <div
-            className={`gsap-reveal p-8 md:p-13 rounded-xl border backdrop-blur-xl transition-all duration-300 ${
-              darkMode
-                ? "bg-slate-900/40  border-slate-800/80 shadow-2xl shadow-indigo-950/20"
-                : "bg-slate-50 border-slate-200 shadow-xl shadow-slate-200/50"
-            }`}
-          >
-            <h3 className="text-xl font-semibold mb-6 flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
-              Executive Summary
-            </h3>
-
-            <div
-              className={`space-y-4 text-base md:text-md leading-relaxed font-normal ${
-                darkMode ? "text-slate-400" : "text-slate-600"
-              }`}
-            >
-              <p>
-              I’m a Full-Stack Developer and final-year Software Engineering student at Iqra University, focused on building scalable and maintainable web applications.
-              </p>
-              <p>
-               I work primarily with React, TypeScript, NestJS, and PostgreSQL, building responsive interfaces and reliable backend system.
-              </p>
-              <p>
-                I also explore AI/ML and blockchain technologies, integrating them into projects to solve practical problems and expand what I can build as a Software Engineer.
-              </p>
-            </div>
-          </div>
-
-          {/* Education & Featured Project Cards */}
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div
-              className={`gsap-reveal p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 ${
-                darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
-              }`}
-            >
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl mb-4">
-                <FaGraduationCap />
-              </div>
-              <h4 className="font-bold text-base">BS Software Engineering</h4>
-              <p className="text-sm text-slate-400 mt-1">Iqra University</p>
-              <span className="inline-block mt-3 text-xs px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 font-medium">
-                2023 — Present
-              </span>
-            </div>
-
-          <div
-              className={`gsap-reveal p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 ${
-                darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
-              }`}
-            >
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl mb-4">
-                <FaGithub />
-              </div>
-              <h4 className="font-bold text-base mb-3">GitHub Activity</h4>
-              {githubStats ? (
-                <div className="flex gap-5">
-                  <div>
-                    <span className="block text-lg font-extrabold text-indigo-500">{githubStats.repos}</span>
-                    <span className={`text-[10px] uppercase tracking-wide ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Repositories</span>
-                  </div>
-                  <div>
-                    <span className="block text-lg font-extrabold text-indigo-500">{githubStats.commits}+</span>
-                    <span className={`text-[10px] uppercase tracking-wide ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Total Contribution</span>
-                  </div>
-                </div>
-              ) : (
-                <p className={`text-xs leading-relaxed ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-                  Loading live GitHub data…
-                </p>
-              )}
-              <a
-                href="https://github.com/smshah121"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold text-indigo-400 hover:text-purple-400 transition-colors"
-              >
-                View Profile →
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: 40% Width */}
-        <div className="lg:col-span-5 flex flex-col justify-between gap-6 h-full">
-
-          <div
-            className={`gsap-reveal p-8 md:p-7 rounded-xl border flex flex-col md:flex-row md:items-center md:justify-between transition-all duration-300 ${
-              darkMode
-                ? "bg-slate-900/40 border-slate-800/80 shadow-xl"
-                : "bg-slate-50 border-slate-200 shadow-md"
-            }`}
-          >
-            <div className="flex items-center gap-3.5">
-              <div className="relative flex items-center justify-center">
-                <span className="w-3 h-3 rounded-full bg-emerald-500 animate-ping absolute opacity-75" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500 relative" />
-              </div>
-             
-              <div>
-                <h4 className="text-md font-semibold tracking-wide mb-2">Available For</h4>
-                <p className="text-xs text-slate-400 tracking-widest"> Internship, Job & Freelancing</p>
-              </div>
-            </div>
-    
-
-              <a
-              href="#contact"
-              className="px-4 py-2 w-full md:w-auto mt-3 md:mt-0 text-center rounded-xl  text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 hover:bg-indigo-500 hover:text-white transition-all duration-200"
-            >
-              Let's Talk →
-            </a>
-
-       
-            
-          </div>
-
-          
-          {/* 1. Animated Metrics Card */}
-          <div
-            className={`gsap-reveal p-8 rounded-xl border grid grid-cols-2 gap-6 ${
-              darkMode
-                ? "bg-slate-900/40 border-slate-800/80"
-                : "bg-slate-50 border-slate-200 shadow-sm"
-            }`}
-          >
-            <div className="flex flex-col">
-              <span
-                ref={fullstackCountRef}
-                className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]"
-              >
-                0+
-              </span>
-              <span className="text-xs md:text-sm font-medium text-slate-400 mt-2">
-                Full-Stack Projects
-              </span>
-            </div>
-
-            <div className="flex flex-col border-l pl-6 border-slate-800">
-              <span
-                ref={frontendCountRef}
-                className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]"
-              >
-                0+
-              </span>
-              <span className="text-xs md:text-sm font-medium text-slate-400 mt-2">
-                Web Interfaces
-              </span>
-            </div>
-          </div>
-
-          {/* 2. Modern Core Technologies Grid (flex-1 evenly fills middle vertical height) */}
-         <div
-  className={`gsap-reveal p-8 rounded-xl border flex-1 flex flex-col items-center justify-center relative overflow-hidden ${
-    darkMode ? "bg-slate-900/30 border-slate-800/80" : "bg-slate-50 border-slate-200 shadow-sm"
+  <section
+  id="about"
+  ref={sectionRef}
+  className={`panel-section relative py-28 px-6 md:px-12 max-w-7xl mx-auto min-h-screen flex flex-col justify-center transition-colors duration-500 ${
+    darkMode ? "text-slate-100" : "text-slate-900"
   }`}
 >
-  <div className="relative w-[220px] sm:w-[250px] aspect-square">
-    {/* Orbit rings */}
-    <div className={`absolute inset-0 rounded-full border-2 border-dashed ${darkMode ? "border-slate-800" : "border-slate-200"}`} />
-    <div className={`absolute inset-8 rounded-full border ${darkMode ? "border-slate-800/60" : "border-slate-100"}`} />
+  {/* Section Header */}
+  <div className="gsap-reveal mb-16">
+    <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
+      Who I Am ?
+    </span>
 
-    {/* Center hub — Core Tech */}
-    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex flex-col items-center justify-center border z-10 ${
-      darkMode ? "bg-slate-950 border-indigo-500/30 shadow-lg shadow-indigo-950/40" : "bg-slate-50 border-indigo-200 shadow-md"
-    }`}>
-      <FaLaptopCode className="text-indigo-400 text-lg mb-1" />
-      <span className="text-[9px] font-bold uppercase tracking-wide text-indigo-400 text-center leading-tight">Core<br/>Tech</span>
-    </div>
+    <h2
+      ref={aboutHeadingRef}
+      className="font-['Black_Ops_One'] text-4xl sm:text-6xl md:text-7xl uppercase tracking-wider bg-clip-text text-indigo-500"
+    >
+      <span className={darkMode ? "text-gray-100" : "text-slate-900"}>
+        {"About".split("").map((letter, index) => (
+          <span key={index} className="about-letter inline-block">
+            {letter}
+          </span>
+        ))}
+      </span>
 
-    {/* Orbiting icons */}
-    <div ref={orbitRef} className="absolute inset-0">
-      {technologies.map((tech, i) => {
-        const angle = -90 + (360 / technologies.length) * i;
-        const radius = 95;
-        return (
-          <div
-            key={i}
-            className="absolute w-10 h-10 top-1/2 left-1/2 -ml-5 -mt-5"
-            style={{ transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)` }}
-          >
-            <div
-              className={`orbit-icon-spin group w-10 h-10 rounded-full flex items-center justify-center border text-base transition-all duration-300 cursor-default ${
-                darkMode
-                  ? "bg-slate-950/80 border-slate-800 text-slate-300 hover:border-indigo-500/60 hover:text-white"
-                  : "bg-white border-slate-200 text-slate-600 hover:border-indigo-500 hover:text-indigo-600 shadow-sm"
-              }`}
-            >
-              {tech.icon}
-            </div>
-          </div>
-        );
-      })}
-    </div>
+      {" Me".split("").map((letter, index) => (
+        <span key={index} className="about-letter inline-block">
+          {letter === " " ? "\u00A0" : letter}
+        </span>
+      ))}
+    </h2>
   </div>
-</div>
-          
+
+  {/* Main Content Layout */}
+  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start w-full">
+    {/* Left Column */}
+    <div className="lg:col-span-7 flex flex-col gap-12">
+      {/* Executive Summary */}
+      <div className="gsap-reveal">
+        <h3 className="text-sm uppercase tracking-widest text-indigo-400 font-semibold mb-4 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+          Executive Summary
+        </h3>
+
+        <div
+          className={`space-y-5 text-base md:text-lg leading-relaxed ${
+            darkMode ? "text-slate-400" : "text-slate-700"
+          }`}
+        >
+          <p>
+            I’m a Full-Stack Developer and final-year Software Engineering student at Iqra University, focused on building scalable and maintainable web applications.
+          </p>
+          <p>
+            I work primarily with React, TypeScript, NestJS, and PostgreSQL, building responsive interfaces and reliable backend system.
+          </p>
+          <p>
+            I also explore AI/ML and blockchain technologies, integrating them into projects to solve practical problems and expand what I can build as a Software Engineer.
+          </p>
+        </div>
+      </div>
+
+      {/* Education & GitHub Activity Row */}
+      <div className={`grid sm:grid-cols-2 gap-8 pt-8 border-t ${darkMode ? "border-slate-800/80" : "border-slate-200"}`}>
+        {/* Education */}
+        <div className="gsap-reveal flex flex-col items-start">
+          <div className="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-3">
+            <FaGraduationCap />
+          </div>
+          <h4 className="font-bold text-base">BS Software Engineering</h4>
+          <p className={`text-sm mt-0.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Iqra University</p>
+          <span className="mt-3 text-xs tracking-wider uppercase text-indigo-400 font-semibold">
+            2023 — Present
+          </span>
         </div>
 
+        {/* GitHub Activity */}
+        <div className="gsap-reveal flex flex-col items-start">
+          <div className="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-3">
+            <FaGithub />
+          </div>
+          <h4 className="font-bold text-base mb-2">GitHub Activity</h4>
+          {githubStats ? (
+            <div className="flex gap-6 items-baseline">
+              <div>
+                <span className="block text-2xl font-extrabold text-indigo-500">{githubStats.repos}</span>
+                <span className={`text-[11px] uppercase tracking-wider ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Repositories</span>
+              </div>
+              <div>
+                <span className="block text-2xl font-extrabold text-indigo-500">{githubStats.commits}+</span>
+                <span className={`text-[11px] uppercase tracking-wider ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Total Contribution</span>
+              </div>
+            </div>
+          ) : (
+            <p className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
+              Loading live GitHub data…
+            </p>
+          )}
+          <a
+            href="https://github.com/smshah121"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 mt-3 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+          >
+            View Profile →
+          </a>
+        </div>
       </div>
-    </section>
+    </div>
 
+    {/* Right Column */}
+    <div className="lg:col-span-5 flex flex-col gap-10">
+      {/* Availability Status */}
+      <div className={`gsap-reveal pb-6 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${
+        darkMode ? "border-slate-800/80" : "border-slate-200"
+      }`}>
+        <div className="flex items-center gap-3">
+          <div className="relative flex items-center justify-center">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping absolute opacity-75" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 relative" />
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold tracking-wide">Available For</h4>
+            <p className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Internship, Job & Freelancing</p>
+          </div>
+        </div>
+
+        <a
+          href="#contact"
+          className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-all duration-200 w-fit"
+        >
+          Let's Talk →
+        </a>
+      </div>
+
+      {/* Numerical Metrics */}
+      <div className="gsap-reveal grid grid-cols-2 gap-8">
+        <div className="flex flex-col">
+          <span
+            ref={fullstackCountRef}
+            className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          >
+            0+
+          </span>
+          <span className={`text-xs md:text-sm font-medium mt-1 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
+            Full-Stack Projects
+          </span>
+        </div>
+
+        <div className={`flex flex-col border-l pl-8 ${darkMode ? "border-slate-800" : "border-slate-200"}`}>
+          <span
+            ref={frontendCountRef}
+            className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          >
+            0+
+          </span>
+          <span className={`text-xs md:text-sm font-medium mt-1 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
+            Web Interfaces
+          </span>
+        </div>
+      </div>
+
+      {/* Core Technologies Graphic */}
+      <div className="gsap-reveal flex flex-col items-center justify-center pt-4">
+        <div className="relative w-[230px] sm:w-[260px] aspect-square">
+          {/* Orbit rings */}
+          <div className={`absolute inset-0 rounded-full border border-dashed ${darkMode ? "border-slate-800" : "border-slate-200"}`} />
+          <div className={`absolute inset-8 rounded-full border ${darkMode ? "border-slate-800/50" : "border-slate-200/60"}`} />
+
+          {/* Center hub */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full flex flex-col items-center justify-center z-10">
+            <FaLaptopCode className="text-indigo-400 text-lg mb-0.5" />
+            <span className="text-[9px] font-bold uppercase tracking-wider text-indigo-400 text-center leading-none">
+              Core<br />Tech
+            </span>
+          </div>
+
+          {/* Orbiting icons */}
+          <div ref={orbitRef} className="absolute inset-0">
+            {technologies.map((tech, i) => {
+              const angle = -90 + (360 / technologies.length) * i;
+              const radius = 100;
+              return (
+                <div
+                  key={i}
+                  className="absolute w-10 h-10 top-1/2 left-1/2 -ml-5 -mt-5"
+                  style={{ transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)` }}
+                >
+                  <div
+                    className={`orbit-icon-spin group w-10 h-10 rounded-full flex items-center justify-center text-lg transition-transform duration-300 hover:scale-110 ${
+                      darkMode
+                        ? "text-slate-400 hover:text-white"
+                        : "text-slate-500 hover:text-indigo-600"
+                    }`}
+                  >
+                    {tech.icon}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       {/* SECTION 3: TECH STACK */}
       <section id="skills" className={`panel-section py-24 border-y relative overflow-hidden transition-colors duration-300 min-h-screen flex items-center ${
         darkMode ? "bg-slate-950/20 border-white/[0.05]" : "bg-slate-50/20 border-slate-200/60"
