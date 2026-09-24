@@ -183,10 +183,14 @@ function App() {
   const aboutHeadingRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
 
-  useEffect(() => {
+// 1. Connect Letters (Contact Section)
+useEffect(() => {
+  const letters = document.querySelectorAll(".connect-letter");
+  if (!letters.length) return;
+
   const ctx = gsap.context(() => {
     gsap.fromTo(
-      ".connect-letter",
+      letters,
       {
         opacity: 0,
         y: 50,
@@ -199,9 +203,8 @@ function App() {
         duration: 0.7,
         stagger: 0.08,
         ease: "power4.out",
-
         scrollTrigger: {
-          trigger: ".connect-letter",
+          trigger: letters[0].closest("h2") || letters[0], // Target the heading container, not a NodeList
           start: "top 80%",
           toggleActions: "restart none restart none",
         },
@@ -212,7 +215,10 @@ function App() {
   return () => ctx.revert();
 }, []);
 
-  useEffect(() => {
+// 2. About Letters (About Section)
+useEffect(() => {
+  if (!aboutHeadingRef.current) return;
+
   const ctx = gsap.context(() => {
     gsap.fromTo(
       ".about-letter",
@@ -228,7 +234,6 @@ function App() {
         duration: 0.7,
         stagger: 0.08,
         ease: "power4.out",
-
         scrollTrigger: {
           trigger: aboutHeadingRef.current,
           start: "top 80%",
@@ -236,18 +241,19 @@ function App() {
         },
       }
     );
-
-    
-  }, aboutHeadingRef);
+  }, aboutHeadingRef); // Scoped safely inside the heading container
 
   return () => ctx.revert();
 }, []);
 
-
+// 3. Tech Letters (Skills Section)
 useEffect(() => {
+  const letters = document.querySelectorAll(".tech-letter");
+  if (!letters.length) return;
+
   const ctx = gsap.context(() => {
     gsap.fromTo(
-      ".tech-letter",
+      letters,
       {
         opacity: 0,
         y: 50,
@@ -260,9 +266,8 @@ useEffect(() => {
         duration: 0.7,
         stagger: 0.08,
         ease: "power4.out",
-
         scrollTrigger: {
-          trigger: ".tech-letter",
+          trigger: letters[0].closest("h2") || letters[0],
           start: "top 80%",
           toggleActions: "restart none restart none",
         },
