@@ -69,15 +69,32 @@ export function ContactGlobe({ darkMode }) {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  // Re-orient camera and rotation on mount or theme change
+  // Update controls and camera view
   useEffect(() => {
     if (!globeRef.current) return;
+
     const controls = globeRef.current.controls();
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.5;
-    controls.enableZoom = false;
+    if (controls) {
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.5;
+      controls.enableZoom = false;
+    }
+
     globeRef.current.pointOfView({ lat: 24.86, lng: 67.0, altitude: 2.1 }, 0);
   }, [darkMode]);
+
+  // Clean up WebGL on unmount to prevent context leaks
+  useEffect(() => {
+    return () => {
+      if (globeRef.current) {
+        const renderer = globeRef.current.renderer?.();
+        if (renderer) {
+          renderer.dispose();
+          renderer.forceContextLoss();
+        }
+      }
+    };
+  }, []);
 
   const markerData = [
     {
@@ -88,8 +105,7 @@ export function ContactGlobe({ darkMode }) {
     },
   ];
 
-   
- return (
+  return (
     <div
       ref={containerRef}
       className="gsap-reveal relative w-full flex flex-col items-center justify-center"
@@ -112,7 +128,7 @@ export function ContactGlobe({ darkMode }) {
             darkMode ? "border-indigo-500/25" : "border-sky-500/30"
           }`}
         />
-        
+
         {/* Subtle inner accent ring */}
         <div
           className={`absolute -inset-6 sm:-inset-9 rounded-full border transition-colors duration-500 ${
@@ -120,9 +136,8 @@ export function ContactGlobe({ darkMode }) {
           }`}
         />
 
-        {/* WebGL Globe */}
+        {/* WebGL Globe (Removed the key prop to prevent context recreate loop) */}
         <Globe
-          key={darkMode ? "globe-night" : "globe-day"}
           ref={globeRef}
           width={size}
           height={size}
