@@ -1368,148 +1368,231 @@ useEffect(() => {
 </section>
 
       {/* SECTION 4: PROJECTS */}
-      <section id="project" className="panel-section py-24 max-w-7xl mx-auto px-6 md:px-12 relative overflow-hidden min-h-screen">
-        <div className={`absolute top-1/2 right-0 w-96 h-96 rounded-full opacity-15 pointer-events-none hidden md:block filter blur-[150px] ${
-          darkMode ? "bg-purple-600" : "bg-purple-200"
-        }`} />
-
-       <div className="gsap-reveal text-center mb-16">
-  <h2
-    className={`text-3xl md:text-5xl font-black tracking-tight ${
-      darkMode ? "text-white" : "text-slate-950"
+<section
+  id="project"
+  className={`panel-section py-28 max-w-7xl mx-auto px-6 md:px-12 relative overflow-hidden min-h-screen transition-colors duration-500 ${
+    darkMode ? "text-slate-100" : "text-slate-900"
+  }`}
+>
+  {/* Ambient Background Radial */}
+  <div
+    className={`absolute top-1/3 -right-24 w-[500px] h-[500px] rounded-full filter blur-[160px] opacity-10 pointer-events-none ${
+      darkMode ? "bg-indigo-500" : "bg-purple-300"
     }`}
-  >
-    {"Projects".split("").map((letter, index) => (
-      <span key={index} className="project-letter inline-block">
-        {letter}
-      </span>
-    ))}
-  </h2>
-</div>
+  />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {MyProjects.map((project, index) => (
+  {/* Section Header */}
+  <div className="gsap-reveal mb-20 text-center md:text-left">
+    <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
+      Featured Engineering
+    </span>
+    <h2
+      className={`text-4xl sm:text-6xl md:text-7xl font-['Black_Ops_One'] uppercase tracking-wider ${
+        darkMode ? "text-white" : "text-slate-950"
+      }`}
+    >
+      {"Selected".split("").map((letter, index) => (
+        <span key={index} className="project-letter inline-block">
+          {letter}
+        </span>
+      ))}
+      <span className="text-indigo-500">
+        {" Projects".split("").map((letter, index) => (
+          <span key={index} className="project-letter inline-block">
+            {letter === " " ? "\u00A0" : letter}
+          </span>
+        ))}
+      </span>
+    </h2>
+  </div>
+
+  {/* Projects Showcase Grid */}
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
+    {MyProjects.map((project, index) => {
+      const sourceEntries = Object.entries(project.source || {}).filter(([_, url]) => Boolean(url));
+      const hasMultipleRepos = sourceEntries.length > 1;
+      const singleRepoUrl = sourceEntries.length === 1 ? sourceEntries[0][1] : null;
+
+      return (
+        <div
+          key={index}
+          className="gsap-reveal group flex flex-col justify-between transition-all duration-300"
+        >
+          <div>
+            {/* Top Viewport Mockup Header */}
             <div
-              key={index}
-              className={`gsap-reveal group border rounded-2xl flex flex-col overflow-hidden transition-all duration-300 relative ${
-                darkMode 
-                  ? "bg-gradient-to-b from-slate-900/60 to-slate-900/20 border-white/[0.05] hover:border-white/10 shadow-xl shadow-black/20" 
-                  : "bg-slate-50 border-slate-200/80 shadow-md shadow-slate-100/80 hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300"
+              className={`flex items-center justify-between px-4 py-2.5 rounded-t-xl transition-colors duration-300 ${
+                darkMode ? "bg-slate-900/60" : "bg-slate-200/60"
               }`}
             >
-              {/* Image Wrapper */}
-              <div className={`h-48 relative overflow-hidden border-b transition-colors duration-300 ${
-                darkMode ? "bg-slate-950 border-white/[0.05]" : "bg-slate-50 border-slate-100"
-              }`}>
-                <img
-                  src={project.img}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-105"
-                  alt={project.title}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 mix-blend-multiply" />
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
               </div>
+              <span className="text-[11px] font-mono tracking-wider text-slate-500 uppercase">
+                {String(index + 1).padStart(2, "0")} / showcase
+              </span>
+            </div>
 
-              {/* Project Details */}
-              <div className="p-6 flex flex-col flex-grow relative">
-                <h4 className={`font-bold text-xl mb-2.5 tracking-tight transition-colors ${
-                  darkMode ? "text-slate-100 group-hover:text-white" : "text-slate-900 group-hover:text-indigo-950"
-                }`}>
-                  {project.title}
-                </h4>
+            {/* Media Canvas */}
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative h-52 overflow-hidden rounded-b-xl cursor-pointer"
+            >
+              <img
+                src={project.img}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                alt={project.title}
+              />
+              {/* Subtle Ambient Contrast Overlay */}
+              <div
+                className={`absolute inset-0 transition-opacity duration-300 ${
+                  darkMode
+                    ? "bg-slate-950/20 group-hover:bg-slate-950/0"
+                    : "bg-slate-900/10 group-hover:bg-transparent"
+                }`}
+              />
 
-                <p className={`text-xs tracking-tight text-left mb-4 line-clamp-4 transition-colors ${
-                  darkMode ? "text-slate-400 group-hover:text-slate-300" : "text-slate-600 group-hover:text-slate-700"
-                }`}>
-                  {project.desc}
-                </p>
+              {/* Hover Launch Pill */}
+              <div className="absolute bottom-3 right-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-600/90 text-white text-[11px] font-medium backdrop-blur-md shadow-lg shadow-indigo-600/30">
+                  <FaRegEye size={12} />
+                  Launch
+                </span>
+              </div>
+            </a>
 
-                {/* Minimal Tech Pill Row */}
-                <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className={`text-[10px] font-medium px-2 py-1 rounded-lg border transition-all duration-300 ${
-                        darkMode
-                          ? "bg-slate-900/80 border-slate-800 text-slate-300 group-hover:border-slate-700"
-                          : "bg-slate-50 border-slate-200/60 text-slate-600 group-hover:border-slate-300"
-                      }`}
-                    >
-                      <span className="inline-flex items-center gap-1">
-                        {TechIcons[tech] && <span className="opacity-80">{TechIcons[tech]}</span>}
-                        {tech}
-                      </span>
-                    </span>
-                  ))}
-                </div>
+            {/* Title & Description */}
+            <div className="pt-6">
+              <h3
+                className={`font-bold text-xl mb-2.5 tracking-tight transition-colors duration-200 ${
+                  darkMode ? "text-slate-100 group-hover:text-indigo-400" : "text-slate-900 group-hover:text-indigo-600"
+                }`}
+              >
+                {project.title}
+              </h3>
 
-                {/* Action Buttons Footer Row */}
-                <div className={`flex gap-3 items-center border-t pt-4 ${darkMode ? "border-white/[0.05]" : "border-slate-100"}`}>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-500 text-xs font-bold transition-all shadow-md shadow-indigo-600/10 active:scale-95"
+              <p
+                className={`text-sm leading-relaxed mb-5 line-clamp-3 ${
+                  darkMode ? "text-slate-400" : "text-slate-600"
+                }`}
+              >
+                {project.desc}
+              </p>
+
+              {/* Minimal Tech Stack Pills */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className={`inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-1 rounded-md transition-colors duration-200 ${
+                      darkMode
+                        ? "bg-slate-900/80 text-slate-300 hover:text-white"
+                        : "bg-slate-100 text-slate-700 hover:text-slate-950"
+                    }`}
                   >
-                    <FaRegEye size={14} />
-                    <span>Live Demo</span>
-                  </a>
-
-                  {/* Dropdown Container */}
-                  <div className="relative flex-grow">
-                    <button
-                      onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-xs font-bold transition-all duration-200 ${
-                        darkMode
-                          ? "bg-slate-900/60 hover:bg-slate-800 text-slate-300 border-white/[0.05] hover:border-white/10"
-                          : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200/80"
-                      }`}
-                    >
-                      <span className="flex items-center gap-2">
-                        <FaGithub size={14} /> Source Code
-                      </span>
-                      <FaChevronDown size={10} className={`opacity-70 transition-transform duration-200 ${dropdownOpen === index ? "rotate-180" : ""}`} />
-                    </button>
-
-                    {/* Dropdown Menu */}
-                    {dropdownOpen === index && (
-                      <div
-                        className={`absolute left-0 bottom-full mb-2 w-full border rounded-xl shadow-2xl z-30 overflow-hidden ${
-                          darkMode 
-                            ? "bg-slate-950 border-white/10 md:backdrop-blur-lg md:bg-slate-950/95" 
-                            : "bg-slate-50 border-slate-200 shadow-slate-300/40 md:backdrop-blur-lg md:bg-white/95"
-                        }`}
-                      >
-                        {Object.entries(project.source || {}).map(([key, url]) => {
-                          const readableLabel = key.replace(/([A-Z])/g, ' $1').trim();
-                          return (
-                            url && (
-                              <a
-                                key={key}
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`block px-4 py-2.5 text-xs font-semibold border-b last:border-none transition-colors ${
-                                  darkMode
-                                    ? "text-slate-300 hover:bg-white/[0.04] hover:text-white border-white/[0.05]"
-                                    : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600 border-slate-100"
-                                }`}
-                              >
-                                {readableLabel.charAt(0).toUpperCase() + readableLabel.slice(1)}
-                              </a>
-                            )
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
+                    {TechIcons[tech] && <span className="opacity-75">{TechIcons[tech]}</span>}
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Footer Action Controls */}
+          <div
+            className={`pt-4 border-t flex items-center gap-3 ${
+              darkMode ? "border-slate-800/80" : "border-slate-200"
+            }`}
+          >
+            {/* Live Demo Link */}
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white text-xs font-semibold tracking-wide transition-all duration-200"
+            >
+              <FaRegEye size={13} />
+              <span>Live Preview</span>
+            </a>
+
+            {/* Source Code: Direct Single Repo or Multi-Repo Dropdown */}
+            {hasMultipleRepos ? (
+              <div className="relative flex-grow">
+                <button
+                  type="button"
+                  onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
+                  className={`w-full flex items-center justify-between px-3.5 py-2 rounded-lg text-xs font-semibold transition-all duration-200 ${
+                    darkMode
+                      ? "bg-slate-900/40 hover:bg-slate-900 text-slate-300"
+                      : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <FaGithub size={13} /> Repositories
+                  </span>
+                  <FaChevronDown
+                    size={10}
+                    className={`opacity-70 transition-transform duration-200 ${
+                      dropdownOpen === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {dropdownOpen === index && (
+                  <div
+                    className={`absolute left-0 bottom-full mb-2 w-full rounded-xl border backdrop-blur-xl shadow-2xl z-30 overflow-hidden ${
+                      darkMode
+                        ? "bg-slate-950/95 border-slate-800 text-slate-200"
+                        : "bg-white/95 border-slate-200 text-slate-800"
+                    }`}
+                  >
+                    {sourceEntries.map(([key, url]) => {
+                      const readableLabel = key.replace(/([A-Z])/g, " $1").trim();
+                      return (
+                        <a
+                          key={key}
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`block px-4 py-2.5 text-xs font-medium border-b last:border-none transition-colors ${
+                            darkMode
+                              ? "hover:bg-indigo-500/10 hover:text-indigo-400 border-slate-800/80"
+                              : "hover:bg-slate-50 hover:text-indigo-600 border-slate-100"
+                          }`}
+                        >
+                          {readableLabel.charAt(0).toUpperCase() + readableLabel.slice(1)}
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            ) : singleRepoUrl ? (
+              <a
+                href={singleRepoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all duration-200 flex-grow ${
+                  darkMode
+                    ? "bg-slate-900/40 hover:bg-slate-900 text-slate-300 hover:text-white"
+                    : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                }`}
+              >
+                <FaGithub size={13} />
+                <span>Code</span>
+              </a>
+            ) : null}
+          </div>
         </div>
-      </section>
+      );
+    })}
+  </div>
+</section>
 
       {/* SECTION 5: CONTACT */}
 <section
