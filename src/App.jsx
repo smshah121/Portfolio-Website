@@ -47,7 +47,7 @@ export function ContactGlobe({ darkMode }) {
 
 
   // Preload textures immediately into browser cache to eliminate lag
-  useEffect(() => {
+ useEffect(() => {
     [NIGHT_TEXTURE, DAY_TEXTURE, TOPOLOGY_TEXTURE].forEach((src) => {
       const img = new Image();
       img.src = src;
@@ -89,39 +89,38 @@ export function ContactGlobe({ darkMode }) {
   ];
 
    
-  return (
+ return (
     <div
       ref={containerRef}
-      className={`gsap-reveal relative w-full p-4 sm:p-8 flex flex-col items-center justify-center overflow-hidden rounded-3xl border transition-colors duration-500 ${
-        darkMode
-          ? "bg-slate-950/20 border-slate-950 shadow-2xl shadow-indigo-950/30"
-          : "bg-slate-50/20 border-slate-50 shadow-xl shadow-slate-200/60 backdrop-blur-xl"
-      }`}
+      className="gsap-reveal relative w-full flex flex-col items-center justify-center"
     >
-      {/* Ambient glow */}
+      {/* Ambient background glow */}
       <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-[80px] pointer-events-none transition-colors duration-500 ${
-          darkMode ? "bg-indigo-500/20" : "bg-sky-400/25"
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 rounded-full blur-[100px] pointer-events-none transition-colors duration-500 ${
+          darkMode ? "bg-indigo-600/20" : "bg-sky-400/20"
         }`}
       />
 
-      {/* Decorative rotating ring frame */}
+      {/* Decorative rotating orbital ring frame */}
       <div
         className="relative flex items-center justify-center max-w-full"
         style={{ width: size, height: size }}
       >
+        {/* Dashed outer orbit */}
         <div
-          className={`absolute -inset-2 sm:-inset-4 rounded-full border border-dashed animate-[spin_60s_linear_infinite] transition-colors duration-500 ${
-            darkMode ? "border-indigo-500/30" : "border-sky-500/40"
+          className={`absolute -inset-3 sm:-inset-5 rounded-full border border-dashed animate-[spin_60s_linear_infinite] transition-colors duration-500 ${
+            darkMode ? "border-indigo-500/25" : "border-sky-500/30"
           }`}
         />
+        
+        {/* Subtle inner accent ring */}
         <div
-          className={`absolute -inset-5 sm:-inset-8 rounded-full border transition-colors duration-500 ${
-            darkMode ? "border-white/5" : "border-slate-200"
+          className={`absolute -inset-6 sm:-inset-9 rounded-full border transition-colors duration-500 ${
+            darkMode ? "border-white/[0.03]" : "border-slate-300/40"
           }`}
         />
 
-        {/* key prop forces an immediate WebGL context repaint on both mobile and desktop */}
+        {/* WebGL Globe */}
         <Globe
           key={darkMode ? "globe-night" : "globe-day"}
           ref={globeRef}
@@ -144,10 +143,10 @@ export function ContactGlobe({ darkMode }) {
 
       {/* Location badge */}
       <div
-        className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[11px] sm:text-xs font-semibold text-center max-w-full transition-colors duration-300 ${
+        className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] sm:text-xs font-semibold text-center max-w-full transition-colors duration-300 ${
           darkMode
-            ? "bg-slate-950/20 border-indigo-500/30 text-slate-200 shadow-md"
-            : "bg-slate-100/20 border-slate-200 text-slate-800 shadow-md shadow-sky-100"
+            ? "bg-slate-900/60 border border-indigo-500/30 text-slate-200"
+            : "bg-slate-100/80 border border-slate-200 text-slate-800"
         }`}
       >
         <span className="relative flex h-2 w-2 shrink-0">
@@ -1267,9 +1266,7 @@ useEffect(() => {
   <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
     {/* Section Header */}
     <div className="gsap-reveal mb-20 text-center md:text-left">
-      <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
-        Capabilities & Toolkit
-      </span>
+    
       <h2
         className={`text-4xl sm:text-6xl md:text-7xl font-['Black_Ops_One'] uppercase tracking-wider ${
           darkMode ? "text-white" : "text-slate-950"
@@ -1383,15 +1380,13 @@ useEffect(() => {
 
   {/* Section Header */}
   <div className="gsap-reveal mb-20 text-center md:text-left">
-    <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
-      Featured Engineering
-    </span>
+   
     <h2
       className={`text-4xl sm:text-6xl md:text-7xl font-['Black_Ops_One'] uppercase tracking-wider ${
         darkMode ? "text-white" : "text-slate-950"
       }`}
     >
-      {"Selected".split("").map((letter, index) => (
+      {"Featured".split("").map((letter, index) => (
         <span key={index} className="project-letter inline-block">
           {letter}
         </span>
@@ -1596,130 +1591,166 @@ useEffect(() => {
 
       {/* SECTION 5: CONTACT */}
 <section
-      id="contact"
-      className={`panel-section py-20 md:py-28 border-t min-h-screen flex items-center overflow-x-hidden ${
-        darkMode ? "bg-slate-950/20 border-white/5" : "bg-slate-100/20 border-slate-200"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 w-full">
-         <div className="text-center mb-12">
-   
-    <h2
-  className={`text-3xl md:text-5xl font-black tracking-tight ${
-    darkMode ? "text-white" : "text-slate-950"
+  id="contact"
+  className={`panel-section py-20 md:py-28 min-h-screen flex items-center overflow-x-hidden transition-colors duration-500 ${
+    darkMode ? "text-slate-100" : "text-slate-900"
   }`}
 >
-  {"Let's Connect".split("").map((letter, index) => (
-    <span key={index} className="connect-letter inline-block">
-      {letter === " " ? "\u00A0" : letter}
-    </span>
-  ))}
-</h2>
+  {/* Ambient Background Glow */}
+  <div
+    className={`absolute bottom-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full filter blur-[160px] opacity-10 pointer-events-none ${
+      darkMode ? "bg-indigo-600" : "bg-indigo-300"
+    }`}
+  />
 
-    <p
-      className={`mt-3 max-w-xl mx-auto text-sm md:text-sm ${
-        darkMode ? "text-slate-400" : "text-slate-500"
-      }`}
-    >
-     Open to software engineering roles, internships, collaborations, and freelance projects.
-    </p>
-  </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-          
-          
-          {/* Globe Container */}
-          <div className="w-full flex justify-center">
-            
-            <ContactGlobe darkMode={darkMode} />
-          </div>
+  <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
+    {/* Section Header: Pure "Let's Connect" without the top text */}
+    <div className="gsap-reveal mb-14 text-left">
+      <h2
+        className={`text-4xl sm:text-6xl md:text-7xl font-['Black_Ops_One'] uppercase tracking-wider ${
+          darkMode ? "text-white" : "text-slate-950"
+        }`}
+      >
+        {"Let's".split("").map((letter, index) => (
+          <span key={index} className="connect-letter inline-block">
+            {letter}
+          </span>
+        ))}
+        <span className="text-indigo-500">
+          {" Connect".split("").map((letter, index) => (
+            <span key={index} className="connect-letter inline-block">
+              {letter === " " ? "\u00A0" : letter}
+            </span>
+          ))}
+        </span>
+      </h2>
+      <p
+        className={`mt-4 max-w-xl text-sm md:text-base leading-relaxed ${
+          darkMode ? "text-slate-400" : "text-slate-600"
+        }`}
+      >
+        Open to software engineering roles, internships, collaborations, and freelance projects.
+      </p>
+    </div>
 
-          {/* Form Container */}
-          <div
-            className={`gsap-reveal border rounded-3xl p-6 sm:p-8 shadow-xl border-t-4 border-t-indigo-600 w-full ${
-              darkMode ? "bg-slate-900/40 border-white/5" : "bg-slate-100 border-slate-200"
-            }`}
-          >
-            <form onSubmit={sendEmail} className="space-y-4">
-              <div>
-                <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-                  Name
-                </label>
-                <input
-                  className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
-                    darkMode
-                      ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500"
-                      : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
-                  }`}
-                  type="text"
-                  name="name"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-                  Email
-                </label>
-                <input
-                  className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
-                    darkMode
-                      ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500"
-                      : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
-                  }`}
-                  type="email"
-                  name="email"
-                  placeholder="john@example.com"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-                  Subject
-                </label>
-                <input
-                  className={`w-full border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
-                    darkMode
-                      ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500"
-                      : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
-                  }`}
-                  type="text"
-                  name="title"
-                  placeholder="Project Inquiry"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className={`block text-[10px] font-mono font-bold uppercase tracking-widest mb-1.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-                  Message
-                </label>
-                <textarea
-                  className={`w-full h-24 border rounded-xl p-3 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none ${
-                    darkMode
-                      ? "bg-slate-950 border-white/10 text-white focus:border-indigo-500"
-                      : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600"
-                  }`}
-                  name="message"
-                  placeholder="Tell me about your project, idea, or requirements..."
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md shadow-indigo-600/10 text-xs tracking-wider uppercase cursor-pointer"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-
+    {/* Content Grid: Globe and Form aligned side-by-side */}
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      {/* Left Column: Globe & Bottom Direct Points */}
+      <div className="lg:col-span-6 flex flex-col justify-between h-full">
+        <div className="w-full flex justify-center items-center">
+          <ContactGlobe darkMode={darkMode} />
         </div>
+
+        {/* Quick Contact Micro-Row */}
+        
       </div>
-    </section>
+
+      {/* Right Column: Form slightly pushed down to visually center with Globe */}
+      <div className="lg:col-span-6 pt-2 md:pt-14">
+        <form onSubmit={sendEmail} className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {/* 01 / Name */}
+            <div>
+              <label
+                className={`block text-[11px] font-mono font-bold uppercase tracking-wider mb-2 ${
+                  darkMode ? "text-slate-400" : "text-slate-600"
+                }`}
+              >
+                01 / Name
+              </label>
+              <input
+                className={`w-full px-4 py-3 text-sm rounded-lg border transition-all duration-200 outline-none ${
+                  darkMode
+                    ? "bg-slate-900/40 border-slate-800 text-white placeholder-slate-600 focus:border-indigo-500 focus:bg-slate-900/80"
+                    : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
+                }`}
+                type="text"
+                name="name"
+                placeholder="Syed Momin"
+                required
+              />
+            </div>
+
+            {/* 02 / Email */}
+            <div>
+              <label
+                className={`block text-[11px] font-mono font-bold uppercase tracking-wider mb-2 ${
+                  darkMode ? "text-slate-400" : "text-slate-600"
+                }`}
+              >
+                02 / Email
+              </label>
+              <input
+                className={`w-full px-4 py-3 text-sm rounded-lg border transition-all duration-200 outline-none ${
+                  darkMode
+                    ? "bg-slate-900/40 border-slate-800 text-white placeholder-slate-600 focus:border-indigo-500 focus:bg-slate-900/80"
+                    : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
+                }`}
+                type="email"
+                name="email"
+                placeholder="momin@example.com"
+                required
+              />
+            </div>
+          </div>
+
+          {/* 03 / Subject */}
+          <div>
+            <label
+              className={`block text-[11px] font-mono font-bold uppercase tracking-wider mb-2 ${
+                darkMode ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
+              03 / Subject
+            </label>
+            <input
+              className={`w-full px-4 py-3 text-sm rounded-lg border transition-all duration-200 outline-none ${
+                darkMode
+                  ? "bg-slate-900/40 border-slate-800 text-white placeholder-slate-600 focus:border-indigo-500 focus:bg-slate-900/80"
+                  : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
+              }`}
+              type="text"
+              name="title"
+              placeholder="Full-Stack Engineering Opportunity / Project Discussion"
+              required
+            />
+          </div>
+
+          {/* 04 / Message */}
+          <div>
+            <label
+              className={`block text-[11px] font-mono font-bold uppercase tracking-wider mb-2 ${
+                darkMode ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
+              04 / Message
+            </label>
+            <textarea
+              rows={5}
+              className={`w-full px-4 py-3 text-sm rounded-lg border transition-all duration-200 outline-none resize-none ${
+                darkMode
+                  ? "bg-slate-900/40 border-slate-800 text-white placeholder-slate-600 focus:border-indigo-500 focus:bg-slate-900/80"
+                  : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
+              }`}
+              name="message"
+              placeholder="Tell me about your tech stack, requirements, or vision..."
+              required
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-md shadow-indigo-600/20 active:scale-98 cursor-pointer"
+          >
+            <span>Send Message</span>
+            <span className="text-base leading-none">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* FOOTER */}
       <footer className={`border-t py-6 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950/20 border-white/5 text-slate-500" : "bg-slate-50/20 border-slate-200 text-slate-400"}`}>
