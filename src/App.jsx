@@ -47,7 +47,7 @@ export function ContactGlobe({ darkMode }) {
 
 
   // Preload textures immediately into browser cache to eliminate lag
- useEffect(() => {
+  useEffect(() => {
     [NIGHT_TEXTURE, DAY_TEXTURE, TOPOLOGY_TEXTURE].forEach((src) => {
       const img = new Image();
       img.src = src;
@@ -69,32 +69,15 @@ export function ContactGlobe({ darkMode }) {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  // Update controls and camera view
+  // Re-orient camera and rotation on mount or theme change
   useEffect(() => {
     if (!globeRef.current) return;
-
     const controls = globeRef.current.controls();
-    if (controls) {
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = 0.5;
-      controls.enableZoom = false;
-    }
-
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.5;
+    controls.enableZoom = false;
     globeRef.current.pointOfView({ lat: 24.86, lng: 67.0, altitude: 2.1 }, 0);
   }, [darkMode]);
-
-  // Clean up WebGL on unmount to prevent context leaks
-  useEffect(() => {
-    return () => {
-      if (globeRef.current) {
-        const renderer = globeRef.current.renderer?.();
-        if (renderer) {
-          renderer.dispose();
-          renderer.forceContextLoss();
-        }
-      }
-    };
-  }, []);
 
   const markerData = [
     {
@@ -105,38 +88,35 @@ export function ContactGlobe({ darkMode }) {
     },
   ];
 
+   
   return (
-    <div
+   <div
       ref={containerRef}
       className="gsap-reveal relative w-full flex flex-col items-center justify-center"
     >
-      {/* Ambient background glow */}
+      {/* Ambient glow */}
       <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 rounded-full blur-[100px] pointer-events-none transition-colors duration-500 ${
-          darkMode ? "bg-indigo-600/20" : "bg-sky-400/20"
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-[80px] pointer-events-none transition-colors duration-500 ${
+          darkMode ? "bg-indigo-500/20" : "bg-sky-400/25"
         }`}
       />
 
-      {/* Decorative rotating orbital ring frame */}
+      {/* Decorative rotating ring frame */}
       <div
         className="relative flex items-center justify-center max-w-full"
         style={{ width: size, height: size }}
       >
-        {/* Dashed outer orbit */}
         <div
-          className={`absolute -inset-3 sm:-inset-5 rounded-full border border-dashed animate-[spin_60s_linear_infinite] transition-colors duration-500 ${
-            darkMode ? "border-indigo-500/25" : "border-sky-500/30"
+          className={`absolute -inset-2 sm:-inset-4 rounded-full border border-dashed animate-[spin_60s_linear_infinite] transition-colors duration-500 ${
+            darkMode ? "border-indigo-500/30" : "border-sky-500/40"
+          }`}
+        />
+        <div
+          className={`absolute -inset-5 sm:-inset-8 rounded-full border transition-colors duration-500 ${
+            darkMode ? "border-white/5" : "border-slate-200"
           }`}
         />
 
-        {/* Subtle inner accent ring */}
-        <div
-          className={`absolute -inset-6 sm:-inset-9 rounded-full border transition-colors duration-500 ${
-            darkMode ? "border-white/[0.03]" : "border-slate-300/40"
-          }`}
-        />
-
-        {/* WebGL Globe (Removed the key prop to prevent context recreate loop) */}
         <Globe
           ref={globeRef}
           width={size}
@@ -158,10 +138,10 @@ export function ContactGlobe({ darkMode }) {
 
       {/* Location badge */}
       <div
-        className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] sm:text-xs font-semibold text-center max-w-full transition-colors duration-300 ${
+        className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[11px] sm:text-xs font-semibold text-center max-w-full transition-colors duration-300 ${
           darkMode
-            ? "bg-slate-900/60 border border-indigo-500/30 text-slate-200"
-            : "bg-slate-100/80 border border-slate-200 text-slate-800"
+            ? "bg-slate-900/40 border-indigo-500/30 text-slate-200"
+            : "bg-slate-100/70 border-slate-200 text-slate-800"
         }`}
       >
         <span className="relative flex h-2 w-2 shrink-0">
@@ -183,14 +163,10 @@ function App() {
   const aboutHeadingRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
 
-// 1. Connect Letters (Contact Section)
-useEffect(() => {
-  const letters = document.querySelectorAll(".connect-letter");
-  if (!letters.length) return;
-
+  useEffect(() => {
   const ctx = gsap.context(() => {
     gsap.fromTo(
-      letters,
+      ".connect-letter",
       {
         opacity: 0,
         y: 50,
@@ -203,8 +179,9 @@ useEffect(() => {
         duration: 0.7,
         stagger: 0.08,
         ease: "power4.out",
+
         scrollTrigger: {
-          trigger: letters[0].closest("h2") || letters[0], // Target the heading container, not a NodeList
+          trigger: ".connect-letter",
           start: "top 80%",
           toggleActions: "restart none restart none",
         },
@@ -215,13 +192,15 @@ useEffect(() => {
   return () => ctx.revert();
 }, []);
 
-// 2. About Letters (About Section)
-useEffect(() => {
-  if (!aboutHeadingRef.current) return;
+  useEffect(() => {
+  if (!aboutHeadingRef.current) return; // ✅ Guard against null ref
+
+  const letters = aboutHeadingRef.current.querySelectorAll(".about-letter");
+  if (!letters.length) return;
 
   const ctx = gsap.context(() => {
     gsap.fromTo(
-      ".about-letter",
+      letters,
       {
         opacity: 0,
         y: 60,
@@ -235,18 +214,18 @@ useEffect(() => {
         stagger: 0.08,
         ease: "power4.out",
         scrollTrigger: {
-          trigger: aboutHeadingRef.current,
+          trigger: aboutHeadingRef.current, // ✅ Safe single node trigger
           start: "top 80%",
           toggleActions: "restart none restart none",
         },
       }
     );
-  }, aboutHeadingRef); // Scoped safely inside the heading container
+  }, aboutHeadingRef);
 
   return () => ctx.revert();
 }, []);
 
-// 3. Tech Letters (Skills Section)
+// 2. Tech Stack Letters
 useEffect(() => {
   const letters = document.querySelectorAll(".tech-letter");
   if (!letters.length) return;
@@ -267,7 +246,7 @@ useEffect(() => {
         stagger: 0.08,
         ease: "power4.out",
         scrollTrigger: {
-          trigger: letters[0].closest("h2") || letters[0],
+          trigger: letters[0].closest("h2") || letters[0], // ✅ Target the parent <h2> container
           start: "top 80%",
           toggleActions: "restart none restart none",
         },
@@ -634,10 +613,13 @@ useEffect(() => {
 
   
 
-  useEffect(() => {
+ useEffect(() => {
+  const letters = document.querySelectorAll(".project-letter");
+  if (!letters.length) return;
+
   const ctx = gsap.context(() => {
     gsap.fromTo(
-      ".project-letter",
+      letters,
       {
         opacity: 0,
         y: 50,
@@ -650,9 +632,8 @@ useEffect(() => {
         duration: 0.7,
         stagger: 0.08,
         ease: "power4.out",
-
         scrollTrigger: {
-          trigger: ".project-letter",
+          trigger: letters[0].closest("h2") || letters[0], // ✅ Target the parent <h2> container
           start: "top 80%",
           toggleActions: "restart none restart none",
         },
@@ -796,79 +777,97 @@ useEffect(() => {
 
  
 
-  useEffect(() => {
-    localStorage.setItem("portfolio-theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
+ // Theme Persistence
+useEffect(() => {
+  localStorage.setItem("portfolio-theme", darkMode ? "dark" : "light");
+}, [darkMode]);
 
-  // Pointer Tracker
-  useEffect(() => {
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
+// Pointer Tracker (High-Performance & Null-Safe)
+useEffect(() => {
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouchDevice) return;
 
-    const dot = cursorDotRef.current;
-    const ring = cursorRingRef.current;
+  const dot = cursorDotRef.current;
+  const ring = cursorRingRef.current;
+  if (!dot || !ring) return; // Guard against null targets
 
-    const onMouseMove = (e) => {
-      const { clientX: x, clientY: y } = e;
-      gsap.to(dot, { x, y, duration: 0.1, ease: "power2.out" });
-      gsap.to(ring, { x: x - 12, y: y - 12, duration: 0.25, ease: "power2.out" });
-    };
+  // quickTo is significantly smoother than creating new tweens per frame
+  const xDot = gsap.quickTo(dot, "x", { duration: 0.1, ease: "power2.out" });
+  const yDot = gsap.quickTo(dot, "y", { duration: 0.1, ease: "power2.out" });
+  const xRing = gsap.quickTo(ring, "x", { duration: 0.25, ease: "power2.out" });
+  const yRing = gsap.quickTo(ring, "y", { duration: 0.25, ease: "power2.out" });
 
-    window.addEventListener("mousemove", onMouseMove);
-    return () => window.removeEventListener("mousemove", onMouseMove);
-  }, []);
+  const onMouseMove = (e) => {
+    const { clientX: x, clientY: y } = e;
+    xDot(x);
+    yDot(y);
+    xRing(x - 12);
+    yRing(y - 12);
+  };
 
-  // GSAP 3D Page Fold Roll Engine
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const sections = gsap.utils.toArray(".panel-section");
+  window.addEventListener("mousemove", onMouseMove);
+  return () => window.removeEventListener("mousemove", onMouseMove);
+}, []);
 
-      sections.forEach((section, index) => {
-        gsap.set(section, { transformOrigin: "center top", transformPerspective: 1200 });
+// GSAP 3D Page Fold & Reveal Engine
+useEffect(() => {
+  const scopeElement = mainContainerRef?.current || document.body;
 
-        if (index < sections.length - 1) {
-          gsap.to(section, {
-            scale: 0.92,
-            rotateX: -10,
-            opacity: 0.2,
-            filter: "blur(8px)",
-            ease: "none",
-            scrollTrigger: {
-              trigger: section,
-              start: "bottom bottom",
-              end: "bottom top",
-              scrub: 1
-            }
-          });
-        }
+  const ctx = gsap.context(() => {
+    const sections = gsap.utils.toArray(".panel-section");
+    if (!sections.length) return;
 
-        
-
-        const innerItems = section.querySelectorAll(".gsap-reveal");
-        if (innerItems.length > 0) {
-          gsap.fromTo(innerItems, 
-            { y: 35, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.7,
-              stagger: 0.08,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: section,
-                start: "top 75%",
-                end: "bottom 15%",
-                toggleActions: "play reverse play reverse"
-              }
-            }
-          );
-        }
+    sections.forEach((section, index) => {
+      gsap.set(section, {
+        transformOrigin: "center top",
+        transformPerspective: 1200,
+        willChange: "transform, opacity, filter",
       });
 
-    }, mainContainerRef);
+      // 3D Fold Transition
+      if (index < sections.length - 1) {
+        gsap.to(section, {
+          scale: 0.92,
+          rotateX: -10,
+          opacity: 0.2,
+          filter: "blur(8px)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "bottom bottom",
+            end: "bottom top",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+      }
 
-    return () => ctx.revert();
-  }, []);
+      // Inner Elements Staggered Reveal
+      const innerItems = section.querySelectorAll(".gsap-reveal");
+      if (innerItems.length > 0) {
+        gsap.fromTo(
+          innerItems,
+          { y: 35, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 75%",
+              end: "bottom 15%",
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+      }
+    });
+  }, scopeElement);
+
+  return () => ctx.revert();
+}, []);
 
 
  useEffect(() => {
@@ -1286,7 +1285,7 @@ useEffect(() => {
   <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
     {/* Section Header */}
     <div className="gsap-reveal mb-20 text-center md:text-left">
-    
+     
       <h2
         className={`text-4xl sm:text-6xl md:text-7xl font-['Black_Ops_One'] uppercase tracking-wider ${
           darkMode ? "text-white" : "text-slate-950"
@@ -1400,9 +1399,9 @@ useEffect(() => {
 
   {/* Section Header */}
   <div className="gsap-reveal mb-20 text-center md:text-left">
-   
+    
     <h2
-      className={`text-4xl sm:text-6xl md:text-7xl font-['Black_Ops_One'] uppercase tracking-wider ${
+      className={`text-4xl sm:text-6xl md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
         darkMode ? "text-white" : "text-slate-950"
       }`}
     >
@@ -1771,6 +1770,7 @@ useEffect(() => {
     </div>
   </div>
 </section>
+
 
       {/* FOOTER */}
       <footer className={`border-t py-6 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950/20 border-white/5 text-slate-500" : "bg-slate-50/20 border-slate-200 text-slate-400"}`}>
