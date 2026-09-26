@@ -1455,7 +1455,7 @@ useEffect(() => {
             
             <div className={`hidden sm:block flex-1 mx-6 h-[1px] ${darkMode ? "bg-slate-800/80" : "bg-slate-200"}`} />
             
-            <span className={`text-[10px] md:text-[11px] font-mono tracking-wider uppercase ${
+            <span className={`text-[8px] md:text-[11px] font-mono tracking-wider uppercase ${
               darkMode ? "text-slate-500" : "text-slate-400"
             }`}>
               {block.stack.length} Technologies
