@@ -1014,15 +1014,29 @@ useEffect(() => {
       <section id="hero" className={`panel-section h-screen w-full relative flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-24 pb-6 ${
         darkMode ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950/40 via-slate-950 to-slate-950" : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100/50 via-slate-50 to-slate-50"
       }`}>
+        <div
+    className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[650px] h-[350px] rounded-full blur-[140px] pointer-events-none opacity-20 ${
+      darkMode ? "bg-indigo-600" : "bg-indigo-300"
+    }`}
+  />
         <div className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
-          <span className={`gsap-reveal inline-flex items-center gap-2 text-[8px] md:text-xs font-mono font-medium tracking-[0.2rem] mb-4 uppercase px-4 py-1 rounded-full border transition-all ${
-            darkMode ? "text-indigo-400 bg-indigo-500/10 border-indigo-500/20" : "text-indigo-600 bg-indigo-500/5 border-indigo-500/20"
-          }`}>
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-            Crafting Software
-          </span>
+          <div className="gsap-reveal mb-4">
+      <span
+        className={`inline-flex items-center gap-2.5 text-[10px] sm:text-xs font-mono font-medium tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border transition-all duration-300 ${
+          darkMode
+            ? "text-indigo-400 bg-indigo-500/10 border-indigo-500/20 shadow-sm shadow-indigo-950/40"
+            : "text-indigo-600 bg-indigo-500/5 border-indigo-500/20 shadow-sm"
+        }`}
+      >
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
+        </span>
+        Crafting Software
+      </span>
+    </div>
           
-          <h1 className={`gsap-reveal font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-none w-full max-w-none mx-auto whitespace-nowrap ${
+          <h1 className={`gsap-reveal font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-none w-full max-w-none mx-auto whitespace-nowrap ${
             darkMode ? "text-white" : "text-slate-900"
           }`}>
             Syed Momin <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]">Ali Shah</span>
@@ -1059,6 +1073,21 @@ useEffect(() => {
             <a href="mailto:smshah.2003@gmail.com" aria-label="Email via Gmail" className="hover:text-red-500 transition-colors transform hover:scale-110 duration-200"><IoMdMail size={22} /></a>
           </div>
         </div>
+        <div className="gsap-reveal z-10 pt-4 opacity-75 hover:opacity-100 transition-opacity">
+    <button
+      onClick={() => scrollToSection("about")}
+      className={`inline-flex flex-col items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest cursor-pointer transition-colors ${
+        darkMode ? "text-slate-500 hover:text-indigo-400" : "text-slate-400 hover:text-indigo-600"
+      }`}
+    >
+      <span>Scroll</span>
+      <div className={`w-4 h-7 rounded-full border flex items-start justify-center p-1 ${
+        darkMode ? "border-slate-700" : "border-slate-300"
+      }`}>
+        <div className="w-1 h-1.5 rounded-full bg-indigo-500 animate-bounce" />
+      </div>
+    </button>
+  </div>
       </section>
 
       {/* SECTION 2: ABOUT */}
@@ -1773,14 +1802,97 @@ useEffect(() => {
 
 
       {/* FOOTER */}
-      <footer className={`border-t py-6 text-center text-xs tracking-wide relative z-20 ${darkMode ? "bg-slate-950/20 border-white/5 text-slate-500" : "bg-slate-50/20 border-slate-200 text-slate-400"}`}>
-        <div className="flex justify-center gap-6 mb-4">
-          <a href="https://www.linkedin.com/in/smshah121" aria-label="Linkedin Profile" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors"><FaLinkedin size={20} /></a>
-          <a href="https://github.com/smshah121" aria-label="Github Profile" target="_blank" rel="noopener noreferrer" className={`transition-colors ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={20} /></a>
-          <a href="https://www.instagram.com/__smshah__" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors"><FaInstagram size={20} /></a>
-        </div>
-        <p className="font-semibold text-xs select-none">&copy;{new Date().getFullYear()} Syed Momin Ali Shah. All rights reserved.</p>
-      </footer>
+     <footer
+  className={`relative z-20 py-12 px-6 md:px-12 border-t transition-colors duration-500 ${
+    darkMode ? "border-slate-800/80 text-slate-400" : "border-slate-200 text-slate-600"
+  }`}
+>
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    
+    {/* Left Side: Brand, Role & Copyright */}
+    <div className="flex flex-col items-center md:items-start text-center md:text-left">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="font-['Black_Ops_One'] tracking-wider text-sm uppercase text-indigo-500">
+          SM SHAH
+        </span>
+        <span className={`text-xs ${darkMode ? "text-slate-600" : "text-slate-300"}`}>•</span>
+        <span className="text-xs font-mono tracking-wide uppercase opacity-75">
+          Full-Stack Engineer
+        </span>
+      </div>
+
+      <p className="text-xs font-medium tracking-normal select-none">
+        &copy; {new Date().getFullYear()} Syed Momin Ali Shah. All rights reserved.
+      </p>
+    </div>
+
+    {/* Right Side: Social Media Channels & Quick Scroll-to-Top */}
+    <div className="flex items-center gap-4">
+      {/* Social Links */}
+      <div className="flex items-center gap-2.5">
+        <a
+          href="https://www.linkedin.com/in/smshah121"
+          aria-label="LinkedIn Profile"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
+            darkMode
+              ? "bg-slate-900/60 text-slate-400 hover:text-indigo-400 hover:bg-slate-800"
+              : "bg-slate-100 text-slate-600 hover:text-indigo-600 hover:bg-slate-200"
+          }`}
+        >
+          <FaLinkedin size={16} />
+        </a>
+
+        <a
+          href="https://github.com/smshah121"
+          aria-label="GitHub Profile"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
+            darkMode
+              ? "bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800"
+              : "bg-slate-100 text-slate-600 hover:text-slate-950 hover:bg-slate-200"
+          }`}
+        >
+          <FaGithub size={16} />
+        </a>
+
+        <a
+          href="https://www.instagram.com/__smshah__"
+          aria-label="Instagram Profile"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
+            darkMode
+              ? "bg-slate-900/60 text-slate-400 hover:text-pink-400 hover:bg-slate-800"
+              : "bg-slate-100 text-slate-600 hover:text-pink-600 hover:bg-slate-200"
+          }`}
+        >
+          <FaInstagram size={16} />
+        </a>
+      </div>
+
+      {/* Vertical Divider */}
+      <span className={`h-4 w-[1px] ${darkMode ? "bg-slate-800" : "bg-slate-300"}`} />
+
+      {/* Back to Top Quick Action */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className={`group flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider px-3 py-2 rounded-lg transition-all duration-300 ${
+          darkMode
+            ? "hover:text-white text-slate-400 hover:bg-slate-900/60"
+            : "hover:text-slate-950 text-slate-600 hover:bg-slate-100"
+        }`}
+        aria-label="Scroll to top"
+      >
+        <span>Top</span>
+        <span className="transition-transform duration-300 group-hover:-translate-y-0.5">↑</span>
+      </button>
+    </div>
+
+  </div>
+</footer>
     </div>
   );
 }
