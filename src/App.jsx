@@ -1813,11 +1813,11 @@ useEffect(() => {
     <div className="flex flex-col items-center md:items-start text-center md:text-left">
       <div className="flex items-center gap-2 mb-2">
         <span className="font-['Black_Ops_One'] tracking-wider text-sm uppercase text-indigo-500">
-          SM SHAH
+          SMSHAH
         </span>
         <span className={`text-xs ${darkMode ? "text-slate-600" : "text-slate-300"}`}>•</span>
         <span className="text-xs font-mono tracking-wide uppercase opacity-75">
-          Full-Stack Engineer
+          Full-Stack Software Engineer
         </span>
       </div>
 
@@ -1844,6 +1844,37 @@ useEffect(() => {
           <FaLinkedin size={16} />
         </a>
 
+  
+
+
+
+
+         <a
+          href="mailto:smshah.2003@gmail.com"
+          aria-label="Email via Gmail"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
+            darkMode
+              ? "bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800"
+              : "bg-slate-100 text-slate-600 hover:text-slate-950 hover:bg-slate-200"
+          }`}
+        >
+          <IoMdMail size={16} />
+        </a>
+         <a
+          href="mailto:sm.shah2003@hotmail.com"
+          aria-label="Email via Outloook"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
+            darkMode
+              ? "bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800"
+              : "bg-slate-100 text-slate-600 hover:text-slate-950 hover:bg-slate-200"
+          }`}
+        >
+          <PiMicrosoftOutlookLogo size={16} />
+        </a>
         <a
           href="https://github.com/smshah121"
           aria-label="GitHub Profile"
