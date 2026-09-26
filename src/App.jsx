@@ -1077,7 +1077,7 @@ useEffect(() => {
 
     <h2
       ref={aboutHeadingRef}
-      className="font-['Black_Ops_One'] text-3xl sm:text-4xl md:text-5xl uppercase tracking-wider bg-clip-text text-indigo-500"
+      className="font-['Black_Ops_One'] text-4xl  md:text-7xl uppercase tracking-wider bg-clip-text text-indigo-500"
     >
       <span className={darkMode ? "text-gray-100" : "text-slate-900"}>
         {"About".split("").map((letter, index) => (
@@ -1287,7 +1287,7 @@ useEffect(() => {
     <div className="gsap-reveal mb-20 text-center md:text-left">
      
       <h2
-        className={`text-3xl sm:text-4xl md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
+        className={`text-3xl  md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
           darkMode ? "text-white" : "text-slate-950"
         }`}
       >
@@ -1401,7 +1401,7 @@ useEffect(() => {
   <div className="gsap-reveal mb-20 text-center md:text-left">
     
     <h2
-      className={`text-3xl sm:text-4xl md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
+      className={`text-4xl md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
         darkMode ? "text-white" : "text-slate-950"
       }`}
     >
@@ -1410,7 +1410,7 @@ useEffect(() => {
           {letter}
         </span>
       ))}
-      <span className="text-indigo-500">
+      <span className="text-indigo-500 block md:inline">
         {" Projects".split("").map((letter, index) => (
           <span key={index} className="project-letter inline-block">
             {letter === " " ? "\u00A0" : letter}
@@ -1624,9 +1624,9 @@ useEffect(() => {
 
   <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
     {/* Section Header: Pure "Let's Connect" without the top text */}
-    <div className="gsap-reveal mb-14 text-left">
+    <div className="gsap-reveal mb-14 text-center md:text-left">
       <h2
-        className={`text-3xl sm:text-4xl md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
+        className={`text-4xl md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
           darkMode ? "text-white" : "text-slate-950"
         }`}
       >
