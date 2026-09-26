@@ -1445,7 +1445,7 @@ useEffect(() => {
               </span>
               <span className={`h-3 w-[1px] ${darkMode ? "bg-slate-800" : "bg-slate-300"}`} />
               <h3
-                className={`text-sm md:text-base font-semibold tracking-wide uppercase font-mono ${
+                className={`text-sm md:text-base w-30 md:w-60 font-semibold tracking-wide uppercase font-mono ${
                   darkMode ? "text-slate-200" : "text-slate-800"
                 }`}
               >
