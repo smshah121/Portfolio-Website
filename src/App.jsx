@@ -38,23 +38,12 @@ const DAY_TEXTURE = "https://unpkg.com/three-globe/example/img/earth-blue-marble
 const TOPOLOGY_TEXTURE = "https://unpkg.com/three-globe/example/img/earth-topology.png";
 
 export function ContactGlobe({ darkMode }) {
-  const globeRef = useRef(null);
+ const nightGlobeRef = useRef(null);
+  const dayGlobeRef = useRef(null);
   const containerRef = useRef(null);
   const [size, setSize] = useState(280);
 
-
-  // Global Ambient Drifting Glow
-
-
-  // Preload textures immediately into browser cache to eliminate lag
-  useEffect(() => {
-    [NIGHT_TEXTURE, DAY_TEXTURE, TOPOLOGY_TEXTURE].forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
-
-  // Resize handler
+  // Responsive dynamic sizing
   useEffect(() => {
     const updateSize = () => {
       if (containerRef.current) {
@@ -69,28 +58,41 @@ export function ContactGlobe({ darkMode }) {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  // Re-orient camera and rotation on mount or theme change
+  // Setup controls & camera on both instances once on mount
   useEffect(() => {
-    if (!globeRef.current) return;
-    const controls = globeRef.current.controls();
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.5;
-    controls.enableZoom = false;
-    globeRef.current.pointOfView({ lat: 24.86, lng: 67.0, altitude: 2.1 }, 0);
-  }, [darkMode]);
+    [nightGlobeRef.current, dayGlobeRef.current].forEach((globe) => {
+      if (!globe) return;
+      const controls = globe.controls();
+      if (controls) {
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+        controls.enableZoom = false;
+      }
+      globe.pointOfView({ lat: 24.86, lng: 67.0, altitude: 2.1 }, 0);
+    });
+  }, []);
 
-  const markerData = [
+  const markerDataDark = [
     {
       lat: 24.8607,
       lng: 67.0011,
-      color: darkMode ? "#818cf8" : "#4f46e5",
+      color: "#818cf8",
+      label: "Karachi, Pakistan",
+    },
+  ];
+
+  const markerDataLight = [
+    {
+      lat: 24.8607,
+      lng: 67.0011,
+      color: "#4f46e5",
       label: "Karachi, Pakistan",
     },
   ];
 
    
   return (
-   <div
+  <div
       ref={containerRef}
       className="gsap-reveal relative w-full flex flex-col items-center justify-center transition-none"
     >
@@ -101,7 +103,7 @@ export function ContactGlobe({ darkMode }) {
         }`}
       />
 
-      {/* Decorative rotating ring frame */}
+      {/* Rotating orbit ring frame */}
       <div
         className="relative flex items-center justify-center max-w-full"
         style={{ width: size, height: size }}
@@ -117,23 +119,55 @@ export function ContactGlobe({ darkMode }) {
           }`}
         />
 
-        <Globe
-          ref={globeRef}
-          width={size}
-          height={size}
-          backgroundColor="rgba(0,0,0,0)"
-          globeImageUrl={darkMode ? NIGHT_TEXTURE : DAY_TEXTURE}
-          bumpImageUrl={TOPOLOGY_TEXTURE}
-          pointsData={markerData}
-          pointLat="lat"
-          pointLng="lng"
-          pointColor="color"
-          pointAltitude={0.03}
-          pointRadius={0.7}
-          pointLabel="label"
-          atmosphereColor={darkMode ? "#818cf8" : "#38bdf8"}
-          atmosphereAltitude={darkMode ? 0.25 : 0.18}
-        />
+        {/* Night Globe Layer */}
+        <div
+          className={`absolute inset-0 transition-opacity duration-150 ${
+            darkMode ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+          }`}
+        >
+          <Globe
+            ref={nightGlobeRef}
+            width={size}
+            height={size}
+            backgroundColor="rgba(0,0,0,0)"
+            globeImageUrl={NIGHT_TEXTURE}
+            bumpImageUrl={TOPOLOGY_TEXTURE}
+            pointsData={markerDataDark}
+            pointLat="lat"
+            pointLng="lng"
+            pointColor="color"
+            pointAltitude={0.03}
+            pointRadius={0.7}
+            pointLabel="label"
+            atmosphereColor="#818cf8"
+            atmosphereAltitude={0.2}
+          />
+        </div>
+
+        {/* Day Globe Layer */}
+        <div
+          className={`absolute inset-0 transition-opacity duration-150 ${
+            !darkMode ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+          }`}
+        >
+          <Globe
+            ref={dayGlobeRef}
+            width={size}
+            height={size}
+            backgroundColor="rgba(0,0,0,0)"
+            globeImageUrl={DAY_TEXTURE}
+            bumpImageUrl={TOPOLOGY_TEXTURE}
+            pointsData={markerDataLight}
+            pointLat="lat"
+            pointLng="lng"
+            pointColor="color"
+            pointAltitude={0.03}
+            pointRadius={0.7}
+            pointLabel="label"
+            atmosphereColor="#38bdf8"
+            atmosphereAltitude={0.2}
+          />
+        </div>
       </div>
 
       {/* Location badge */}
@@ -962,7 +996,7 @@ useEffect(() => {
       <canvas ref={smokeCanvasRef} className="fixed inset-0 pointer-events-none z-40 hidden md:block" />
       {/* Floating Centered Header Navigation Bar */}
       <header className="fixed top-0 left-0 w-full flex justify-center py-4 px-6 z-50 pointer-events-none">
-        <div className={`flex items-center gap-4 px-3 py-1.5 rounded-full border pointer-events-auto transition-all duration-300 shadow-xl ${
+        <div className={`flex items-center gap-4 px-3 py-1.5 rounded-full border pointer-events-auto transition-none shadow-xl ${
           scrolled 
             ? darkMode ? "bg-slate-900/80 border-white/10 backdrop-blur-md" : "bg-white/80 border-slate-200 backdrop-blur-md"
             : darkMode ? "bg-slate-900/40 border-white/5 backdrop-blur-sm" : "bg-white/40 border-slate-200/60 backdrop-blur-sm"
@@ -1767,7 +1801,7 @@ useEffect(() => {
                 01 / Name
               </label>
               <input
-                className={`w-full px-4 py-3 text-sm rounded-lg border transition-all duration-200 outline-none ${
+                className={`w-full px-4 py-3 text-sm rounded-lg border transition-none outline-none ${
                   darkMode
                     ? "bg-slate-900/40 border-slate-800 text-white placeholder-slate-600 focus:border-indigo-500 focus:bg-slate-900/80"
                     : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
@@ -1789,7 +1823,7 @@ useEffect(() => {
                 02 / Email
               </label>
               <input
-                className={`w-full px-4 py-3 text-sm rounded-lg border transition-all duration-200 outline-none ${
+                className={`w-full px-4 py-3 text-sm rounded-lg border transition-none outline-none ${
                   darkMode
                     ? "bg-slate-900/40 border-slate-800 text-white placeholder-slate-600 focus:border-indigo-500 focus:bg-slate-900/80"
                     : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
@@ -1812,7 +1846,7 @@ useEffect(() => {
               03 / Subject
             </label>
             <input
-              className={`w-full px-4 py-3 text-sm rounded-lg border transition-all duration-200 outline-none ${
+              className={`w-full px-4 py-3 text-sm rounded-lg border transition-none outline-none ${
                 darkMode
                   ? "bg-slate-900/40 border-slate-800 text-white placeholder-slate-600 focus:border-indigo-500 focus:bg-slate-900/80"
                   : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
@@ -1835,7 +1869,7 @@ useEffect(() => {
             </label>
             <textarea
               rows={5}
-              className={`w-full px-4 py-3 text-sm rounded-lg border transition-all duration-200 outline-none resize-none ${
+              className={`w-full px-4 py-3 text-sm rounded-lg border transition-none outline-none resize-none ${
                 darkMode
                   ? "bg-slate-900/40 border-slate-800 text-white placeholder-slate-600 focus:border-indigo-500 focus:bg-slate-900/80"
                   : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
