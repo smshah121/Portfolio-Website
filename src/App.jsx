@@ -1433,8 +1433,8 @@ useEffect(() => {
     <div className="space-y-16">
       {[
         { id: "01", cat: "Frontend Engineering", stack: FrontendTech },
-        { id: "02", cat: "Backend & Systems", stack: BackendTech },
-        { id: "03", cat: "Cloud, DevOps & Tools", stack: Tools }
+        { id: "02", cat: "Backend & Database", stack: BackendTech },
+        { id: "03", cat: "Cloud, Deployment & Tools", stack: Tools }
       ].map((block, bIdx) => (
         <div key={bIdx} className="gsap-reveal">
           {/* Category Header Bar */}
@@ -1808,7 +1808,7 @@ useEffect(() => {
                 }`}
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder="Enter your full name"
                 required
               />
             </div>
@@ -1830,7 +1830,7 @@ useEffect(() => {
                 }`}
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder="Enter your email address"
                 required
               />
             </div>
@@ -1853,7 +1853,7 @@ useEffect(() => {
               }`}
               type="text"
               name="title"
-              placeholder="Full-Stack Engineering Opportunity / Project Discussion"
+              placeholder="What would you like to discuss?"
               required
             />
           </div>
