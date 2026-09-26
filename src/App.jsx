@@ -1042,11 +1042,26 @@ useEffect(() => {
             Syed Momin <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]">Ali Shah</span>
           </h1>
 
-          <div className={`gsap-reveal text-base sm:text-xl md:text-2xl font-semibold mt-4 h-8 flex items-center justify-center w-full ${
-            darkMode ? "text-slate-300" : "text-slate-700"
-          }`}>
-            <Typewriter options={{ strings: ["Full Stack Developer", "Software Engineer", "React Developer", "NestJS Developer"], autoStart: true, loop: true, delay: 60, deleteSpeed: 40 }} />
-          </div>
+         <div
+      className={`gsap-reveal text-lg sm:text-2xl md:text-3xl font-semibold mt-5 h-9 flex items-center justify-center w-full font-mono ${
+        darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
+      }`}
+    >
+      <Typewriter
+        options={{
+          strings: [
+            "Full Stack Developer",
+            "Software Engineer",
+            "React Developer",
+            "NestJS Developer",
+          ],
+          autoStart: true,
+          loop: true,
+          delay: 55,
+          deleteSpeed: 35,
+        }}
+      />
+    </div>
 
           <p className={`gsap-reveal mt-3 text-sm sm:text-base md:text-md max-w-xl leading-relaxed mx-auto px-2 ${
             darkMode ? "text-slate-400" : "text-slate-600"
@@ -1054,24 +1069,55 @@ useEffect(() => {
             Final-Year <span className="text-indigo-500 font-semibold">Software Engineering</span> student and <span className="text-indigo-500 font-semibold">Full Stack Developer</span> specializing in building scalable, production-ready web applications with <span className="text-indigo-500 font-semibold">React, NestJS</span> and <span className="text-indigo-500 font-semibold">PostgreSQL</span>.
           </p>
 
-          <div className="gsap-reveal flex gap-4 mt-6 flex-wrap justify-center items-center">
-            <a href="/Job Resume.pdf" target="_blank" rel="noopener noreferrer" download="Syed Momin Ali Shah Resume.pdf" className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-md shadow-indigo-600/20 transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm">
-              <IoMdDownload size={16} /> Download CV
-            </a>
-           <button onClick={() => scrollToSection("project")} className={`px-5 py-2.5 rounded-xl border font-medium transition-all transform hover:-translate-y-0.5 text-xs sm:text-sm ${
-              darkMode ? "bg-white/5 hover:bg-white/10 border-white/10 text-slate-200" : "bg-slate-900/5 hover:bg-slate-900/10 border-slate-900/10 text-slate-800"
-            }`}>
-              View Projects
-            </button>
-          </div>
+         <div className="gsap-reveal flex gap-4 mt-8 flex-wrap justify-center items-center">
+      <a
+        href="/Job Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        download="Syed Momin Ali Shah Resume.pdf"
+        className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-lg shadow-indigo-600/25 transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 text-xs sm:text-sm cursor-pointer"
+      >
+        <IoMdDownload size={17} />
+        <span>Download CV</span>
+      </a>
 
-          <div className={`gsap-reveal flex justify-center mt-8 gap-5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-            <a href="https://www.linkedin.com/in/smshah121" aria-label="Linkedin Profile" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors transform hover:scale-110 duration-200"><FaLinkedin size={22} /></a>
-            <a href="https://github.com/smshah121" aria-label="Github Profile" target="_blank" rel="noopener noreferrer" className={`transition-colors transform hover:scale-110 duration-200 ${darkMode ? "hover:text-white" : "hover:text-black"}`}><FaGithub size={22} /></a>
-            <a href="https://www.instagram.com/__smshah__" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors transform hover:scale-110 duration-200"><FaInstagram size={22} /></a>
-            <a href="mailto:sm.shah2003@hotmail.com" aria-label="Email via Outloook" className="hover:text-blue-500 transition-colors transform hover:scale-110 duration-200"><PiMicrosoftOutlookLogo size={22} /></a>
-            <a href="mailto:smshah.2003@gmail.com" aria-label="Email via Gmail" className="hover:text-red-500 transition-colors transform hover:scale-110 duration-200"><IoMdMail size={22} /></a>
-          </div>
+      <button
+        onClick={() => scrollToSection("project")}
+        className={`flex items-center gap-2 px-6 py-3.5 rounded-xl border font-semibold transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 text-xs sm:text-sm cursor-pointer ${
+          darkMode
+            ? "bg-slate-900/40 hover:bg-slate-900/80 border-slate-800 text-slate-200 hover:border-slate-700"
+            : "bg-slate-100 hover:bg-slate-200/80 border-slate-200 text-slate-800"
+        }`}
+      >
+        <span>View Projects</span>
+        <span className="text-xs">→</span>
+      </button>
+    </div>
+
+         <div className="gsap-reveal flex justify-center items-center mt-10 gap-3">
+      {[
+        { href: "https://www.linkedin.com/in/smshah121", icon: <FaLinkedin size={18} />, label: "LinkedIn", hover: "hover:text-indigo-400 hover:border-indigo-500/40" },
+        { href: "https://github.com/smshah121", icon: <FaGithub size={18} />, label: "GitHub", hover: darkMode ? "hover:text-white hover:border-slate-600" : "hover:text-black hover:border-slate-400" },
+        { href: "https://www.instagram.com/__smshah__", icon: <FaInstagram size={18} />, label: "Instagram", hover: "hover:text-pink-400 hover:border-pink-500/40" },
+        { href: "mailto:sm.shah2003@hotmail.com", icon: <PiMicrosoftOutlookLogo size={18} />, label: "Outlook", hover: "hover:text-sky-400 hover:border-sky-500/40" },
+        { href: "mailto:smshah.2003@gmail.com", icon: <IoMdMail size={18} />, label: "Gmail", hover: "hover:text-rose-400 hover:border-rose-500/40" },
+      ].map((social, idx) => (
+        <a
+          key={idx}
+          href={social.href}
+          aria-label={social.label}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-200 transform hover:-translate-y-1 ${social.hover} ${
+            darkMode
+              ? "bg-slate-900/50 border-slate-800 text-slate-400"
+              : "bg-white border-slate-200 text-slate-600 shadow-sm"
+          }`}
+        >
+          {social.icon}
+        </a>
+      ))}
+    </div>
         </div>
         <div className="gsap-reveal z-10 pt-4 opacity-75 hover:opacity-100 transition-opacity">
     <button
