@@ -1287,7 +1287,7 @@ useEffect(() => {
     <div className="gsap-reveal mb-20 text-center md:text-left">
      
       <h2
-        className={`text-3xl  md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
+        className={`text-4xl  md:text-5xl font-['Black_Ops_One'] uppercase tracking-wider ${
           darkMode ? "text-white" : "text-slate-950"
         }`}
       >
