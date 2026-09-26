@@ -92,11 +92,11 @@ export function ContactGlobe({ darkMode }) {
   return (
    <div
       ref={containerRef}
-      className="gsap-reveal relative w-full flex flex-col items-center justify-center"
+      className="gsap-reveal relative w-full flex flex-col items-center justify-center transition-none"
     >
       {/* Ambient glow */}
       <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-[80px] pointer-events-none transition-colors duration-500 ${
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-[80px] pointer-events-none transition-none ${
           darkMode ? "bg-indigo-500/20" : "bg-sky-400/25"
         }`}
       />
@@ -107,12 +107,12 @@ export function ContactGlobe({ darkMode }) {
         style={{ width: size, height: size }}
       >
         <div
-          className={`absolute -inset-2 sm:-inset-4 rounded-full border border-dashed animate-[spin_60s_linear_infinite] transition-colors duration-500 ${
+          className={`absolute -inset-2 sm:-inset-4 rounded-full border border-dashed animate-[spin_60s_linear_infinite] transition-none ${
             darkMode ? "border-indigo-500/30" : "border-sky-500/40"
           }`}
         />
         <div
-          className={`absolute -inset-5 sm:-inset-8 rounded-full border transition-colors duration-500 ${
+          className={`absolute -inset-5 sm:-inset-8 rounded-full border transition-none ${
             darkMode ? "border-white/5" : "border-slate-200"
           }`}
         />
@@ -138,7 +138,7 @@ export function ContactGlobe({ darkMode }) {
 
       {/* Location badge */}
       <div
-        className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[11px] sm:text-xs font-semibold text-center max-w-full transition-colors duration-300 ${
+        className={`gsap-reveal relative z-10 mt-6 sm:mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-[11px] sm:text-xs font-semibold text-center max-w-full transition-none ${
           darkMode
             ? "bg-slate-900/40 border-indigo-500/30 text-slate-200"
             : "bg-slate-100/70 border-slate-200 text-slate-800"
@@ -1082,16 +1082,16 @@ useEffect(() => {
       </a>
 
       <button
-        onClick={() => scrollToSection("project")}
-        className={`flex items-center gap-2 px-6 py-3.5 rounded-xl border font-semibold transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 text-xs sm:text-sm cursor-pointer ${
-          darkMode
-            ? "bg-slate-900/40 hover:bg-slate-900/80 border-slate-800 text-slate-200 hover:border-slate-700"
-            : "bg-slate-100 hover:bg-slate-200/80 border-slate-200 text-slate-800"
-        }`}
-      >
-        <span>View Projects</span>
-        <span className="text-xs">→</span>
-      </button>
+  onClick={() => scrollToSection("project")}
+  className={`flex items-center gap-2 px-6 py-3.5 rounded-xl border font-semibold text-xs sm:text-sm cursor-pointer transform hover:-translate-y-0.5 active:scale-95 transition-none duration-150 ${
+    darkMode
+      ? "bg-slate-900 border-slate-800 text-slate-200 hover:bg-slate-800 hover:border-slate-700"
+      : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
+  }`}
+>
+  <span>View Projects</span>
+  <span className="text-xs">→</span>
+</button>
     </div>
 
          <div className="gsap-reveal flex justify-center items-center mt-10 gap-3">
@@ -1108,7 +1108,7 @@ useEffect(() => {
           aria-label={social.label}
           target="_blank"
           rel="noopener noreferrer"
-          className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-200 transform hover:-translate-y-1 ${social.hover} ${
+          className={`w-10 h-10 rounded-full flex items-center justify-center border transition-none duration-200 transform hover:-translate-y-1 ${social.hover} ${
             darkMode
               ? "bg-slate-900/50 border-slate-800 text-slate-400"
               : "bg-white border-slate-200 text-slate-600 shadow-sm"
@@ -1205,7 +1205,9 @@ useEffect(() => {
           <div className="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-3">
             <FaGraduationCap />
           </div>
-          <h4 className="font-bold text-base">BS Software Engineering</h4>
+          <h4 className={`font-bold text-base transition-none mb-2 ${darkMode ? "text-slate-100" : "text-slate-900"}`}>
+      BS Software Engineering
+    </h4>
           <p className={`text-sm mt-0.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Iqra University</p>
           <span className="mt-3 text-xs tracking-wider uppercase text-indigo-400 font-semibold">
             2023 — Present
@@ -1217,7 +1219,7 @@ useEffect(() => {
           <div className="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-3">
             <FaGithub />
           </div>
-          <h4 className="font-bold text-base mb-2">GitHub Activity</h4>
+          <h4 className={`font-bold text-base transition-none mb-2 ${darkMode ? "text-slate-100" : "text-slate-900"}`}>GitHub Activity</h4>
           {githubStats ? (
             <div className="flex gap-6 items-baseline">
               <div>
@@ -1258,9 +1260,21 @@ useEffect(() => {
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 relative" />
           </div>
           <div>
-            <h4 className="text-sm font-semibold tracking-wide">Available For</h4>
-            <p className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Internship, Job & Freelancing</p>
-          </div>
+      <h4
+        className={`text-sm font-semibold tracking-wide transition-none ${
+          darkMode ? "text-slate-100" : "text-slate-900"
+        }`}
+      >
+        Available For
+      </h4>
+      <p
+        className={`text-xs transition-none ${
+          darkMode ? "text-slate-400" : "text-slate-500"
+        }`}
+      >
+        Internship, Job & Freelancing
+      </p>
+    </div>
         </div>
 
         <a
