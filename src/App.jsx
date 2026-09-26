@@ -1714,7 +1714,7 @@ useEffect(() => {
                 }`}
                 type="text"
                 name="name"
-                placeholder="Syed Momin"
+                placeholder="Your Name"
                 required
               />
             </div>
@@ -1736,7 +1736,7 @@ useEffect(() => {
                 }`}
                 type="email"
                 name="email"
-                placeholder="momin@example.com"
+                placeholder="Your Email"
                 required
               />
             </div>
