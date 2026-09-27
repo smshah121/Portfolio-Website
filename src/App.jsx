@@ -1277,11 +1277,11 @@ useEffect(() => {
         Available For
       </h4>
       <p
-        className={`text-xs transition-none ${
+        className={`text-xs mt-1.5 transition-none ${
           darkMode ? "text-slate-400" : "text-slate-500"
         }`}
       >
-        Internship, Job & Freelancing
+        Software Engineering Roles & Freelance Projects
       </p>
     </div>
         </div>
