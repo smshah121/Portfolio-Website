@@ -1070,12 +1070,16 @@ useEffect(() => {
       </span>
     </div>
           
-          <h1 className={`gsap-reveal font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-none w-full max-w-none mx-auto whitespace-nowrap ${
-            darkMode ? "text-white" : "text-slate-900"
-          }`}>
-            Syed Momin <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]">Ali Shah</span>
-          </h1>
-
+         <h1
+  className={`gsap-reveal font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-tight w-full max-w-full mx-auto ${ 
+    darkMode ? "text-white" : "text-slate-900" 
+  }`}
+>
+  Syed Momin{" "}
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-[0_0_30px_rgba(129,140,248,0.15)]">
+    Ali Shah
+  </span>
+</h1>
          <div
       className={`gsap-reveal text-lg sm:text-2xl md:text-3xl font-semibold mt-5 h-9 flex items-center justify-center w-full font-mono ${
         darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
