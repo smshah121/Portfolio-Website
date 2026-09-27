@@ -1912,12 +1912,12 @@ useEffect(() => {
     {/* Left Side: Brand, Role & Copyright */}
     <div className="flex flex-col items-center md:items-start text-center md:text-left">
       <div className="flex items-center gap-2 mb-2">
-        <span className="font-['Black_Ops_One'] tracking-wider text-sm uppercase text-indigo-500">
-          SMSHAH
+        <span className="font-['Black_Ops_One'] tracking-wider text-sm text-indigo-500">
+          SmShah
         </span>
         <span className={`text-xs ${darkMode ? "text-slate-600" : "text-slate-300"}`}>•</span>
-        <span className="text-xs font-mono tracking-wide uppercase opacity-75">
-          Full-Stack Software Engineer
+        <span className="text-xs font-mono tracking-wide opacity-75">
+          Full Stack Software Engineer
         </span>
       </div>
 
