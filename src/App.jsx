@@ -296,33 +296,8 @@ useEffect(() => {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
-  useEffect(() => {
-  const lenis = new Lenis({
-    duration: 1.1,
-    smoothWheel: true,
-    syncTouch: false,
-    wheelMultiplier: 0.9,
-    touchMultiplier: 1,
-  });
+ const lenisRef = useRef(null);
 
-
- 
-  lenis.on("scroll", ScrollTrigger.update);
-
-  const raf = (time) => {
-    lenis.raf(time * 1000);
-  };
-
-  gsap.ticker.add(raf);
-
-  gsap.ticker.lagSmoothing(0);
-
-  return () => {
-    gsap.ticker.remove(raf);
-    lenis.destroy();
-  };
-}, []);
-const lenisRef = useRef(null);
 useEffect(() => {
   const lenis = new Lenis({
     duration: 1.1,
@@ -349,7 +324,6 @@ useEffect(() => {
     lenisRef.current = null;
   };
 }, []);
-
 
   useEffect(() => {
   if (!ambientGlowRef.current) return;
@@ -958,7 +932,7 @@ useEffect(() => {
 
   lenisRef.current.scrollTo(target, {
     offset: -80,
-    duration: 1.2,
+    duration: 1.9,
     immediate: false,
   });
 };
@@ -1184,9 +1158,7 @@ useEffect(() => {
 >
   {/* Section Header */}
   <div className="gsap-reveal mb-16">
-    <span className="font-['Quicksand'] font-semibold text-xs sm:text-sm uppercase tracking-[0.35em] text-indigo-400 block mb-3">
-      Who I Am ?
-    </span>
+   
 
     <h2
       ref={aboutHeadingRef}
@@ -1228,7 +1200,7 @@ useEffect(() => {
             I’m a Full-Stack Developer and final-year Software Engineering student at Iqra University, focused on building scalable and maintainable web applications.
           </p>
           <p>
-            I work primarily with React, TypeScript, NestJS, and PostgreSQL, building responsive interfaces and reliable backend system.
+            I work primarily with React, TypeScript, NestJS, and PostgreSQL, building responsive interfaces and reliable backend systems.
           </p>
           <p>
             I also explore AI/ML and blockchain technologies, integrating them into projects to solve practical problems and expand what I can build as a Software Engineer.
@@ -2007,7 +1979,7 @@ useEffect(() => {
 
       {/* Back to Top Quick Action */}
       <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onClick={() => scrollToSection("hero")}
         className={`group flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider px-3 py-2 rounded-lg transition-all duration-300 ${
           darkMode
             ? "hover:text-white text-slate-400 hover:bg-slate-900/60"
