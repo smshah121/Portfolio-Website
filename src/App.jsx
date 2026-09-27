@@ -1027,7 +1027,7 @@ useEffect(() => {
     }`}
   />
         <div className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
-          <div className="gsap-reveal mt-5 mb-3">
+          <div className="gsap-reveal mt-6 mb-2">
       <span
         className={`inline-flex items-center gap-2.5 text-[10px] sm:text-xs font-mono font-medium tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border transition-all duration-300 ${
           darkMode
