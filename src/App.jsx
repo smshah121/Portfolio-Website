@@ -531,14 +531,13 @@ useEffect(() => {
  const technologies = useMemo(
   () => [
     { icon: <GrReactjs /> },
+    {icon: <TbBrandJavascript/>},
     { icon: <SiTailwindcss /> },
-    { icon: <TbBrandFramerMotion /> },
     { icon: <SiRedux /> },
     { icon: <SiNestjs /> },
     { icon: <TbBrandTypescript /> },
     { icon: <SiPostgresql /> },
     { icon: <SiJsonwebtokens /> },
-    { icon: <SiGoogle /> },
   ],
   []
 );
@@ -1338,29 +1337,63 @@ useEffect(() => {
           </div>
 
           {/* Orbiting icons */}
-          <div ref={orbitRef} className="absolute inset-0">
-            {technologies.map((tech, i) => {
-              const angle = -90 + (360 / technologies.length) * i;
-              const radius = 100;
-              return (
-                <div
-                  key={i}
-                  className="absolute w-10 h-10 top-1/2 left-1/2 -ml-5 -mt-5"
-                  style={{ transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)` }}
-                >
-                  <div
-                    className={`orbit-icon-spin group w-10 h-10 rounded-full flex items-center justify-center text-lg transition-transform duration-300 hover:scale-110 ${
-                      darkMode
-                        ? "text-slate-400 hover:text-white"
-                        : "text-slate-500 hover:text-indigo-600"
-                    }`}
-                  >
-                    {tech.icon}
-                  </div>
-                </div>
-              );
-            })}
+         <div ref={orbitRef} className="absolute inset-0 pointer-events-none">
+  {/* Hairline Orbital Track Ring (Anchors the icons visually) */}
+  <div
+    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-dashed pointer-events-none transition-none ${
+      darkMode ? "border-indigo-500/20" : "border-slate-300/60"
+    }`}
+  />
+
+  {/* Faint Concentric Core Ring */}
+  <div
+    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] h-[160px] rounded-full border pointer-events-none transition-none ${
+      darkMode ? "border-white/[0.03]" : "border-slate-200/40"
+    }`}
+  />
+
+  {/* Orbiting Tech Nodes */}
+  {technologies.map((tech, i) => {
+    const angle = -90 + (360 / technologies.length) * i;
+    const radius = 100;
+
+    return (
+      <div
+        key={i}
+        className="absolute w-10 h-10 top-1/2 left-1/2 -ml-5 -mt-5 pointer-events-auto"
+        style={{
+          transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`,
+        }}
+      >
+        <div className="relative group flex items-center justify-center w-full h-full">
+          {/* Node Button / Container */}
+          <div
+            className={`orbit-icon-spin w-10 h-10 rounded-full flex items-center justify-center text-base sm:text-lg backdrop-blur-md border transition-all duration-300 cursor-pointer transform group-hover:scale-125 group-hover:z-30 ${
+              darkMode
+                ? "bg-slate-900/80 border-slate-800 text-slate-400 group-hover:text-white group-hover:border-indigo-500/50 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.35)]"
+                : "bg-white/90 border-slate-200 text-slate-600 group-hover:text-indigo-600 group-hover:border-indigo-300 group-hover:shadow-[0_4px_12px_rgba(79,70,229,0.15)]"
+            }`}
+          >
+            {tech.icon}
           </div>
+
+          {/* Micro Tooltip on Hover */}
+          {tech.name && (
+            <div
+              className={`absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[9px] font-mono tracking-wide uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 transform group-hover:-translate-y-1 shadow-md z-40 ${
+                darkMode
+                  ? "bg-slate-900 border border-slate-800 text-indigo-300 shadow-black/50"
+                  : "bg-slate-900 text-white shadow-slate-300"
+              }`}
+            >
+              {tech.name}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  })}
+</div>
         </div>
       </div>
     </div>
@@ -1851,7 +1884,7 @@ useEffect(() => {
                   : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-indigo-600 focus:bg-white"
               }`}
               name="message"
-              placeholder="Tell me about your tech stack, requirements, or vision..."
+              placeholder="Tell me about the opportunity, project, or collaboration..."
               required
             />
           </div>
