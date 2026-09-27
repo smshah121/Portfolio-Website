@@ -1330,10 +1330,7 @@ useEffect(() => {
 
           {/* Center hub */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full flex flex-col items-center justify-center z-10">
-            <FaLaptopCode className="text-indigo-400 text-lg mb-0.5" />
-            <span className="text-[9px] font-bold uppercase tracking-wider text-indigo-400 text-center leading-none">
-              Core<br />Tech
-            </span>
+            <FaLaptopCode size={32} className="text-indigo-400 text-lg mb-0.5" />
           </div>
 
           {/* Orbiting icons */}
