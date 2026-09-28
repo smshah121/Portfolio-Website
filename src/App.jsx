@@ -1208,53 +1208,140 @@ useEffect(() => {
       </div>
 
       {/* Education & GitHub Activity Row */}
-      <div className={`grid sm:grid-cols-2 gap-8 pt-8 border-t ${darkMode ? "border-slate-800/80" : "border-slate-200"}`}>
-        {/* Education */}
-        <div className="gsap-reveal flex flex-col items-start">
-          <div className="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-3">
-            <FaGraduationCap />
-          </div>
-          <h4 className={`font-bold text-base transition-none mb-2 ${darkMode ? "text-slate-100" : "text-slate-900"}`}>
-      BS Software Engineering
-    </h4>
-          <p className={`text-sm mt-0.5 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Iqra University</p>
-          <span className="mt-3 text-xs tracking-wider uppercase text-indigo-400 font-semibold">
-            2023 — Present
-          </span>
-        </div>
+      <div
+  className={`grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-8 pt-8 border-t ${
+    darkMode ? "border-slate-800/80" : "border-slate-200"
+  }`}
+>
+  {/* Education */}
+  <div className="gsap-reveal flex items-start gap-4">
+    <div
+      className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-lg ${
+        darkMode
+          ? "bg-indigo-500/10 text-indigo-400"
+          : "bg-indigo-50 text-indigo-600"
+      }`}
+    >
+      <FaGraduationCap />
+    </div>
 
-        {/* GitHub Activity */}
-        <div className="gsap-reveal flex flex-col items-start">
-          <div className="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-3">
-            <FaGithub />
+    <div>
+      <p
+        className={`text-[10px] uppercase tracking-[0.16em] font-semibold mb-1 ${
+          darkMode ? "text-indigo-400" : "text-indigo-600"
+        }`}
+      >
+        Education
+      </p>
+
+      <h4
+        className={`font-bold text-sm sm:text-base leading-snug ${
+          darkMode ? "text-slate-100" : "text-slate-900"
+        }`}
+      >
+        BS Software Engineering
+      </h4>
+
+      <p
+        className={`text-xs sm:text-sm mt-1 ${
+          darkMode ? "text-slate-400" : "text-slate-500"
+        }`}
+      >
+        Iqra University
+      </p>
+
+      <span className="inline-flex items-center gap-2 mt-3 text-[10px] uppercase tracking-wider font-semibold text-indigo-400">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+        2023 — Present
+      </span>
+    </div>
+  </div>
+
+  {/* Development */}
+  <div className="gsap-reveal flex items-start gap-4">
+    <div
+      className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-lg ${
+        darkMode
+          ? "bg-indigo-500/10 text-indigo-400"
+          : "bg-indigo-50 text-indigo-600"
+      }`}
+    >
+      <FaGithub />
+    </div>
+
+    <div className="min-w-0">
+      <p
+        className={`text-[10px] uppercase tracking-[0.16em] font-semibold mb-1 ${
+          darkMode ? "text-indigo-400" : "text-indigo-600"
+        }`}
+      >
+        Development
+      </p>
+
+      <h4
+        className={`font-bold text-sm sm:text-base leading-snug ${
+          darkMode ? "text-slate-100" : "text-slate-900"
+        }`}
+      >
+        GitHub Dashboard
+      </h4>
+
+      {githubStats ? (
+        <div className="flex items-center gap-5 sm:gap-6 mt-3">
+          <div>
+            <span className="block text-xl sm:text-2xl font-extrabold text-indigo-500 leading-none">
+              {githubStats.repos}
+            </span>
+            <span
+              className={`block text-[9px] uppercase tracking-wider mt-1 ${
+                darkMode ? "text-slate-500" : "text-slate-500"
+              }`}
+            >
+              Repositories
+            </span>
           </div>
-          <h4 className={`font-bold text-base transition-none mb-2 ${darkMode ? "text-slate-100" : "text-slate-900"}`}>GitHub Activity</h4>
-          {githubStats ? (
-            <div className="flex gap-6 items-baseline">
-              <div>
-                <span className="block text-2xl font-extrabold text-indigo-500">{githubStats.repos}</span>
-                <span className={`text-[11px] uppercase tracking-wider ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Repositories</span>
-              </div>
-              <div>
-                <span className="block text-2xl font-extrabold text-indigo-500">{githubStats.commits}+</span>
-                <span className={`text-[11px] uppercase tracking-wider ${darkMode ? "text-slate-400" : "text-slate-500"}`}>Total Contribution</span>
-              </div>
-            </div>
-          ) : (
-            <p className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-              Loading live GitHub data…
-            </p>
-          )}
-          <a
-            href="https://github.com/smshah121"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 mt-3 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
-          >
-            View Profile →
-          </a>
+
+          <div
+            className={`w-px h-7 ${
+              darkMode ? "bg-slate-800" : "bg-slate-200"
+            }`}
+          />
+
+          <div>
+            <span className="block text-xl sm:text-2xl font-extrabold text-indigo-500 leading-none">
+              {githubStats.commits}+
+            </span>
+            <span
+              className={`block text-[9px] uppercase tracking-wider mt-1 ${
+                darkMode ? "text-slate-500" : "text-slate-500"
+              }`}
+            >
+              Contributions
+            </span>
+          </div>
         </div>
-      </div>
+      ) : (
+        <p
+          className={`text-xs mt-3 ${
+            darkMode ? "text-slate-400" : "text-slate-500"
+          }`}
+        >
+          Loading GitHub data…
+        </p>
+      )}
+
+      <a
+        href="https://github.com/smshah121"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 mt-3 text-[11px] sm:text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+      >
+        View Profile
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</div>
     </div>
 
     {/* Right Column */}
@@ -1286,12 +1373,12 @@ useEffect(() => {
     </div>
         </div>
 
-        <a
-          href="#contact"
+        <button
+          onClick={() => scrollToSection("contact")}
           className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-all duration-200 w-fit"
         >
           Let's Talk →
-        </a>
+        </button>
       </div>
 
       {/* Numerical Metrics */}
