@@ -1218,9 +1218,24 @@ const ProjectModal = ({ project, darkMode, onClose, TechIcons = {} }) => {
                 ))}
               </div>
             </section>
+
+            
           )}
         </div>
+      <div
+  className={` p-4 border-t text-xs leading-relaxed ${
+    darkMode
+      ? "border-slate-800 text-slate-500"
+      : "border-slate-200 text-slate-500"
+  }`}
+>
+  <span className="font-medium text-slate-400 dark:text-slate-400">
+    Deployment Note:
+  </span>{" "}
+  Some projects use free-tier hosting, so their backend may take a few seconds to wake up after inactivity. If you'd like to explore a project in detail, feel free to contact me for a live walkthrough.
+</div>  
       </div>
+      
     </div>,
     document.body
   );
