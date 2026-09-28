@@ -1347,39 +1347,52 @@ useEffect(() => {
     {/* Right Column */}
     <div className="lg:col-span-5 flex flex-col gap-10">
       {/* Availability Status */}
-      <div className={`gsap-reveal pb-6 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${
-        darkMode ? "border-slate-800/80" : "border-slate-200"
-      }`}>
-        <div className="flex items-center gap-3">
-          <div className="relative flex items-center justify-center">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping absolute opacity-75" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 relative" />
-          </div>
-          <div>
-      <h4
-        className={`text-sm font-semibold tracking-wide transition-none ${
-          darkMode ? "text-slate-100" : "text-slate-900"
-        }`}
-      >
-        Available For
-      </h4>
-      <p
-        className={`text-xs mt-1.5 transition-none ${
-          darkMode ? "text-slate-400" : "text-slate-500"
-        }`}
-      >
-        Software Engineering Roles & Freelance Projects
-      </p>
-    </div>
-        </div>
-
-        <button
-          onClick={() => scrollToSection("contact")}
-          className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-all duration-200 w-fit"
-        >
-          Let's Talk →
-        </button>
+     <div
+  className={`gsap-reveal py-5 border-b ${
+    darkMode ? "border-slate-800/80" : "border-slate-200"
+  }`}
+>
+  <div className="flex items-center justify-between gap-4">
+    {/* Availability Info */}
+    <div className="flex items-center gap-3 min-w-0">
+      <div className="relative flex items-center justify-center shrink-0">
+        <span className="absolute w-3 h-3 rounded-full bg-emerald-500/40 animate-ping" />
+        <span className="relative w-2.5 h-2.5 rounded-full bg-emerald-500" />
       </div>
+
+      <div className="min-w-0">
+        <h4
+          className={`text-sm font-semibold tracking-wide ${
+            darkMode ? "text-slate-100" : "text-slate-900"
+          }`}
+        >
+          Available For
+        </h4>
+
+        <p
+          className={`text-[11px] sm:text-xs mt-0.5 leading-relaxed ${
+            darkMode ? "text-slate-400" : "text-slate-500"
+          }`}
+        >
+          Software Engineering Roles & Freelance Projects
+        </p>
+      </div>
+    </div>
+
+    {/* CTA */}
+    <button
+      onClick={() => scrollToSection("contact")}
+      className={`shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-[11px] sm:text-xs font-semibold rounded-full border transition-all duration-200 ${
+        darkMode
+          ? "bg-indigo-500/10 border-indigo-500/20 text-indigo-400 hover:bg-indigo-500 hover:border-indigo-500 hover:text-white"
+          : "bg-indigo-50 border-indigo-100 text-indigo-600 hover:bg-indigo-500 hover:border-indigo-500 hover:text-white"
+      }`}
+    >
+      <span>Let's Talk</span>
+      <span>→</span>
+    </button>
+  </div>
+</div>
 
       {/* Numerical Metrics */}
       <div className="gsap-reveal grid grid-cols-2 gap-8">
