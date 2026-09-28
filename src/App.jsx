@@ -1890,7 +1890,7 @@ useEffect(() => {
           darkMode ? "text-slate-400" : "text-slate-500"
         }`}
       >
-        Full-Time Roles & Freelance Projects
+        Software Engineering Roles & Freelance Projects
       </p>
     </div>
   </div>
