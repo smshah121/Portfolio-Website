@@ -14,6 +14,7 @@ import Globe from "react-globe.gl";
 import { GrHeroku } from "react-icons/gr";
 import { VscAzure } from "react-icons/vsc";
 import { IoLogoVercel } from "react-icons/io5";
+import { createPortal } from "react-dom";
 import {
   SiJsonwebtokens,
   SiGoogle,
@@ -196,6 +197,7 @@ function App() {
   const ambientGlowRef = useRef(null);
   const aboutHeadingRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
   const ctx = gsap.context(() => {
@@ -652,78 +654,474 @@ useEffect(() => {
 }, []);
 
 
-  const MyProjects = [
-    {
-      img: "/degree.png",
-      title: "Autonomous Degree Attestation System",
-      desc: "Automated academic degree attestation using AI-powered OCR, blockchain verification and SHA-256 hashing. Students upload transcripts, pay processing fees via Stripe, and receive blockchain-backed certificates that can be verified through QR-code scanning or transaction hash lookup.",
-      link: "https://degree-attestation.netlify.app/",
-      source: {
-        frontend: "https://github.com/smshah121/degree-attestation-system-frontend",
-        backend: "https://github.com/smshah121/degree-attestation-system-backend",
-        SmartContract: "https://github.com/smshah121/degree-attestation-smart_contract",
-      },
-      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "JWT", "GoogleOAuth", "Stripe", "Ethereum", "Solidity","Git", "Cloudinary", "Netlify","Heroku"]
-    },
-    {
-      img: "/pricetag.png",
-      title: "Multi-Vendor Marketplace",
-      desc: "Built a multi-vendor marketplace where customers can apply to become sellers and manage their own product stores. Implemented secure role-based access for customers, sellers, and admins, with product management, image uploads, cart functionality, Stripe online payments, Cash on Delivery, and real-time order status management.",
-      link: "https://pricetag-tech.netlify.app/",
-      source: {
-        frontend: "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
-        backend: "https://github.com/smshah121/E-Commerce-Web-App-Backend",
-      },
-      tech: ["React", "Tailwind", "Redux", "Motion", "Nest", "Postgres", "JWT","GoogleOAuth", "Stripe","Cloudinary","Git", "Netlify","Render"]
-    },
-    {
-      img: "/lms2.png",
-      title: "Learning Management System",
-      desc: "Developed a role-based LMS utilizing NestJS for secure, token-based authentication (JWT) and PostgreSQL. Features include an Instructor dashboard for course CRUD and a student portal for secure enrollment and lecture access.",
-      link: "https://learning-management-system-app1.netlify.app/",
-      source: {
-        frontend: "https://github.com/smshah121/Learning-Management-System-Frontend",
-        backend: "https://github.com/smshah121/Learning-Management-System-Backend",
-      },
-      tech: ["React", "Tailwind", "Motion", "Redux", "Nest", "JWT", "Postgres", "Cloudinary","Git","Netlify","Render"]
-    },
-    {
-      img: "/fraud.png",
-      title: "AI-Powered Credit Card Fraud Detection System",
-      desc: "Developed a full-stack fraud detection system using React, NestJS and FastAPI. Transaction data is transformed into ML-ready feature vectors and evaluated by a Logistic Regression model trained on the Kaggle Credit Card Fraud dataset (284K+ transactions). Displays fraud prediction, confidence score and stores transaction history.",
-      link: "https://ai-fraud-detections.netlify.app/",
-      source: {
-        frontend: "https://github.com/smshah121/fraud-detection-frontend",
-        backend: "https://github.com/smshah121/fraud-detection-backend",
-        mlCode: "https://github.com/smshah121/fraud-detection-ml-api"
-      },
-      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "Python", "FastAPI","Git", "Netlify", "Vercel", "Azure"]
-    },
-    
-    {
-      img: "/pixora.png",
-      title: "Pixora Media Collection",
-      desc: "Media management platform where users organize photos, videos and GIFs into private collections using JWT authentication, Google OAuth 2.0 login and role-protected routes.",
-      link: "https://pixora-media.netlify.app/",
-      source: {
-        frontend: "https://github.com/smshah121/pixora-frontend",
-        backend: "https://github.com/smshah121/pixora-backend",
-      },
-      tech: ["React", "Tailwind", "Redux", "Nest", "JWT", "Postgres", "GoogleOAuth","Git", "Netlify", "Heroku"]
-    },
-    {
-      img: "/quotes.png",
-      title: "QuoteNest",
-      desc: "Quote management application supporting CRUD operations, Google OAuth 2.0 authentication, protected routes and personalized user dashboards.",
-      link: "https://quotenest-quotes.netlify.app/",
-      source: {
-        frontend: "https://github.com/smshah121/quotes-frontend",
-        backend: "https://github.com/smshah121/Quotes-Management-System-Backend",
-      },
-      tech: ["React", "Tailwind", "Redux", "Nest", "Postgres", "JWT", "GoogleOAuth","Git", "Netlify","Render"]
-    },
-  ];
+ const MyProjects = [
+  {
+    img: "/degree.png",
+    title: "Autonomous Degree Attestation System",
 
+    desc: "Automated degree attestation and verification using OCR, blockchain-stored hashes, QR codes, and secure online payments.",
+
+    overview:
+      "An autonomous degree attestation and verification platform that streamlines academic document attestation using AI-powered OCR, automated eligibility checking, secure SHA-256 hashing, and blockchain technology. The system generates a digital degree after successful verification, creates a unique hash for the generated degree, and stores that hash on the blockchain. The degree can then be verified through its QR code or by entering its hash through the platform's verification scanner.",
+
+    problem:
+      "Traditional degree attestation often requires students to go through a manual process, which can take significant time and effort. At the same time, there is no simple and reliable way for third parties to verify whether an attested degree is authentic. These two separate processes create difficulties for both students and organizations responsible for document verification.",
+
+    solution:
+      "The platform automates the attestation workflow by using OCR to extract and analyze information from uploaded transcripts. After providing their personal and academic details, students complete the payment through Stripe and upload their transcript. The system evaluates the extracted academic information and checks the eligibility criteria. If the student's CGPA is 2.5 or above, the system generates an attested degree in PDF format; otherwise, the application is rejected. Each generated degree contains a QR code and a unique document hash. The hash is securely recorded on the blockchain, allowing the degree to be independently verified. Users can scan the QR code directly from the degree or enter its hash through the verification scanner available on the platform's homepage to retrieve and verify the degree's stored information.",
+
+    features: [
+      "AI-powered OCR document verification",
+      "Blockchain-backed degree verification",
+      "SHA-256 document hashing",
+      "QR-code certificate verification",
+      "Transaction hash verification",
+      "Stripe payment integration",
+      "Google OAuth authentication",
+    ],
+
+    link: "https://degree-attestation.netlify.app/",
+
+    source: {
+      frontend:
+        "https://github.com/smshah121/degree-attestation-system-frontend",
+      backend:
+        "https://github.com/smshah121/degree-attestation-system-backend",
+      SmartContract:
+        "https://github.com/smshah121/degree-attestation-smart_contract",
+    },
+
+    tech: [
+      "React",
+      "Tailwind",
+      "Redux",
+      "Nest",
+      "Postgres",
+      "JWT",
+      "GoogleOAuth",
+      "Stripe",
+      "Ethereum",
+      "Solidity",
+      "Git",
+      "Cloudinary",
+      "Netlify",
+      "Heroku",
+    ],
+  },
+
+  {
+    img: "/pricetag.png",
+    title: "Multi-Vendor Marketplace",
+
+   desc: "A multi-vendor marketplace where customers can become approved sellers, create stores, manage products, and accept online or COD payments.",
+
+    overview:
+      "PriceTag is a multi-vendor e-commerce marketplace designed to allow customers to not only purchase products but also become sellers and create their own stores. Each seller can build and manage their own product catalog while customers can shop from multiple sellers through the same platform.",
+
+    problem:
+      "Traditional e-commerce platforms often operate around a single store or provide limited opportunities for customers to become independent sellers. Customers may also have to rely solely on Cash on Delivery, while unverified seller accounts and weak authentication can create additional security and trust concerns.",
+
+    solution:
+      "PriceTag provides a marketplace where customers can apply to become sellers and open their own stores after receiving admin approval. To maintain a more controlled seller environment, users must submit a seller application containing details about their proposed store before gaining seller access. Once approved, sellers can manage their own products and represent their stores independently within the marketplace. Customers can purchase products using both Cash on Delivery and online payments through Stripe. The platform also supports traditional authentication along with Google OAuth 2.0, providing users with multiple secure authentication options.",
+
+    features: [
+        "Multi-vendor marketplace",
+  "Customer-to-seller conversion",
+  "Seller application and admin approval workflow",
+  "Independent seller stores",
+  "Custom store identity and product management",
+  "Role-based access for customers, sellers, and admins",
+  "Product CRUD and inventory management",
+  "Shopping cart functionality",
+  "Stripe online payments",
+  "Cash on Delivery",
+  "Secure payment processing",
+  "JWT authentication",
+  "Google OAuth 2.0 authentication",
+  "Protected role-based routes",
+  "Cloudinary image uploads",
+  "Order management and status tracking",
+    ],
+
+    link: "https://pricetag-tech.netlify.app/",
+
+    source: {
+      frontend:
+        "https://github.com/smshah121/E-Commerce-Web-App-Frontend",
+      backend:
+        "https://github.com/smshah121/E-Commerce-Web-App-Backend",
+    },
+
+    tech: [
+      "React",
+      "Tailwind",
+      "Redux",
+      "Motion",
+      "Nest",
+      "Postgres",
+      "JWT",
+      "GoogleOAuth",
+      "Stripe",
+      "Cloudinary",
+      "Git",
+      "Netlify",
+      "Render",
+    ],
+  },
+
+  {
+    img: "/lms2.png",
+    title: "Learning Management System",
+
+   desc: "A centralized LMS connecting students and instructors through course registration, schedules, lectures, and course-specific announcements.",
+
+    overview:
+      "A centralized Learning Management System designed to improve coordination between students and instructors by bringing course registration, instructor information, class schedules, learning materials, and course announcements into one platform.",
+
+    problem:
+      "Students and instructors often rely on WhatsApp groups and other scattered communication channels to coordinate courses. Important lectures, messages, and updates can easily get buried in chat conversations. Students may also have difficulty finding available courses, knowing which instructor is teaching them, checking class timings, and staying informed about course-related updates.",
+
+    solution:
+      "The LMS provides a dedicated platform where students can explore available courses along with their instructors and class timings, allowing them to choose courses according to their preferences and availability. Once enrolled, students can access their course content and receive announcements specific to their enrolled courses. Instructors can manage their courses and communicate important updates through course announcements, such as upcoming quizzes, schedule changes, cancelled classes, or other academic information.",
+
+    features: [
+      "Centralized student-instructor communication", "Available course listing", "Instructor information and course assignment", "Course schedule and timing information", "Course registration and enrollment", "Student course dashboard", "Course lecture access", "Course-specific announcements", "Quiz and class notifications", "Instructor course management", "Role-based access", "JWT authentication",
+    ],
+
+    link: "https://learning-management-system-app1.netlify.app/",
+
+    source: {
+      frontend:
+        "https://github.com/smshah121/Learning-Management-System-Frontend",
+      backend:
+        "https://github.com/smshah121/Learning-Management-System-Backend",
+    },
+
+    tech: [
+      "React",
+      "Tailwind",
+      "Motion",
+      "Redux",
+      "Nest",
+      "JWT",
+      "Postgres",
+      "Cloudinary",
+      "Git",
+      "Netlify",
+      "Render",
+    ],
+  },
+
+  {
+    img: "/fraud.png",
+    title: "AI-Powered Credit Card Fraud Detection System",
+
+    desc: "AI-powered system that analyzes credit card transactions using machine learning to detect potential fraud and provide confidence scores.",
+
+    overview:
+      "AI-powered fraud detection platform that analyzes credit card transactions using a machine learning model to identify potentially fraudulent transactions. The system combines React, NestJS, and a FastAPI-based machine learning service, with transaction results and history stored securely in the database.",
+
+    problem:
+      "Credit card transactions can contain fraudulent activity that may be difficult to identify manually, especially when a large number of transactions need to be analyzed. An automated system is needed to evaluate transaction data and quickly identify potentially fraudulent activity.",
+
+    solution:
+      "The system allows users to submit transaction details through the frontend. The NestJS backend processes the request and sends the required transaction features to a FastAPI machine learning service. A Logistic Regression model, trained on the Credit Card Fraud Detection dataset containing 284K+ transactions, analyzes the transaction and returns a fraud prediction with a confidence score. The result is then displayed to the user and stored as transaction history.",
+
+    features: [
+     "Credit card transaction analysis", "Machine learning-based fraud detection", "Logistic Regression model", "FastAPI machine learning service", "NestJS backend integration", "Real-time fraud prediction", "Fraud confidence score", "Transaction history", "ML-ready feature transformation", "PostgreSQL database storage",
+    ],
+
+    link: "https://ai-fraud-detections.netlify.app/",
+
+    source: {
+      frontend:
+        "https://github.com/smshah121/fraud-detection-frontend",
+      backend:
+        "https://github.com/smshah121/fraud-detection-backend",
+      mlCode:
+        "https://github.com/smshah121/fraud-detection-ml-api",
+    },
+
+    tech: [
+      "React",
+      "Tailwind",
+      "Redux",
+      "Nest",
+      "Postgres",
+      "Python",
+      "FastAPI",
+      "Git",
+      "Netlify",
+      "Vercel",
+      "Azure",
+    ],
+  },
+
+  {
+    img: "/pixora.png",
+    title: "Pixora Media Collection",
+
+    desc: "A personal media platform for organizing photos, videos, and GIFs into custom collections for easy access and management.",
+
+    overview:
+      "Pixora is a personal media organization platform that allows users to store and organize photos, videos, and GIFs into custom collections. Users can create as many collections as they need and give each collection their own name based on the type or purpose of the media they want to save.",
+
+    problem:
+      "People often save images, videos, and GIFs across different apps, chats, social media platforms, or directly in their phone gallery. Over time, these files can become difficult to find, get buried among other media, or consume a significant amount of device storage. Managing different types of media separately can also make it difficult to keep related content organized.",
+
+    solution:
+      "Pixora provides authenticated users with private media collections, protected routes, and multiple Pixora provides a dedicated platform where users can create unlimited custom collections and organize different types of media according to their own needs. A user can create a collection with any name and save related photos, videos, and GIFs inside it, making their media easier to organize, access, and manage from one place. options through JWT and Google OAuth 2.0.",
+
+    features: [
+      "Create custom media collections",
+      "Create multiple collections based on personal needs",
+      "Store photos, videos, and GIFs",
+      "Organize related media under custom collection names",
+      "JWT authentication",
+      "Google OAuth 2.0",
+      "Media organization",
+      "Cloud-based media storage",
+    ],
+
+    link: "https://pixora-media.netlify.app/",
+
+    source: {
+      frontend: "https://github.com/smshah121/pixora-frontend",
+      backend: "https://github.com/smshah121/pixora-backend",
+    },
+
+    tech: [
+      "React",
+      "Tailwind",
+      "Redux",
+      "Nest",
+      "JWT",
+      "Postgres",
+      "GoogleOAuth",
+      "Git",
+      "Netlify",
+      "Heroku",
+    ],
+  },
+
+  {
+    img: "/quotes.png",
+    title: "QuoteNest",
+
+    desc: "A personal quote management platform for saving, organizing, and easily copying favorite quotes from one place.",
+
+    overview:
+      "QuoteNest is a personalized quote management platform designed to give users a dedicated and reliable place to save, manage, and revisit their favorite quotes.",
+
+    problem:
+      "People often save quotes they like in temporary places such as chat messages, notes, or notebooks. Over time, messages get buried in conversations, while handwritten or scattered notes can be difficult to find. This makes it inconvenient to keep and revisit meaningful quotes.",
+
+    solution:
+      "QuoteNest provides users with a dedicated account where they can securely store all of their favorite quotes in one place. Instead of relying on scattered messages or physical notes, users can manage their personal collection and quickly access any saved quote whenever they need it. The platform also provides a copy option, allowing users to easily copy a quote for use elsewhere.",
+
+    features: [
+      "Create and save personal quotes",
+      "View all saved quotes in one place",
+      "Edit and delete saved quotes",
+      "Google OAuth 2.0 authentication",
+      "JWT-based authentication",
+      "User-specific quote management",
+    ],
+
+    link: "https://quotenest-quotes.netlify.app/",
+
+    source: {
+      frontend: "https://github.com/smshah121/quotes-frontend",
+      backend:
+        "https://github.com/smshah121/Quotes-Management-System-Backend",
+    },
+
+    tech: [
+      "React",
+      "Tailwind",
+      "Redux",
+      "Nest",
+      "Postgres",
+      "JWT",
+      "GoogleOAuth",
+      "Git",
+      "Netlify",
+      "Render",
+    ],
+  },
+];
+
+
+const ProjectModal = ({ project, darkMode, onClose }) => {
+  if (!project) return null;
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+      {/* Modal */}
+      <div
+        className={`relative z-10 w-full max-w-3xl max-h-[85vh] overflow-hidden rounded-2xl border shadow-2xl ${
+          darkMode
+            ? "bg-slate-950 border-slate-800"
+            : "bg-white border-slate-200"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        
+        {/* Your modal header */}
+        <div
+          className={`flex items-start justify-between gap-4 px-5 py-4 sm:px-6 border-b ${
+            darkMode ? "border-slate-800" : "border-slate-200"
+          }`}
+        >
+          <div className="min-w-0">
+            <h2
+              className={`text-xl sm:text-2xl font-bold tracking-tight ${
+                darkMode ? "text-white" : "text-slate-900"
+              }`}
+            >
+              {project.title}
+            </h2>
+
+            <p
+              className={`text-xs sm:text-sm mt-1.5 leading-relaxed ${
+                darkMode ? "text-slate-400" : "text-slate-500"
+              }`}
+            >
+              {project.desc}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xl ${
+              darkMode
+                ? "text-slate-400 hover:text-white hover:bg-slate-800"
+                : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
+            }`}
+          >
+            ×
+          </button>
+        </div>
+
+        {/* Scrollable content */}
+        <div className="max-h-[calc(85vh-105px)] overflow-y-auto px-5 py-6 sm:px-6">
+
+          {/* Overview */}
+          <div className="mb-7">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-2">
+              Overview
+            </h3>
+
+            <p
+              className={`text-sm sm:text-[15px] leading-7 ${
+                darkMode ? "text-slate-300" : "text-slate-600"
+              }`}
+            >
+              {project.overview}
+            </p>
+          </div>
+
+          {/* Problem */}
+          <div className="mb-7">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-2">
+              Problem
+            </h3>
+
+            <p
+              className={`text-sm sm:text-[15px] leading-7 ${
+                darkMode ? "text-slate-300" : "text-slate-600"
+              }`}
+            >
+              {project.problem}
+            </p>
+          </div>
+
+          {/* Solution */}
+          <div className="mb-7">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-2">
+              Solution
+            </h3>
+
+            <p
+              className={`text-sm sm:text-[15px] leading-7 ${
+                darkMode ? "text-slate-300" : "text-slate-600"
+              }`}
+            >
+              {project.solution}
+            </p>
+          </div>
+
+          {/* Features */}
+          <div className="mb-7">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-3">
+              Key Features
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {project.features.map((feature, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start gap-2.5 p-3 rounded-lg border ${
+                    darkMode
+                      ? "bg-slate-900/70 border-slate-800"
+                      : "bg-slate-50 border-slate-200"
+                  }`}
+                >
+                  <span className="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-indigo-500" />
+
+                  <span
+                    className={`text-xs sm:text-sm leading-relaxed ${
+                      darkMode ? "text-slate-300" : "text-slate-600"
+                    }`}
+                  >
+                    {feature}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tech Stack */}
+          <div className="mb-12">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-3">
+              Tech Stack
+            </h3>
+
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((tech) => (
+                <span
+                  key={tech}
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono border ${
+                    darkMode
+                      ? "bg-slate-900 text-slate-300 border-slate-800"
+                      : "bg-slate-100 text-slate-700 border-slate-200"
+                  }`}
+                >
+                  {TechIcons[tech] && (
+                    <span className="opacity-75">
+                      {TechIcons[tech]}
+                    </span>
+                  )}
+
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+};
   const FrontendTech = [
     { name: "HTML5", icon: <FaHtml5 size={32} />, color: "#E34F26" },
     { name: "CSS3", icon: <FaCss3Alt size={32} />, color: "#1572B6" },
@@ -1740,94 +2138,121 @@ useEffect(() => {
           </div>
 
           {/* Footer Action Controls */}
-          <div
-            className={`pt-4 border-t flex items-center gap-3 ${
-              darkMode ? "border-slate-800/80" : "border-slate-200"
-            }`}
-          >
-            {/* Live Demo Link */}
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white text-xs font-semibold tracking-wide transition-all duration-200"
-            >
-              <FaRegEye size={13} />
-              <span>Live Preview</span>
-            </a>
+          {/* Footer Action Controls */}
+<div
+  className={`pt-4 border-t flex items-center gap-2 ${
+    darkMode ? "border-slate-800/80" : "border-slate-200"
+  }`}
+>
+  {/* Live Demo */}
+  <a
+    href={project.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex-1 inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-lg bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white text-[11px] sm:text-xs font-semibold tracking-wide transition-all duration-200 whitespace-nowrap"
+  >
+    <FaRegEye size={12} />
+    <span>Live Preview</span>
+  </a>
 
-            {/* Source Code: Direct Single Repo or Multi-Repo Dropdown */}
-            {hasMultipleRepos ? (
-              <div className="relative flex-grow">
-                <button
-                  type="button"
-                  onClick={() => setDropdownOpen(dropdownOpen === index ? null : index)}
-                  className={`w-full flex items-center justify-between px-3.5 py-2 rounded-lg text-xs font-semibold transition-all duration-200 ${
-                    darkMode
-                      ? "bg-slate-900/40 hover:bg-slate-900 text-slate-300"
-                      : "bg-slate-100 hover:bg-slate-200 text-slate-700"
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <FaGithub size={13} /> Repositories
-                  </span>
-                  <FaChevronDown
-                    size={10}
-                    className={`opacity-70 transition-transform duration-200 ${
-                      dropdownOpen === index ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
+  {/* View Details */}
+  <button
+    type="button"
+    onClick={() => setSelectedProject(project)}
+    className={`flex-1 inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-lg text-[11px] sm:text-xs font-semibold tracking-wide transition-all duration-200 whitespace-nowrap ${
+      darkMode
+        ? "bg-slate-900/40 hover:bg-slate-900 text-slate-300 hover:text-white"
+        : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+    }`}
+  >
+    <span>Details</span>
+    <span className="text-indigo-400">→</span>
+  </button>
 
-                {dropdownOpen === index && (
-                  <div
-                    className={`absolute left-0 bottom-full mb-2 w-full rounded-xl border backdrop-blur-xl shadow-2xl z-30 overflow-hidden ${
-                      darkMode
-                        ? "bg-slate-950/95 border-slate-800 text-slate-200"
-                        : "bg-white/95 border-slate-200 text-slate-800"
-                    }`}
-                  >
-                    {sourceEntries.map(([key, url]) => {
-                      const readableLabel = key.replace(/([A-Z])/g, " $1").trim();
-                      return (
-                        <a
-                          key={key}
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`block px-4 py-2.5 text-xs font-medium border-b last:border-none transition-colors ${
-                            darkMode
-                              ? "hover:bg-indigo-500/10 hover:text-indigo-400 border-slate-800/80"
-                              : "hover:bg-slate-50 hover:text-indigo-600 border-slate-100"
-                          }`}
-                        >
-                          {readableLabel.charAt(0).toUpperCase() + readableLabel.slice(1)}
-                        </a>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            ) : singleRepoUrl ? (
+  {/* Repository */}
+  {hasMultipleRepos ? (
+    <div className="relative flex-1">
+      <button
+        type="button"
+        onClick={() =>
+          setDropdownOpen(dropdownOpen === index ? null : index)
+        }
+        className={`w-full inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-lg text-[11px] sm:text-xs font-semibold transition-all duration-200 whitespace-nowrap ${
+          darkMode
+            ? "bg-slate-900/40 hover:bg-slate-900 text-slate-300"
+            : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+        }`}
+      >
+        <FaGithub size={12} />
+        <span>Repos</span>
+        <FaChevronDown
+          size={9}
+          className={`opacity-70 transition-transform duration-200 ${
+            dropdownOpen === index ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {dropdownOpen === index && (
+        <div
+          className={`absolute left-0 bottom-full mb-2 w-full rounded-xl border backdrop-blur-xl shadow-2xl z-30 overflow-hidden ${
+            darkMode
+              ? "bg-slate-950/95 border-slate-800 text-slate-200"
+              : "bg-white/95 border-slate-200 text-slate-800"
+          }`}
+        >
+          {sourceEntries.map(([key, url]) => {
+            const readableLabel = key
+              .replace(/([A-Z])/g, " $1")
+              .trim();
+
+            return (
               <a
-                href={singleRepoUrl}
+                key={key}
+                href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all duration-200 flex-grow ${
+                className={`block px-3 py-2.5 text-xs font-medium border-b last:border-none transition-colors ${
                   darkMode
-                    ? "bg-slate-900/40 hover:bg-slate-900 text-slate-300 hover:text-white"
-                    : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                    ? "hover:bg-indigo-500/10 hover:text-indigo-400 border-slate-800/80"
+                    : "hover:bg-slate-50 hover:text-indigo-600 border-slate-100"
                 }`}
               >
-                <FaGithub size={13} />
-                <span>Code</span>
+                {readableLabel.charAt(0).toUpperCase() +
+                  readableLabel.slice(1)}
               </a>
-            ) : null}
-          </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  ) : singleRepoUrl ? (
+    <a
+      href={singleRepoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex-1 inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-lg text-[11px] sm:text-xs font-semibold transition-all duration-200 whitespace-nowrap ${
+        darkMode
+          ? "bg-slate-900/40 hover:bg-slate-900 text-slate-300 hover:text-white"
+          : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+      }`}
+    >
+      <FaGithub size={12} />
+      <span>Code</span>
+    </a>
+  ) : null}
+</div>
         </div>
       );
     })}
   </div>
+  {selectedProject && (
+  <ProjectModal
+    project={selectedProject}
+    darkMode={darkMode}
+    onClose={() => setSelectedProject(null)}
+  />
+)}
 </section>
 
       {/* SECTION 5: CONTACT */}
