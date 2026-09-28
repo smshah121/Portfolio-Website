@@ -952,174 +952,293 @@ useEffect(() => {
 ];
 
 
-const ProjectModal = ({ project, darkMode, onClose }) => {
+const ProjectModal = ({ project, darkMode, onClose, TechIcons = {} }) => {
+  useEffect(() => {
+    if (!project) return;
+
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    // Prevent background scrolling
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [project, onClose]);
+
   if (!project) return null;
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[99999] flex items-center justify-center p-3.5 sm:p-6"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-modal-title"
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      {/* Overlay Backdrop */}
+      <div className="absolute inset-0 bg-black/75 backdrop-blur-md " />
 
-      {/* Modal */}
+      {/* Modal Surface */}
       <div
-        className={`relative z-10 w-full max-w-3xl max-h-[85vh] overflow-hidden rounded-2xl border shadow-2xl ${
+        className={`relative z-10 w-full max-w-3xl max-h-[88vh] flex flex-col overflow-hidden rounded-2xl border shadow-2xl transition-none  ${
           darkMode
-            ? "bg-slate-950 border-slate-800"
-            : "bg-white border-slate-200"
+            ? "bg-slate-950/95 border-slate-800/90 shadow-indigo-950/30"
+            : "bg-white/95 border-slate-200/90 shadow-slate-300/60"
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        
-        {/* Your modal header */}
+        {/* Ambient Top Glow */}
         <div
-          className={`flex items-start justify-between gap-4 px-5 py-4 sm:px-6 border-b ${
-            darkMode ? "border-slate-800" : "border-slate-200"
+          className={`absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-24 rounded-full blur-[70px] pointer-events-none opacity-25 transition-none ${
+            darkMode ? "bg-indigo-500" : "bg-indigo-400"
+          }`}
+        />
+
+        {/* ================= HEADER ================= */}
+        <div
+          className={`relative px-5 py-5 sm:px-7 sm:py-6 border-b shrink-0 transition-none ${
+            darkMode ? "border-slate-800/80 bg-slate-950/40" : "border-slate-100 bg-white/40"
           }`}
         >
-          <div className="min-w-0">
-            <h2
-              className={`text-xl sm:text-2xl font-bold tracking-tight ${
-                darkMode ? "text-white" : "text-slate-900"
-              }`}
-            >
-              {project.title}
-            </h2>
+          {/* Subtle Top Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-80" />
 
-            <p
-              className={`text-xs sm:text-sm mt-1.5 leading-relaxed ${
-                darkMode ? "text-slate-400" : "text-slate-500"
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0 pr-2">
+              {/* Project label */}
+              <div className="flex items-center gap-2 mb-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+
+                <span
+                  className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] transition-none ${
+                    darkMode ? "text-indigo-400" : "text-indigo-500"
+                  }`}
+                >
+                  Project Details
+                </span>
+              </div>
+
+              {/* Title */}
+              <h2
+                id="project-modal-title"
+                className={`text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight transition-none ${
+                  darkMode ? "text-white" : "text-slate-900"
+                }`}
+              >
+                {project.title}
+              </h2>
+
+              {/* Short description */}
+              <p
+                className={`text-xs sm:text-sm mt-2 leading-6 max-w-2xl transition-none ${
+                  darkMode ? "text-slate-400" : "text-slate-500"
+                }`}
+              >
+                {project.desc}
+              </p>
+            </div>
+
+            {/* Close */}
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close project details"
+              className={`shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-lg border transition-all duration-150 cursor-pointer active:scale-95 ${
+                darkMode
+                  ? "text-slate-400 bg-slate-900/80 border-slate-800 hover:border-slate-700 hover:bg-slate-800 hover:text-white"
+                  : "text-slate-500 bg-slate-100 border-slate-200 hover:border-slate-300 hover:bg-slate-200 hover:text-slate-900"
               }`}
             >
-              {project.desc}
-            </p>
+              <span className="leading-none select-none">×</span>
+            </button>
           </div>
-
-          <button
-            type="button"
-            onClick={onClose}
-            className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xl ${
-              darkMode
-                ? "text-slate-400 hover:text-white hover:bg-slate-800"
-                : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
-            }`}
-          >
-            ×
-          </button>
         </div>
 
-        {/* Scrollable content */}
-        <div className="max-h-[calc(85vh-105px)] overflow-y-auto px-5 py-6 sm:px-6">
-
+        {/* ================= CONTENT ================= */}
+        <div
+          className={`flex-1 overflow-y-auto px-5 py-7 sm:px-7 sm:py-8 space-y-8 ${
+            darkMode ? "modal-scrollbar-dark" : "modal-scrollbar-light"
+          }`}
+        >
           {/* Overview */}
-          <div className="mb-7">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-2">
-              Overview
-            </h3>
+          {project.overview && (
+            <section>
+              <SectionHeading darkMode={darkMode}>
+                Overview
+              </SectionHeading>
 
-            <p
-              className={`text-sm sm:text-[15px] leading-7 ${
-                darkMode ? "text-slate-300" : "text-slate-600"
-              }`}
-            >
-              {project.overview}
-            </p>
-          </div>
+              <p
+                className={`text-sm sm:text-[15px] leading-7 transition-none ${
+                  darkMode ? "text-slate-300" : "text-slate-600"
+                }`}
+              >
+                {project.overview}
+              </p>
+            </section>
+          )}
 
-          {/* Problem */}
-          <div className="mb-7">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-2">
-              Problem
-            </h3>
-
-            <p
-              className={`text-sm sm:text-[15px] leading-7 ${
-                darkMode ? "text-slate-300" : "text-slate-600"
-              }`}
-            >
-              {project.problem}
-            </p>
-          </div>
-
-          {/* Solution */}
-          <div className="mb-7">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-2">
-              Solution
-            </h3>
-
-            <p
-              className={`text-sm sm:text-[15px] leading-7 ${
-                darkMode ? "text-slate-300" : "text-slate-600"
-              }`}
-            >
-              {project.solution}
-            </p>
-          </div>
-
-          {/* Features */}
-          <div className="mb-7">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-3">
-              Key Features
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {project.features.map((feature, index) => (
-                <div
-                  key={index}
-                  className={`flex items-start gap-2.5 p-3 rounded-lg border ${
+          {/* The Problem I Identified & The Solution I Built */}
+          {(project.problem || project.solution) && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+              {/* Problem */}
+              {project.problem && (
+                <section
+                  className={`p-4 sm:p-5 rounded-xl border transition-none ${
                     darkMode
-                      ? "bg-slate-900/70 border-slate-800"
-                      : "bg-slate-50 border-slate-200"
+                      ? "bg-slate-900/40 border-slate-800/80"
+                      : "bg-slate-50 border-slate-200/80"
                   }`}
                 >
-                  <span className="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-indigo-500" />
+                  <SectionHeading darkMode={darkMode}>
+                    The Problem I Identified
+                  </SectionHeading>
 
-                  <span
-                    className={`text-xs sm:text-sm leading-relaxed ${
-                      darkMode ? "text-slate-300" : "text-slate-600"
+                  <div
+                    className={`relative pl-3.5 border-l-2 mt-2 ${
+                      darkMode
+                        ? "border-rose-500/50"
+                        : "border-rose-500/40"
                     }`}
                   >
-                    {feature}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+                    <p
+                      className={`text-xs sm:text-[13.5px] leading-relaxed transition-none ${
+                        darkMode ? "text-slate-300" : "text-slate-600"
+                      }`}
+                    >
+                      {project.problem}
+                    </p>
+                  </div>
+                </section>
+              )}
 
-          {/* Tech Stack */}
-          <div className="mb-12">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-indigo-500 mb-3">
-              Tech Stack
-            </h3>
-
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((tech) => (
-                <span
-                  key={tech}
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono border ${
+              {/* Solution */}
+              {project.solution && (
+                <section
+                  className={`p-4 sm:p-5 rounded-xl border transition-none ${
                     darkMode
-                      ? "bg-slate-900 text-slate-300 border-slate-800"
-                      : "bg-slate-100 text-slate-700 border-slate-200"
+                      ? "bg-slate-900/40 border-slate-800/80"
+                      : "bg-slate-50 border-slate-200/80"
                   }`}
                 >
-                  {TechIcons[tech] && (
-                    <span className="opacity-75">
-                      {TechIcons[tech]}
-                    </span>
-                  )}
+                  <SectionHeading darkMode={darkMode}>
+                    The Solution I Built
+                  </SectionHeading>
 
-                  {tech}
-                </span>
-              ))}
+                  <div
+                    className={`relative pl-3.5 border-l-2 mt-2 ${
+                      darkMode
+                        ? "border-emerald-500/50"
+                        : "border-emerald-500/40"
+                    }`}
+                  >
+                    <p
+                      className={`text-xs sm:text-[13.5px] leading-relaxed transition-none ${
+                        darkMode ? "text-slate-300" : "text-slate-600"
+                      }`}
+                    >
+                      {project.solution}
+                    </p>
+                  </div>
+                </section>
+              )}
             </div>
-          </div>
+          )}
 
+          {/* Features */}
+          {project.features && project.features.length > 0 && (
+            <section>
+              <SectionHeading darkMode={darkMode}>
+                Key Features
+              </SectionHeading>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-3">
+                {project.features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className={`group flex items-start gap-3 p-3.5 rounded-xl border transition-all duration-200 ${
+                      darkMode
+                        ? "bg-slate-900/40 border-slate-800/70 hover:border-slate-700 hover:bg-slate-900/70"
+                        : "bg-slate-50 border-slate-200/70 hover:border-slate-300 hover:bg-slate-100/80"
+                    }`}
+                  >
+                    {/* Feature indicator */}
+                    <span
+                      className={`mt-[7px] w-1.5 h-1.5 shrink-0 rounded-full transition-transform duration-200 group-hover:scale-125 ${
+                        darkMode ? "bg-indigo-400" : "bg-indigo-500"
+                      }`}
+                    />
+
+                    <span
+                      className={`text-xs sm:text-sm leading-6 transition-none ${
+                        darkMode ? "text-slate-300" : "text-slate-600"
+                      }`}
+                    >
+                      {feature}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Tech Stack */}
+          {project.tech && project.tech.length > 0 && (
+            <section className="pb-4">
+              <SectionHeading darkMode={darkMode}>
+                Tech Stack
+              </SectionHeading>
+
+              <div className="flex flex-wrap gap-2 mt-3">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className={`group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono border transition-all duration-200 ${
+                      darkMode
+                        ? "bg-slate-900/90 text-slate-300 border-slate-800 hover:border-indigo-500/40 hover:text-white"
+                        : "bg-slate-100 text-slate-700 border-slate-200 hover:border-indigo-300 hover:text-slate-900"
+                    }`}
+                  >
+                    {TechIcons[tech] && (
+                      <span className="opacity-70 group-hover:opacity-100 transition-opacity">
+                        {TechIcons[tech]}
+                      </span>
+                    )}
+
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>,
     document.body
+  );
+};
+
+
+/* ================= SECTION HEADING ================= */
+
+const SectionHeading = ({ children, darkMode }) => {
+  return (
+    <h3
+      className={`text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] mb-3 flex items-center gap-2 ${
+        darkMode ? "text-indigo-400" : "text-indigo-500"
+      }`}
+    >
+      <span className="w-5 h-px bg-current opacity-60" />
+      {children}
+    </h3>
   );
 };
   const FrontendTech = [

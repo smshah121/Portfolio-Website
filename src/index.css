@@ -43,3 +43,31 @@ html, body {
 
 
 
+
+
+
+.modal-scrollbar-dark::-webkit-scrollbar,
+.modal-scrollbar-light::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal-scrollbar-dark::-webkit-scrollbar-track,
+.modal-scrollbar-light::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scrollbar-dark::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.35);
+  border-radius: 999px;
+}
+
+.modal-scrollbar-light::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.25);
+  border-radius: 999px;
+}
+
+.modal-scrollbar-dark::-webkit-scrollbar-thumb:hover,
+.modal-scrollbar-light::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.55);
+}
+
