@@ -952,7 +952,7 @@ useEffect(() => {
 ];
 
 
-const ProjectModal = ({ project, darkMode, onClose, TechIcons = {} }) => {
+const ProjectModal = ({ project, darkMode, onClose = {} }) => {
   useEffect(() => {
     if (!project) return;
 
