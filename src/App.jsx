@@ -1060,7 +1060,7 @@ const ProjectModal = ({ project, darkMode, onClose }) => {
 
         {/* ================= CONTENT ================= */}
         <div
-          className={`flex-1 overflow-y-auto px-5 py-7 sm:px-7 sm:py-8 ${
+          className={`flex-1 min-h-0  overflow-y-auto px-5 py-7 sm:px-7 sm:py-8 ${
             darkMode
               ? "modal-scrollbar-dark"
               : "modal-scrollbar-light"
@@ -1246,9 +1246,12 @@ const ProjectModal = ({ project, darkMode, onClose }) => {
             </section>
           )}
 
-          {/* Deployment Note */}
+         
+        </div>
+
+         {/* Deployment Note */}
           <div
-            className={`pt-5 pb-2 border-t text-xs leading-6 ${
+            className={`shrink-0 p-4 border-t text-xs leading-6 ${
               darkMode
                 ? "border-slate-800 text-slate-500"
                 : "border-slate-200 text-slate-500"
@@ -1266,7 +1269,6 @@ const ProjectModal = ({ project, darkMode, onClose }) => {
             like to explore a project in detail, feel free to contact
             me for a live walkthrough.
           </div>
-        </div>
       </div>
     </div>,
     document.body
