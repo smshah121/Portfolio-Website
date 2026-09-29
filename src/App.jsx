@@ -952,7 +952,7 @@ useEffect(() => {
 ];
 
 
-const ProjectModal = ({ project, darkMode, onClose = {} }) => {
+const ProjectModal = ({ project, darkMode, onClose }) => {
   useEffect(() => {
     if (!project) return;
 
@@ -984,42 +984,37 @@ const ProjectModal = ({ project, darkMode, onClose = {} }) => {
       aria-modal="true"
       aria-labelledby="project-modal-title"
     >
-      {/* Overlay Backdrop */}
-      <div className="absolute inset-0 bg-black/75 backdrop-blur-md " />
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/75 backdrop-blur-md" />
 
-      {/* Modal Surface */}
+      {/* Modal */}
       <div
-        className={`relative z-10 w-full max-w-3xl max-h-[88vh] flex flex-col overflow-hidden rounded-2xl border shadow-2xl transition-none  ${
+        className={`relative z-10 w-full max-w-3xl max-h-[88vh] flex flex-col overflow-hidden rounded-2xl border shadow-2xl ${
           darkMode
             ? "bg-slate-950/95 border-slate-800/90 shadow-indigo-950/30"
             : "bg-white/95 border-slate-200/90 shadow-slate-300/60"
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Ambient Top Glow */}
-        <div
-          className={`absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-24 rounded-full blur-[70px] pointer-events-none opacity-25 transition-none ${
-            darkMode ? "bg-indigo-500" : "bg-indigo-400"
-          }`}
-        />
+        {/* Top Accent */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-80" />
 
         {/* ================= HEADER ================= */}
         <div
-          className={`relative px-5 py-5 sm:px-7 sm:py-6 border-b shrink-0 transition-none ${
-            darkMode ? "border-slate-800/80 bg-slate-950/40" : "border-slate-100 bg-white/40"
+          className={`relative shrink-0 px-5 py-5 sm:px-7 sm:py-6 border-b ${
+            darkMode
+              ? "border-slate-800/80 bg-slate-950/50"
+              : "border-slate-200/80 bg-white/70"
           }`}
         >
-          {/* Subtle Top Accent Line */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-80" />
-
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0 pr-2">
-              {/* Project label */}
+              {/* Label */}
               <div className="flex items-center gap-2 mb-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
 
                 <span
-                  className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] transition-none ${
+                  className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] ${
                     darkMode ? "text-indigo-400" : "text-indigo-500"
                   }`}
                 >
@@ -1030,16 +1025,16 @@ const ProjectModal = ({ project, darkMode, onClose = {} }) => {
               {/* Title */}
               <h2
                 id="project-modal-title"
-                className={`text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight transition-none ${
+                className={`text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-tight ${
                   darkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 {project.title}
               </h2>
 
-              {/* Short description */}
+              {/* Description */}
               <p
-                className={`text-xs sm:text-sm mt-2 leading-6 max-w-2xl transition-none ${
+                className={`text-xs sm:text-sm mt-2 leading-6 max-w-2xl ${
                   darkMode ? "text-slate-400" : "text-slate-500"
                 }`}
               >
@@ -1047,7 +1042,7 @@ const ProjectModal = ({ project, darkMode, onClose = {} }) => {
               </p>
             </div>
 
-            {/* Close */}
+            {/* Close Button */}
             <button
               type="button"
               onClick={onClose}
@@ -1065,19 +1060,21 @@ const ProjectModal = ({ project, darkMode, onClose = {} }) => {
 
         {/* ================= CONTENT ================= */}
         <div
-          className={`flex-1 overflow-y-auto px-5 py-7 sm:px-7 sm:py-8 space-y-8 ${
-            darkMode ? "modal-scrollbar-dark" : "modal-scrollbar-light"
+          className={`flex-1 overflow-y-auto px-5 py-7 sm:px-7 sm:py-8 ${
+            darkMode
+              ? "modal-scrollbar-dark"
+              : "modal-scrollbar-light"
           }`}
         >
           {/* Overview */}
           {project.overview && (
-            <section>
-              <SectionHeading darkMode={darkMode}>
+            <section className="mb-9">
+              <ModalHeading darkMode={darkMode}>
                 Overview
-              </SectionHeading>
+              </ModalHeading>
 
               <p
-                className={`text-sm sm:text-[15px] leading-7 transition-none ${
+                className={`text-sm sm:text-[15px] leading-7 ${
                   darkMode ? "text-slate-300" : "text-slate-600"
                 }`}
               >
@@ -1086,100 +1083,129 @@ const ProjectModal = ({ project, darkMode, onClose = {} }) => {
             </section>
           )}
 
-          {/* The Problem I Identified & The Solution I Built */}
+          {/* Problem + Solution */}
           {(project.problem || project.solution) && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-              {/* Problem */}
-              {project.problem && (
-                <section
-                  className={`p-4 sm:p-5 rounded-xl border transition-none ${
-                    darkMode
-                      ? "bg-slate-900/40 border-slate-800/80"
-                      : "bg-slate-50 border-slate-200/80"
-                  }`}
-                >
-                  <SectionHeading darkMode={darkMode}>
-                    The Problem I Identified
-                  </SectionHeading>
+            <section className="mb-9">
+              <ModalHeading darkMode={darkMode}>
+                The Challenge & Approach
+              </ModalHeading>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Problem */}
+                {project.problem && (
                   <div
-                    className={`relative pl-3.5 border-l-2 mt-2 ${
+                    className={`relative p-4 sm:p-5 rounded-xl border ${
                       darkMode
-                        ? "border-rose-500/50"
-                        : "border-rose-500/40"
+                        ? "bg-slate-900/40 border-slate-800/80"
+                        : "bg-slate-50/80 border-slate-200"
                     }`}
                   >
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <span
+                        className={`w-2 h-2 rounded-full ${
+                          darkMode
+                            ? "bg-rose-400"
+                            : "bg-rose-500"
+                        }`}
+                      />
+
+                      <h4
+                        className={`text-xs sm:text-sm font-semibold ${
+                          darkMode
+                            ? "text-slate-200"
+                            : "text-slate-800"
+                        }`}
+                      >
+                        The Problem I Identified
+                      </h4>
+                    </div>
+
                     <p
-                      className={`text-xs sm:text-[13.5px] leading-relaxed transition-none ${
-                        darkMode ? "text-slate-300" : "text-slate-600"
+                      className={`text-xs sm:text-[13.5px] leading-6 ${
+                        darkMode
+                          ? "text-slate-400"
+                          : "text-slate-600"
                       }`}
                     >
                       {project.problem}
                     </p>
                   </div>
-                </section>
-              )}
+                )}
 
-              {/* Solution */}
-              {project.solution && (
-                <section
-                  className={`p-4 sm:p-5 rounded-xl border transition-none ${
-                    darkMode
-                      ? "bg-slate-900/40 border-slate-800/80"
-                      : "bg-slate-50 border-slate-200/80"
-                  }`}
-                >
-                  <SectionHeading darkMode={darkMode}>
-                    The Solution I Built
-                  </SectionHeading>
-
+                {/* Solution */}
+                {project.solution && (
                   <div
-                    className={`relative pl-3.5 border-l-2 mt-2 ${
+                    className={`relative p-4 sm:p-5 rounded-xl border ${
                       darkMode
-                        ? "border-emerald-500/50"
-                        : "border-emerald-500/40"
+                        ? "bg-slate-900/40 border-slate-800/80"
+                        : "bg-slate-50/80 border-slate-200"
                     }`}
                   >
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <span
+                        className={`w-2 h-2 rounded-full ${
+                          darkMode
+                            ? "bg-emerald-400"
+                            : "bg-emerald-500"
+                        }`}
+                      />
+
+                      <h4
+                        className={`text-xs sm:text-sm font-semibold ${
+                          darkMode
+                            ? "text-slate-200"
+                            : "text-slate-800"
+                        }`}
+                      >
+                        The Solution I Built
+                      </h4>
+                    </div>
+
                     <p
-                      className={`text-xs sm:text-[13.5px] leading-relaxed transition-none ${
-                        darkMode ? "text-slate-300" : "text-slate-600"
+                      className={`text-xs sm:text-[13.5px] leading-6 ${
+                        darkMode
+                          ? "text-slate-400"
+                          : "text-slate-600"
                       }`}
                     >
                       {project.solution}
                     </p>
                   </div>
-                </section>
-              )}
-            </div>
+                )}
+              </div>
+            </section>
           )}
 
           {/* Features */}
           {project.features && project.features.length > 0 && (
-            <section>
-              <SectionHeading darkMode={darkMode}>
+            <section className="mb-9">
+              <ModalHeading darkMode={darkMode}>
                 Key Features
-              </SectionHeading>
+              </ModalHeading>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {project.features.map((feature, index) => (
                   <div
                     key={index}
-                    className={`group flex items-start gap-3 p-3.5 rounded-xl border transition-all duration-200 ${
+                    className={`group flex items-start gap-3 px-3.5 py-3 rounded-xl border transition-all duration-200 ${
                       darkMode
                         ? "bg-slate-900/40 border-slate-800/70 hover:border-slate-700 hover:bg-slate-900/70"
                         : "bg-slate-50 border-slate-200/70 hover:border-slate-300 hover:bg-slate-100/80"
                     }`}
                   >
-                    {/* Feature indicator */}
                     <span
                       className={`mt-[7px] w-1.5 h-1.5 shrink-0 rounded-full transition-transform duration-200 group-hover:scale-125 ${
-                        darkMode ? "bg-indigo-400" : "bg-indigo-500"
+                        darkMode
+                          ? "bg-indigo-400"
+                          : "bg-indigo-500"
                       }`}
                     />
 
                     <span
-                      className={`text-xs sm:text-sm leading-6 transition-none ${
-                        darkMode ? "text-slate-300" : "text-slate-600"
+                      className={`text-xs sm:text-sm leading-6 ${
+                        darkMode
+                          ? "text-slate-300"
+                          : "text-slate-600"
                       }`}
                     >
                       {feature}
@@ -1192,12 +1218,12 @@ const ProjectModal = ({ project, darkMode, onClose = {} }) => {
 
           {/* Tech Stack */}
           {project.tech && project.tech.length > 0 && (
-            <section className="pb-4">
-              <SectionHeading darkMode={darkMode}>
+            <section className="mb-9">
+              <ModalHeading darkMode={darkMode}>
                 Tech Stack
-              </SectionHeading>
+              </ModalHeading>
 
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
@@ -1218,26 +1244,47 @@ const ProjectModal = ({ project, darkMode, onClose = {} }) => {
                 ))}
               </div>
             </section>
-
-            
           )}
+
+          {/* Deployment Note */}
+          <div
+            className={`pt-5 pb-2 border-t text-xs leading-6 ${
+              darkMode
+                ? "border-slate-800 text-slate-500"
+                : "border-slate-200 text-slate-500"
+            }`}
+          >
+            <span
+              className={`font-medium ${
+                darkMode ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
+              Deployment Note:
+            </span>{" "}
+            Some projects use free-tier hosting, so their backend may
+            take a few seconds to wake up after inactivity. If you'd
+            like to explore a project in detail, feel free to contact
+            me for a live walkthrough.
+          </div>
         </div>
-      <div
-  className={` p-4 border-t text-xs leading-relaxed ${
-    darkMode
-      ? "border-slate-800 text-slate-500"
-      : "border-slate-200 text-slate-500"
-  }`}
->
-  <span className="font-medium text-slate-400 dark:text-slate-400">
-    Deployment Note:
-  </span>{" "}
-  Some projects use free-tier hosting, so their backend may take a few seconds to wake up after inactivity. If you'd like to explore a project in detail, feel free to contact me for a live walkthrough.
-</div>  
       </div>
-      
     </div>,
     document.body
+  );
+};
+
+
+/* ================= MODAL HEADING ================= */
+
+const ModalHeading = ({ children, darkMode }) => {
+  return (
+    <h3
+      className={`text-sm sm:text-[15px] font-semibold tracking-tight mb-3.5 ${
+        darkMode ? "text-slate-100" : "text-slate-900"
+      }`}
+    >
+      {children}
+    </h3>
   );
 };
 
