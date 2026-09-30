@@ -2480,7 +2480,7 @@ useEffect(() => {
 
   setTimeout(() => {
     setProjectsExpanding(false);
-  }, 450);
+  }, 400);
 }}
         className={`group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ${
           darkMode
