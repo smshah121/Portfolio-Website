@@ -889,7 +889,7 @@ useEffect(() => {
       "People often save images, videos, and GIFs across different apps, chats, social media platforms, or directly in their phone gallery. Over time, these files can become difficult to find, get buried among other media, or consume a significant amount of device storage. Managing different types of media separately can also make it difficult to keep related content organized.",
 
     solution:
-      "Pixora provides authenticated users with private media collections, protected routes, and multiple Pixora provides a dedicated platform where users can create unlimited custom collections and organize different types of media according to their own needs. A user can create a collection with any name and save related photos, videos, and GIFs inside it, making their media easier to organize, access, and manage from one place. options through JWT and Google OAuth 2.0.",
+      "Pixora provides authenticated users with private media collections and protected routes, Pixora provides a dedicated platform where users can create unlimited custom collections and organize different types of media according to their own needs. A user can create a collection with any name and save related photos, videos, and GIFs inside it, making their media easier to organize, access, and manage from one place. options through JWT and Google OAuth 2.0.",
 
     features: [
       "Create custom media collections",
@@ -899,7 +899,7 @@ useEffect(() => {
       "JWT authentication",
       "Google OAuth 2.0",
       "Media organization",
-      "Cloud-based media storage",
+   
     ],
 
     link: "https://pixora-media.netlify.app/",
@@ -1498,6 +1498,26 @@ useEffect(() => {
       gsap.to(mobileMenuRef.current, { y: -20, opacity: 0, duration: 0.2, ease: "power3.in", display: "none" });
     }
   }, [mobileMenuOpen]);
+
+
+  useEffect(() => {
+  const handleOutsideClick = (event) => {
+    if (
+      mobileMenuOpen &&
+      mobileMenuRef.current &&
+      !mobileMenuRef.current.contains(event.target) &&
+      !event.target.closest("button")
+    ) {
+      setMobileMenuOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleOutsideClick);
+
+  return () => {
+    document.removeEventListener("mousedown", handleOutsideClick);
+  };
+}, [mobileMenuOpen]);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
