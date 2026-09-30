@@ -5,6 +5,7 @@ import { GrReactjs } from "react-icons/gr";
 import { SiNestjs, SiPostgresql, SiTailwindcss, SiRedux, SiAxios, SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
 import { IoIosMail, IoMdDownload, IoMdMail } from "react-icons/io";
 import { FaLocationDot, FaRegEye, FaLaptopCode, FaSun, FaMoon,  FaChevronDown } from "react-icons/fa6";
+import { FaChevronUp } from "react-icons/fa";
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 import { useEffect,useMemo, useLayoutEffect, useState, useRef } from "react";
 import Typewriter from "typewriter-effect";
@@ -198,6 +199,8 @@ function App() {
   const aboutHeadingRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [projectsExpanding, setProjectsExpanding] = useState(false);
 
   useEffect(() => {
   const ctx = gsap.context(() => {
@@ -1521,6 +1524,22 @@ useEffect(() => {
   }, []);
 
 
+  useEffect(() => {
+  const timer = setTimeout(() => {
+    const projectSection = document.querySelector("#project");
+
+    if (projectSection) {
+      gsap.set(projectSection, {
+        clearProps: "transform,opacity,filter",
+      });
+    }
+
+    ScrollTrigger.refresh();
+  }, 100);
+
+  return () => clearTimeout(timer);
+}, [showAllProjects]);
+
   const scrollToSection = (id) => {
   const target = document.getElementById(id);
 
@@ -2241,16 +2260,20 @@ useEffect(() => {
 
   {/* Projects Showcase Grid */}
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
-    {MyProjects.map((project, index) => {
+    {MyProjects.slice(0, showAllProjects ? MyProjects.length : 3).map((project, index) => {
       const sourceEntries = Object.entries(project.source || {}).filter(([_, url]) => Boolean(url));
       const hasMultipleRepos = sourceEntries.length > 1;
       const singleRepoUrl = sourceEntries.length === 1 ? sourceEntries[0][1] : null;
 
       return (
-        <div
-          key={index}
-          className="gsap-reveal group flex flex-col justify-between transition-all duration-300"
-        >
+       <div
+  key={index}
+  className={`group flex flex-col justify-between transition-all duration-500 ${
+  index >= 3 && projectsExpanding
+    ? "opacity-0 translate-y-4"
+    : "opacity-100 translate-y-0"
+}`}
+>
           <div>
             {/* Top Viewport Mockup Header */}
             <div
@@ -2445,6 +2468,58 @@ useEffect(() => {
       );
     })}
   </div>
+
+  {MyProjects.length > 3 && (
+  <div className="flex justify-center mt-14">
+    {!showAllProjects ? (
+      <button
+        type="button"
+        onClick={() => {
+  setProjectsExpanding(true);
+  setShowAllProjects(true);
+
+  setTimeout(() => {
+    setProjectsExpanding(false);
+  }, 450);
+}}
+        className={`group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ${
+          darkMode
+            ? "border-slate-800 bg-slate-900/40 text-slate-300 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-white"
+            : "border-slate-200 bg-slate-50 text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-600"
+        }`}
+      >
+        <span>View More Projects</span>
+        <FaChevronDown
+          size={10}
+          className="transition-transform duration-300 group-hover:translate-y-0.5"
+        />
+      </button>
+    ) : (
+      <button
+        type="button"
+        onClick={() => {
+  setShowAllProjects(false);
+
+  setTimeout(() => {
+    lenisRef.current?.scrollTo("#project", {
+      duration: 1.2,
+      offset: 0,
+    });
+  }, 50);
+}}
+        aria-label="Show fewer projects"
+        className={`w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-300 ${
+          darkMode
+            ? "border-slate-800 bg-slate-900/40 text-slate-400 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-400"
+            : "border-slate-200 bg-slate-50 text-slate-500 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-600"
+        }`}
+      >
+        <FaChevronUp size={11} />
+      </button>
+    )}
+  </div>
+)}
+
   {selectedProject && (
   <ProjectModal
     project={selectedProject}
