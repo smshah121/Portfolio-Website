@@ -2126,7 +2126,7 @@ useEffect(() => {
   </div>
 </section>
       {/* SECTION 3: TECH STACK */}
-      {/* SECTION 3: TECH STACK */}
+  
 <section
   id="skills"
   className={`panel-section py-28 relative overflow-hidden transition-colors duration-500 min-h-screen flex items-center ${
@@ -2175,12 +2175,10 @@ useEffect(() => {
           {/* Category Header Bar */}
           <div className="flex items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-3">
-              <span className="text-xs font-mono font-bold text-indigo-400/80">
-                {block.id}
-              </span>
-              <span className={`h-3 w-[1px] ${darkMode ? "bg-slate-800" : "bg-slate-300"}`} />
+             
+             
               <h3
-                className={`text-sm md:text-base w-30 md:w-60 font-semibold tracking-wide uppercase font-mono ${
+                className={`text-sm md:text-base font-semibold tracking-wide uppercase font-mono ${
                   darkMode ? "text-slate-200" : "text-slate-800"
                 }`}
               >
@@ -2188,13 +2186,9 @@ useEffect(() => {
               </h3>
             </div>
             
-            <div className={`hidden sm:block flex-1 mx-6 h-[1px] ${darkMode ? "bg-slate-800/80" : "bg-slate-200"}`} />
+           
             
-            <span className={`text-[8px] md:text-[11px] font-mono tracking-wider uppercase ${
-              darkMode ? "text-slate-500" : "text-slate-400"
-            }`}>
-              {block.stack.length} Technologies
-            </span>
+           
           </div>
 
           {/* Interactive Technology Grid */}
