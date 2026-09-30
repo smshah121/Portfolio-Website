@@ -2776,7 +2776,7 @@ useEffect(() => {
         </a>
          <a
           href="mailto:sm.shah2003@hotmail.com"
-          aria-label="Email via Outloook"
+          aria-label="Email via Outlook"
           target="_blank"
           rel="noopener noreferrer"
           className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
