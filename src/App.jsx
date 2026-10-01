@@ -1982,11 +1982,13 @@ useEffect(() => {
 
     {/* Right Column */}
    {/* Right Column (Borderless, Ultra-Compact & Height-Synchronized) */}
-<div className="lg:col-span-5 flex flex-col justify-between self-stretch h-full gap-4">
+{/* Right Column (Consistent, Symmetrical & Height-Controlled) */}
+<div className="lg:col-span-5 flex flex-col justify-between self-stretch h-full gap-5">
+  
   {/* 1. What I Build */}
   <div className="gsap-reveal flex flex-col justify-start">
     {/* Section Header */}
-    <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-200/50 dark:border-slate-800/60">
+    <div className="flex items-center justify-between mb-3">
       <div className="flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
         <h3
@@ -2006,7 +2008,7 @@ useEffect(() => {
       </span>
     </div>
 
-    {/* Items List (No Box Borders, Pure Clean Typography) */}
+    {/* Items List */}
     <div className="space-y-1.5">
       {/* 01: Full-Stack Development */}
       <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
@@ -2103,10 +2105,17 @@ useEffect(() => {
     </div>
   </div>
 
-  {/* 2. How I Build (Compact 2x2 Clean Flow) */}
-  <div className="gsap-reveal pt-2 border-t border-slate-200/50 dark:border-slate-800/60">
-    {/* Section Header */}
-    <div className="flex items-center justify-between mb-2">
+  {/* Dedicated Middle Divider (Dono sections ke theek center mein) */}
+  <div
+    className={`w-full h-px ${
+      darkMode ? "bg-slate-800/80" : "bg-slate-200/80"
+    }`}
+  />
+
+  {/* 2. How I Build */}
+  <div className="gsap-reveal flex flex-col justify-start">
+    {/* Section Header (Bilkul identical pattern) */}
+    <div className="flex items-center justify-between mb-3">
       <div className="flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
         <h3
@@ -2126,7 +2135,7 @@ useEffect(() => {
       </span>
     </div>
 
-    {/* Borderless Compact Grid */}
+    {/* 2x2 Clean Grid */}
     <div className="grid grid-cols-2 gap-x-3 gap-y-2">
       {/* 01: Analyze */}
       <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
