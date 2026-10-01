@@ -1981,148 +1981,271 @@ useEffect(() => {
     </div>
 
     {/* Right Column */}
-    <div className="lg:col-span-5 flex flex-col gap-10">
-      {/* Availability Status */}
-     <div
-  className={`gsap-reveal pb-6 border-b flex items-center justify-between gap-3 sm:gap-4 ${
-    darkMode ? "border-slate-800/80" : "border-slate-200"
-  }`}
->
-  {/* Availability */}
-  <div className="flex items-center gap-3 min-w-0">
-    <div className="relative flex items-center justify-center shrink-0">
-      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping absolute opacity-75" />
-      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 relative" />
+   {/* Right Column (Borderless, Ultra-Compact & Height-Synchronized) */}
+<div className="lg:col-span-5 flex flex-col justify-between self-stretch h-full gap-4">
+  {/* 1. What I Build */}
+  <div className="gsap-reveal flex flex-col justify-start">
+    {/* Section Header */}
+    <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-200/50 dark:border-slate-800/60">
+      <div className="flex items-center gap-2">
+        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+        <h3
+          className={`text-[11px] font-mono font-semibold tracking-[0.22em] uppercase ${
+            darkMode ? "text-indigo-400" : "text-indigo-600"
+          }`}
+        >
+          What I Build
+        </h3>
+      </div>
+      <span
+        className={`text-[9px] font-mono tracking-widest uppercase ${
+          darkMode ? "text-slate-500" : "text-slate-400"
+        }`}
+      >
+        Capabilities
+      </span>
     </div>
 
-    <div className="min-w-0">
-      <h4
-        className={`text-sm font-semibold tracking-wide ${
-          darkMode ? "text-slate-100" : "text-slate-900"
-        }`}
-      >
-        Available For
-      </h4>
+    {/* Items List (No Box Borders, Pure Clean Typography) */}
+    <div className="space-y-1.5">
+      {/* 01: Full-Stack Development */}
+      <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
+        <div className="flex items-center gap-2.5">
+          <span
+            className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-md ${
+              darkMode
+                ? "bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500/20"
+                : "bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100"
+            }`}
+          >
+            01
+          </span>
+          <h4
+            className={`text-xs sm:text-[13px] font-semibold tracking-tight transition-colors duration-150 ${
+              darkMode
+                ? "text-slate-100 group-hover:text-indigo-300"
+                : "text-slate-900 group-hover:text-indigo-600"
+            }`}
+          >
+            Full-Stack Development
+          </h4>
+        </div>
+        <p
+          className={`text-[11px] leading-relaxed mt-1 pl-8 transition-colors ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}
+        >
+          End-to-end web applications combining responsive interfaces with reliable backend systems.
+        </p>
+      </div>
 
-      <p
-        className={`text-[10px] sm:text-xs mt-1 sm:mt-1.5 leading-relaxed ${
-          darkMode ? "text-slate-400" : "text-slate-500"
-        }`}
-      >
-        Software Engineering Roles & Freelance Projects
-      </p>
+      {/* 02: Frontend Development */}
+      <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
+        <div className="flex items-center gap-2.5">
+          <span
+            className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-md ${
+              darkMode
+                ? "bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500/20"
+                : "bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100"
+            }`}
+          >
+            02
+          </span>
+          <h4
+            className={`text-xs sm:text-[13px] font-semibold tracking-tight transition-colors duration-150 ${
+              darkMode
+                ? "text-slate-100 group-hover:text-indigo-300"
+                : "text-slate-900 group-hover:text-indigo-600"
+            }`}
+          >
+            Frontend Development
+          </h4>
+        </div>
+        <p
+          className={`text-[11px] leading-relaxed mt-1 pl-8 transition-colors ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}
+        >
+          Responsive and interactive user interfaces focused on usability, performance, and clean architecture.
+        </p>
+      </div>
+
+      {/* 03: Backend Development */}
+      <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
+        <div className="flex items-center gap-2.5">
+          <span
+            className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-md ${
+              darkMode
+                ? "bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500/20"
+                : "bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100"
+            }`}
+          >
+            03
+          </span>
+          <h4
+            className={`text-xs sm:text-[13px] font-semibold tracking-tight transition-colors duration-150 ${
+              darkMode
+                ? "text-slate-100 group-hover:text-indigo-300"
+                : "text-slate-900 group-hover:text-indigo-600"
+            }`}
+          >
+            Backend Development
+          </h4>
+        </div>
+        <p
+          className={`text-[11px] leading-relaxed mt-1 pl-8 transition-colors ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}
+        >
+          Secure APIs, authentication, business logic, database integration, and scalable backend systems.
+        </p>
+      </div>
     </div>
   </div>
 
-  {/* Button */}
-  <button
-    onClick={() => scrollToSection("contact")}
-    className="shrink-0 inline-flex items-center justify-center px-3 sm:px-4 py-2 text-[10px] sm:text-xs font-semibold rounded-full bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-all duration-200"
-  >
-    Let's Talk →
-  </button>
-</div>
-
-      {/* Numerical Metrics */}
-      <div className="gsap-reveal grid grid-cols-2 gap-8">
-        <div className="flex flex-col">
-          <span
-            ref={fullstackCountRef}
-            className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-          >
-            0+
-          </span>
-          <span className={`text-xs md:text-sm font-medium mt-1 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-            Full-Stack Projects
-          </span>
-        </div>
-
-        <div className={`flex flex-col border-l pl-8 ${darkMode ? "border-slate-800" : "border-slate-200"}`}>
-          <span
-            ref={frontendCountRef}
-            className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-          >
-            0+
-          </span>
-          <span className={`text-xs md:text-sm font-medium mt-1 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
-            Web Interfaces
-          </span>
-        </div>
+  {/* 2. How I Build (Compact 2x2 Clean Flow) */}
+  <div className="gsap-reveal pt-2 border-t border-slate-200/50 dark:border-slate-800/60">
+    {/* Section Header */}
+    <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center gap-2">
+        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+        <h3
+          className={`text-[11px] font-mono font-semibold tracking-[0.22em] uppercase ${
+            darkMode ? "text-indigo-400" : "text-indigo-600"
+          }`}
+        >
+          How I Build
+        </h3>
       </div>
-
-      {/* Core Technologies Graphic */}
-      <div className="gsap-reveal flex flex-col items-center justify-center pt-4">
-        <div className="relative w-[230px] sm:w-[260px] aspect-square">
-          {/* Orbit rings */}
-          <div className={`absolute inset-0 rounded-full border border-dashed ${darkMode ? "border-slate-800" : "border-slate-200"}`} />
-          <div className={`absolute inset-8 rounded-full border ${darkMode ? "border-slate-800/50" : "border-slate-200/60"}`} />
-
-          {/* Center hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full flex flex-col items-center justify-center z-10">
-            <FaLaptopCode size={32} className="text-indigo-400 text-lg mb-0.5" />
-          </div>
-
-          {/* Orbiting icons */}
-         <div ref={orbitRef} className="absolute inset-0 pointer-events-none">
-  {/* Hairline Orbital Track Ring (Anchors the icons visually) */}
-  <div
-    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-dashed pointer-events-none transition-none ${
-      darkMode ? "border-indigo-500/20" : "border-slate-300/60"
-    }`}
-  />
-
-  {/* Faint Concentric Core Ring */}
-  <div
-    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] h-[160px] rounded-full border pointer-events-none transition-none ${
-      darkMode ? "border-white/[0.03]" : "border-slate-200/40"
-    }`}
-  />
-
-  {/* Orbiting Tech Nodes */}
-  {technologies.map((tech, i) => {
-    const angle = -90 + (360 / technologies.length) * i;
-    const radius = 100;
-
-    return (
-      <div
-        key={i}
-        className="absolute w-10 h-10 top-1/2 left-1/2 -ml-5 -mt-5 pointer-events-auto"
-        style={{
-          transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`,
-        }}
+      <span
+        className={`text-[9px] font-mono tracking-widest uppercase ${
+          darkMode ? "text-slate-500" : "text-slate-400"
+        }`}
       >
-        <div className="relative group flex items-center justify-center w-full h-full">
-          {/* Node Button / Container */}
-          <div
-            className={`orbit-icon-spin w-10 h-10 rounded-full flex items-center justify-center text-base sm:text-lg backdrop-blur-md border transition-all duration-300 cursor-pointer transform group-hover:scale-125 group-hover:z-30 ${
-              darkMode
-                ? "bg-slate-900/80 border-slate-800 text-slate-400 group-hover:text-white group-hover:border-indigo-500/50 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.35)]"
-                : "bg-white/90 border-slate-200 text-slate-600 group-hover:text-indigo-600 group-hover:border-indigo-300 group-hover:shadow-[0_4px_12px_rgba(79,70,229,0.15)]"
+        Workflow
+      </span>
+    </div>
+
+    {/* Borderless Compact Grid */}
+    <div className="grid grid-cols-2 gap-x-3 gap-y-2">
+      {/* 01: Analyze */}
+      <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <span
+            className={`text-[9px] font-mono font-semibold ${
+              darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
             }`}
           >
-            {tech.icon}
-          </div>
-
-          {/* Micro Tooltip on Hover */}
-          {tech.name && (
-            <div
-              className={`absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[9px] font-mono tracking-wide uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 transform group-hover:-translate-y-1 shadow-md z-40 ${
-                darkMode
-                  ? "bg-slate-900 border border-slate-800 text-indigo-300 shadow-black/50"
-                  : "bg-slate-900 text-white shadow-slate-300"
-              }`}
-            >
-              {tech.name}
-            </div>
-          )}
+            01
+          </span>
+          <h4
+            className={`text-xs font-semibold tracking-tight transition-colors duration-150 ${
+              darkMode
+                ? "text-slate-100 group-hover:text-indigo-300"
+                : "text-slate-900 group-hover:text-indigo-600"
+            }`}
+          >
+            Analyze
+          </h4>
         </div>
+        <p
+          className={`text-[10.5px] leading-snug ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}
+        >
+          Requirements, scope, and user needs.
+        </p>
       </div>
-    );
-  })}
-</div>
+
+      {/* 02: Architect */}
+      <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <span
+            className={`text-[9px] font-mono font-semibold ${
+              darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
+            }`}
+          >
+            02
+          </span>
+          <h4
+            className={`text-xs font-semibold tracking-tight transition-colors duration-150 ${
+              darkMode
+                ? "text-slate-100 group-hover:text-indigo-300"
+                : "text-slate-900 group-hover:text-indigo-600"
+            }`}
+          >
+            Architect
+          </h4>
         </div>
+        <p
+          className={`text-[10.5px] leading-snug ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}
+        >
+          System architecture, database design, and technical decisions.
+        </p>
+      </div>
+
+      {/* 03: Develop */}
+      <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <span
+            className={`text-[9px] font-mono font-semibold ${
+              darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
+            }`}
+          >
+            03
+          </span>
+          <h4
+            className={`text-xs font-semibold tracking-tight transition-colors duration-150 ${
+              darkMode
+                ? "text-slate-100 group-hover:text-indigo-300"
+                : "text-slate-900 group-hover:text-indigo-600"
+            }`}
+          >
+            Develop
+          </h4>
+        </div>
+        <p
+          className={`text-[10.5px] leading-snug ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}
+        >
+          Frontend, backend, APIs, and system integration.
+        </p>
+      </div>
+
+      {/* 04: Deploy */}
+      <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <span
+            className={`text-[9px] font-mono font-semibold ${
+              darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
+            }`}
+          >
+            04
+          </span>
+          <h4
+            className={`text-xs font-semibold tracking-tight transition-colors duration-150 ${
+              darkMode
+                ? "text-slate-100 group-hover:text-indigo-300"
+                : "text-slate-900 group-hover:text-indigo-600"
+            }`}
+          >
+            Deploy
+          </h4>
+        </div>
+        <p
+          className={`text-[10.5px] leading-snug ${
+            darkMode ? "text-slate-400" : "text-slate-600"
+          }`}
+        >
+          Production deployment, monitoring, and continuous iteration.
+        </p>
       </div>
     </div>
+  </div>
+</div>
   </div>
 </section>
       {/* SECTION 3: TECH STACK */}
