@@ -2165,7 +2165,7 @@ useEffect(() => {
             01
           </span>
           <h4
-            className={`text-[12px] font-semibold tracking-widest transition-colors duration-150 ${
+            className={`text-[12px] font-bold tracking-widest transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2194,7 +2194,7 @@ useEffect(() => {
             02
           </span>
           <h4
-            className={`text-[12px] font-semibold tracking-widest transition-colors duration-150 ${
+            className={`text-[12px] font-bold tracking-widest transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2223,7 +2223,7 @@ useEffect(() => {
             03
           </span>
           <h4
-            className={`text-[12px] font-semibold tracking-widest transition-colors duration-150 ${
+            className={`text-[12px] font-bold tracking-widest transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2252,7 +2252,7 @@ useEffect(() => {
             04
           </span>
           <h4
-            className={`text-[12px] font-semibold tracking-widest transition-colors duration-150 ${
+            className={`text-[12px] font-bold tracking-widest transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
