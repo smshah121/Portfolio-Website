@@ -2099,7 +2099,7 @@ useEffect(() => {
             darkMode ? "text-slate-400" : "text-slate-600"
           }`}
         >
-          Secure APIs, authentication, business logic, database integration, and scalable backend systems.
+          REST APIs, authentication, business logic, database integration, and scalable backend systems.
         </p>
       </div>
     </div>
