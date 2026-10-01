@@ -2040,7 +2040,7 @@ useEffect(() => {
             01
           </span>
           <h4
-            className={`text-xs sm:text-[13px] font-semibold tracking-tight transition-colors duration-150 ${
+            className={`text-[14px] font-semibold tracking-wide transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2071,7 +2071,7 @@ useEffect(() => {
             02
           </span>
           <h4
-            className={`text-xs sm:text-[13px] font-semibold tracking-tight transition-colors duration-150 ${
+            className={`text-[14px] font-semibold tracking-wide transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2102,7 +2102,7 @@ useEffect(() => {
             03
           </span>
           <h4
-            className={`text-xs sm:text-[13px] font-semibold tracking-tight transition-colors duration-150 ${
+            className={`text-[14px] font-semibold tracking-wide transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2165,7 +2165,7 @@ useEffect(() => {
             01
           </span>
           <h4
-            className={`text-xs font-semibold tracking-tight transition-colors duration-150 ${
+            className={`text-[12px] font-semibold tracking-widest transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2175,7 +2175,7 @@ useEffect(() => {
           </h4>
         </div>
         <p
-          className={`text-[10.5px] leading-snug ${
+          className={`text-[11px] leading-snug ${
             darkMode ? "text-slate-400" : "text-slate-600"
           }`}
         >
@@ -2194,7 +2194,7 @@ useEffect(() => {
             02
           </span>
           <h4
-            className={`text-xs font-semibold tracking-tight transition-colors duration-150 ${
+            className={`text-[12px] font-semibold tracking-widest transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2204,7 +2204,7 @@ useEffect(() => {
           </h4>
         </div>
         <p
-          className={`text-[10.5px] leading-snug ${
+          className={`text-[11px] leading-snug ${
             darkMode ? "text-slate-400" : "text-slate-600"
           }`}
         >
@@ -2223,7 +2223,7 @@ useEffect(() => {
             03
           </span>
           <h4
-            className={`text-xs font-semibold tracking-tight transition-colors duration-150 ${
+            className={`text-[12px] font-semibold tracking-widest transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2233,7 +2233,7 @@ useEffect(() => {
           </h4>
         </div>
         <p
-          className={`text-[10.5px] leading-snug ${
+          className={`text-[11px] leading-snug ${
             darkMode ? "text-slate-400" : "text-slate-600"
           }`}
         >
@@ -2252,7 +2252,7 @@ useEffect(() => {
             04
           </span>
           <h4
-            className={`text-xs font-semibold tracking-tight transition-colors duration-150 ${
+            className={`text-[12px] font-semibold tracking-widest transition-colors duration-150 ${
               darkMode
                 ? "text-slate-100 group-hover:text-indigo-300"
                 : "text-slate-900 group-hover:text-indigo-600"
@@ -2262,7 +2262,7 @@ useEffect(() => {
           </h4>
         </div>
         <p
-          className={`text-[10.5px] leading-snug ${
+          className={`text-[11px] leading-snug ${
             darkMode ? "text-slate-400" : "text-slate-600"
           }`}
         >
