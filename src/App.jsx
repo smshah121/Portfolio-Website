@@ -5,11 +5,14 @@ import { GrReactjs } from "react-icons/gr";
 import { SiNestjs, SiPostgresql, SiTailwindcss, SiRedux, SiAxios, SiNetlify, SiRender, SiCloudinary } from "react-icons/si";
 import { IoIosMail, IoMdDownload, IoMdMail } from "react-icons/io";
 import { FaLocationDot, FaRegEye, FaLaptopCode, FaSun, FaMoon,  FaChevronDown } from "react-icons/fa6";
+import { ToastContainer } from 'react-toastify';
 import { FaChevronUp } from "react-icons/fa";
 import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 import { useEffect,useMemo, useLayoutEffect, useState, useRef } from "react";
 import Typewriter from "typewriter-effect";
 import Lenis from "lenis";
+import 'react-toastify/dist/ReactToastify.css'
+import { toast } from "react-toastify";
 import emailjs from "emailjs-com";
 import Globe from "react-globe.gl";
 import { GrHeroku } from "react-icons/gr";
@@ -190,6 +193,7 @@ export function ContactGlobe({ darkMode }) {
   );
 }
 function App() {
+  
   const orbitRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -1584,7 +1588,7 @@ useEffect(() => {
     e.preventDefault();
     emailjs.sendForm("service_6ew2jco", "template_8nw4mdt", e.target, "-lQ92GZ3aOZyq22up")
       .then(() => {
-        alert("✅ Message sent successfully!");
+        toast.success("✅ Message sent successfully!");
         e.target.reset();
       }, () => {
         alert("❌ Failed to send, please try again.");
@@ -1592,6 +1596,19 @@ useEffect(() => {
   };
 
   return (
+    <>
+      <ToastContainer 
+        position="top-center" 
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored" 
+      />
     <div ref={mainContainerRef} className={`min-h-screen font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200 transition-colors duration-300 ${
       darkMode ? "bg-slate-950 text-slate-100" : "bg-slate-50 text-slate-900"
     }`}>
@@ -2969,6 +2986,7 @@ useEffect(() => {
   </div>
 </footer>
     </div>
+        </>
   );
 }
 
