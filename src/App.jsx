@@ -2158,7 +2158,7 @@ useEffect(() => {
       <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
         <div className="flex items-center gap-1.5 mb-0.5">
           <span
-            className={`text-[9px] font-mono font-semibold ${
+            className={`text-[11px] mr-0.5 font-mono font-semibold ${
               darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
             }`}
           >
@@ -2171,7 +2171,7 @@ useEffect(() => {
                 : "text-slate-900 group-hover:text-indigo-600"
             }`}
           >
-            Analyze
+            Discover
           </h4>
         </div>
         <p
@@ -2187,7 +2187,7 @@ useEffect(() => {
       <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
         <div className="flex items-center gap-1.5 mb-0.5">
           <span
-            className={`text-[9px] font-mono font-semibold ${
+            className={`text-[11px] mr-0.5 font-mono font-semibold ${
               darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
             }`}
           >
@@ -2200,7 +2200,7 @@ useEffect(() => {
                 : "text-slate-900 group-hover:text-indigo-600"
             }`}
           >
-            Architect
+            Design
           </h4>
         </div>
         <p
@@ -2216,7 +2216,7 @@ useEffect(() => {
       <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
         <div className="flex items-center gap-1.5 mb-0.5">
           <span
-            className={`text-[9px] font-mono font-semibold ${
+            className={`text-[11px] mr-0.5 font-mono font-semibold ${
               darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
             }`}
           >
@@ -2245,7 +2245,7 @@ useEffect(() => {
       <div className="group rounded-xl p-2 transition-all duration-200 hover:bg-slate-500/[0.04]">
         <div className="flex items-center gap-1.5 mb-0.5">
           <span
-            className={`text-[9px] font-mono font-semibold ${
+            className={`text-[11px] mr-0.5 font-mono font-semibold ${
               darkMode ? "text-indigo-400/90" : "text-indigo-600/90"
             }`}
           >
